@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Navigation from "@/components/Navigation";
 import Link from "next/link";
 
-export default function SignUpPage() {
+function SignUpForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const planFromUrl = searchParams.get("plan") || "monthly";
@@ -122,5 +122,13 @@ export default function SignUpPage() {
         </form>
       </main>
     </div>
+  );
+}
+
+export default function SignUpPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-slate-950 text-white flex items-center justify-center">Loading...</div>}>
+      <SignUpForm />
+    </Suspense>
   );
 }

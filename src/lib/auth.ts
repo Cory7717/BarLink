@@ -1,4 +1,4 @@
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
@@ -17,7 +17,7 @@ type SessionUser = {
   role?: string;
 };
 
-export const { handlers, auth, signIn, signOut } = NextAuth({
+export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   secret: process.env.NEXTAUTH_SECRET,
   providers: [
@@ -89,4 +89,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     signIn: "/auth/signin",
     error: "/auth/error",
   },
-});
+};
+
+export default NextAuth(authOptions);
+
+// Helper function for getting session in server components/routes
+export async function auth() {
+  const { getServerSession } = await import("next-auth/next");
+  return getServerSession(authOptions);
+}

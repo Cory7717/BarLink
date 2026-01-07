@@ -10,26 +10,26 @@ declare module '@paypal/checkout-server-sdk' {
 
     export class PayPalHttpClient {
       constructor(environment: Environment);
-      execute(request: PayPalHttpRequest): Promise<PayPalHttpResponse>;
+      execute<T = unknown>(request: PayPalHttpRequest): Promise<PayPalHttpResponse<T>>;
     }
 
     export class PayPalHttpRequest {
       constructor(path: string, method: string);
-      body?: any;
+      body?: Record<string, unknown>;
       headers?: Record<string, string>;
     }
 
-    export class PayPalHttpResponse {
+    export class PayPalHttpResponse<T = unknown> {
       statusCode: number;
       headers: Record<string, string>;
-      body: any;
+      body: T;
     }
   }
 
   namespace orders {
     export class OrdersCreateRequest extends core.PayPalHttpRequest {
       constructor();
-      body?: any;
+      body?: Record<string, unknown>;
     }
 
     export class OrdersGetRequest extends core.PayPalHttpRequest {
@@ -44,7 +44,7 @@ declare module '@paypal/checkout-server-sdk' {
   namespace subscriptions {
     export class SubscriptionsCreateRequest extends core.PayPalHttpRequest {
       constructor();
-      body?: any;
+      body?: Record<string, unknown>;
     }
 
     export class SubscriptionsGetRequest extends core.PayPalHttpRequest {
@@ -53,19 +53,19 @@ declare module '@paypal/checkout-server-sdk' {
 
     export class SubscriptionsUpdateRequest extends core.PayPalHttpRequest {
       constructor(subscriptionId: string);
-      body?: any;
+      body?: Record<string, unknown>;
     }
 
     export class SubscriptionsCancelRequest extends core.PayPalHttpRequest {
       constructor(subscriptionId: string);
-      body?: any;
+      body?: Record<string, unknown>;
     }
   }
 
   namespace webhooks {
     export class WebhookVerifySignatureRequest extends core.PayPalHttpRequest {
       constructor();
-      body?: any;
+      body?: Record<string, unknown>;
     }
   }
 }
