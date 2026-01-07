@@ -247,7 +247,7 @@ export default function AnalyticsDashboard({ barId }: { barId: string }) {
           )}
           {analytics.topSearchQueries.length > 0 && (
             <li>
-              🎯 Users are searching for "{analytics.topSearchQueries[0].query}" the most. Make sure your offerings
+              🎯 Users are searching for &quot;{analytics.topSearchQueries[0].query}&quot; the most. Make sure your offerings
               highlight this.
             </li>
           )}
