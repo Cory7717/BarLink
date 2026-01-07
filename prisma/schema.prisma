@@ -1,0 +1,189 @@
+﻿// BarLink Database Schema (Prisma 7)
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  image         String?
+  emailVerified DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  accounts      Account[]
+  sessions      Session[]
+  favorites     Favorite[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Owner {
+  id                String         @id @default(cuid())
+  email             String         @unique
+  name              String
+  password          String
+  phone             String?
+  emailVerified     DateTime?
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+  
+  bars              Bar[]
+  subscription      Subscription?
+}
+
+model Subscription {
+  id                String   @id @default(cuid())
+  ownerId           String   @unique
+  plan              String
+  status            String
+  stripeCustomerId  String?
+  stripeSubscriptionId String?
+  currentPeriodEnd  DateTime?
+  cancelAtPeriodEnd Boolean  @default(false)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  owner             Owner    @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+}
+
+model Bar {
+  id            String    @id @default(cuid())
+  ownerId       String
+  name          String
+  description   String?   @db.Text
+  address       String
+  city          String
+  state         String
+  zipCode       String
+  neighborhood  String?
+  latitude      Float
+  longitude     Float
+  phone         String?
+  website       String?
+  logo          String?
+  photos        String[]  @default([])
+  hours         Json?
+  isActive      Boolean   @default(true)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  profileViews  Int       @default(0)
+  searchAppearances Int   @default(0)
+  
+  owner         Owner     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  offerings     Offering[]
+  events        Event[]
+  favorites     Favorite[]
+  
+  @@index([city])
+  @@index([latitude, longitude])
+  @@index([isActive])
+}
+
+model Offering {
+  id            String    @id @default(cuid())
+  barId         String
+  dayOfWeek     Int
+  category      String
+  customTitle   String?
+  description   String?   @db.Text
+  startTime     String
+  endTime       String?
+  isActive      Boolean   @default(true)
+  isSpecial     Boolean   @default(false)
+  coverCharge   Decimal?  @db.Decimal(10, 2)
+  prize         String?
+  ageRestriction Int?
+  clickCount    Int       @default(0)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  bar           Bar       @relation(fields: [barId], references: [id], onDelete: Cascade)
+  
+  @@index([barId])
+  @@index([dayOfWeek])
+  @@index([category])
+  @@index([isActive])
+}
+
+model Event {
+  id            String    @id @default(cuid())
+  barId         String
+  title         String
+  description   String?   @db.Text
+  category      String?
+  startDate     DateTime
+  endDate       DateTime?
+  startTime     String
+  endTime       String?
+  isRecurring   Boolean   @default(false)
+  recurrenceRule String?
+  isSpecial     Boolean   @default(true)
+  isNew         Boolean   @default(true)
+  autoExpire    Boolean   @default(true)
+  coverCharge   Decimal?  @db.Decimal(10, 2)
+  prize         String?
+  ageRestriction Int?
+  clickCount    Int       @default(0)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  bar           Bar       @relation(fields: [barId], references: [id], onDelete: Cascade)
+  
+  @@index([barId])
+  @@index([startDate])
+  @@index([isSpecial])
+  @@index([isNew])
+}
+
+model Favorite {
+  id        String   @id @default(cuid())
+  userId    String
+  barId     String
+  createdAt DateTime @default(now())
+  
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bar       Bar      @relation(fields: [barId], references: [id], onDelete: Cascade)
+  
+  @@unique([userId, barId])
+}
+
+model ActivityCategory {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  displayName String
+  icon        String?
+  sortOrder   Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+}

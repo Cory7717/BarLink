@@ -1,36 +1,122 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+﻿# BarLink - Bar Discovery Platform
 
-## Getting Started
+A modern web and mobile application connecting bar owners with patrons looking for specific activities on specific days.
 
-First, run the development server:
+## Project Status
 
+✅ **Completed:**
+- Next.js 16.1.1 project initialized
+- TypeScript + Tailwind CSS configured
+- Database schema (Prisma) created
+- Core dependencies installed
+- Navigation component created
+- Directory structure established
+
+⏳ **In Progress:**
+Creating remaining pages and components...
+
+## Tech Stack
+
+- **Framework:** Next.js 16.1.1 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **Database:** PostgreSQL (via Prisma)
+- **Auth:** NextAuth.js
+- **Payments:** Stripe
+- **Maps:** Mapbox GL
+- **Email:** Nodemailer
+
+## Setup Instructions
+
+### 1. Install Dependencies
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Setup Database
+```bash
+# Update .env with your DATABASE_URL
+npx prisma generate
+npx prisma db push
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Configure Environment Variables
+Copy `.env.example` to `.env` and fill in:
+- DATABASE_URL
+- NEXTAUTH_SECRET (generate with: `openssl rand -base64 32`)
+- GOOGLE_CLIENT_ID & GOOGLE_CLIENT_SECRET (optional, for OAuth)
+- STRIPE_SECRET_KEY & STRIPE_PUBLISHABLE_KEY
+- NEXT_PUBLIC_MAPBOX_TOKEN
+- SMTP credentials (optional, for emails)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4. Run Development Server
+```bash
+npm run dev
+```
 
-## Learn More
+Visit http://localhost:3000
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+├── app/                    # Next.js app router pages
+│   ├── page.tsx           # Home page
+│   ├── explore/           # Bar search & map
+│   ├── pricing/           # Subscription plans
+│   ├── about/             # About page
+│   ├── contact/           # Contact form
+│   ├── dashboard/         # Owner dashboard
+│   ├── auth/              # Authentication pages
+│   └── api/               # API routes
+├── components/            # React components
+│   ├── Navigation.tsx     # Main navigation
+│   └── ui/                # Reusable UI components
+└── lib/                   # Utilities
+    ├── prisma.ts          # Database client
+    ├── auth.ts            # NextAuth config
+    ├── utils.ts           # Helper functions
+    └── constants.ts       # App constants
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Features
 
-## Deploy on Vercel
+### For Patrons (Free)
+- Search bars by day of week + activity
+- Interactive map view
+- Bar details & directions
+- Special event discovery
+- Optional favorites (with account)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### For Bar Owners (Subscription Required)
+- Bar profile management
+- Add unlimited offerings & events
+- Recurring weekly activities
+- Special event flags
+- Basic analytics
+- Quick updates anytime
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Pricing
+- Monthly: $30/month
+- 6 Months: $150 (save $30)
+- Annual: $250 (save $110)
+
+## Development Roadmap
+
+- [ ] Complete all marketing pages
+- [ ] Implement Explore page with map
+- [ ] Build owner dashboard
+- [ ] Integrate Stripe subscriptions
+- [ ] Add API routes
+- [ ] Implement analytics
+- [ ] Create mobile app (React Native)
+- [ ] SEO optimization
+- [ ] Admin panel
+
+## License
+
+Proprietary - All rights reserved
+
+## Support
+
+Contact: support@barlink.com
