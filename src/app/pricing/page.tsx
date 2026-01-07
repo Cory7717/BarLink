@@ -1,3 +1,8 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 import Navigation from "@/components/Navigation";
 import { formatCurrency } from "@/lib/utils";
 import { SUBSCRIPTION_PLANS } from "@/lib/constants";
@@ -5,6 +10,22 @@ import Link from "next/link";
 
 export default function PricingPage() {
   const plans = SUBSCRIPTION_PLANS;
+  const router = useRouter();
+  const { data: session, status } = useSession();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleChoosePlan = (planId: string) => {
+    setIsLoading(true);
+
+    if (status === "authenticated" && session?.user?.email) {
+      // User is logged in - check if they have a bar already
+      // For now, send them to subscription page which will handle the flow
+      router.push(`/dashboard/subscription?plan=${planId}`);
+    } else {
+      // User not logged in - go to signup with plan parameter
+      router.push(`/auth/signup?plan=${planId}`);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-slate-950 text-white">
@@ -44,12 +65,13 @@ export default function PricingPage() {
                   </li>
                 ))}
               </ul>
-              <Link
-                href={`/auth/signup?plan=${plan.id}`}
-                className="mt-6 inline-flex w-full justify-center rounded-lg bg-emerald-500 px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-emerald-400"
+              <button
+                onClick={() => handleChoosePlan(plan.id)}
+                disabled={isLoading || status === "loading"}
+                className="mt-6 inline-flex w-full justify-center rounded-lg bg-emerald-500 px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-emerald-400 disabled:opacity-50"
               >
-                Choose {plan.name}
-              </Link>
+                {isLoading ? "Redirecting..." : `Choose ${plan.name}`}
+              </button>
             </div>
           ))}
         </div>

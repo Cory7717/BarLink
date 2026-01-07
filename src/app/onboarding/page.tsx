@@ -2,6 +2,7 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useSession } from "next-auth/react";
 import Navigation from "@/components/Navigation";
 import { SUBSCRIPTION_PLANS } from "@/lib/constants";
 import { US_STATES } from "@/lib/constants";
@@ -9,12 +10,17 @@ import { US_STATES } from "@/lib/constants";
 function OnboardingContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const { status } = useSession();
+  
+  // Support both new signup (ownerId) and logged-in users (session)
   const ownerId = searchParams.get("ownerId");
+  const isNewUser = !!ownerId;
   const planKey = searchParams.get("plan") || "monthly";
 
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [currentOwnerId, setCurrentOwnerId] = useState(ownerId || "");
 
   // Bar profile fields
   const [barName, setBarName] = useState("");
@@ -27,10 +33,32 @@ function OnboardingContent() {
   const [description, setDescription] = useState("");
 
   useEffect(() => {
-    if (!ownerId) {
+    // If new user signup flow, need ownerId
+    if (isNewUser && !ownerId) {
       router.push("/auth/signup");
     }
-  }, [ownerId, router]);
+    
+    // If logged-in user, fetch their owner ID
+    if (!isNewUser && status === "authenticated") {
+      const fetchOwnerId = async () => {
+        try {
+          const res = await fetch("/api/auth/owner");
+          const data = await res.json();
+          if (data.ownerId) {
+            setCurrentOwnerId(data.ownerId);
+          }
+        } catch (err) {
+          console.error("Failed to fetch owner:", err);
+        }
+      };
+      fetchOwnerId();
+    }
+    
+    // If not logged in and not a new signup, redirect to pricing
+    if (!isNewUser && status === "unauthenticated") {
+      router.push("/pricing");
+    }
+  }, [ownerId, isNewUser, status, router]);
 
   const handleBarProfileSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,7 +70,7 @@ function OnboardingContent() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          ownerId,
+          ownerId: currentOwnerId,
           name: barName,
           address,
           city,
@@ -79,7 +107,7 @@ function OnboardingContent() {
       const res = await fetch("/api/paypal/create-subscription", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ownerId, planKey }),
+        body: JSON.stringify({ ownerId: currentOwnerId, planKey }),
       });
 
       const data = await res.json();

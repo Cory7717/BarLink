@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useLayoutEffect, useState, ReactNode } from "react";
+import { createContext, useContext, useEffect, useMemo, useState, ReactNode } from "react";
 
 type Theme = "light" | "dark";
 
@@ -11,25 +11,26 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+function getInitialTheme(): Theme {
+  // On the server, default to dark. This runs in the lazy initializer client-side.
+  if (typeof window === "undefined") return "dark";
+
+  const stored = window.localStorage.getItem("theme");
+  if (stored === "light" || stored === "dark") return stored;
+
+  // Fall back to system preference
+  const prefersLight = window.matchMedia?.("(prefers-color-scheme: light)")?.matches;
+  return prefersLight ? "light" : "dark";
+}
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("dark");
-  const [mounted, setMounted] = useState(false);
+  // Lazy initializer reads localStorage/system preference once (no setState in an effect)
+  const [theme, setTheme] = useState<Theme>(() => getInitialTheme());
 
-  useLayoutEffect(() => {
-    // Check localStorage or system preference
-    const stored = localStorage.getItem("theme") as Theme | null;
-    if (stored) {
-      setTheme(stored);
-    } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
-      setTheme("light");
-    }
-    setMounted(true);
-  }, []);
-
-  useLayoutEffect(() => {
-    if (!mounted) return;
-    
+  // Apply theme to <html> and persist whenever theme changes
+  useEffect(() => {
     const root = document.documentElement;
+
     if (theme === "light") {
       root.classList.remove("dark");
       root.classList.add("light");
@@ -37,22 +38,17 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       root.classList.remove("light");
       root.classList.add("dark");
     }
-    localStorage.setItem("theme", theme);
-  }, [theme, mounted]);
+
+    window.localStorage.setItem("theme", theme);
+  }, [theme]);
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
-  if (!mounted) {
-    return <>{children}</>;
-  }
+  const value = useMemo(() => ({ theme, toggleTheme }), [theme]);
 
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 }
 
 export function useTheme() {
