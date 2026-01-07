@@ -60,7 +60,9 @@ export const ModelName = {
   Offering: 'Offering',
   Event: 'Event',
   Favorite: 'Favorite',
-  ActivityCategory: 'ActivityCategory'
+  ActivityCategory: 'ActivityCategory',
+  PromoCode: 'PromoCode',
+  PromoRedemption: 'PromoRedemption'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -130,6 +132,7 @@ export const OwnerScalarFieldEnum = {
   emailVerified: 'emailVerified',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
+  allowFreeListings: 'allowFreeListings',
   role: 'role'
 } as const
 
@@ -268,6 +271,33 @@ export const ActivityCategoryScalarFieldEnum = {
 } as const
 
 export type ActivityCategoryScalarFieldEnum = (typeof ActivityCategoryScalarFieldEnum)[keyof typeof ActivityCategoryScalarFieldEnum]
+
+
+export const PromoCodeScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  description: 'description',
+  isActive: 'isActive',
+  maxRedemptions: 'maxRedemptions',
+  usedCount: 'usedCount',
+  expiresAt: 'expiresAt',
+  grantPlan: 'grantPlan',
+  grantMonths: 'grantMonths',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PromoCodeScalarFieldEnum = (typeof PromoCodeScalarFieldEnum)[keyof typeof PromoCodeScalarFieldEnum]
+
+
+export const PromoRedemptionScalarFieldEnum = {
+  id: 'id',
+  promoCodeId: 'promoCodeId',
+  ownerId: 'ownerId',
+  redeemedAt: 'redeemedAt'
+} as const
+
+export type PromoRedemptionScalarFieldEnum = (typeof PromoRedemptionScalarFieldEnum)[keyof typeof PromoRedemptionScalarFieldEnum]
 
 
 export const SortOrder = {

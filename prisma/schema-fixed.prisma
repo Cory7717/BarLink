@@ -63,9 +63,11 @@ model Owner {
   emailVerified     DateTime?
   createdAt         DateTime       @default(now())
   updatedAt         DateTime       @updatedAt
+  allowFreeListings Boolean        @default(false)
   
   bars              Bar[]
   subscription      Subscription?
+  promoRedemptions  PromoRedemption[]
   role              OwnerRole      @default(OWNER)
 }
 
@@ -243,4 +245,32 @@ model ActivityCategory {
   sortOrder   Int      @default(0)
   isActive    Boolean  @default(true)
   createdAt   DateTime @default(now())
+}
+
+model PromoCode {
+  id              String   @id @default(cuid())
+  code            String   @unique
+  description     String?
+  isActive        Boolean  @default(true)
+  maxRedemptions  Int?
+  usedCount       Int      @default(0)
+  expiresAt       DateTime?
+  grantPlan       SubscriptionPlan?
+  grantMonths     Int?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  redemptions     PromoRedemption[]
+}
+
+model PromoRedemption {
+  id          String   @id @default(cuid())
+  promoCodeId String
+  ownerId     String
+  redeemedAt  DateTime @default(now())
+
+  promoCode   PromoCode @relation(fields: [promoCodeId], references: [id], onDelete: Cascade)
+  owner       Owner     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+
+  @@unique([promoCodeId, ownerId])
 }

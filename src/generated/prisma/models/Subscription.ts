@@ -506,10 +506,6 @@ export type EnumSubscriptionStatusFieldUpdateOperationsInput = {
   set?: $Enums.SubscriptionStatus
 }
 
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean
-}
-
 export type SubscriptionCreateWithoutOwnerInput = {
   id?: string
   plan: $Enums.SubscriptionPlan

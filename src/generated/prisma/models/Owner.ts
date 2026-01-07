@@ -33,6 +33,7 @@ export type OwnerMinAggregateOutputType = {
   emailVerified: Date | null
   createdAt: Date | null
   updatedAt: Date | null
+  allowFreeListings: boolean | null
   role: $Enums.OwnerRole | null
 }
 
@@ -45,6 +46,7 @@ export type OwnerMaxAggregateOutputType = {
   emailVerified: Date | null
   createdAt: Date | null
   updatedAt: Date | null
+  allowFreeListings: boolean | null
   role: $Enums.OwnerRole | null
 }
 
@@ -57,6 +59,7 @@ export type OwnerCountAggregateOutputType = {
   emailVerified: number
   createdAt: number
   updatedAt: number
+  allowFreeListings: number
   role: number
   _all: number
 }
@@ -71,6 +74,7 @@ export type OwnerMinAggregateInputType = {
   emailVerified?: true
   createdAt?: true
   updatedAt?: true
+  allowFreeListings?: true
   role?: true
 }
 
@@ -83,6 +87,7 @@ export type OwnerMaxAggregateInputType = {
   emailVerified?: true
   createdAt?: true
   updatedAt?: true
+  allowFreeListings?: true
   role?: true
 }
 
@@ -95,6 +100,7 @@ export type OwnerCountAggregateInputType = {
   emailVerified?: true
   createdAt?: true
   updatedAt?: true
+  allowFreeListings?: true
   role?: true
   _all?: true
 }
@@ -180,6 +186,7 @@ export type OwnerGroupByOutputType = {
   emailVerified: Date | null
   createdAt: Date
   updatedAt: Date
+  allowFreeListings: boolean
   role: $Enums.OwnerRole
   _count: OwnerCountAggregateOutputType | null
   _min: OwnerMinAggregateOutputType | null
@@ -213,9 +220,11 @@ export type OwnerWhereInput = {
   emailVerified?: Prisma.DateTimeNullableFilter<"Owner"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Owner"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Owner"> | Date | string
+  allowFreeListings?: Prisma.BoolFilter<"Owner"> | boolean
   role?: Prisma.EnumOwnerRoleFilter<"Owner"> | $Enums.OwnerRole
   bars?: Prisma.BarListRelationFilter
   subscription?: Prisma.XOR<Prisma.SubscriptionNullableScalarRelationFilter, Prisma.SubscriptionWhereInput> | null
+  promoRedemptions?: Prisma.PromoRedemptionListRelationFilter
 }
 
 export type OwnerOrderByWithRelationInput = {
@@ -227,9 +236,11 @@ export type OwnerOrderByWithRelationInput = {
   emailVerified?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  allowFreeListings?: Prisma.SortOrder
   role?: Prisma.SortOrder
   bars?: Prisma.BarOrderByRelationAggregateInput
   subscription?: Prisma.SubscriptionOrderByWithRelationInput
+  promoRedemptions?: Prisma.PromoRedemptionOrderByRelationAggregateInput
 }
 
 export type OwnerWhereUniqueInput = Prisma.AtLeast<{
@@ -244,9 +255,11 @@ export type OwnerWhereUniqueInput = Prisma.AtLeast<{
   emailVerified?: Prisma.DateTimeNullableFilter<"Owner"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Owner"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Owner"> | Date | string
+  allowFreeListings?: Prisma.BoolFilter<"Owner"> | boolean
   role?: Prisma.EnumOwnerRoleFilter<"Owner"> | $Enums.OwnerRole
   bars?: Prisma.BarListRelationFilter
   subscription?: Prisma.XOR<Prisma.SubscriptionNullableScalarRelationFilter, Prisma.SubscriptionWhereInput> | null
+  promoRedemptions?: Prisma.PromoRedemptionListRelationFilter
 }, "id" | "email">
 
 export type OwnerOrderByWithAggregationInput = {
@@ -258,6 +271,7 @@ export type OwnerOrderByWithAggregationInput = {
   emailVerified?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  allowFreeListings?: Prisma.SortOrder
   role?: Prisma.SortOrder
   _count?: Prisma.OwnerCountOrderByAggregateInput
   _max?: Prisma.OwnerMaxOrderByAggregateInput
@@ -276,6 +290,7 @@ export type OwnerScalarWhereWithAggregatesInput = {
   emailVerified?: Prisma.DateTimeNullableWithAggregatesFilter<"Owner"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Owner"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Owner"> | Date | string
+  allowFreeListings?: Prisma.BoolWithAggregatesFilter<"Owner"> | boolean
   role?: Prisma.EnumOwnerRoleWithAggregatesFilter<"Owner"> | $Enums.OwnerRole
 }
 
@@ -288,9 +303,11 @@ export type OwnerCreateInput = {
   emailVerified?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowFreeListings?: boolean
   role?: $Enums.OwnerRole
   bars?: Prisma.BarCreateNestedManyWithoutOwnerInput
   subscription?: Prisma.SubscriptionCreateNestedOneWithoutOwnerInput
+  promoRedemptions?: Prisma.PromoRedemptionCreateNestedManyWithoutOwnerInput
 }
 
 export type OwnerUncheckedCreateInput = {
@@ -302,9 +319,11 @@ export type OwnerUncheckedCreateInput = {
   emailVerified?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowFreeListings?: boolean
   role?: $Enums.OwnerRole
   bars?: Prisma.BarUncheckedCreateNestedManyWithoutOwnerInput
   subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutOwnerInput
+  promoRedemptions?: Prisma.PromoRedemptionUncheckedCreateNestedManyWithoutOwnerInput
 }
 
 export type OwnerUpdateInput = {
@@ -316,9 +335,11 @@ export type OwnerUpdateInput = {
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowFreeListings?: Prisma.BoolFieldUpdateOperationsInput | boolean
   role?: Prisma.EnumOwnerRoleFieldUpdateOperationsInput | $Enums.OwnerRole
   bars?: Prisma.BarUpdateManyWithoutOwnerNestedInput
   subscription?: Prisma.SubscriptionUpdateOneWithoutOwnerNestedInput
+  promoRedemptions?: Prisma.PromoRedemptionUpdateManyWithoutOwnerNestedInput
 }
 
 export type OwnerUncheckedUpdateInput = {
@@ -330,9 +351,11 @@ export type OwnerUncheckedUpdateInput = {
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowFreeListings?: Prisma.BoolFieldUpdateOperationsInput | boolean
   role?: Prisma.EnumOwnerRoleFieldUpdateOperationsInput | $Enums.OwnerRole
   bars?: Prisma.BarUncheckedUpdateManyWithoutOwnerNestedInput
   subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutOwnerNestedInput
+  promoRedemptions?: Prisma.PromoRedemptionUncheckedUpdateManyWithoutOwnerNestedInput
 }
 
 export type OwnerCreateManyInput = {
@@ -344,6 +367,7 @@ export type OwnerCreateManyInput = {
   emailVerified?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowFreeListings?: boolean
   role?: $Enums.OwnerRole
 }
 
@@ -356,6 +380,7 @@ export type OwnerUpdateManyMutationInput = {
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowFreeListings?: Prisma.BoolFieldUpdateOperationsInput | boolean
   role?: Prisma.EnumOwnerRoleFieldUpdateOperationsInput | $Enums.OwnerRole
 }
 
@@ -368,6 +393,7 @@ export type OwnerUncheckedUpdateManyInput = {
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowFreeListings?: Prisma.BoolFieldUpdateOperationsInput | boolean
   role?: Prisma.EnumOwnerRoleFieldUpdateOperationsInput | $Enums.OwnerRole
 }
 
@@ -380,6 +406,7 @@ export type OwnerCountOrderByAggregateInput = {
   emailVerified?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  allowFreeListings?: Prisma.SortOrder
   role?: Prisma.SortOrder
 }
 
@@ -392,6 +419,7 @@ export type OwnerMaxOrderByAggregateInput = {
   emailVerified?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  allowFreeListings?: Prisma.SortOrder
   role?: Prisma.SortOrder
 }
 
@@ -404,12 +432,17 @@ export type OwnerMinOrderByAggregateInput = {
   emailVerified?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  allowFreeListings?: Prisma.SortOrder
   role?: Prisma.SortOrder
 }
 
 export type OwnerScalarRelationFilter = {
   is?: Prisma.OwnerWhereInput
   isNot?: Prisma.OwnerWhereInput
+}
+
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
 }
 
 export type EnumOwnerRoleFieldUpdateOperationsInput = {
@@ -444,6 +477,20 @@ export type OwnerUpdateOneRequiredWithoutBarsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.OwnerUpdateToOneWithWhereWithoutBarsInput, Prisma.OwnerUpdateWithoutBarsInput>, Prisma.OwnerUncheckedUpdateWithoutBarsInput>
 }
 
+export type OwnerCreateNestedOneWithoutPromoRedemptionsInput = {
+  create?: Prisma.XOR<Prisma.OwnerCreateWithoutPromoRedemptionsInput, Prisma.OwnerUncheckedCreateWithoutPromoRedemptionsInput>
+  connectOrCreate?: Prisma.OwnerCreateOrConnectWithoutPromoRedemptionsInput
+  connect?: Prisma.OwnerWhereUniqueInput
+}
+
+export type OwnerUpdateOneRequiredWithoutPromoRedemptionsNestedInput = {
+  create?: Prisma.XOR<Prisma.OwnerCreateWithoutPromoRedemptionsInput, Prisma.OwnerUncheckedCreateWithoutPromoRedemptionsInput>
+  connectOrCreate?: Prisma.OwnerCreateOrConnectWithoutPromoRedemptionsInput
+  upsert?: Prisma.OwnerUpsertWithoutPromoRedemptionsInput
+  connect?: Prisma.OwnerWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OwnerUpdateToOneWithWhereWithoutPromoRedemptionsInput, Prisma.OwnerUpdateWithoutPromoRedemptionsInput>, Prisma.OwnerUncheckedUpdateWithoutPromoRedemptionsInput>
+}
+
 export type OwnerCreateWithoutSubscriptionInput = {
   id?: string
   email: string
@@ -453,8 +500,10 @@ export type OwnerCreateWithoutSubscriptionInput = {
   emailVerified?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowFreeListings?: boolean
   role?: $Enums.OwnerRole
   bars?: Prisma.BarCreateNestedManyWithoutOwnerInput
+  promoRedemptions?: Prisma.PromoRedemptionCreateNestedManyWithoutOwnerInput
 }
 
 export type OwnerUncheckedCreateWithoutSubscriptionInput = {
@@ -466,8 +515,10 @@ export type OwnerUncheckedCreateWithoutSubscriptionInput = {
   emailVerified?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowFreeListings?: boolean
   role?: $Enums.OwnerRole
   bars?: Prisma.BarUncheckedCreateNestedManyWithoutOwnerInput
+  promoRedemptions?: Prisma.PromoRedemptionUncheckedCreateNestedManyWithoutOwnerInput
 }
 
 export type OwnerCreateOrConnectWithoutSubscriptionInput = {
@@ -495,8 +546,10 @@ export type OwnerUpdateWithoutSubscriptionInput = {
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowFreeListings?: Prisma.BoolFieldUpdateOperationsInput | boolean
   role?: Prisma.EnumOwnerRoleFieldUpdateOperationsInput | $Enums.OwnerRole
   bars?: Prisma.BarUpdateManyWithoutOwnerNestedInput
+  promoRedemptions?: Prisma.PromoRedemptionUpdateManyWithoutOwnerNestedInput
 }
 
 export type OwnerUncheckedUpdateWithoutSubscriptionInput = {
@@ -508,8 +561,10 @@ export type OwnerUncheckedUpdateWithoutSubscriptionInput = {
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowFreeListings?: Prisma.BoolFieldUpdateOperationsInput | boolean
   role?: Prisma.EnumOwnerRoleFieldUpdateOperationsInput | $Enums.OwnerRole
   bars?: Prisma.BarUncheckedUpdateManyWithoutOwnerNestedInput
+  promoRedemptions?: Prisma.PromoRedemptionUncheckedUpdateManyWithoutOwnerNestedInput
 }
 
 export type OwnerCreateWithoutBarsInput = {
@@ -521,8 +576,10 @@ export type OwnerCreateWithoutBarsInput = {
   emailVerified?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowFreeListings?: boolean
   role?: $Enums.OwnerRole
   subscription?: Prisma.SubscriptionCreateNestedOneWithoutOwnerInput
+  promoRedemptions?: Prisma.PromoRedemptionCreateNestedManyWithoutOwnerInput
 }
 
 export type OwnerUncheckedCreateWithoutBarsInput = {
@@ -534,8 +591,10 @@ export type OwnerUncheckedCreateWithoutBarsInput = {
   emailVerified?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  allowFreeListings?: boolean
   role?: $Enums.OwnerRole
   subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutOwnerInput
+  promoRedemptions?: Prisma.PromoRedemptionUncheckedCreateNestedManyWithoutOwnerInput
 }
 
 export type OwnerCreateOrConnectWithoutBarsInput = {
@@ -563,8 +622,10 @@ export type OwnerUpdateWithoutBarsInput = {
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowFreeListings?: Prisma.BoolFieldUpdateOperationsInput | boolean
   role?: Prisma.EnumOwnerRoleFieldUpdateOperationsInput | $Enums.OwnerRole
   subscription?: Prisma.SubscriptionUpdateOneWithoutOwnerNestedInput
+  promoRedemptions?: Prisma.PromoRedemptionUpdateManyWithoutOwnerNestedInput
 }
 
 export type OwnerUncheckedUpdateWithoutBarsInput = {
@@ -576,7 +637,85 @@ export type OwnerUncheckedUpdateWithoutBarsInput = {
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowFreeListings?: Prisma.BoolFieldUpdateOperationsInput | boolean
   role?: Prisma.EnumOwnerRoleFieldUpdateOperationsInput | $Enums.OwnerRole
+  subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutOwnerNestedInput
+  promoRedemptions?: Prisma.PromoRedemptionUncheckedUpdateManyWithoutOwnerNestedInput
+}
+
+export type OwnerCreateWithoutPromoRedemptionsInput = {
+  id?: string
+  email: string
+  name: string
+  password: string
+  phone?: string | null
+  emailVerified?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  allowFreeListings?: boolean
+  role?: $Enums.OwnerRole
+  bars?: Prisma.BarCreateNestedManyWithoutOwnerInput
+  subscription?: Prisma.SubscriptionCreateNestedOneWithoutOwnerInput
+}
+
+export type OwnerUncheckedCreateWithoutPromoRedemptionsInput = {
+  id?: string
+  email: string
+  name: string
+  password: string
+  phone?: string | null
+  emailVerified?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  allowFreeListings?: boolean
+  role?: $Enums.OwnerRole
+  bars?: Prisma.BarUncheckedCreateNestedManyWithoutOwnerInput
+  subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutOwnerInput
+}
+
+export type OwnerCreateOrConnectWithoutPromoRedemptionsInput = {
+  where: Prisma.OwnerWhereUniqueInput
+  create: Prisma.XOR<Prisma.OwnerCreateWithoutPromoRedemptionsInput, Prisma.OwnerUncheckedCreateWithoutPromoRedemptionsInput>
+}
+
+export type OwnerUpsertWithoutPromoRedemptionsInput = {
+  update: Prisma.XOR<Prisma.OwnerUpdateWithoutPromoRedemptionsInput, Prisma.OwnerUncheckedUpdateWithoutPromoRedemptionsInput>
+  create: Prisma.XOR<Prisma.OwnerCreateWithoutPromoRedemptionsInput, Prisma.OwnerUncheckedCreateWithoutPromoRedemptionsInput>
+  where?: Prisma.OwnerWhereInput
+}
+
+export type OwnerUpdateToOneWithWhereWithoutPromoRedemptionsInput = {
+  where?: Prisma.OwnerWhereInput
+  data: Prisma.XOR<Prisma.OwnerUpdateWithoutPromoRedemptionsInput, Prisma.OwnerUncheckedUpdateWithoutPromoRedemptionsInput>
+}
+
+export type OwnerUpdateWithoutPromoRedemptionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowFreeListings?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  role?: Prisma.EnumOwnerRoleFieldUpdateOperationsInput | $Enums.OwnerRole
+  bars?: Prisma.BarUpdateManyWithoutOwnerNestedInput
+  subscription?: Prisma.SubscriptionUpdateOneWithoutOwnerNestedInput
+}
+
+export type OwnerUncheckedUpdateWithoutPromoRedemptionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  allowFreeListings?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  role?: Prisma.EnumOwnerRoleFieldUpdateOperationsInput | $Enums.OwnerRole
+  bars?: Prisma.BarUncheckedUpdateManyWithoutOwnerNestedInput
   subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutOwnerNestedInput
 }
 
@@ -587,10 +726,12 @@ export type OwnerUncheckedUpdateWithoutBarsInput = {
 
 export type OwnerCountOutputType = {
   bars: number
+  promoRedemptions: number
 }
 
 export type OwnerCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   bars?: boolean | OwnerCountOutputTypeCountBarsArgs
+  promoRedemptions?: boolean | OwnerCountOutputTypeCountPromoRedemptionsArgs
 }
 
 /**
@@ -610,6 +751,13 @@ export type OwnerCountOutputTypeCountBarsArgs<ExtArgs extends runtime.Types.Exte
   where?: Prisma.BarWhereInput
 }
 
+/**
+ * OwnerCountOutputType without action
+ */
+export type OwnerCountOutputTypeCountPromoRedemptionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PromoRedemptionWhereInput
+}
+
 
 export type OwnerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -620,9 +768,11 @@ export type OwnerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   emailVerified?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  allowFreeListings?: boolean
   role?: boolean
   bars?: boolean | Prisma.Owner$barsArgs<ExtArgs>
   subscription?: boolean | Prisma.Owner$subscriptionArgs<ExtArgs>
+  promoRedemptions?: boolean | Prisma.Owner$promoRedemptionsArgs<ExtArgs>
   _count?: boolean | Prisma.OwnerCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["owner"]>
 
@@ -635,6 +785,7 @@ export type OwnerSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   emailVerified?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  allowFreeListings?: boolean
   role?: boolean
 }, ExtArgs["result"]["owner"]>
 
@@ -647,6 +798,7 @@ export type OwnerSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   emailVerified?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  allowFreeListings?: boolean
   role?: boolean
 }, ExtArgs["result"]["owner"]>
 
@@ -659,13 +811,15 @@ export type OwnerSelectScalar = {
   emailVerified?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  allowFreeListings?: boolean
   role?: boolean
 }
 
-export type OwnerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "name" | "password" | "phone" | "emailVerified" | "createdAt" | "updatedAt" | "role", ExtArgs["result"]["owner"]>
+export type OwnerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "name" | "password" | "phone" | "emailVerified" | "createdAt" | "updatedAt" | "allowFreeListings" | "role", ExtArgs["result"]["owner"]>
 export type OwnerInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   bars?: boolean | Prisma.Owner$barsArgs<ExtArgs>
   subscription?: boolean | Prisma.Owner$subscriptionArgs<ExtArgs>
+  promoRedemptions?: boolean | Prisma.Owner$promoRedemptionsArgs<ExtArgs>
   _count?: boolean | Prisma.OwnerCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type OwnerIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -676,6 +830,7 @@ export type $OwnerPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   objects: {
     bars: Prisma.$BarPayload<ExtArgs>[]
     subscription: Prisma.$SubscriptionPayload<ExtArgs> | null
+    promoRedemptions: Prisma.$PromoRedemptionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -686,6 +841,7 @@ export type $OwnerPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     emailVerified: Date | null
     createdAt: Date
     updatedAt: Date
+    allowFreeListings: boolean
     role: $Enums.OwnerRole
   }, ExtArgs["result"]["owner"]>
   composites: {}
@@ -1083,6 +1239,7 @@ export interface Prisma__OwnerClient<T, Null = never, ExtArgs extends runtime.Ty
   readonly [Symbol.toStringTag]: "PrismaPromise"
   bars<T extends Prisma.Owner$barsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Owner$barsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BarPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   subscription<T extends Prisma.Owner$subscriptionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Owner$subscriptionArgs<ExtArgs>>): Prisma.Prisma__SubscriptionClient<runtime.Types.Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  promoRedemptions<T extends Prisma.Owner$promoRedemptionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Owner$promoRedemptionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PromoRedemptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1120,6 +1277,7 @@ export interface OwnerFieldRefs {
   readonly emailVerified: Prisma.FieldRef<"Owner", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"Owner", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Owner", 'DateTime'>
+  readonly allowFreeListings: Prisma.FieldRef<"Owner", 'Boolean'>
   readonly role: Prisma.FieldRef<"Owner", 'OwnerRole'>
 }
     
@@ -1549,6 +1707,30 @@ export type Owner$subscriptionArgs<ExtArgs extends runtime.Types.Extensions.Inte
    */
   include?: Prisma.SubscriptionInclude<ExtArgs> | null
   where?: Prisma.SubscriptionWhereInput
+}
+
+/**
+ * Owner.promoRedemptions
+ */
+export type Owner$promoRedemptionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PromoRedemption
+   */
+  select?: Prisma.PromoRedemptionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PromoRedemption
+   */
+  omit?: Prisma.PromoRedemptionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PromoRedemptionInclude<ExtArgs> | null
+  where?: Prisma.PromoRedemptionWhereInput
+  orderBy?: Prisma.PromoRedemptionOrderByWithRelationInput | Prisma.PromoRedemptionOrderByWithRelationInput[]
+  cursor?: Prisma.PromoRedemptionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PromoRedemptionScalarFieldEnum | Prisma.PromoRedemptionScalarFieldEnum[]
 }
 
 /**
