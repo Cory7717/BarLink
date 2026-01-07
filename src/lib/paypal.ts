@@ -1,0 +1,31 @@
+import paypal from '@paypal/checkout-server-sdk';
+
+const environment = () => {
+  const clientId = process.env.PAYPAL_CLIENT_ID!;
+  const clientSecret = process.env.PAYPAL_CLIENT_SECRET!;
+  
+  return process.env.PAYPAL_ENV === 'live'
+    ? new paypal.core.LiveEnvironment(clientId, clientSecret)
+    : new paypal.core.SandboxEnvironment(clientId, clientSecret);
+};
+
+export const paypalClient = () => new paypal.core.PayPalHttpClient(environment());
+
+export const PAYPAL_PLAN_IDS = {
+  MONTHLY: process.env.PAYPAL_PLAN_MONTHLY_ID || '',
+  SIX_MONTH: process.env.PAYPAL_PLAN_SIXMONTH_ID || '',
+  YEARLY: process.env.PAYPAL_PLAN_YEARLY_ID || '',
+};
+
+export function getPlanIdFromKey(planKey: string): string {
+  switch (planKey) {
+    case 'monthly':
+      return PAYPAL_PLAN_IDS.MONTHLY;
+    case 'sixmonth':
+      return PAYPAL_PLAN_IDS.SIX_MONTH;
+    case 'yearly':
+      return PAYPAL_PLAN_IDS.YEARLY;
+    default:
+      throw new Error(`Unknown plan: ${planKey}`);
+  }
+}

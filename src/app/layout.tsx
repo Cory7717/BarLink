@@ -6,10 +6,18 @@ import { SessionProvider } from 'next-auth/react'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'BarLink - Find Bars by Activity & Day',
-  description: 'Discover trivia, karaoke, darts, live music, and more at bars near you. Search by day and activity on an interactive map.',
-  keywords: 'bars, nightlife, trivia, karaoke, happy hour, live music, bar finder',
+  title: 'BarPulse | Real-time bar discovery by day & activity',
+  description: 'BarPulse helps patrons find bars and live offerings by day, activity, and what is happening right now—powered by owner updates and subscriptions.',
+  keywords: 'bars, nightlife, happy hour, trivia, karaoke, live music, map search, bar discovery',
+  metadataBase: new URL('https://barpulse.com'),
 }
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: '#10b981',
+};
 
 export default function RootLayout({
   children,

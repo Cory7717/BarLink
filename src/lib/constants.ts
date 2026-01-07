@@ -34,7 +34,7 @@ export const SUBSCRIPTION_PLANS = [
     name: 'Monthly',
     price: 30,
     interval: 'month',
-    description: 'Perfect for trying out BarLink',
+    description: 'Perfect for trying out BarPulse',
     features: [
       'Bar profile on the map',
       'Unlimited offerings & events',

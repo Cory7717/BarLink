@@ -11,20 +11,18 @@ export default function Navigation() {
   const isActive = (path: string) => pathname === path;
 
   return (
-    <nav className="bg-gradient-to-r from-purple-900 to-indigo-900 text-white shadow-lg">
+    <nav className="bg-slate-950/90 text-white backdrop-blur-md border-b border-slate-800/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-8">
-            <Link href="/" className="text-2xl font-bold tracking-tight hover:text-purple-300 transition">
-              BarLink
+            <Link href="/" className="text-2xl font-bold tracking-tight hover:text-emerald-200 transition">
+              BarPulse
             </Link>
-            <div className="hidden md:flex space-x-4">
+            <div className="hidden md:flex space-x-2">
               <Link
                 href="/explore"
                 className={`px-3 py-2 rounded-md text-sm font-medium transition ${
-                  isActive("/explore")
-                    ? "bg-purple-700"
-                    : "hover:bg-purple-800"
+                  isActive("/explore") ? "bg-emerald-600/20 text-emerald-100" : "hover:bg-slate-800"
                 }`}
               >
                 Explore Bars
@@ -32,9 +30,7 @@ export default function Navigation() {
               <Link
                 href="/pricing"
                 className={`px-3 py-2 rounded-md text-sm font-medium transition ${
-                  isActive("/pricing")
-                    ? "bg-purple-700"
-                    : "hover:bg-purple-800"
+                  isActive("/pricing") ? "bg-emerald-600/20 text-emerald-100" : "hover:bg-slate-800"
                 }`}
               >
                 Pricing
@@ -42,28 +38,34 @@ export default function Navigation() {
               <Link
                 href="/about"
                 className={`px-3 py-2 rounded-md text-sm font-medium transition ${
-                  isActive("/about")
-                    ? "bg-purple-700"
-                    : "hover:bg-purple-800"
+                  isActive("/about") ? "bg-emerald-600/20 text-emerald-100" : "hover:bg-slate-800"
                 }`}
               >
                 About
               </Link>
+              <Link
+                href="/contact"
+                className={`px-3 py-2 rounded-md text-sm font-medium transition ${
+                  isActive("/contact") ? "bg-emerald-600/20 text-emerald-100" : "hover:bg-slate-800"
+                }`}
+              >
+                Contact
+              </Link>
             </div>
           </div>
 
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-3">
             {session ? (
               <>
                 <Link
                   href="/dashboard"
-                  className="px-4 py-2 rounded-md bg-white text-purple-900 font-medium hover:bg-purple-100 transition"
+                  className="px-4 py-2 rounded-md bg-emerald-500 text-slate-950 font-semibold hover:bg-emerald-400 transition"
                 >
                   Dashboard
                 </Link>
                 <button
                   onClick={() => signOut()}
-                  className="px-4 py-2 rounded-md border border-white hover:bg-purple-800 transition"
+                  className="px-4 py-2 rounded-md border border-slate-700 hover:bg-slate-800 transition"
                 >
                   Sign Out
                 </button>
@@ -72,13 +74,13 @@ export default function Navigation() {
               <>
                 <Link
                   href="/auth/signin"
-                  className="px-4 py-2 rounded-md hover:bg-purple-800 transition"
+                  className="px-4 py-2 rounded-md hover:bg-slate-800 transition"
                 >
                   Sign In
                 </Link>
                 <Link
                   href="/auth/signup"
-                  className="px-4 py-2 rounded-md bg-white text-purple-900 font-medium hover:bg-purple-100 transition"
+                  className="px-4 py-2 rounded-md bg-emerald-500 text-slate-950 font-semibold hover:bg-emerald-400 transition"
                 >
                   List Your Bar
                 </Link>
