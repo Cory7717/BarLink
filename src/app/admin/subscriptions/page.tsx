@@ -5,7 +5,7 @@ export default async function AdminSubscriptionsPage() {
     include: { owner: true },
     orderBy: { createdAt: "desc" },
     take: 100,
-  });
+  }) as any[];
 
   return (
     <section className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
@@ -23,7 +23,7 @@ export default async function AdminSubscriptionsPage() {
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-800">
-            {subs.map((s) => (
+            {subs.map((s: any) => (
               <tr key={s.id}>
                 <td className="py-2">{s.owner.name}</td>
                 <td className="py-2 text-slate-300">{s.owner.email}</td>

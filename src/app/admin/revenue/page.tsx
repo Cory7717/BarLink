@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { Subscription } from "@/generated/prisma/client";
 
 const PLAN_PRICE: Record<string, number> = {
   MONTHLY: 30,
@@ -8,9 +9,9 @@ const PLAN_PRICE: Record<string, number> = {
 
 export default async function AdminRevenuePage() {
   const active = await prisma.subscription.findMany({ where: { status: "ACTIVE" } });
-  const mrr = active.reduce((sum, s) => sum + (PLAN_PRICE[s.plan as keyof typeof PLAN_PRICE] || 0), 0);
+  const mrr = active.reduce((sum: number, s: Subscription) => sum + (PLAN_PRICE[s.plan as keyof typeof PLAN_PRICE] || 0), 0);
 
-  const byPlan = active.reduce<Record<string, number>>((acc, s) => {
+  const byPlan = (active as Subscription[]).reduce<Record<string, number>>((acc, s) => {
     acc[s.plan] = (acc[s.plan] || 0) + 1;
     return acc;
   }, {});
