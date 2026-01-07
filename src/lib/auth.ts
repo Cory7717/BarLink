@@ -5,6 +5,18 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { prisma } from "@/lib/prisma";
 import bcrypt from "bcryptjs";
 
+type TokenShape = {
+  id?: string;
+  role?: string;
+};
+
+type SessionUser = {
+  id?: string;
+  email?: string | null;
+  name?: string | null;
+  role?: string;
+};
+
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma),
   providers: [
@@ -55,16 +67,19 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   },
   callbacks: {
     async jwt({ token, user }) {
+      const nextToken = token as TokenShape;
       if (user) {
-        token.id = user.id;
-        token.role = (user as any).role || "patron";
+        nextToken.id = user.id;
+        nextToken.role = (user as SessionUser).role || "patron";
       }
-      return token;
+      return nextToken;
     },
     async session({ session, token }) {
+      const nextToken = token as TokenShape;
       if (session.user) {
-        session.user.id = token.id as string;
-        (session.user as any).role = token.role;
+        const u = session.user as SessionUser;
+        u.id = typeof nextToken.id === "string" ? nextToken.id : undefined;
+        u.role = typeof nextToken.role === "string" ? nextToken.role : "patron";
       }
       return session;
     },

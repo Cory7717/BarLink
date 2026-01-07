@@ -61,7 +61,12 @@ export default function AdminPromoCodesPage() {
           <input className="rounded border border-slate-700 bg-slate-900 px-3 py-2" placeholder="Description" value={form.description} onChange={e=>setForm({...form, description:e.target.value})} />
           <input className="rounded border border-slate-700 bg-slate-900 px-3 py-2" placeholder="Max redemptions" value={form.maxRedemptions} onChange={e=>setForm({...form, maxRedemptions:e.target.value})} />
           <div className="grid grid-cols-2 gap-2">
-            <select className="rounded border border-slate-700 bg-slate-900 px-3 py-2" value={form.grantPlan} onChange={e=>setForm({...form, grantPlan:e.target.value})}>
+            <select
+              className="rounded border border-slate-700 bg-slate-900 px-3 py-2"
+              value={form.grantPlan}
+              onChange={e=>setForm({...form, grantPlan:e.target.value})}
+              aria-label="Grant plan"
+            >
               <option value="">Grant plan…</option>
               <option value="MONTHLY">MONTHLY</option>
               <option value="SIX_MONTH">SIX_MONTH</option>
