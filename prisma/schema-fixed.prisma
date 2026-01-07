@@ -139,6 +139,8 @@ model Bar {
   offerings          Offering[]
   events             Event[]
   favorites          Favorite[]
+  analytics          BarAnalytics[]
+  clicks             BarClick[]
 
   @@index([cityNormalized])
   @@index([neighborhoodNormalized])
@@ -273,4 +275,55 @@ model PromoRedemption {
   owner       Owner     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
 
   @@unique([promoCodeId, ownerId])
+}
+
+model BarAnalytics {
+  id            String   @id @default(cuid())
+  barId         String
+  date          DateTime
+  dayOfWeek     Int      // 0 = Sunday, 6 = Saturday
+  profileViews  Int      @default(0)
+  profileClicks Int      @default(0)
+  searchAppears Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  bar           Bar      @relation(fields: [barId], references: [id], onDelete: Cascade)
+
+  @@unique([barId, date])
+  @@index([barId])
+  @@index([date])
+  @@index([dayOfWeek])
+}
+
+model SearchQuery {
+  id        String   @id @default(cuid())
+  query     String   @db.Text
+  location  String?
+  category  String?
+  dayOfWeek Int      // 0 = Sunday, 6 = Saturday
+  count     Int      @default(1)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([query, location, category])
+  @@index([query])
+  @@index([dayOfWeek])
+  @@index([count])
+}
+
+model BarClick {
+  id        String   @id @default(cuid())
+  barId     String
+  source    String   // 'search', 'map', 'favorites', 'direct'
+  query     String?  // search query if from search
+  dayOfWeek Int      // 0 = Sunday, 6 = Saturday
+  createdAt DateTime @default(now())
+
+  bar       Bar      @relation(fields: [barId], references: [id], onDelete: Cascade)
+
+  @@index([barId])
+  @@index([source])
+  @@index([dayOfWeek])
+  @@index([createdAt])
 }

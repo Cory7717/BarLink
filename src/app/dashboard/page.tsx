@@ -2,6 +2,7 @@ import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import Navigation from "@/components/Navigation";
+import AnalyticsDashboard from "@/components/AnalyticsDashboard";
 import Link from "next/link";
 
 export default async function DashboardPage() {
@@ -147,6 +148,13 @@ export default async function DashboardPage() {
             </p>
           </div>
         </section>
+
+        {bar && (
+          <section className="mt-10">
+            <h2 className="text-2xl font-bold text-white mb-6">Analytics & Performance</h2>
+            <AnalyticsDashboard barId={bar.id} />
+          </section>
+        )}
       </main>
     </div>
   );

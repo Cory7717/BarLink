@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { logAnalyticsEvent } from '@/lib/analytics';
 
 type OfferingLite = {
   customTitle: string | null;
@@ -117,6 +118,11 @@ export async function GET(req: Request) {
         searchAppearances: { increment: 1 },
       },
     });
+
+    // Log analytics for each bar that appeared in results
+    for (const bar of bars) {
+      logAnalyticsEvent(bar.id, "search_appear", "search", activity);
+    }
 
     const results = bars.map((bar: BarWithRelations) => ({
       id: bar.id,
