@@ -1,5 +1,6 @@
 import { prisma } from '@/lib/prisma';
 import { BADGE_DEFINITIONS, type BadgeCheckData } from '@/lib/badges';
+import { BADGE_DEFINITIONS_CLIENT } from '@/lib/badgesClient';
 
 export class BadgeService {
   /**
@@ -70,7 +71,8 @@ export class BadgeService {
     });
 
     return barBadges.map((bb) => {
-      const definition = BADGE_DEFINITIONS.find((bd) => bd.key === bb.badgeKey);
+      // Provide client-safe badge definition (no functions)
+      const definition = BADGE_DEFINITIONS_CLIENT[bb.badgeKey];
       return {
         ...bb,
         definition,
@@ -102,9 +104,12 @@ export class BadgeService {
 
       // Calculate progress toward badge
       const progressData = this.calculateProgress(badgeDef, badgeData);
-      if (progressData) {
+      const clientDefinition = BADGE_DEFINITIONS_CLIENT[badgeDef.key];
+
+      // Only return client-safe definitions to the frontend
+      if (progressData && clientDefinition) {
         progress.push({
-          badge: badgeDef,
+          badge: clientDefinition,
           progress: progressData,
         });
       }
