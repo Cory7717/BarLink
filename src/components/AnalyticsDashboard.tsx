@@ -109,7 +109,7 @@ export default function AnalyticsDashboard({ barId }: { barId: string }) {
 
       {/* Summary metrics */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div className="group relative rounded-xl border border-blue-500/30 bg-linear-to-br from-blue-500/10 to-blue-600/5 backdrop-blur-md p-4 transition-all duration-300 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/20 hover:scale-105">
+        <div className="group relative rounded-xl border border-blue-500/30 bg-linear-to-br from-blue-500/10 to-blue-600/5 p-4 transition-all duration-300 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/20 hover:scale-105">
           <h3 className="text-sm text-blue-300">Profile Views</h3>
           <p className="mt-2 text-3xl font-bold text-blue-100">{analytics.summary.totalViews}</p>
           <p className="mt-1 text-xs text-blue-400/70">Last {timeframe} days</p>
