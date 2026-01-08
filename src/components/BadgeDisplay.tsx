@@ -1,9 +1,9 @@
 'use client';
 
-import { getBadgeColor, getTierBadgeStyle, type BadgeDefinition } from '@/lib/badges';
+import { getBadgeColor, getTierBadgeStyle, type BadgeDefinitionClient } from '@/lib/badgesClient';
 
 interface BadgeDisplayProps {
-  badge: BadgeDefinition;
+  badge: BadgeDefinitionClient;
   awardedAt?: Date;
   size?: 'sm' | 'md' | 'lg';
   showTooltip?: boolean;
