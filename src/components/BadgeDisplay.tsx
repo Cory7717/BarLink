@@ -1,6 +1,7 @@
 'use client';
 
 import { getBadgeColor, getTierBadgeStyle, type BadgeDefinitionClient } from '@/lib/badgesClient';
+import styles from './percent.module.css';
 
 interface BadgeDisplayProps {
   badge: BadgeDefinitionClient;
@@ -182,8 +183,7 @@ export function BadgeProgress({ progress, limit = 5 }: BadgeProgressProps) {
               </div>
               <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
                 <div
-                  className={`h-full bg-linear-to-r ${colors.border.replace('border-', 'from-')} to-transparent transition-all duration-500`}
-                  style={{ width: `${prog.percentage}%` }}
+                  className={`h-full bg-linear-to-r ${colors.border.replace('border-', 'from-')} to-transparent transition-all duration-500 ${styles['wPct' + Math.max(0, Math.min(100, Math.round(prog.percentage))) ]}`}
                 />
               </div>
             </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import styles from './percent.module.css';
 
 interface ROIMetrics {
   totalViews: number;
@@ -129,7 +130,7 @@ export default function ROIDashboard({ barId }: { barId: string }) {
               <span className="text-lg font-bold text-white">{metrics.totalViews.toLocaleString()}</span>
             </div>
             <div className="h-12 rounded-lg bg-slate-800 overflow-hidden">
-              <div className="h-full bg-linear-to-r from-blue-500 to-blue-600 flex items-center justify-center text-white text-sm font-semibold" style={{ width: '100%' }}>
+              <div className={`h-full bg-linear-to-r from-blue-500 to-blue-600 flex items-center justify-center text-white text-sm font-semibold ${styles.wPct100}`}>
                 100%
               </div>
             </div>
@@ -142,7 +143,7 @@ export default function ROIDashboard({ barId }: { barId: string }) {
               <span className="text-lg font-bold text-white">{metrics.totalClicks.toLocaleString()}</span>
             </div>
             <div className="h-12 rounded-lg bg-slate-800 overflow-hidden">
-              <div className="h-full bg-linear-to-r from-purple-500 to-purple-600 flex items-center justify-center text-white text-sm font-semibold" style={{ width: `${metrics.clickThroughRate * 100}%` }}>
+              <div className={`h-full bg-linear-to-r from-purple-500 to-purple-600 flex items-center justify-center text-white text-sm font-semibold ${styles['wPct' + Math.max(0, Math.min(100, Math.round(metrics.clickThroughRate * 100)))]}`}>
                 {(metrics.clickThroughRate * 100).toFixed(1)}%
               </div>
             </div>
@@ -155,7 +156,7 @@ export default function ROIDashboard({ barId }: { barId: string }) {
               <span className="text-lg font-bold text-emerald-400">{metrics.totalVisits.toLocaleString()}</span>
             </div>
             <div className="h-12 rounded-lg bg-slate-800 overflow-hidden">
-              <div className="h-full bg-linear-to-r from-emerald-500 to-emerald-600 flex items-center justify-center text-white text-sm font-semibold" style={{ width: `${metrics.overallConversionRate * 100}%` }}>
+              <div className={`h-full bg-linear-to-r from-emerald-500 to-emerald-600 flex items-center justify-center text-white text-sm font-semibold ${styles['wPct' + Math.max(0, Math.min(100, Math.round(metrics.overallConversionRate * 100)))]}`}>
                 {(metrics.overallConversionRate * 100).toFixed(1)}%
               </div>
             </div>
@@ -235,8 +236,7 @@ export default function ROIDashboard({ barId }: { barId: string }) {
                   </div>
                   <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-linear-to-r from-emerald-500 to-emerald-600"
-                      style={{ width: `${percentage}%` }}
+                      className={`h-full bg-linear-to-r from-emerald-500 to-emerald-600 ${styles['wPct' + Math.max(0, Math.min(100, Math.round(percentage)))]}`}
                     />
                   </div>
                 </div>
@@ -260,8 +260,7 @@ export default function ROIDashboard({ barId }: { barId: string }) {
                   <div className="text-xs text-slate-400 mb-2">{day.dayName.slice(0, 3)}</div>
                   <div className="relative h-24 bg-slate-800 rounded-lg overflow-hidden flex flex-col justify-end">
                     <div
-                      className="bg-linear-to-t from-emerald-500 to-emerald-600"
-                      style={{ height: `${percentage}%` }}
+                      className={`bg-linear-to-t from-emerald-500 to-emerald-600 ${styles['hPct' + Math.max(0, Math.min(100, Math.round(percentage)))]}`}
                     />
                   </div>
                   <div className="text-sm font-bold text-emerald-300 mt-2">{day.visits}</div>
