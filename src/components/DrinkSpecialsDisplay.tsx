@@ -61,7 +61,7 @@ export default function DrinkSpecialsDisplay({ barId }: { barId: string }) {
           <h3 className="text-lg font-semibold mb-4 text-green-700">🎉 Active Specials Right Now</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {activeSpecials.map(special => (
-              <div key={special.id} className="bg-gradient-to-br from-green-50 to-emerald-50 p-4 rounded-lg border border-green-200">
+              <div key={special.id} className="bg-linear-to-br from-green-50 to-emerald-50 p-4 rounded-lg border border-green-200">
                 <h4 className="font-semibold text-gray-900">{special.name}</h4>
                 {special.description && (
                   <p className="text-sm text-gray-600 mt-1">{special.description}</p>
