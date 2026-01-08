@@ -326,7 +326,7 @@ export default function HelpPage() {
                             className="w-full flex items-start justify-between p-4 text-left hover:bg-slate-800/50 transition-colors"
                           >
                             <h3 className="font-semibold text-slate-100 pr-4">{qa.question}</h3>
-                            <span className="text-emerald-400 text-xl flex-shrink-0">
+                            <span className="text-emerald-400 text-xl shrink-0">
                               {isExpanded ? "−" : "+"}
                             </span>
                           </button>
