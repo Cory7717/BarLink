@@ -63,10 +63,10 @@ function CheckInContent() {
   }, [searchParams, router]);
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-950 via-purple-900/20 to-slate-950 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-900/20 to-slate-950 text-white">
       <Navigation />
       <main className="mx-auto max-w-2xl px-4 pb-16 pt-24">
-        <div className="rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-8 shadow-lg text-center">
+        <div className="rounded-2xl border border-slate-700/50 bg-gradient-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-8 shadow-lg text-center">
           {status === 'processing' && (
             <>
               <div className="flex justify-center mb-6">
@@ -86,7 +86,7 @@ function CheckInContent() {
                   </svg>
                 </div>
               </div>
-              <h1 className="text-3xl font-bold bg-linear-to-r from-emerald-200 to-emerald-400 bg-clip-text text-transparent mb-2">
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-emerald-200 to-emerald-400 bg-clip-text text-transparent mb-2">
                 {message}
               </h1>
               <p className="text-slate-300 mb-6">
@@ -112,7 +112,7 @@ function CheckInContent() {
               <p className="text-slate-300 mb-6">{message}</p>
               <button
                 onClick={() => router.push('/explore')}
-                className="rounded-lg bg-linear-to-r from-emerald-500 to-emerald-600 px-6 py-3 text-sm font-semibold text-slate-950 hover:from-emerald-400 hover:to-emerald-500 transition-all"
+                className="rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-600 px-6 py-3 text-sm font-semibold text-slate-950 hover:from-emerald-400 hover:to-emerald-500 transition-all"
               >
                 Explore Bars
               </button>
@@ -121,7 +121,7 @@ function CheckInContent() {
         </div>
 
         {status === 'success' && (
-          <div className="mt-8 rounded-xl border border-emerald-500/30 bg-linear-to-br from-emerald-500/10 to-emerald-600/5 backdrop-blur-md p-6">
+          <div className="mt-8 rounded-xl border border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 to-emerald-600/5 backdrop-blur-md p-6">
             <h2 className="text-lg font-semibold text-emerald-200 mb-3">💡 Did you know?</h2>
             <p className="text-emerald-100/90 text-sm">
               Your check-in helps bar owners see the real value of BarPulse! They can track how many people 
@@ -137,7 +137,7 @@ function CheckInContent() {
 
 export default function CheckInPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-linear-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center"><div className="text-white">Loading...</div></div>}>
+    <Suspense fallback={<div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center"><div className="text-white">Loading...</div></div>}>
       <CheckInContent />
     </Suspense>
   );

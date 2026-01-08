@@ -268,12 +268,12 @@ export default function HelpPage() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-950 via-purple-900/20 to-slate-950 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-900/20 to-slate-950 text-white">
       <Navigation />
       <main className="mx-auto max-w-4xl px-4 pb-16 pt-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold bg-linear-to-r from-cyan-200 to-blue-200 bg-clip-text text-transparent mb-2">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-cyan-200 to-blue-200 bg-clip-text text-transparent mb-2">
             Help & Support
           </h1>
           <p className="text-slate-300">
@@ -304,7 +304,7 @@ export default function HelpPage() {
 
         {/* Expanded Content */}
         {expandedSection && (
-          <div className="rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-8 shadow-lg">
+          <div className="rounded-2xl border border-slate-700/50 bg-gradient-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-8 shadow-lg">
             {helpSections
               .filter((s) => s.id === expandedSection)
               .map((section) => (
@@ -345,15 +345,15 @@ export default function HelpPage() {
         )}
 
         {/* Contact Support */}
-        <div className="mt-12 rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-8 shadow-lg">
+        <div className="mt-12 rounded-2xl border border-slate-700/50 bg-gradient-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-8 shadow-lg">
           <h2 className="text-2xl font-bold text-white mb-4">Still need help?</h2>
           <p className="text-slate-300 mb-6">
-            Can't find the answer you're looking for? Our support team is here to help.
+            Can&apos;t find the answer you&apos;re looking for? Our support team is here to help.
           </p>
           <div className="flex gap-4 flex-wrap">
             <a
               href="mailto:support@barpulse.com"
-              className="rounded-lg bg-linear-to-r from-emerald-400 to-emerald-600 px-6 py-3 font-semibold text-slate-950 hover:from-emerald-300 hover:to-emerald-500 transition-all"
+              className="rounded-lg bg-gradient-to-r from-emerald-400 to-emerald-600 px-6 py-3 font-semibold text-slate-950 hover:from-emerald-300 hover:to-emerald-500 transition-all"
             >
               📧 Email Support
             </a>

@@ -49,12 +49,12 @@ export default async function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-950 via-purple-900/20 to-slate-950 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-900/20 to-slate-950 text-white">
       <Navigation />
       <main className="mx-auto max-w-6xl px-4 pb-16 pt-8">
         <header className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold bg-linear-to-r from-cyan-200 to-blue-200 bg-clip-text text-transparent">Dashboard</h1>
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-cyan-200 to-blue-200 bg-clip-text text-transparent">Dashboard</h1>
             <p className="text-sm text-slate-200">Welcome back, {owner.name}</p>
           </div>
           <Link
@@ -66,7 +66,7 @@ export default async function DashboardPage() {
         </header>
 
         {!hasActiveSubscription && (
-          <div className="mt-6 rounded-xl border border-amber-500/30 bg-linear-to-br from-amber-500/10 to-amber-600/5 backdrop-blur-md p-4">
+          <div className="mt-6 rounded-xl border border-amber-500/30 bg-gradient-to-br from-amber-500/10 to-amber-600/5 backdrop-blur-md p-4">
             <h3 className="font-semibold text-amber-50">Subscription required</h3>
             <p className="text-sm text-amber-100">
               Your bar won&apos;t appear in searches until you have an active subscription.
@@ -78,7 +78,7 @@ export default async function DashboardPage() {
         )}
 
         {owner.subscription && (
-          <section className="mt-6 rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
+          <section className="mt-6 rounded-2xl border border-slate-700/50 bg-gradient-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
             <h2 className="text-xl font-semibold text-white">Subscription</h2>
             <div className="mt-3 flex items-center gap-3">
               <span className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${
@@ -108,7 +108,7 @@ export default async function DashboardPage() {
         )}
 
         {bars.length > 0 && (
-          <section className="mt-6 rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
+          <section className="mt-6 rounded-2xl border border-slate-700/50 bg-gradient-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
             <div className="flex items-center justify-between">
               <div>
                 <h2 className="text-xl font-semibold text-white">Locations</h2>
@@ -116,7 +116,7 @@ export default async function DashboardPage() {
               </div>
               <Link
                 href="/onboarding"
-                className="rounded-lg bg-linear-to-r from-cyan-400 to-sky-500 px-4 py-2 text-sm font-semibold text-slate-950 hover:from-cyan-300 hover:to-sky-400 hover:shadow-lg hover:shadow-cyan-500/30 transition-all"
+                className="rounded-lg bg-gradient-to-r from-cyan-400 to-sky-500 px-4 py-2 text-sm font-semibold text-slate-950 hover:from-cyan-300 hover:to-sky-400 hover:shadow-lg hover:shadow-cyan-500/30 transition-all"
               >
                 Add location
               </Link>
@@ -173,7 +173,7 @@ export default async function DashboardPage() {
         )}
 
         {primaryBar ? (
-          <section className="mt-6 rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
+          <section className="mt-6 rounded-2xl border border-slate-700/50 bg-gradient-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
             <div className="flex items-center justify-between">
               <div>
                 <h2 className="text-xl font-semibold text-white">{primaryBar.name}</h2>
@@ -195,18 +195,18 @@ export default async function DashboardPage() {
               </div>
               <Link
                 href={`/dashboard/bar/${primaryBar.id}`}
-                className="rounded-lg bg-linear-to-r from-emerald-500 to-emerald-600 px-4 py-2 text-sm font-semibold text-slate-950 hover:from-emerald-400 hover:to-emerald-500 hover:shadow-lg hover:shadow-emerald-500/30 transition-all"
+                className="rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-600 px-4 py-2 text-sm font-semibold text-slate-950 hover:from-emerald-400 hover:to-emerald-500 hover:shadow-lg hover:shadow-emerald-500/30 transition-all"
               >
                 Manage bar
               </Link>
             </div>
           </section>
         ) : (
-          <div className="mt-6 rounded-xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 text-center shadow-lg">
+          <div className="mt-6 rounded-xl border border-slate-700/50 bg-gradient-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 text-center shadow-lg">
             <p className="text-slate-200">You haven&apos;t created a bar profile yet.</p>
             <Link
               href="/onboarding"
-              className="mt-3 inline-flex rounded-lg bg-linear-to-r from-emerald-500 to-emerald-600 px-4 py-2 text-sm font-semibold text-slate-950 hover:from-emerald-400 hover:to-emerald-500 hover:shadow-lg hover:shadow-emerald-500/30 transition-all"
+              className="mt-3 inline-flex rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-600 px-4 py-2 text-sm font-semibold text-slate-950 hover:from-emerald-400 hover:to-emerald-500 hover:shadow-lg hover:shadow-emerald-500/30 transition-all"
             >
               Create bar profile
             </Link>
@@ -214,15 +214,15 @@ export default async function DashboardPage() {
         )}
 
         <section className="mt-6 grid gap-4 sm:grid-cols-3">
-          <div className="group relative rounded-xl border border-blue-500/30 bg-linear-to-br from-blue-500/10 to-blue-600/5 backdrop-blur-md p-4 transition-all duration-300 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/20 hover:scale-105">
+          <div className="group relative rounded-xl border border-blue-500/30 bg-gradient-to-br from-blue-500/10 to-blue-600/5 backdrop-blur-md p-4 transition-all duration-300 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/20 hover:scale-105">
             <h3 className="text-sm text-blue-300">Profile views</h3>
             <p className="text-2xl font-bold text-blue-100">{primaryBar?.profileViews || 0}</p>
           </div>
-          <div className="group relative rounded-xl border border-purple-500/30 bg-linear-to-br from-purple-500/10 to-purple-600/5 backdrop-blur-md p-4 transition-all duration-300 hover:border-purple-500/50 hover:shadow-lg hover:shadow-purple-500/20 hover:scale-105">
+          <div className="group relative rounded-xl border border-purple-500/30 bg-gradient-to-br from-purple-500/10 to-purple-600/5 backdrop-blur-md p-4 transition-all duration-300 hover:border-purple-500/50 hover:shadow-lg hover:shadow-purple-500/20 hover:scale-105">
             <h3 className="text-sm text-purple-300">Search appearances</h3>
             <p className="text-2xl font-bold text-purple-100">{primaryBar?.searchAppearances || 0}</p>
           </div>
-          <div className="group relative rounded-xl border border-amber-500/30 bg-linear-to-br from-amber-500/10 to-amber-600/5 backdrop-blur-md p-4 transition-all duration-300 hover:border-amber-500/50 hover:shadow-lg hover:shadow-amber-500/20 hover:scale-105">
+          <div className="group relative rounded-xl border border-amber-500/30 bg-gradient-to-br from-amber-500/10 to-amber-600/5 backdrop-blur-md p-4 transition-all duration-300 hover:border-amber-500/50 hover:shadow-lg hover:shadow-amber-500/20 hover:scale-105">
             <h3 className="text-sm text-amber-300">Status</h3>
             <p className="text-lg font-semibold">
               {primaryBar?.isPublished ? (
@@ -235,14 +235,14 @@ export default async function DashboardPage() {
         </section>
 
         {primaryBar && badges.length > 0 && (
-          <section className="mt-6 rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
+          <section className="mt-6 rounded-2xl border border-slate-700/50 bg-gradient-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
             <h2 className="text-xl font-semibold text-white mb-4">🏆 Your Badges</h2>
             <BadgeGrid badges={badges} />
           </section>
         )}
 
         {primaryBar && badgeProgress.length > 0 && (
-          <section className="mt-6 rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
+          <section className="mt-6 rounded-2xl border border-slate-700/50 bg-gradient-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
             <h2 className="text-xl font-semibold text-white mb-4">🎯 Badge Progress</h2>
             <BadgeProgress progress={badgeProgress} limit={5} />
           </section>

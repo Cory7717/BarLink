@@ -1,4 +1,4 @@
-﻿import type { Metadata } from 'next'
+import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
@@ -12,7 +12,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'BarPulse | Real-time bar discovery by day & activity',
-  description: 'BarPulse helps patrons find bars and live offerings by day, activity, and what is happening right now—powered by owner updates and subscriptions.',
+  description: 'BarPulse helps patrons find bars and live offerings by day, activity, and what is happening right now - powered by owner updates and subscriptions.',
   keywords: 'bars, nightlife, happy hour, trivia, karaoke, live music, map search, bar discovery',
   metadataBase: new URL('https://barpulse.com'),
 }
