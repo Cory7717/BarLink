@@ -18,11 +18,12 @@ export default function PricingPage() {
     setIsLoading(true);
 
     if (status === "authenticated" && session?.user?.email) {
-      // User is logged in - check if they have a bar already
-      // For now, send them to subscription page which will handle the flow
-      router.push(`/dashboard/subscription?plan=${planId}`);
+      // User is logged in - send them to onboarding first
+      // They'll create/confirm their bar, then be sent to payment
+      router.push(`/onboarding?plan=${planId}`);
     } else {
-      // User not logged in - go to signup with plan parameter
+      // User not logged in - go to signup first
+      // They'll complete signup, then onboarding, then payment
       router.push(`/auth/signup?plan=${planId}`);
     }
   };

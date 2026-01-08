@@ -8912,6 +8912,8 @@ export namespace Prisma {
     paypalSubscriptionId: string | null
     priceId: string | null
     currentPeriodEnd: Date | null
+    trialEndsAt: Date | null
+    trialReminderSentAt: Date | null
     cancelAtPeriodEnd: boolean | null
     canceledAt: Date | null
     createdAt: Date | null
@@ -8927,6 +8929,8 @@ export namespace Prisma {
     paypalSubscriptionId: string | null
     priceId: string | null
     currentPeriodEnd: Date | null
+    trialEndsAt: Date | null
+    trialReminderSentAt: Date | null
     cancelAtPeriodEnd: boolean | null
     canceledAt: Date | null
     createdAt: Date | null
@@ -8942,6 +8946,8 @@ export namespace Prisma {
     paypalSubscriptionId: number
     priceId: number
     currentPeriodEnd: number
+    trialEndsAt: number
+    trialReminderSentAt: number
     cancelAtPeriodEnd: number
     canceledAt: number
     createdAt: number
@@ -8959,6 +8965,8 @@ export namespace Prisma {
     paypalSubscriptionId?: true
     priceId?: true
     currentPeriodEnd?: true
+    trialEndsAt?: true
+    trialReminderSentAt?: true
     cancelAtPeriodEnd?: true
     canceledAt?: true
     createdAt?: true
@@ -8974,6 +8982,8 @@ export namespace Prisma {
     paypalSubscriptionId?: true
     priceId?: true
     currentPeriodEnd?: true
+    trialEndsAt?: true
+    trialReminderSentAt?: true
     cancelAtPeriodEnd?: true
     canceledAt?: true
     createdAt?: true
@@ -8989,6 +8999,8 @@ export namespace Prisma {
     paypalSubscriptionId?: true
     priceId?: true
     currentPeriodEnd?: true
+    trialEndsAt?: true
+    trialReminderSentAt?: true
     cancelAtPeriodEnd?: true
     canceledAt?: true
     createdAt?: true
@@ -9077,6 +9089,8 @@ export namespace Prisma {
     paypalSubscriptionId: string | null
     priceId: string | null
     currentPeriodEnd: Date | null
+    trialEndsAt: Date | null
+    trialReminderSentAt: Date | null
     cancelAtPeriodEnd: boolean
     canceledAt: Date | null
     createdAt: Date
@@ -9109,6 +9123,8 @@ export namespace Prisma {
     paypalSubscriptionId?: boolean
     priceId?: boolean
     currentPeriodEnd?: boolean
+    trialEndsAt?: boolean
+    trialReminderSentAt?: boolean
     cancelAtPeriodEnd?: boolean
     canceledAt?: boolean
     createdAt?: boolean
@@ -9125,6 +9141,8 @@ export namespace Prisma {
     paypalSubscriptionId?: boolean
     priceId?: boolean
     currentPeriodEnd?: boolean
+    trialEndsAt?: boolean
+    trialReminderSentAt?: boolean
     cancelAtPeriodEnd?: boolean
     canceledAt?: boolean
     createdAt?: boolean
@@ -9141,6 +9159,8 @@ export namespace Prisma {
     paypalSubscriptionId?: boolean
     priceId?: boolean
     currentPeriodEnd?: boolean
+    trialEndsAt?: boolean
+    trialReminderSentAt?: boolean
     cancelAtPeriodEnd?: boolean
     canceledAt?: boolean
     createdAt?: boolean
@@ -9157,13 +9177,15 @@ export namespace Prisma {
     paypalSubscriptionId?: boolean
     priceId?: boolean
     currentPeriodEnd?: boolean
+    trialEndsAt?: boolean
+    trialReminderSentAt?: boolean
     cancelAtPeriodEnd?: boolean
     canceledAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type SubscriptionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ownerId" | "plan" | "status" | "paypalCustomerId" | "paypalSubscriptionId" | "priceId" | "currentPeriodEnd" | "cancelAtPeriodEnd" | "canceledAt" | "createdAt" | "updatedAt", ExtArgs["result"]["subscription"]>
+  export type SubscriptionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ownerId" | "plan" | "status" | "paypalCustomerId" | "paypalSubscriptionId" | "priceId" | "currentPeriodEnd" | "trialEndsAt" | "trialReminderSentAt" | "cancelAtPeriodEnd" | "canceledAt" | "createdAt" | "updatedAt", ExtArgs["result"]["subscription"]>
   export type SubscriptionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     owner?: boolean | OwnerDefaultArgs<ExtArgs>
   }
@@ -9188,6 +9210,8 @@ export namespace Prisma {
       paypalSubscriptionId: string | null
       priceId: string | null
       currentPeriodEnd: Date | null
+      trialEndsAt: Date | null
+      trialReminderSentAt: Date | null
       cancelAtPeriodEnd: boolean
       canceledAt: Date | null
       createdAt: Date
@@ -9624,6 +9648,8 @@ export namespace Prisma {
     readonly paypalSubscriptionId: FieldRef<"Subscription", 'String'>
     readonly priceId: FieldRef<"Subscription", 'String'>
     readonly currentPeriodEnd: FieldRef<"Subscription", 'DateTime'>
+    readonly trialEndsAt: FieldRef<"Subscription", 'DateTime'>
+    readonly trialReminderSentAt: FieldRef<"Subscription", 'DateTime'>
     readonly cancelAtPeriodEnd: FieldRef<"Subscription", 'Boolean'>
     readonly canceledAt: FieldRef<"Subscription", 'DateTime'>
     readonly createdAt: FieldRef<"Subscription", 'DateTime'>
@@ -40714,6 +40740,8 @@ export namespace Prisma {
     paypalSubscriptionId: 'paypalSubscriptionId',
     priceId: 'priceId',
     currentPeriodEnd: 'currentPeriodEnd',
+    trialEndsAt: 'trialEndsAt',
+    trialReminderSentAt: 'trialReminderSentAt',
     cancelAtPeriodEnd: 'cancelAtPeriodEnd',
     canceledAt: 'canceledAt',
     createdAt: 'createdAt',
@@ -41705,6 +41733,8 @@ export namespace Prisma {
     paypalSubscriptionId?: StringNullableFilter<"Subscription"> | string | null
     priceId?: StringNullableFilter<"Subscription"> | string | null
     currentPeriodEnd?: DateTimeNullableFilter<"Subscription"> | Date | string | null
+    trialEndsAt?: DateTimeNullableFilter<"Subscription"> | Date | string | null
+    trialReminderSentAt?: DateTimeNullableFilter<"Subscription"> | Date | string | null
     cancelAtPeriodEnd?: BoolFilter<"Subscription"> | boolean
     canceledAt?: DateTimeNullableFilter<"Subscription"> | Date | string | null
     createdAt?: DateTimeFilter<"Subscription"> | Date | string
@@ -41721,6 +41751,8 @@ export namespace Prisma {
     paypalSubscriptionId?: SortOrderInput | SortOrder
     priceId?: SortOrderInput | SortOrder
     currentPeriodEnd?: SortOrderInput | SortOrder
+    trialEndsAt?: SortOrderInput | SortOrder
+    trialReminderSentAt?: SortOrderInput | SortOrder
     cancelAtPeriodEnd?: SortOrder
     canceledAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -41740,6 +41772,8 @@ export namespace Prisma {
     paypalSubscriptionId?: StringNullableFilter<"Subscription"> | string | null
     priceId?: StringNullableFilter<"Subscription"> | string | null
     currentPeriodEnd?: DateTimeNullableFilter<"Subscription"> | Date | string | null
+    trialEndsAt?: DateTimeNullableFilter<"Subscription"> | Date | string | null
+    trialReminderSentAt?: DateTimeNullableFilter<"Subscription"> | Date | string | null
     cancelAtPeriodEnd?: BoolFilter<"Subscription"> | boolean
     canceledAt?: DateTimeNullableFilter<"Subscription"> | Date | string | null
     createdAt?: DateTimeFilter<"Subscription"> | Date | string
@@ -41756,6 +41790,8 @@ export namespace Prisma {
     paypalSubscriptionId?: SortOrderInput | SortOrder
     priceId?: SortOrderInput | SortOrder
     currentPeriodEnd?: SortOrderInput | SortOrder
+    trialEndsAt?: SortOrderInput | SortOrder
+    trialReminderSentAt?: SortOrderInput | SortOrder
     cancelAtPeriodEnd?: SortOrder
     canceledAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -41777,6 +41813,8 @@ export namespace Prisma {
     paypalSubscriptionId?: StringNullableWithAggregatesFilter<"Subscription"> | string | null
     priceId?: StringNullableWithAggregatesFilter<"Subscription"> | string | null
     currentPeriodEnd?: DateTimeNullableWithAggregatesFilter<"Subscription"> | Date | string | null
+    trialEndsAt?: DateTimeNullableWithAggregatesFilter<"Subscription"> | Date | string | null
+    trialReminderSentAt?: DateTimeNullableWithAggregatesFilter<"Subscription"> | Date | string | null
     cancelAtPeriodEnd?: BoolWithAggregatesFilter<"Subscription"> | boolean
     canceledAt?: DateTimeNullableWithAggregatesFilter<"Subscription"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Subscription"> | Date | string
@@ -44357,6 +44395,8 @@ export namespace Prisma {
     paypalSubscriptionId?: string | null
     priceId?: string | null
     currentPeriodEnd?: Date | string | null
+    trialEndsAt?: Date | string | null
+    trialReminderSentAt?: Date | string | null
     cancelAtPeriodEnd?: boolean
     canceledAt?: Date | string | null
     createdAt?: Date | string
@@ -44373,6 +44413,8 @@ export namespace Prisma {
     paypalSubscriptionId?: string | null
     priceId?: string | null
     currentPeriodEnd?: Date | string | null
+    trialEndsAt?: Date | string | null
+    trialReminderSentAt?: Date | string | null
     cancelAtPeriodEnd?: boolean
     canceledAt?: Date | string | null
     createdAt?: Date | string
@@ -44387,6 +44429,8 @@ export namespace Prisma {
     paypalSubscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
     priceId?: NullableStringFieldUpdateOperationsInput | string | null
     currentPeriodEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialReminderSentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelAtPeriodEnd?: BoolFieldUpdateOperationsInput | boolean
     canceledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44403,6 +44447,8 @@ export namespace Prisma {
     paypalSubscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
     priceId?: NullableStringFieldUpdateOperationsInput | string | null
     currentPeriodEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialReminderSentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelAtPeriodEnd?: BoolFieldUpdateOperationsInput | boolean
     canceledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44418,6 +44464,8 @@ export namespace Prisma {
     paypalSubscriptionId?: string | null
     priceId?: string | null
     currentPeriodEnd?: Date | string | null
+    trialEndsAt?: Date | string | null
+    trialReminderSentAt?: Date | string | null
     cancelAtPeriodEnd?: boolean
     canceledAt?: Date | string | null
     createdAt?: Date | string
@@ -44432,6 +44480,8 @@ export namespace Prisma {
     paypalSubscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
     priceId?: NullableStringFieldUpdateOperationsInput | string | null
     currentPeriodEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialReminderSentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelAtPeriodEnd?: BoolFieldUpdateOperationsInput | boolean
     canceledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44447,6 +44497,8 @@ export namespace Prisma {
     paypalSubscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
     priceId?: NullableStringFieldUpdateOperationsInput | string | null
     currentPeriodEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialReminderSentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelAtPeriodEnd?: BoolFieldUpdateOperationsInput | boolean
     canceledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -47342,6 +47394,8 @@ export namespace Prisma {
     paypalSubscriptionId?: SortOrder
     priceId?: SortOrder
     currentPeriodEnd?: SortOrder
+    trialEndsAt?: SortOrder
+    trialReminderSentAt?: SortOrder
     cancelAtPeriodEnd?: SortOrder
     canceledAt?: SortOrder
     createdAt?: SortOrder
@@ -47357,6 +47411,8 @@ export namespace Prisma {
     paypalSubscriptionId?: SortOrder
     priceId?: SortOrder
     currentPeriodEnd?: SortOrder
+    trialEndsAt?: SortOrder
+    trialReminderSentAt?: SortOrder
     cancelAtPeriodEnd?: SortOrder
     canceledAt?: SortOrder
     createdAt?: SortOrder
@@ -47372,6 +47428,8 @@ export namespace Prisma {
     paypalSubscriptionId?: SortOrder
     priceId?: SortOrder
     currentPeriodEnd?: SortOrder
+    trialEndsAt?: SortOrder
+    trialReminderSentAt?: SortOrder
     cancelAtPeriodEnd?: SortOrder
     canceledAt?: SortOrder
     createdAt?: SortOrder
@@ -52321,6 +52379,8 @@ export namespace Prisma {
     paypalSubscriptionId?: string | null
     priceId?: string | null
     currentPeriodEnd?: Date | string | null
+    trialEndsAt?: Date | string | null
+    trialReminderSentAt?: Date | string | null
     cancelAtPeriodEnd?: boolean
     canceledAt?: Date | string | null
     createdAt?: Date | string
@@ -52335,6 +52395,8 @@ export namespace Prisma {
     paypalSubscriptionId?: string | null
     priceId?: string | null
     currentPeriodEnd?: Date | string | null
+    trialEndsAt?: Date | string | null
+    trialReminderSentAt?: Date | string | null
     cancelAtPeriodEnd?: boolean
     canceledAt?: Date | string | null
     createdAt?: Date | string
@@ -52469,6 +52531,8 @@ export namespace Prisma {
     paypalSubscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
     priceId?: NullableStringFieldUpdateOperationsInput | string | null
     currentPeriodEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialReminderSentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelAtPeriodEnd?: BoolFieldUpdateOperationsInput | boolean
     canceledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -52483,6 +52547,8 @@ export namespace Prisma {
     paypalSubscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
     priceId?: NullableStringFieldUpdateOperationsInput | string | null
     currentPeriodEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialReminderSentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelAtPeriodEnd?: BoolFieldUpdateOperationsInput | boolean
     canceledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string

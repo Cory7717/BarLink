@@ -175,6 +175,8 @@ exports.Prisma.SubscriptionScalarFieldEnum = {
   paypalSubscriptionId: 'paypalSubscriptionId',
   priceId: 'priceId',
   currentPeriodEnd: 'currentPeriodEnd',
+  trialEndsAt: 'trialEndsAt',
+  trialReminderSentAt: 'trialReminderSentAt',
   cancelAtPeriodEnd: 'cancelAtPeriodEnd',
   canceledAt: 'canceledAt',
   createdAt: 'createdAt',

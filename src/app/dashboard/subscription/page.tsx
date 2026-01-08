@@ -149,6 +149,15 @@ function SubscriptionContent() {
               </span>
             </div>
 
+            {selectedPlan.id === "monthly" && (
+              <div className="rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-4 py-3">
+                <p className="text-sm text-emerald-100 font-semibold">30-day free trial</p>
+                <p className="text-xs text-emerald-200/80 mt-1">
+                  No charge today. Your card will auto-charge at the end of the free month unless you cancel.
+                </p>
+              </div>
+            )}
+
             <div className="border-t border-slate-700 pt-4">
               <h3 className="mb-3 font-semibold text-white">Includes:</h3>
               <ul className="space-y-2">

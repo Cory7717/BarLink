@@ -90,6 +90,8 @@ model Subscription {
   paypalSubscriptionId String?
   priceId              String?
   currentPeriodEnd     DateTime?
+  trialEndsAt          DateTime?
+  trialReminderSentAt  DateTime?
   cancelAtPeriodEnd    Boolean  @default(false)
   canceledAt           DateTime?
   createdAt            DateTime @default(now())

@@ -35,11 +35,17 @@ export async function POST(req: Request) {
         });
 
         if (subscription) {
+          const nextBilling = resource.billing_info?.next_billing_time
+            ? new Date(resource.billing_info.next_billing_time)
+            : new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
+
           await prisma.subscription.update({
             where: { id: subscription.id },
             data: {
               status: 'ACTIVE',
-              currentPeriodEnd: new Date(resource.billing_info?.next_billing_time || Date.now() + 30 * 24 * 60 * 60 * 1000),
+              currentPeriodEnd: nextBilling,
+              trialEndsAt: nextBilling,
+              trialReminderSentAt: null,
             },
           });
 

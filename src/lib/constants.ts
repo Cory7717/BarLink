@@ -36,6 +36,7 @@ export const SUBSCRIPTION_PLANS = [
     interval: 'month',
     description: 'Perfect for trying out BarPulse',
     features: [
+      '30-day free trial, then $30/mo',
       'Bar profile on the map',
       'Unlimited offerings & events',
       'Recurring weekly activities',
