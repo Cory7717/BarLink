@@ -99,7 +99,7 @@ export default function PricingPage() {
           <div>
             <h3 className="text-xl font-semibold text-white">Questions</h3>
             <p className="text-sm text-slate-300">
-              Need a custom setup or multiple locations? Email support@barpulse.com and we&apos;ll help tailor a plan.
+              Need a custom setup or multiple locations? Email coryarmer@gmail.com and we&apos;ll help tailor a plan.
             </p>
             <Link href="/contact" className="mt-3 inline-flex text-emerald-300 hover:text-emerald-200 transition-colors font-medium">
               Contact support →

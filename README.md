@@ -119,4 +119,4 @@ Proprietary - All rights reserved
 
 ## Support
 
-Contact: support@barlink.com
+Contact: coryarmer@gmail.com

@@ -213,7 +213,7 @@ const helpSections: Section[] = [
       {
         question: "How do I contact support if I need more help?",
         answer:
-          "Email support@barpulse.com with details about your issue. Include: your bar name, email, what you were trying to do, and any error messages. Support responds within 24 hours.",
+          "Email coryarmer@gmail.com with details about your issue. Include: your bar name, email, what you were trying to do, and any error messages. Support responds within 24 hours.",
       },
     ],
   },
@@ -352,7 +352,7 @@ export default function HelpPage() {
           </p>
           <div className="flex gap-4 flex-wrap">
             <a
-              href="mailto:support@barpulse.com"
+              href="mailto:coryarmer@gmail.com"
               className="rounded-lg bg-linear-to-r from-emerald-400 to-emerald-600 px-6 py-3 font-semibold text-slate-950 hover:from-emerald-300 hover:to-emerald-500 transition-all"
             >
               📧 Email Support

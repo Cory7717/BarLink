@@ -10,7 +10,7 @@ export default function PrivacyPage() {
         <div className="space-y-3 text-slate-200 text-sm leading-relaxed">
           <p>We collect account info, bar profile data, and usage analytics to operate BarPulse. We do not sell personal data.</p>
           <p>We store payment details via Stripe; we never store full card numbers. Media uploads are stored on AWS S3.</p>
-          <p>You may request deletion of your account data by contacting support@barpulse.com.</p>
+          <p>You may request deletion of your account data by contacting coryarmer@gmail.com.</p>
         </div>
       </main>
     </div>

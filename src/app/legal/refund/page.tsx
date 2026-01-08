@@ -9,7 +9,7 @@ export default function RefundPage() {
         <p className="text-sm text-slate-300">Updated Jan 2026</p>
         <div className="space-y-3 text-slate-200 text-sm leading-relaxed">
           <p>Subscriptions bill in advance for the selected term (monthly, 6 months, yearly). You can cancel anytime in the billing portal; access remains until the current period ends.</p>
-          <p>We do not offer prorated refunds for partial periods. If you believe you were charged in error, contact support@barpulse.com within 14 days.</p>
+          <p>We do not offer prorated refunds for partial periods. If you believe you were charged in error, contact coryarmer@gmail.com within 14 days.</p>
         </div>
       </main>
     </div>
