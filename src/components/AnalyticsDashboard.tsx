@@ -109,28 +109,28 @@ export default function AnalyticsDashboard({ barId }: { barId: string }) {
 
       {/* Summary metrics */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div className="group relative rounded-xl border border-blue-500/30 bg-gradient-to-br from-blue-500/10 to-blue-600/5 p-4 transition-all duration-300 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/20 hover:scale-105">
+        <div className="group relative rounded-xl border border-blue-500/30 bg-linear-to-br from-blue-500/10 to-blue-600/5 p-4 transition-all duration-300 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/20 hover:scale-105">
           <h3 className="text-sm text-blue-300">Profile Views</h3>
           <p className="mt-2 text-3xl font-bold text-blue-100">{analytics.summary.totalViews}</p>
           <p className="mt-1 text-xs text-blue-400/70">Last {timeframe} days</p>
-          <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/0 to-blue-500/0 opacity-0 transition-opacity group-hover:opacity-20"></div>
+          <div className="absolute inset-0 rounded-xl bg-linear-to-r from-blue-500/0 to-blue-500/0 opacity-0 transition-opacity group-hover:opacity-20"></div>
         </div>
 
-        <div className="group relative rounded-xl border border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 to-emerald-600/5 backdrop-blur-md p-4 transition-all duration-300 hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/20 hover:scale-105">
+        <div className="group relative rounded-xl border border-emerald-500/30 bg-linear-to-br from-emerald-500/10 to-emerald-600/5 backdrop-blur-md p-4 transition-all duration-300 hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/20 hover:scale-105">
           <h3 className="text-sm text-emerald-300">Profile Clicks</h3>
           <p className="mt-2 text-3xl font-bold text-emerald-100">{analytics.summary.totalClicks}</p>
           <p className="mt-1 text-xs text-emerald-400/70">{analytics.summary.averageClicksPerDay.toFixed(1)}/day avg</p>
-          <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-emerald-500/0 to-emerald-500/0 opacity-0 transition-opacity group-hover:opacity-20"></div>
+          <div className="absolute inset-0 rounded-xl bg-linear-to-r from-emerald-500/0 to-emerald-500/0 opacity-0 transition-opacity group-hover:opacity-20"></div>
         </div>
 
-        <div className="group relative rounded-xl border border-purple-500/30 bg-gradient-to-br from-purple-500/10 to-purple-600/5 backdrop-blur-md p-4 transition-all duration-300 hover:border-purple-500/50 hover:shadow-lg hover:shadow-purple-500/20 hover:scale-105">
+        <div className="group relative rounded-xl border border-purple-500/30 bg-linear-to-br from-purple-500/10 to-purple-600/5 backdrop-blur-md p-4 transition-all duration-300 hover:border-purple-500/50 hover:shadow-lg hover:shadow-purple-500/20 hover:scale-105">
           <h3 className="text-sm text-purple-300">Search Appearances</h3>
           <p className="mt-2 text-3xl font-bold text-purple-100">{analytics.summary.totalSearchAppears}</p>
           <p className="mt-1 text-xs text-purple-400/70">In search results</p>
-          <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-500/0 to-purple-500/0 opacity-0 transition-opacity group-hover:opacity-20"></div>
+          <div className="absolute inset-0 rounded-xl bg-linear-to-r from-purple-500/0 to-purple-500/0 opacity-0 transition-opacity group-hover:opacity-20"></div>
         </div>
 
-        <div className="group relative rounded-xl border border-amber-500/30 bg-gradient-to-br from-amber-500/10 to-amber-600/5 backdrop-blur-md p-4 transition-all duration-300 hover:border-amber-500/50 hover:shadow-lg hover:shadow-amber-500/20 hover:scale-105">
+        <div className="group relative rounded-xl border border-amber-500/30 bg-linear-to-br from-amber-500/10 to-amber-600/5 backdrop-blur-md p-4 transition-all duration-300 hover:border-amber-500/50 hover:shadow-lg hover:shadow-amber-500/20 hover:scale-105">
           <h3 className="text-sm text-amber-300">Best Performing Day</h3>
           <p className="mt-2 text-lg font-bold text-amber-100">
             {analytics.summary.bestDay
@@ -148,18 +148,18 @@ export default function AnalyticsDashboard({ barId }: { barId: string }) {
           <p className="mt-1 text-xs text-amber-400/70">
             {analytics.summary.bestDay ? `${analytics.summary.bestDay.profileClicks} clicks` : "No data"}
           </p>
-          <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-amber-500/0 to-amber-500/0 opacity-0 transition-opacity group-hover:opacity-20"></div>
+          <div className="absolute inset-0 rounded-xl bg-linear-to-r from-amber-500/0 to-amber-500/0 opacity-0 transition-opacity group-hover:opacity-20"></div>
         </div>
       </div>
 
       {/* Day of week trends */}
-      <div className="rounded-2xl border border-slate-700/50 bg-gradient-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
+      <div className="rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
         <h2 className="text-xl font-semibold text-white">Activity by Day of Week</h2>
         <div className="mt-6 grid gap-4 sm:grid-cols-7">
           {analytics.dayOfWeekTrends.map((trend) => (
             <div
               key={trend.day}
-              className="group relative rounded-lg border border-emerald-500/20 bg-gradient-to-br from-emerald-500/5 to-emerald-600/0 backdrop-blur-sm p-4 text-center transition-all duration-300 hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/20 hover:scale-105"
+              className="group relative rounded-lg border border-emerald-500/20 bg-linear-to-br from-emerald-500/5 to-emerald-600/0 backdrop-blur-sm p-4 text-center transition-all duration-300 hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/20 hover:scale-105"
             >
               <h3 className="text-sm font-semibold text-slate-300">{trend.dayName.slice(0, 3)}</h3>
               <p className="mt-3 text-2xl font-bold text-emerald-400">{trend.clicks}</p>
@@ -175,13 +175,13 @@ export default function AnalyticsDashboard({ barId }: { barId: string }) {
 
       {/* Top search queries */}
       {analytics.topSearchQueries.length > 0 && (
-        <div className="rounded-2xl border border-slate-700/50 bg-gradient-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
+        <div className="rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
           <h2 className="text-xl font-semibold text-white">Top Search Queries</h2>
           <div className="mt-4 space-y-2">
             {analytics.topSearchQueries.map((query, idx) => (
-              <div key={query.id} className="group flex items-center justify-between rounded-lg border border-blue-500/20 bg-gradient-to-r from-blue-500/5 to-transparent p-4 transition-all duration-300 hover:border-blue-500/50 hover:bg-blue-500/10">
+              <div key={query.id} className="group flex items-center justify-between rounded-lg border border-blue-500/20 bg-linear-to-r from-blue-500/5 to-transparent p-4 transition-all duration-300 hover:border-blue-500/50 hover:bg-blue-500/10">
                 <div className="flex items-center gap-3">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-blue-600 text-xs font-semibold text-white">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-linear-to-br from-blue-500 to-blue-600 text-xs font-semibold text-white">
                     {idx + 1}
                   </span>
                   <span className="text-slate-200 font-medium">{query.query}</span>
@@ -195,7 +195,7 @@ export default function AnalyticsDashboard({ barId }: { barId: string }) {
 
       {/* Top performing days */}
       {analytics.topDays.length > 0 && (
-        <div className="rounded-2xl border border-slate-700/50 bg-gradient-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
+        <div className="rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
           <h2 className="text-xl font-semibold text-white">Top Performing Days</h2>
           <div className="mt-4 space-y-3">
             {analytics.topDays.map((day) => {
@@ -212,7 +212,7 @@ export default function AnalyticsDashboard({ barId }: { barId: string }) {
               return (
                 <div
                   key={day.date}
-                  className="group flex items-center justify-between rounded-lg border border-emerald-500/20 bg-gradient-to-r from-emerald-500/5 to-transparent p-4 transition-all duration-300 hover:border-emerald-500/50 hover:bg-emerald-500/10"
+                  className="group flex items-center justify-between rounded-lg border border-emerald-500/20 bg-linear-to-r from-emerald-500/5 to-transparent p-4 transition-all duration-300 hover:border-emerald-500/50 hover:bg-emerald-500/10"
                 >
                   <div>
                     <p className="font-semibold text-white">
@@ -236,7 +236,7 @@ export default function AnalyticsDashboard({ barId }: { barId: string }) {
       )}
 
       {/* Insights and recommendations */}
-      <div className="rounded-2xl border border-emerald-500/40 bg-gradient-to-br from-emerald-500/15 to-emerald-600/5 backdrop-blur-md p-6 shadow-lg">
+      <div className="rounded-2xl border border-emerald-500/40 bg-linear-to-br from-emerald-500/15 to-emerald-600/5 backdrop-blur-md p-6 shadow-lg">
         <h2 className="text-lg font-semibold text-emerald-200">Insights & Recommendations</h2>
         <ul className="mt-4 space-y-2 text-sm text-emerald-100/90">
           {analytics.dayOfWeekTrends.some((d) => d.clicks === 0) && (

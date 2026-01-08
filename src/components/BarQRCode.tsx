@@ -97,7 +97,7 @@ export default function BarQRCode({ barId }: { barId: string }) {
 
   if (loading) {
     return (
-      <div className="rounded-2xl border border-slate-700/50 bg-gradient-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg text-center">
+      <div className="rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg text-center">
         <div className="flex justify-center mb-4">
           <div className="h-12 w-12 animate-spin rounded-full border-4 border-emerald-500 border-t-transparent"></div>
         </div>
@@ -107,7 +107,7 @@ export default function BarQRCode({ barId }: { barId: string }) {
   }
 
   return (
-    <div className="rounded-2xl border border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 to-emerald-600/5 backdrop-blur-md p-6 shadow-lg">
+    <div className="rounded-2xl border border-emerald-500/30 bg-linear-to-br from-emerald-500/10 to-emerald-600/5 backdrop-blur-md p-6 shadow-lg">
       <div className="text-center">
         <h2 className="text-xl font-semibold text-emerald-200 mb-2">📱 Patron Check-In QR Code</h2>
         <p className="text-sm text-emerald-100/80 mb-6">
@@ -125,7 +125,7 @@ export default function BarQRCode({ barId }: { barId: string }) {
         <div className="flex gap-3 justify-center mb-6">
           <button
             onClick={handleDownload}
-            className="rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-600 px-6 py-3 text-sm font-semibold text-slate-950 hover:from-emerald-400 hover:to-emerald-500 transition-all"
+            className="rounded-lg bg-linear-to-r from-emerald-500 to-emerald-600 px-6 py-3 text-sm font-semibold text-slate-950 hover:from-emerald-400 hover:to-emerald-500 transition-all"
           >
             📥 Download QR Code
           </button>

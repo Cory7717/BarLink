@@ -27,10 +27,10 @@ const features = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-900 to-slate-950 text-white overflow-hidden">
+    <div className="min-h-screen bg-linear-to-br from-slate-950 via-purple-900 to-slate-950 text-white overflow-hidden">
       {/* Animated gradient background */}
       <div className="fixed inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-slate-950/20"></div>
+        <div className="absolute inset-0 bg-linear-to-br from-purple-900/20 via-blue-900/20 to-slate-950/20"></div>
         <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-glow"></div>
         <div className="absolute top-40 -right-4 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-glow animation-delay-2000"></div>
         <div className="absolute -bottom-8 left-20 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-glow animation-delay-4000"></div>
@@ -40,10 +40,10 @@ export default function Home() {
       <main className="relative z-10 mx-auto max-w-6xl px-4 pb-24 pt-16">
         <section className="grid gap-10 lg:grid-cols-[1.1fr,0.9fr] items-center animate-fade-in">
           <div className="space-y-6">
-            <span className="inline-flex items-center rounded-full bg-gradient-to-r from-emerald-500/20 to-emerald-600/20 px-3 py-1 text-sm font-semibold text-emerald-100 ring-1 ring-emerald-500/30 border border-emerald-500/20">
+            <span className="inline-flex items-center rounded-full bg-linear-to-r from-emerald-500/20 to-emerald-600/20 px-3 py-1 text-sm font-semibold text-emerald-100 ring-1 ring-emerald-500/30 border border-emerald-500/20">
               ✨ Real-time bar discovery
             </span>
-            <h1 className="text-5xl sm:text-6xl font-bold leading-tight bg-gradient-to-r from-white via-cyan-50 to-white bg-clip-text text-transparent drop-shadow-lg">
+            <h1 className="text-5xl sm:text-6xl font-bold leading-tight bg-linear-to-r from-white via-cyan-50 to-white bg-clip-text text-transparent drop-shadow-lg">
               Discover bars by day, activity & what&apos;s happening now
             </h1>
             <p className="text-lg text-slate-100 leading-relaxed drop-shadow-md">
@@ -52,7 +52,7 @@ export default function Home() {
             <div className="flex flex-col gap-3 sm:flex-row pt-4">
               <Link
                 href="/auth/signup"
-                className="group px-6 py-3 rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-600 text-slate-950 font-semibold shadow-lg shadow-emerald-500/30 transition-all hover:from-emerald-400 hover:to-emerald-500 hover:shadow-xl hover:shadow-emerald-500/40 transform hover:-translate-y-0.5"
+                className="group px-6 py-3 rounded-lg bg-linear-to-r from-emerald-500 to-emerald-600 text-slate-950 font-semibold shadow-lg shadow-emerald-500/30 transition-all hover:from-emerald-400 hover:to-emerald-500 hover:shadow-xl hover:shadow-emerald-500/40 transform hover:-translate-y-0.5"
               >
                 List your bar →
               </Link>
@@ -77,13 +77,13 @@ export default function Home() {
           </div>
           
           {/* Featured bars card */}
-          <div className="rounded-2xl border border-white/20 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-6 shadow-2xl hover:shadow-emerald-500/20 transition-all">
+          <div className="rounded-2xl border border-white/20 bg-linear-to-br from-white/10 to-white/5 backdrop-blur-md p-6 shadow-2xl hover:shadow-emerald-500/20 transition-all">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-slate-100">Tonight · Seattle</p>
-                <h2 className="text-2xl font-bold bg-gradient-to-r from-white to-cyan-100 bg-clip-text text-transparent drop-shadow-lg">Featured bars</h2>
+                <h2 className="text-2xl font-bold bg-linear-to-r from-white to-cyan-100 bg-clip-text text-transparent drop-shadow-lg">Featured bars</h2>
               </div>
-              <span className="rounded-full bg-gradient-to-r from-emerald-500/20 to-emerald-600/20 px-3 py-1 text-sm font-semibold text-emerald-100 ring-1 ring-emerald-500/30 border border-emerald-500/20">
+              <span className="rounded-full bg-linear-to-r from-emerald-500/20 to-emerald-600/20 px-3 py-1 text-sm font-semibold text-emerald-100 ring-1 ring-emerald-500/30 border border-emerald-500/20">
                 🗺️ Live map
               </span>
             </div>
@@ -91,7 +91,7 @@ export default function Home() {
               {["Karaoke · Capitol Hill", "Trivia · Belltown", "Happy Hour · Ballard"].map((item) => (
                 <div key={item} className="flex items-center justify-between rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm px-4 py-3 hover:bg-white/15 transition-all group cursor-pointer">
                   <div className="text-white group-hover:text-emerald-100 transition-colors font-medium">{item}</div>
-                  <span className="inline-flex px-2 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-emerald-500 to-emerald-600 text-white">NEW</span>
+                  <span className="inline-flex px-2 py-1 rounded-full text-xs font-semibold bg-linear-to-r from-emerald-500 to-emerald-600 text-white">NEW</span>
                 </div>
               ))}
             </div>
@@ -102,9 +102,9 @@ export default function Home() {
         </section>
 
         {/* Features section */}
-        <section className="mt-20 rounded-2xl border border-white/20 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 shadow-xl">
+        <section className="mt-20 rounded-2xl border border-white/20 bg-linear-to-br from-white/10 to-white/5 backdrop-blur-md p-8 shadow-xl">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-white via-cyan-100 to-white bg-clip-text text-transparent drop-shadow-lg mb-3">Why owners love BarPulse</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold bg-linear-to-r from-white via-cyan-100 to-white bg-clip-text text-transparent drop-shadow-lg mb-3">Why owners love BarPulse</h2>
             <p className="text-slate-100 max-w-2xl mx-auto drop-shadow-md">Get discovered by the right patrons at the right time, and watch engagement soar</p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

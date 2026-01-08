@@ -255,18 +255,18 @@ export async function GET(req: Request) {
     };
 
     // Generate PDF
-    const pdfBuffer = await generateInventoryPDF(reportData);
+    const pdfData = generateInventoryPDF(reportData);
 
     // Generate filename
     const filename = `BarLink_InventoryReport_${bar.slug}_${format(startDate, 'yyyy-MM-dd')}_to_${format(endDate, 'yyyy-MM-dd')}.pdf`;
 
     // Return PDF
-    return new NextResponse(pdfBuffer as unknown as BodyInit, {
+    return new NextResponse(pdfData as BodyInit, {
       status: 200,
       headers: {
         'Content-Type': 'application/pdf',
         'Content-Disposition': `attachment; filename="${filename}"`,
-        'Content-Length': pdfBuffer.length.toString(),
+        'Content-Length': pdfData.byteLength.toString(),
       },
     });
   } catch (error) {

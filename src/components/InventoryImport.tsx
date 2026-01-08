@@ -70,7 +70,7 @@ Bacardi Rum,Rum,750,10,22.99`;
   };
 
   return (
-    <div className="rounded-xl border border-slate-700/50 bg-gradient-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
+    <div className="rounded-xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-lg font-semibold text-white">Import Inventory</h3>
         <button
@@ -106,7 +106,7 @@ Bacardi Rum,Rum,750,10,22.99`;
             disabled={importing}
             className="hidden"
           />
-          <div className="cursor-pointer w-full rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-600 px-4 py-3 text-center text-sm font-semibold text-slate-950 hover:from-emerald-400 hover:to-emerald-500 hover:shadow-lg hover:shadow-emerald-500/30 transition-all disabled:opacity-50">
+          <div className="cursor-pointer w-full rounded-lg bg-linear-to-r from-emerald-500 to-emerald-600 px-4 py-3 text-center text-sm font-semibold text-slate-950 hover:from-emerald-400 hover:to-emerald-500 hover:shadow-lg hover:shadow-emerald-500/30 transition-all disabled:opacity-50">
             {importing ? 'Importing...' : '📤 Upload Filled CSV'}
           </div>
         </label>

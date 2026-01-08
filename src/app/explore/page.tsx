@@ -76,18 +76,18 @@ export default function ExplorePage() {
   }, [day, activity, showSpecial, happeningNow, city]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-900/20 to-slate-950 text-white">
+    <div className="min-h-screen bg-linear-to-br from-slate-950 via-purple-900/20 to-slate-950 text-white">
       <Navigation />
       <main className="mx-auto max-w-7xl px-4 pb-16 pt-8">
         <header className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="text-sm text-emerald-300">Patron search</p>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-cyan-200 to-blue-200 bg-clip-text text-transparent">Explore bars by day & activity</h1>
+            <h1 className="text-3xl font-bold bg-linear-to-r from-cyan-200 to-blue-200 bg-clip-text text-transparent">Explore bars by day & activity</h1>
             <p className="text-sm text-slate-200">Filters: day of week (required) + activity (required). Toggle special/new and happening now.</p>
           </div>
         </header>
 
-        <section className="mt-6 grid gap-4 rounded-2xl border border-slate-700/50 bg-gradient-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-4 shadow-lg">
+        <section className="mt-6 grid gap-4 rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-4 shadow-lg">
           <div className="grid gap-3 md:grid-cols-4">
             <label className="flex flex-col text-sm text-slate-200">
               Day of week
@@ -152,16 +152,16 @@ export default function ExplorePage() {
         <section className="mt-6 grid gap-4 lg:grid-cols-[1.1fr,0.9fr]">
           <div className="space-y-3">
             {loading ? (
-              <div className="rounded-xl border border-slate-700/50 bg-gradient-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 text-center text-slate-200 shadow-lg">
+              <div className="rounded-xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 text-center text-slate-200 shadow-lg">
                 Loading bars...
               </div>
             ) : bars.length === 0 ? (
-              <div className="rounded-xl border border-slate-700/50 bg-gradient-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 text-center text-slate-200 shadow-lg">
+              <div className="rounded-xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 text-center text-slate-200 shadow-lg">
                 No bars match your filters. Try a different activity or broaden the day/time.
               </div>
             ) : (
               bars.map((bar) => (
-                <div key={bar.id} className="group relative rounded-xl border border-slate-700/50 bg-gradient-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-4 transition-all duration-300 hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/20 hover:scale-[1.02]">
+                <div key={bar.id} className="group relative rounded-xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-4 transition-all duration-300 hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/20 hover:scale-[1.02]">
                   <div className="flex items-start justify-between">
                     <div>
                       <h3 className="text-lg font-semibold text-white">
@@ -194,7 +194,7 @@ export default function ExplorePage() {
             )}
           </div>
 
-          <div className="h-80 lg:h-130 rounded-2xl border border-slate-700/50 bg-gradient-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-2 shadow-lg overflow-hidden">
+          <div className="h-80 lg:h-130 rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-2 shadow-lg overflow-hidden">
             <MapComponent
               latitude={mapCenter.latitude}
               longitude={mapCenter.longitude}

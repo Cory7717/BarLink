@@ -46,15 +46,15 @@ function SignUpForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-900/20 to-slate-950 text-white">
+    <div className="min-h-screen bg-linear-to-br from-slate-950 via-purple-900/20 to-slate-950 text-white">
       <Navigation />
       <main className="mx-auto max-w-md px-4 pb-16 pt-12">
         <header className="space-y-2 text-center">
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-cyan-200 to-blue-200 bg-clip-text text-transparent">Create Owner Account</h1>
+          <h1 className="text-3xl font-bold bg-linear-to-r from-cyan-200 to-blue-200 bg-clip-text text-transparent">Create Owner Account</h1>
           <p className="text-sm text-slate-200">Get started with BarPulse</p>
         </header>
 
-        <form onSubmit={handleSubmit} className="mt-8 space-y-4 rounded-2xl border border-slate-700/50 bg-gradient-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
+        <form onSubmit={handleSubmit} className="mt-8 space-y-4 rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
           {error && (
             <div className="rounded-lg bg-red-500/10 border border-red-500/30 px-4 py-3 text-sm text-red-100">
               {error}
@@ -108,7 +108,7 @@ function SignUpForm() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-600 px-4 py-3 text-sm font-semibold text-slate-950 hover:from-emerald-400 hover:to-emerald-500 hover:shadow-lg hover:shadow-emerald-500/30 transition-all disabled:opacity-50"
+            className="w-full rounded-lg bg-linear-to-r from-emerald-500 to-emerald-600 px-4 py-3 text-sm font-semibold text-slate-950 hover:from-emerald-400 hover:to-emerald-500 hover:shadow-lg hover:shadow-emerald-500/30 transition-all disabled:opacity-50"
           >
             {loading ? "Creating account..." : "Create account"}
           </button>
@@ -127,7 +127,7 @@ function SignUpForm() {
 
 export default function SignUpPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-900/20 to-slate-950 text-white flex items-center justify-center">Loading...</div>}>
+    <Suspense fallback={<div className="min-h-screen bg-linear-to-br from-slate-950 via-purple-900/20 to-slate-950 text-white flex items-center justify-center">Loading...</div>}>
       <SignUpForm />
     </Suspense>
   );
