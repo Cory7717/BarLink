@@ -153,6 +153,21 @@ export type BarLicense = $Result.DefaultSelection<Prisma.$BarLicensePayload>
  * 
  */
 export type BarVisit = $Result.DefaultSelection<Prisma.$BarVisitPayload>
+/**
+ * Model StaticOffering
+ * 
+ */
+export type StaticOffering = $Result.DefaultSelection<Prisma.$StaticOfferingPayload>
+/**
+ * Model DrinkSpecial
+ * 
+ */
+export type DrinkSpecial = $Result.DefaultSelection<Prisma.$DrinkSpecialPayload>
+/**
+ * Model FoodOffering
+ * 
+ */
+export type FoodOffering = $Result.DefaultSelection<Prisma.$FoodOfferingPayload>
 
 /**
  * Enums
@@ -651,6 +666,36 @@ export class PrismaClient<
     * ```
     */
   get barVisit(): Prisma.BarVisitDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.staticOffering`: Exposes CRUD operations for the **StaticOffering** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more StaticOfferings
+    * const staticOfferings = await prisma.staticOffering.findMany()
+    * ```
+    */
+  get staticOffering(): Prisma.StaticOfferingDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.drinkSpecial`: Exposes CRUD operations for the **DrinkSpecial** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DrinkSpecials
+    * const drinkSpecials = await prisma.drinkSpecial.findMany()
+    * ```
+    */
+  get drinkSpecial(): Prisma.DrinkSpecialDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.foodOffering`: Exposes CRUD operations for the **FoodOffering** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more FoodOfferings
+    * const foodOfferings = await prisma.foodOffering.findMany()
+    * ```
+    */
+  get foodOffering(): Prisma.FoodOfferingDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -1112,7 +1157,10 @@ export namespace Prisma {
     CostingProfile: 'CostingProfile',
     VarianceAlert: 'VarianceAlert',
     BarLicense: 'BarLicense',
-    BarVisit: 'BarVisit'
+    BarVisit: 'BarVisit',
+    StaticOffering: 'StaticOffering',
+    DrinkSpecial: 'DrinkSpecial',
+    FoodOffering: 'FoodOffering'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1128,7 +1176,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "account" | "session" | "owner" | "subscription" | "bar" | "offering" | "event" | "favorite" | "activityCategory" | "promoCode" | "promoRedemption" | "barAnalytics" | "searchQuery" | "barClick" | "badge" | "barBadge" | "inventoryItem" | "inventoryImport" | "shiftUsage" | "shiftUsageItem" | "inventorySnapshot" | "inventorySnapshotItem" | "bottlePhoto" | "costingProfile" | "varianceAlert" | "barLicense" | "barVisit"
+      modelProps: "user" | "account" | "session" | "owner" | "subscription" | "bar" | "offering" | "event" | "favorite" | "activityCategory" | "promoCode" | "promoRedemption" | "barAnalytics" | "searchQuery" | "barClick" | "badge" | "barBadge" | "inventoryItem" | "inventoryImport" | "shiftUsage" | "shiftUsageItem" | "inventorySnapshot" | "inventorySnapshotItem" | "bottlePhoto" | "costingProfile" | "varianceAlert" | "barLicense" | "barVisit" | "staticOffering" | "drinkSpecial" | "foodOffering"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -3204,6 +3252,228 @@ export namespace Prisma {
           }
         }
       }
+      StaticOffering: {
+        payload: Prisma.$StaticOfferingPayload<ExtArgs>
+        fields: Prisma.StaticOfferingFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.StaticOfferingFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StaticOfferingPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.StaticOfferingFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StaticOfferingPayload>
+          }
+          findFirst: {
+            args: Prisma.StaticOfferingFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StaticOfferingPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.StaticOfferingFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StaticOfferingPayload>
+          }
+          findMany: {
+            args: Prisma.StaticOfferingFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StaticOfferingPayload>[]
+          }
+          create: {
+            args: Prisma.StaticOfferingCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StaticOfferingPayload>
+          }
+          createMany: {
+            args: Prisma.StaticOfferingCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.StaticOfferingCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StaticOfferingPayload>[]
+          }
+          delete: {
+            args: Prisma.StaticOfferingDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StaticOfferingPayload>
+          }
+          update: {
+            args: Prisma.StaticOfferingUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StaticOfferingPayload>
+          }
+          deleteMany: {
+            args: Prisma.StaticOfferingDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.StaticOfferingUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.StaticOfferingUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StaticOfferingPayload>[]
+          }
+          upsert: {
+            args: Prisma.StaticOfferingUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StaticOfferingPayload>
+          }
+          aggregate: {
+            args: Prisma.StaticOfferingAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateStaticOffering>
+          }
+          groupBy: {
+            args: Prisma.StaticOfferingGroupByArgs<ExtArgs>
+            result: $Utils.Optional<StaticOfferingGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.StaticOfferingCountArgs<ExtArgs>
+            result: $Utils.Optional<StaticOfferingCountAggregateOutputType> | number
+          }
+        }
+      }
+      DrinkSpecial: {
+        payload: Prisma.$DrinkSpecialPayload<ExtArgs>
+        fields: Prisma.DrinkSpecialFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DrinkSpecialFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DrinkSpecialPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DrinkSpecialFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DrinkSpecialPayload>
+          }
+          findFirst: {
+            args: Prisma.DrinkSpecialFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DrinkSpecialPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DrinkSpecialFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DrinkSpecialPayload>
+          }
+          findMany: {
+            args: Prisma.DrinkSpecialFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DrinkSpecialPayload>[]
+          }
+          create: {
+            args: Prisma.DrinkSpecialCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DrinkSpecialPayload>
+          }
+          createMany: {
+            args: Prisma.DrinkSpecialCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DrinkSpecialCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DrinkSpecialPayload>[]
+          }
+          delete: {
+            args: Prisma.DrinkSpecialDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DrinkSpecialPayload>
+          }
+          update: {
+            args: Prisma.DrinkSpecialUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DrinkSpecialPayload>
+          }
+          deleteMany: {
+            args: Prisma.DrinkSpecialDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DrinkSpecialUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DrinkSpecialUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DrinkSpecialPayload>[]
+          }
+          upsert: {
+            args: Prisma.DrinkSpecialUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DrinkSpecialPayload>
+          }
+          aggregate: {
+            args: Prisma.DrinkSpecialAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDrinkSpecial>
+          }
+          groupBy: {
+            args: Prisma.DrinkSpecialGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DrinkSpecialGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DrinkSpecialCountArgs<ExtArgs>
+            result: $Utils.Optional<DrinkSpecialCountAggregateOutputType> | number
+          }
+        }
+      }
+      FoodOffering: {
+        payload: Prisma.$FoodOfferingPayload<ExtArgs>
+        fields: Prisma.FoodOfferingFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FoodOfferingFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodOfferingPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FoodOfferingFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodOfferingPayload>
+          }
+          findFirst: {
+            args: Prisma.FoodOfferingFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodOfferingPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FoodOfferingFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodOfferingPayload>
+          }
+          findMany: {
+            args: Prisma.FoodOfferingFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodOfferingPayload>[]
+          }
+          create: {
+            args: Prisma.FoodOfferingCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodOfferingPayload>
+          }
+          createMany: {
+            args: Prisma.FoodOfferingCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.FoodOfferingCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodOfferingPayload>[]
+          }
+          delete: {
+            args: Prisma.FoodOfferingDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodOfferingPayload>
+          }
+          update: {
+            args: Prisma.FoodOfferingUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodOfferingPayload>
+          }
+          deleteMany: {
+            args: Prisma.FoodOfferingDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FoodOfferingUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.FoodOfferingUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodOfferingPayload>[]
+          }
+          upsert: {
+            args: Prisma.FoodOfferingUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodOfferingPayload>
+          }
+          aggregate: {
+            args: Prisma.FoodOfferingAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFoodOffering>
+          }
+          groupBy: {
+            args: Prisma.FoodOfferingGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FoodOfferingGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FoodOfferingCountArgs<ExtArgs>
+            result: $Utils.Optional<FoodOfferingCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -3340,6 +3610,9 @@ export namespace Prisma {
     varianceAlert?: VarianceAlertOmit
     barLicense?: BarLicenseOmit
     barVisit?: BarVisitOmit
+    staticOffering?: StaticOfferingOmit
+    drinkSpecial?: DrinkSpecialOmit
+    foodOffering?: FoodOfferingOmit
   }
 
   /* Types for Logging */
@@ -3567,6 +3840,9 @@ export namespace Prisma {
     inventorySnapshots: number
     visits: number
     varianceAlerts: number
+    staticOfferings: number
+    drinkSpecials: number
+    foodOfferings: number
   }
 
   export type BarCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3583,6 +3859,9 @@ export namespace Prisma {
     inventorySnapshots?: boolean | BarCountOutputTypeCountInventorySnapshotsArgs
     visits?: boolean | BarCountOutputTypeCountVisitsArgs
     varianceAlerts?: boolean | BarCountOutputTypeCountVarianceAlertsArgs
+    staticOfferings?: boolean | BarCountOutputTypeCountStaticOfferingsArgs
+    drinkSpecials?: boolean | BarCountOutputTypeCountDrinkSpecialsArgs
+    foodOfferings?: boolean | BarCountOutputTypeCountFoodOfferingsArgs
   }
 
   // Custom InputTypes
@@ -3685,6 +3964,27 @@ export namespace Prisma {
    */
   export type BarCountOutputTypeCountVarianceAlertsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: VarianceAlertWhereInput
+  }
+
+  /**
+   * BarCountOutputType without action
+   */
+  export type BarCountOutputTypeCountStaticOfferingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StaticOfferingWhereInput
+  }
+
+  /**
+   * BarCountOutputType without action
+   */
+  export type BarCountOutputTypeCountDrinkSpecialsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DrinkSpecialWhereInput
+  }
+
+  /**
+   * BarCountOutputType without action
+   */
+  export type BarCountOutputTypeCountFoodOfferingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FoodOfferingWhereInput
   }
 
 
@@ -10126,6 +10426,9 @@ export namespace Prisma {
     inventorySnapshots?: boolean | Bar$inventorySnapshotsArgs<ExtArgs>
     visits?: boolean | Bar$visitsArgs<ExtArgs>
     varianceAlerts?: boolean | Bar$varianceAlertsArgs<ExtArgs>
+    staticOfferings?: boolean | Bar$staticOfferingsArgs<ExtArgs>
+    drinkSpecials?: boolean | Bar$drinkSpecialsArgs<ExtArgs>
+    foodOfferings?: boolean | Bar$foodOfferingsArgs<ExtArgs>
     _count?: boolean | BarCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["bar"]>
 
@@ -10234,6 +10537,9 @@ export namespace Prisma {
     inventorySnapshots?: boolean | Bar$inventorySnapshotsArgs<ExtArgs>
     visits?: boolean | Bar$visitsArgs<ExtArgs>
     varianceAlerts?: boolean | Bar$varianceAlertsArgs<ExtArgs>
+    staticOfferings?: boolean | Bar$staticOfferingsArgs<ExtArgs>
+    drinkSpecials?: boolean | Bar$drinkSpecialsArgs<ExtArgs>
+    foodOfferings?: boolean | Bar$foodOfferingsArgs<ExtArgs>
     _count?: boolean | BarCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type BarIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -10260,6 +10566,9 @@ export namespace Prisma {
       inventorySnapshots: Prisma.$InventorySnapshotPayload<ExtArgs>[]
       visits: Prisma.$BarVisitPayload<ExtArgs>[]
       varianceAlerts: Prisma.$VarianceAlertPayload<ExtArgs>[]
+      staticOfferings: Prisma.$StaticOfferingPayload<ExtArgs>[]
+      drinkSpecials: Prisma.$DrinkSpecialPayload<ExtArgs>[]
+      foodOfferings: Prisma.$FoodOfferingPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -10696,6 +11005,9 @@ export namespace Prisma {
     inventorySnapshots<T extends Bar$inventorySnapshotsArgs<ExtArgs> = {}>(args?: Subset<T, Bar$inventorySnapshotsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InventorySnapshotPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     visits<T extends Bar$visitsArgs<ExtArgs> = {}>(args?: Subset<T, Bar$visitsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BarVisitPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     varianceAlerts<T extends Bar$varianceAlertsArgs<ExtArgs> = {}>(args?: Subset<T, Bar$varianceAlertsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VarianceAlertPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    staticOfferings<T extends Bar$staticOfferingsArgs<ExtArgs> = {}>(args?: Subset<T, Bar$staticOfferingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StaticOfferingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    drinkSpecials<T extends Bar$drinkSpecialsArgs<ExtArgs> = {}>(args?: Subset<T, Bar$drinkSpecialsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DrinkSpecialPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    foodOfferings<T extends Bar$foodOfferingsArgs<ExtArgs> = {}>(args?: Subset<T, Bar$foodOfferingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FoodOfferingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11456,6 +11768,78 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: VarianceAlertScalarFieldEnum | VarianceAlertScalarFieldEnum[]
+  }
+
+  /**
+   * Bar.staticOfferings
+   */
+  export type Bar$staticOfferingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StaticOffering
+     */
+    select?: StaticOfferingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StaticOffering
+     */
+    omit?: StaticOfferingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StaticOfferingInclude<ExtArgs> | null
+    where?: StaticOfferingWhereInput
+    orderBy?: StaticOfferingOrderByWithRelationInput | StaticOfferingOrderByWithRelationInput[]
+    cursor?: StaticOfferingWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: StaticOfferingScalarFieldEnum | StaticOfferingScalarFieldEnum[]
+  }
+
+  /**
+   * Bar.drinkSpecials
+   */
+  export type Bar$drinkSpecialsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DrinkSpecial
+     */
+    select?: DrinkSpecialSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DrinkSpecial
+     */
+    omit?: DrinkSpecialOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DrinkSpecialInclude<ExtArgs> | null
+    where?: DrinkSpecialWhereInput
+    orderBy?: DrinkSpecialOrderByWithRelationInput | DrinkSpecialOrderByWithRelationInput[]
+    cursor?: DrinkSpecialWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DrinkSpecialScalarFieldEnum | DrinkSpecialScalarFieldEnum[]
+  }
+
+  /**
+   * Bar.foodOfferings
+   */
+  export type Bar$foodOfferingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FoodOffering
+     */
+    select?: FoodOfferingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FoodOffering
+     */
+    omit?: FoodOfferingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodOfferingInclude<ExtArgs> | null
+    where?: FoodOfferingWhereInput
+    orderBy?: FoodOfferingOrderByWithRelationInput | FoodOfferingOrderByWithRelationInput[]
+    cursor?: FoodOfferingWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FoodOfferingScalarFieldEnum | FoodOfferingScalarFieldEnum[]
   }
 
   /**
@@ -36826,6 +37210,3430 @@ export namespace Prisma {
 
 
   /**
+   * Model StaticOffering
+   */
+
+  export type AggregateStaticOffering = {
+    _count: StaticOfferingCountAggregateOutputType | null
+    _avg: StaticOfferingAvgAggregateOutputType | null
+    _sum: StaticOfferingSumAggregateOutputType | null
+    _min: StaticOfferingMinAggregateOutputType | null
+    _max: StaticOfferingMaxAggregateOutputType | null
+  }
+
+  export type StaticOfferingAvgAggregateOutputType = {
+    position: number | null
+  }
+
+  export type StaticOfferingSumAggregateOutputType = {
+    position: number | null
+  }
+
+  export type StaticOfferingMinAggregateOutputType = {
+    id: string | null
+    barId: string | null
+    name: string | null
+    icon: string | null
+    description: string | null
+    position: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type StaticOfferingMaxAggregateOutputType = {
+    id: string | null
+    barId: string | null
+    name: string | null
+    icon: string | null
+    description: string | null
+    position: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type StaticOfferingCountAggregateOutputType = {
+    id: number
+    barId: number
+    name: number
+    icon: number
+    description: number
+    position: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type StaticOfferingAvgAggregateInputType = {
+    position?: true
+  }
+
+  export type StaticOfferingSumAggregateInputType = {
+    position?: true
+  }
+
+  export type StaticOfferingMinAggregateInputType = {
+    id?: true
+    barId?: true
+    name?: true
+    icon?: true
+    description?: true
+    position?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type StaticOfferingMaxAggregateInputType = {
+    id?: true
+    barId?: true
+    name?: true
+    icon?: true
+    description?: true
+    position?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type StaticOfferingCountAggregateInputType = {
+    id?: true
+    barId?: true
+    name?: true
+    icon?: true
+    description?: true
+    position?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type StaticOfferingAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StaticOffering to aggregate.
+     */
+    where?: StaticOfferingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StaticOfferings to fetch.
+     */
+    orderBy?: StaticOfferingOrderByWithRelationInput | StaticOfferingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: StaticOfferingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StaticOfferings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StaticOfferings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned StaticOfferings
+    **/
+    _count?: true | StaticOfferingCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: StaticOfferingAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: StaticOfferingSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: StaticOfferingMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: StaticOfferingMaxAggregateInputType
+  }
+
+  export type GetStaticOfferingAggregateType<T extends StaticOfferingAggregateArgs> = {
+        [P in keyof T & keyof AggregateStaticOffering]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateStaticOffering[P]>
+      : GetScalarType<T[P], AggregateStaticOffering[P]>
+  }
+
+
+
+
+  export type StaticOfferingGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StaticOfferingWhereInput
+    orderBy?: StaticOfferingOrderByWithAggregationInput | StaticOfferingOrderByWithAggregationInput[]
+    by: StaticOfferingScalarFieldEnum[] | StaticOfferingScalarFieldEnum
+    having?: StaticOfferingScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: StaticOfferingCountAggregateInputType | true
+    _avg?: StaticOfferingAvgAggregateInputType
+    _sum?: StaticOfferingSumAggregateInputType
+    _min?: StaticOfferingMinAggregateInputType
+    _max?: StaticOfferingMaxAggregateInputType
+  }
+
+  export type StaticOfferingGroupByOutputType = {
+    id: string
+    barId: string
+    name: string
+    icon: string
+    description: string | null
+    position: number
+    createdAt: Date
+    updatedAt: Date
+    _count: StaticOfferingCountAggregateOutputType | null
+    _avg: StaticOfferingAvgAggregateOutputType | null
+    _sum: StaticOfferingSumAggregateOutputType | null
+    _min: StaticOfferingMinAggregateOutputType | null
+    _max: StaticOfferingMaxAggregateOutputType | null
+  }
+
+  type GetStaticOfferingGroupByPayload<T extends StaticOfferingGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<StaticOfferingGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof StaticOfferingGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], StaticOfferingGroupByOutputType[P]>
+            : GetScalarType<T[P], StaticOfferingGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type StaticOfferingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    barId?: boolean
+    name?: boolean
+    icon?: boolean
+    description?: boolean
+    position?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    bar?: boolean | BarDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["staticOffering"]>
+
+  export type StaticOfferingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    barId?: boolean
+    name?: boolean
+    icon?: boolean
+    description?: boolean
+    position?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    bar?: boolean | BarDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["staticOffering"]>
+
+  export type StaticOfferingSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    barId?: boolean
+    name?: boolean
+    icon?: boolean
+    description?: boolean
+    position?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    bar?: boolean | BarDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["staticOffering"]>
+
+  export type StaticOfferingSelectScalar = {
+    id?: boolean
+    barId?: boolean
+    name?: boolean
+    icon?: boolean
+    description?: boolean
+    position?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type StaticOfferingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "barId" | "name" | "icon" | "description" | "position" | "createdAt" | "updatedAt", ExtArgs["result"]["staticOffering"]>
+  export type StaticOfferingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bar?: boolean | BarDefaultArgs<ExtArgs>
+  }
+  export type StaticOfferingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bar?: boolean | BarDefaultArgs<ExtArgs>
+  }
+  export type StaticOfferingIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bar?: boolean | BarDefaultArgs<ExtArgs>
+  }
+
+  export type $StaticOfferingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "StaticOffering"
+    objects: {
+      bar: Prisma.$BarPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      barId: string
+      name: string
+      icon: string
+      description: string | null
+      position: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["staticOffering"]>
+    composites: {}
+  }
+
+  type StaticOfferingGetPayload<S extends boolean | null | undefined | StaticOfferingDefaultArgs> = $Result.GetResult<Prisma.$StaticOfferingPayload, S>
+
+  type StaticOfferingCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<StaticOfferingFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: StaticOfferingCountAggregateInputType | true
+    }
+
+  export interface StaticOfferingDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['StaticOffering'], meta: { name: 'StaticOffering' } }
+    /**
+     * Find zero or one StaticOffering that matches the filter.
+     * @param {StaticOfferingFindUniqueArgs} args - Arguments to find a StaticOffering
+     * @example
+     * // Get one StaticOffering
+     * const staticOffering = await prisma.staticOffering.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends StaticOfferingFindUniqueArgs>(args: SelectSubset<T, StaticOfferingFindUniqueArgs<ExtArgs>>): Prisma__StaticOfferingClient<$Result.GetResult<Prisma.$StaticOfferingPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one StaticOffering that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {StaticOfferingFindUniqueOrThrowArgs} args - Arguments to find a StaticOffering
+     * @example
+     * // Get one StaticOffering
+     * const staticOffering = await prisma.staticOffering.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends StaticOfferingFindUniqueOrThrowArgs>(args: SelectSubset<T, StaticOfferingFindUniqueOrThrowArgs<ExtArgs>>): Prisma__StaticOfferingClient<$Result.GetResult<Prisma.$StaticOfferingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first StaticOffering that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StaticOfferingFindFirstArgs} args - Arguments to find a StaticOffering
+     * @example
+     * // Get one StaticOffering
+     * const staticOffering = await prisma.staticOffering.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends StaticOfferingFindFirstArgs>(args?: SelectSubset<T, StaticOfferingFindFirstArgs<ExtArgs>>): Prisma__StaticOfferingClient<$Result.GetResult<Prisma.$StaticOfferingPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first StaticOffering that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StaticOfferingFindFirstOrThrowArgs} args - Arguments to find a StaticOffering
+     * @example
+     * // Get one StaticOffering
+     * const staticOffering = await prisma.staticOffering.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends StaticOfferingFindFirstOrThrowArgs>(args?: SelectSubset<T, StaticOfferingFindFirstOrThrowArgs<ExtArgs>>): Prisma__StaticOfferingClient<$Result.GetResult<Prisma.$StaticOfferingPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more StaticOfferings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StaticOfferingFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all StaticOfferings
+     * const staticOfferings = await prisma.staticOffering.findMany()
+     * 
+     * // Get first 10 StaticOfferings
+     * const staticOfferings = await prisma.staticOffering.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const staticOfferingWithIdOnly = await prisma.staticOffering.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends StaticOfferingFindManyArgs>(args?: SelectSubset<T, StaticOfferingFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StaticOfferingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a StaticOffering.
+     * @param {StaticOfferingCreateArgs} args - Arguments to create a StaticOffering.
+     * @example
+     * // Create one StaticOffering
+     * const StaticOffering = await prisma.staticOffering.create({
+     *   data: {
+     *     // ... data to create a StaticOffering
+     *   }
+     * })
+     * 
+     */
+    create<T extends StaticOfferingCreateArgs>(args: SelectSubset<T, StaticOfferingCreateArgs<ExtArgs>>): Prisma__StaticOfferingClient<$Result.GetResult<Prisma.$StaticOfferingPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many StaticOfferings.
+     * @param {StaticOfferingCreateManyArgs} args - Arguments to create many StaticOfferings.
+     * @example
+     * // Create many StaticOfferings
+     * const staticOffering = await prisma.staticOffering.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends StaticOfferingCreateManyArgs>(args?: SelectSubset<T, StaticOfferingCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many StaticOfferings and returns the data saved in the database.
+     * @param {StaticOfferingCreateManyAndReturnArgs} args - Arguments to create many StaticOfferings.
+     * @example
+     * // Create many StaticOfferings
+     * const staticOffering = await prisma.staticOffering.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many StaticOfferings and only return the `id`
+     * const staticOfferingWithIdOnly = await prisma.staticOffering.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends StaticOfferingCreateManyAndReturnArgs>(args?: SelectSubset<T, StaticOfferingCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StaticOfferingPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a StaticOffering.
+     * @param {StaticOfferingDeleteArgs} args - Arguments to delete one StaticOffering.
+     * @example
+     * // Delete one StaticOffering
+     * const StaticOffering = await prisma.staticOffering.delete({
+     *   where: {
+     *     // ... filter to delete one StaticOffering
+     *   }
+     * })
+     * 
+     */
+    delete<T extends StaticOfferingDeleteArgs>(args: SelectSubset<T, StaticOfferingDeleteArgs<ExtArgs>>): Prisma__StaticOfferingClient<$Result.GetResult<Prisma.$StaticOfferingPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one StaticOffering.
+     * @param {StaticOfferingUpdateArgs} args - Arguments to update one StaticOffering.
+     * @example
+     * // Update one StaticOffering
+     * const staticOffering = await prisma.staticOffering.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends StaticOfferingUpdateArgs>(args: SelectSubset<T, StaticOfferingUpdateArgs<ExtArgs>>): Prisma__StaticOfferingClient<$Result.GetResult<Prisma.$StaticOfferingPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more StaticOfferings.
+     * @param {StaticOfferingDeleteManyArgs} args - Arguments to filter StaticOfferings to delete.
+     * @example
+     * // Delete a few StaticOfferings
+     * const { count } = await prisma.staticOffering.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends StaticOfferingDeleteManyArgs>(args?: SelectSubset<T, StaticOfferingDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more StaticOfferings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StaticOfferingUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many StaticOfferings
+     * const staticOffering = await prisma.staticOffering.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends StaticOfferingUpdateManyArgs>(args: SelectSubset<T, StaticOfferingUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more StaticOfferings and returns the data updated in the database.
+     * @param {StaticOfferingUpdateManyAndReturnArgs} args - Arguments to update many StaticOfferings.
+     * @example
+     * // Update many StaticOfferings
+     * const staticOffering = await prisma.staticOffering.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more StaticOfferings and only return the `id`
+     * const staticOfferingWithIdOnly = await prisma.staticOffering.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends StaticOfferingUpdateManyAndReturnArgs>(args: SelectSubset<T, StaticOfferingUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StaticOfferingPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one StaticOffering.
+     * @param {StaticOfferingUpsertArgs} args - Arguments to update or create a StaticOffering.
+     * @example
+     * // Update or create a StaticOffering
+     * const staticOffering = await prisma.staticOffering.upsert({
+     *   create: {
+     *     // ... data to create a StaticOffering
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the StaticOffering we want to update
+     *   }
+     * })
+     */
+    upsert<T extends StaticOfferingUpsertArgs>(args: SelectSubset<T, StaticOfferingUpsertArgs<ExtArgs>>): Prisma__StaticOfferingClient<$Result.GetResult<Prisma.$StaticOfferingPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of StaticOfferings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StaticOfferingCountArgs} args - Arguments to filter StaticOfferings to count.
+     * @example
+     * // Count the number of StaticOfferings
+     * const count = await prisma.staticOffering.count({
+     *   where: {
+     *     // ... the filter for the StaticOfferings we want to count
+     *   }
+     * })
+    **/
+    count<T extends StaticOfferingCountArgs>(
+      args?: Subset<T, StaticOfferingCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], StaticOfferingCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a StaticOffering.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StaticOfferingAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends StaticOfferingAggregateArgs>(args: Subset<T, StaticOfferingAggregateArgs>): Prisma.PrismaPromise<GetStaticOfferingAggregateType<T>>
+
+    /**
+     * Group by StaticOffering.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StaticOfferingGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends StaticOfferingGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: StaticOfferingGroupByArgs['orderBy'] }
+        : { orderBy?: StaticOfferingGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, StaticOfferingGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStaticOfferingGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the StaticOffering model
+   */
+  readonly fields: StaticOfferingFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for StaticOffering.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__StaticOfferingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    bar<T extends BarDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BarDefaultArgs<ExtArgs>>): Prisma__BarClient<$Result.GetResult<Prisma.$BarPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the StaticOffering model
+   */
+  interface StaticOfferingFieldRefs {
+    readonly id: FieldRef<"StaticOffering", 'String'>
+    readonly barId: FieldRef<"StaticOffering", 'String'>
+    readonly name: FieldRef<"StaticOffering", 'String'>
+    readonly icon: FieldRef<"StaticOffering", 'String'>
+    readonly description: FieldRef<"StaticOffering", 'String'>
+    readonly position: FieldRef<"StaticOffering", 'Int'>
+    readonly createdAt: FieldRef<"StaticOffering", 'DateTime'>
+    readonly updatedAt: FieldRef<"StaticOffering", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * StaticOffering findUnique
+   */
+  export type StaticOfferingFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StaticOffering
+     */
+    select?: StaticOfferingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StaticOffering
+     */
+    omit?: StaticOfferingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StaticOfferingInclude<ExtArgs> | null
+    /**
+     * Filter, which StaticOffering to fetch.
+     */
+    where: StaticOfferingWhereUniqueInput
+  }
+
+  /**
+   * StaticOffering findUniqueOrThrow
+   */
+  export type StaticOfferingFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StaticOffering
+     */
+    select?: StaticOfferingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StaticOffering
+     */
+    omit?: StaticOfferingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StaticOfferingInclude<ExtArgs> | null
+    /**
+     * Filter, which StaticOffering to fetch.
+     */
+    where: StaticOfferingWhereUniqueInput
+  }
+
+  /**
+   * StaticOffering findFirst
+   */
+  export type StaticOfferingFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StaticOffering
+     */
+    select?: StaticOfferingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StaticOffering
+     */
+    omit?: StaticOfferingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StaticOfferingInclude<ExtArgs> | null
+    /**
+     * Filter, which StaticOffering to fetch.
+     */
+    where?: StaticOfferingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StaticOfferings to fetch.
+     */
+    orderBy?: StaticOfferingOrderByWithRelationInput | StaticOfferingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StaticOfferings.
+     */
+    cursor?: StaticOfferingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StaticOfferings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StaticOfferings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StaticOfferings.
+     */
+    distinct?: StaticOfferingScalarFieldEnum | StaticOfferingScalarFieldEnum[]
+  }
+
+  /**
+   * StaticOffering findFirstOrThrow
+   */
+  export type StaticOfferingFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StaticOffering
+     */
+    select?: StaticOfferingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StaticOffering
+     */
+    omit?: StaticOfferingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StaticOfferingInclude<ExtArgs> | null
+    /**
+     * Filter, which StaticOffering to fetch.
+     */
+    where?: StaticOfferingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StaticOfferings to fetch.
+     */
+    orderBy?: StaticOfferingOrderByWithRelationInput | StaticOfferingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StaticOfferings.
+     */
+    cursor?: StaticOfferingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StaticOfferings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StaticOfferings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StaticOfferings.
+     */
+    distinct?: StaticOfferingScalarFieldEnum | StaticOfferingScalarFieldEnum[]
+  }
+
+  /**
+   * StaticOffering findMany
+   */
+  export type StaticOfferingFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StaticOffering
+     */
+    select?: StaticOfferingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StaticOffering
+     */
+    omit?: StaticOfferingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StaticOfferingInclude<ExtArgs> | null
+    /**
+     * Filter, which StaticOfferings to fetch.
+     */
+    where?: StaticOfferingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StaticOfferings to fetch.
+     */
+    orderBy?: StaticOfferingOrderByWithRelationInput | StaticOfferingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing StaticOfferings.
+     */
+    cursor?: StaticOfferingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StaticOfferings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StaticOfferings.
+     */
+    skip?: number
+    distinct?: StaticOfferingScalarFieldEnum | StaticOfferingScalarFieldEnum[]
+  }
+
+  /**
+   * StaticOffering create
+   */
+  export type StaticOfferingCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StaticOffering
+     */
+    select?: StaticOfferingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StaticOffering
+     */
+    omit?: StaticOfferingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StaticOfferingInclude<ExtArgs> | null
+    /**
+     * The data needed to create a StaticOffering.
+     */
+    data: XOR<StaticOfferingCreateInput, StaticOfferingUncheckedCreateInput>
+  }
+
+  /**
+   * StaticOffering createMany
+   */
+  export type StaticOfferingCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many StaticOfferings.
+     */
+    data: StaticOfferingCreateManyInput | StaticOfferingCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * StaticOffering createManyAndReturn
+   */
+  export type StaticOfferingCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StaticOffering
+     */
+    select?: StaticOfferingSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the StaticOffering
+     */
+    omit?: StaticOfferingOmit<ExtArgs> | null
+    /**
+     * The data used to create many StaticOfferings.
+     */
+    data: StaticOfferingCreateManyInput | StaticOfferingCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StaticOfferingIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * StaticOffering update
+   */
+  export type StaticOfferingUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StaticOffering
+     */
+    select?: StaticOfferingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StaticOffering
+     */
+    omit?: StaticOfferingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StaticOfferingInclude<ExtArgs> | null
+    /**
+     * The data needed to update a StaticOffering.
+     */
+    data: XOR<StaticOfferingUpdateInput, StaticOfferingUncheckedUpdateInput>
+    /**
+     * Choose, which StaticOffering to update.
+     */
+    where: StaticOfferingWhereUniqueInput
+  }
+
+  /**
+   * StaticOffering updateMany
+   */
+  export type StaticOfferingUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update StaticOfferings.
+     */
+    data: XOR<StaticOfferingUpdateManyMutationInput, StaticOfferingUncheckedUpdateManyInput>
+    /**
+     * Filter which StaticOfferings to update
+     */
+    where?: StaticOfferingWhereInput
+    /**
+     * Limit how many StaticOfferings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * StaticOffering updateManyAndReturn
+   */
+  export type StaticOfferingUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StaticOffering
+     */
+    select?: StaticOfferingSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the StaticOffering
+     */
+    omit?: StaticOfferingOmit<ExtArgs> | null
+    /**
+     * The data used to update StaticOfferings.
+     */
+    data: XOR<StaticOfferingUpdateManyMutationInput, StaticOfferingUncheckedUpdateManyInput>
+    /**
+     * Filter which StaticOfferings to update
+     */
+    where?: StaticOfferingWhereInput
+    /**
+     * Limit how many StaticOfferings to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StaticOfferingIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * StaticOffering upsert
+   */
+  export type StaticOfferingUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StaticOffering
+     */
+    select?: StaticOfferingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StaticOffering
+     */
+    omit?: StaticOfferingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StaticOfferingInclude<ExtArgs> | null
+    /**
+     * The filter to search for the StaticOffering to update in case it exists.
+     */
+    where: StaticOfferingWhereUniqueInput
+    /**
+     * In case the StaticOffering found by the `where` argument doesn't exist, create a new StaticOffering with this data.
+     */
+    create: XOR<StaticOfferingCreateInput, StaticOfferingUncheckedCreateInput>
+    /**
+     * In case the StaticOffering was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<StaticOfferingUpdateInput, StaticOfferingUncheckedUpdateInput>
+  }
+
+  /**
+   * StaticOffering delete
+   */
+  export type StaticOfferingDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StaticOffering
+     */
+    select?: StaticOfferingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StaticOffering
+     */
+    omit?: StaticOfferingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StaticOfferingInclude<ExtArgs> | null
+    /**
+     * Filter which StaticOffering to delete.
+     */
+    where: StaticOfferingWhereUniqueInput
+  }
+
+  /**
+   * StaticOffering deleteMany
+   */
+  export type StaticOfferingDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StaticOfferings to delete
+     */
+    where?: StaticOfferingWhereInput
+    /**
+     * Limit how many StaticOfferings to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * StaticOffering without action
+   */
+  export type StaticOfferingDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StaticOffering
+     */
+    select?: StaticOfferingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StaticOffering
+     */
+    omit?: StaticOfferingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StaticOfferingInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model DrinkSpecial
+   */
+
+  export type AggregateDrinkSpecial = {
+    _count: DrinkSpecialCountAggregateOutputType | null
+    _avg: DrinkSpecialAvgAggregateOutputType | null
+    _sum: DrinkSpecialSumAggregateOutputType | null
+    _min: DrinkSpecialMinAggregateOutputType | null
+    _max: DrinkSpecialMaxAggregateOutputType | null
+  }
+
+  export type DrinkSpecialAvgAggregateOutputType = {
+    daysOfWeek: number | null
+  }
+
+  export type DrinkSpecialSumAggregateOutputType = {
+    daysOfWeek: number[]
+  }
+
+  export type DrinkSpecialMinAggregateOutputType = {
+    id: string | null
+    barId: string | null
+    name: string | null
+    description: string | null
+    startTime: string | null
+    endTime: string | null
+    active: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type DrinkSpecialMaxAggregateOutputType = {
+    id: string | null
+    barId: string | null
+    name: string | null
+    description: string | null
+    startTime: string | null
+    endTime: string | null
+    active: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type DrinkSpecialCountAggregateOutputType = {
+    id: number
+    barId: number
+    name: number
+    description: number
+    startTime: number
+    endTime: number
+    daysOfWeek: number
+    active: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type DrinkSpecialAvgAggregateInputType = {
+    daysOfWeek?: true
+  }
+
+  export type DrinkSpecialSumAggregateInputType = {
+    daysOfWeek?: true
+  }
+
+  export type DrinkSpecialMinAggregateInputType = {
+    id?: true
+    barId?: true
+    name?: true
+    description?: true
+    startTime?: true
+    endTime?: true
+    active?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type DrinkSpecialMaxAggregateInputType = {
+    id?: true
+    barId?: true
+    name?: true
+    description?: true
+    startTime?: true
+    endTime?: true
+    active?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type DrinkSpecialCountAggregateInputType = {
+    id?: true
+    barId?: true
+    name?: true
+    description?: true
+    startTime?: true
+    endTime?: true
+    daysOfWeek?: true
+    active?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type DrinkSpecialAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DrinkSpecial to aggregate.
+     */
+    where?: DrinkSpecialWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DrinkSpecials to fetch.
+     */
+    orderBy?: DrinkSpecialOrderByWithRelationInput | DrinkSpecialOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DrinkSpecialWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DrinkSpecials from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DrinkSpecials.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DrinkSpecials
+    **/
+    _count?: true | DrinkSpecialCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DrinkSpecialAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DrinkSpecialSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DrinkSpecialMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DrinkSpecialMaxAggregateInputType
+  }
+
+  export type GetDrinkSpecialAggregateType<T extends DrinkSpecialAggregateArgs> = {
+        [P in keyof T & keyof AggregateDrinkSpecial]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDrinkSpecial[P]>
+      : GetScalarType<T[P], AggregateDrinkSpecial[P]>
+  }
+
+
+
+
+  export type DrinkSpecialGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DrinkSpecialWhereInput
+    orderBy?: DrinkSpecialOrderByWithAggregationInput | DrinkSpecialOrderByWithAggregationInput[]
+    by: DrinkSpecialScalarFieldEnum[] | DrinkSpecialScalarFieldEnum
+    having?: DrinkSpecialScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DrinkSpecialCountAggregateInputType | true
+    _avg?: DrinkSpecialAvgAggregateInputType
+    _sum?: DrinkSpecialSumAggregateInputType
+    _min?: DrinkSpecialMinAggregateInputType
+    _max?: DrinkSpecialMaxAggregateInputType
+  }
+
+  export type DrinkSpecialGroupByOutputType = {
+    id: string
+    barId: string
+    name: string
+    description: string | null
+    startTime: string
+    endTime: string
+    daysOfWeek: number[]
+    active: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: DrinkSpecialCountAggregateOutputType | null
+    _avg: DrinkSpecialAvgAggregateOutputType | null
+    _sum: DrinkSpecialSumAggregateOutputType | null
+    _min: DrinkSpecialMinAggregateOutputType | null
+    _max: DrinkSpecialMaxAggregateOutputType | null
+  }
+
+  type GetDrinkSpecialGroupByPayload<T extends DrinkSpecialGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DrinkSpecialGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DrinkSpecialGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DrinkSpecialGroupByOutputType[P]>
+            : GetScalarType<T[P], DrinkSpecialGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DrinkSpecialSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    barId?: boolean
+    name?: boolean
+    description?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    daysOfWeek?: boolean
+    active?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    bar?: boolean | BarDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["drinkSpecial"]>
+
+  export type DrinkSpecialSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    barId?: boolean
+    name?: boolean
+    description?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    daysOfWeek?: boolean
+    active?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    bar?: boolean | BarDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["drinkSpecial"]>
+
+  export type DrinkSpecialSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    barId?: boolean
+    name?: boolean
+    description?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    daysOfWeek?: boolean
+    active?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    bar?: boolean | BarDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["drinkSpecial"]>
+
+  export type DrinkSpecialSelectScalar = {
+    id?: boolean
+    barId?: boolean
+    name?: boolean
+    description?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    daysOfWeek?: boolean
+    active?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type DrinkSpecialOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "barId" | "name" | "description" | "startTime" | "endTime" | "daysOfWeek" | "active" | "createdAt" | "updatedAt", ExtArgs["result"]["drinkSpecial"]>
+  export type DrinkSpecialInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bar?: boolean | BarDefaultArgs<ExtArgs>
+  }
+  export type DrinkSpecialIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bar?: boolean | BarDefaultArgs<ExtArgs>
+  }
+  export type DrinkSpecialIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bar?: boolean | BarDefaultArgs<ExtArgs>
+  }
+
+  export type $DrinkSpecialPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DrinkSpecial"
+    objects: {
+      bar: Prisma.$BarPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      barId: string
+      name: string
+      description: string | null
+      startTime: string
+      endTime: string
+      daysOfWeek: number[]
+      active: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["drinkSpecial"]>
+    composites: {}
+  }
+
+  type DrinkSpecialGetPayload<S extends boolean | null | undefined | DrinkSpecialDefaultArgs> = $Result.GetResult<Prisma.$DrinkSpecialPayload, S>
+
+  type DrinkSpecialCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DrinkSpecialFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DrinkSpecialCountAggregateInputType | true
+    }
+
+  export interface DrinkSpecialDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DrinkSpecial'], meta: { name: 'DrinkSpecial' } }
+    /**
+     * Find zero or one DrinkSpecial that matches the filter.
+     * @param {DrinkSpecialFindUniqueArgs} args - Arguments to find a DrinkSpecial
+     * @example
+     * // Get one DrinkSpecial
+     * const drinkSpecial = await prisma.drinkSpecial.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DrinkSpecialFindUniqueArgs>(args: SelectSubset<T, DrinkSpecialFindUniqueArgs<ExtArgs>>): Prisma__DrinkSpecialClient<$Result.GetResult<Prisma.$DrinkSpecialPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one DrinkSpecial that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DrinkSpecialFindUniqueOrThrowArgs} args - Arguments to find a DrinkSpecial
+     * @example
+     * // Get one DrinkSpecial
+     * const drinkSpecial = await prisma.drinkSpecial.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DrinkSpecialFindUniqueOrThrowArgs>(args: SelectSubset<T, DrinkSpecialFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DrinkSpecialClient<$Result.GetResult<Prisma.$DrinkSpecialPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DrinkSpecial that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DrinkSpecialFindFirstArgs} args - Arguments to find a DrinkSpecial
+     * @example
+     * // Get one DrinkSpecial
+     * const drinkSpecial = await prisma.drinkSpecial.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DrinkSpecialFindFirstArgs>(args?: SelectSubset<T, DrinkSpecialFindFirstArgs<ExtArgs>>): Prisma__DrinkSpecialClient<$Result.GetResult<Prisma.$DrinkSpecialPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DrinkSpecial that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DrinkSpecialFindFirstOrThrowArgs} args - Arguments to find a DrinkSpecial
+     * @example
+     * // Get one DrinkSpecial
+     * const drinkSpecial = await prisma.drinkSpecial.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DrinkSpecialFindFirstOrThrowArgs>(args?: SelectSubset<T, DrinkSpecialFindFirstOrThrowArgs<ExtArgs>>): Prisma__DrinkSpecialClient<$Result.GetResult<Prisma.$DrinkSpecialPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more DrinkSpecials that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DrinkSpecialFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DrinkSpecials
+     * const drinkSpecials = await prisma.drinkSpecial.findMany()
+     * 
+     * // Get first 10 DrinkSpecials
+     * const drinkSpecials = await prisma.drinkSpecial.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const drinkSpecialWithIdOnly = await prisma.drinkSpecial.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DrinkSpecialFindManyArgs>(args?: SelectSubset<T, DrinkSpecialFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DrinkSpecialPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a DrinkSpecial.
+     * @param {DrinkSpecialCreateArgs} args - Arguments to create a DrinkSpecial.
+     * @example
+     * // Create one DrinkSpecial
+     * const DrinkSpecial = await prisma.drinkSpecial.create({
+     *   data: {
+     *     // ... data to create a DrinkSpecial
+     *   }
+     * })
+     * 
+     */
+    create<T extends DrinkSpecialCreateArgs>(args: SelectSubset<T, DrinkSpecialCreateArgs<ExtArgs>>): Prisma__DrinkSpecialClient<$Result.GetResult<Prisma.$DrinkSpecialPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many DrinkSpecials.
+     * @param {DrinkSpecialCreateManyArgs} args - Arguments to create many DrinkSpecials.
+     * @example
+     * // Create many DrinkSpecials
+     * const drinkSpecial = await prisma.drinkSpecial.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DrinkSpecialCreateManyArgs>(args?: SelectSubset<T, DrinkSpecialCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many DrinkSpecials and returns the data saved in the database.
+     * @param {DrinkSpecialCreateManyAndReturnArgs} args - Arguments to create many DrinkSpecials.
+     * @example
+     * // Create many DrinkSpecials
+     * const drinkSpecial = await prisma.drinkSpecial.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many DrinkSpecials and only return the `id`
+     * const drinkSpecialWithIdOnly = await prisma.drinkSpecial.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DrinkSpecialCreateManyAndReturnArgs>(args?: SelectSubset<T, DrinkSpecialCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DrinkSpecialPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a DrinkSpecial.
+     * @param {DrinkSpecialDeleteArgs} args - Arguments to delete one DrinkSpecial.
+     * @example
+     * // Delete one DrinkSpecial
+     * const DrinkSpecial = await prisma.drinkSpecial.delete({
+     *   where: {
+     *     // ... filter to delete one DrinkSpecial
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DrinkSpecialDeleteArgs>(args: SelectSubset<T, DrinkSpecialDeleteArgs<ExtArgs>>): Prisma__DrinkSpecialClient<$Result.GetResult<Prisma.$DrinkSpecialPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one DrinkSpecial.
+     * @param {DrinkSpecialUpdateArgs} args - Arguments to update one DrinkSpecial.
+     * @example
+     * // Update one DrinkSpecial
+     * const drinkSpecial = await prisma.drinkSpecial.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DrinkSpecialUpdateArgs>(args: SelectSubset<T, DrinkSpecialUpdateArgs<ExtArgs>>): Prisma__DrinkSpecialClient<$Result.GetResult<Prisma.$DrinkSpecialPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more DrinkSpecials.
+     * @param {DrinkSpecialDeleteManyArgs} args - Arguments to filter DrinkSpecials to delete.
+     * @example
+     * // Delete a few DrinkSpecials
+     * const { count } = await prisma.drinkSpecial.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DrinkSpecialDeleteManyArgs>(args?: SelectSubset<T, DrinkSpecialDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DrinkSpecials.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DrinkSpecialUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DrinkSpecials
+     * const drinkSpecial = await prisma.drinkSpecial.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DrinkSpecialUpdateManyArgs>(args: SelectSubset<T, DrinkSpecialUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DrinkSpecials and returns the data updated in the database.
+     * @param {DrinkSpecialUpdateManyAndReturnArgs} args - Arguments to update many DrinkSpecials.
+     * @example
+     * // Update many DrinkSpecials
+     * const drinkSpecial = await prisma.drinkSpecial.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more DrinkSpecials and only return the `id`
+     * const drinkSpecialWithIdOnly = await prisma.drinkSpecial.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DrinkSpecialUpdateManyAndReturnArgs>(args: SelectSubset<T, DrinkSpecialUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DrinkSpecialPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one DrinkSpecial.
+     * @param {DrinkSpecialUpsertArgs} args - Arguments to update or create a DrinkSpecial.
+     * @example
+     * // Update or create a DrinkSpecial
+     * const drinkSpecial = await prisma.drinkSpecial.upsert({
+     *   create: {
+     *     // ... data to create a DrinkSpecial
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DrinkSpecial we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DrinkSpecialUpsertArgs>(args: SelectSubset<T, DrinkSpecialUpsertArgs<ExtArgs>>): Prisma__DrinkSpecialClient<$Result.GetResult<Prisma.$DrinkSpecialPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of DrinkSpecials.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DrinkSpecialCountArgs} args - Arguments to filter DrinkSpecials to count.
+     * @example
+     * // Count the number of DrinkSpecials
+     * const count = await prisma.drinkSpecial.count({
+     *   where: {
+     *     // ... the filter for the DrinkSpecials we want to count
+     *   }
+     * })
+    **/
+    count<T extends DrinkSpecialCountArgs>(
+      args?: Subset<T, DrinkSpecialCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DrinkSpecialCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DrinkSpecial.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DrinkSpecialAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DrinkSpecialAggregateArgs>(args: Subset<T, DrinkSpecialAggregateArgs>): Prisma.PrismaPromise<GetDrinkSpecialAggregateType<T>>
+
+    /**
+     * Group by DrinkSpecial.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DrinkSpecialGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DrinkSpecialGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DrinkSpecialGroupByArgs['orderBy'] }
+        : { orderBy?: DrinkSpecialGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DrinkSpecialGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDrinkSpecialGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DrinkSpecial model
+   */
+  readonly fields: DrinkSpecialFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DrinkSpecial.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DrinkSpecialClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    bar<T extends BarDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BarDefaultArgs<ExtArgs>>): Prisma__BarClient<$Result.GetResult<Prisma.$BarPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DrinkSpecial model
+   */
+  interface DrinkSpecialFieldRefs {
+    readonly id: FieldRef<"DrinkSpecial", 'String'>
+    readonly barId: FieldRef<"DrinkSpecial", 'String'>
+    readonly name: FieldRef<"DrinkSpecial", 'String'>
+    readonly description: FieldRef<"DrinkSpecial", 'String'>
+    readonly startTime: FieldRef<"DrinkSpecial", 'String'>
+    readonly endTime: FieldRef<"DrinkSpecial", 'String'>
+    readonly daysOfWeek: FieldRef<"DrinkSpecial", 'Int[]'>
+    readonly active: FieldRef<"DrinkSpecial", 'Boolean'>
+    readonly createdAt: FieldRef<"DrinkSpecial", 'DateTime'>
+    readonly updatedAt: FieldRef<"DrinkSpecial", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DrinkSpecial findUnique
+   */
+  export type DrinkSpecialFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DrinkSpecial
+     */
+    select?: DrinkSpecialSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DrinkSpecial
+     */
+    omit?: DrinkSpecialOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DrinkSpecialInclude<ExtArgs> | null
+    /**
+     * Filter, which DrinkSpecial to fetch.
+     */
+    where: DrinkSpecialWhereUniqueInput
+  }
+
+  /**
+   * DrinkSpecial findUniqueOrThrow
+   */
+  export type DrinkSpecialFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DrinkSpecial
+     */
+    select?: DrinkSpecialSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DrinkSpecial
+     */
+    omit?: DrinkSpecialOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DrinkSpecialInclude<ExtArgs> | null
+    /**
+     * Filter, which DrinkSpecial to fetch.
+     */
+    where: DrinkSpecialWhereUniqueInput
+  }
+
+  /**
+   * DrinkSpecial findFirst
+   */
+  export type DrinkSpecialFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DrinkSpecial
+     */
+    select?: DrinkSpecialSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DrinkSpecial
+     */
+    omit?: DrinkSpecialOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DrinkSpecialInclude<ExtArgs> | null
+    /**
+     * Filter, which DrinkSpecial to fetch.
+     */
+    where?: DrinkSpecialWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DrinkSpecials to fetch.
+     */
+    orderBy?: DrinkSpecialOrderByWithRelationInput | DrinkSpecialOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DrinkSpecials.
+     */
+    cursor?: DrinkSpecialWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DrinkSpecials from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DrinkSpecials.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DrinkSpecials.
+     */
+    distinct?: DrinkSpecialScalarFieldEnum | DrinkSpecialScalarFieldEnum[]
+  }
+
+  /**
+   * DrinkSpecial findFirstOrThrow
+   */
+  export type DrinkSpecialFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DrinkSpecial
+     */
+    select?: DrinkSpecialSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DrinkSpecial
+     */
+    omit?: DrinkSpecialOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DrinkSpecialInclude<ExtArgs> | null
+    /**
+     * Filter, which DrinkSpecial to fetch.
+     */
+    where?: DrinkSpecialWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DrinkSpecials to fetch.
+     */
+    orderBy?: DrinkSpecialOrderByWithRelationInput | DrinkSpecialOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DrinkSpecials.
+     */
+    cursor?: DrinkSpecialWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DrinkSpecials from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DrinkSpecials.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DrinkSpecials.
+     */
+    distinct?: DrinkSpecialScalarFieldEnum | DrinkSpecialScalarFieldEnum[]
+  }
+
+  /**
+   * DrinkSpecial findMany
+   */
+  export type DrinkSpecialFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DrinkSpecial
+     */
+    select?: DrinkSpecialSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DrinkSpecial
+     */
+    omit?: DrinkSpecialOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DrinkSpecialInclude<ExtArgs> | null
+    /**
+     * Filter, which DrinkSpecials to fetch.
+     */
+    where?: DrinkSpecialWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DrinkSpecials to fetch.
+     */
+    orderBy?: DrinkSpecialOrderByWithRelationInput | DrinkSpecialOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DrinkSpecials.
+     */
+    cursor?: DrinkSpecialWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DrinkSpecials from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DrinkSpecials.
+     */
+    skip?: number
+    distinct?: DrinkSpecialScalarFieldEnum | DrinkSpecialScalarFieldEnum[]
+  }
+
+  /**
+   * DrinkSpecial create
+   */
+  export type DrinkSpecialCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DrinkSpecial
+     */
+    select?: DrinkSpecialSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DrinkSpecial
+     */
+    omit?: DrinkSpecialOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DrinkSpecialInclude<ExtArgs> | null
+    /**
+     * The data needed to create a DrinkSpecial.
+     */
+    data: XOR<DrinkSpecialCreateInput, DrinkSpecialUncheckedCreateInput>
+  }
+
+  /**
+   * DrinkSpecial createMany
+   */
+  export type DrinkSpecialCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DrinkSpecials.
+     */
+    data: DrinkSpecialCreateManyInput | DrinkSpecialCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DrinkSpecial createManyAndReturn
+   */
+  export type DrinkSpecialCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DrinkSpecial
+     */
+    select?: DrinkSpecialSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DrinkSpecial
+     */
+    omit?: DrinkSpecialOmit<ExtArgs> | null
+    /**
+     * The data used to create many DrinkSpecials.
+     */
+    data: DrinkSpecialCreateManyInput | DrinkSpecialCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DrinkSpecialIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DrinkSpecial update
+   */
+  export type DrinkSpecialUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DrinkSpecial
+     */
+    select?: DrinkSpecialSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DrinkSpecial
+     */
+    omit?: DrinkSpecialOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DrinkSpecialInclude<ExtArgs> | null
+    /**
+     * The data needed to update a DrinkSpecial.
+     */
+    data: XOR<DrinkSpecialUpdateInput, DrinkSpecialUncheckedUpdateInput>
+    /**
+     * Choose, which DrinkSpecial to update.
+     */
+    where: DrinkSpecialWhereUniqueInput
+  }
+
+  /**
+   * DrinkSpecial updateMany
+   */
+  export type DrinkSpecialUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DrinkSpecials.
+     */
+    data: XOR<DrinkSpecialUpdateManyMutationInput, DrinkSpecialUncheckedUpdateManyInput>
+    /**
+     * Filter which DrinkSpecials to update
+     */
+    where?: DrinkSpecialWhereInput
+    /**
+     * Limit how many DrinkSpecials to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DrinkSpecial updateManyAndReturn
+   */
+  export type DrinkSpecialUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DrinkSpecial
+     */
+    select?: DrinkSpecialSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DrinkSpecial
+     */
+    omit?: DrinkSpecialOmit<ExtArgs> | null
+    /**
+     * The data used to update DrinkSpecials.
+     */
+    data: XOR<DrinkSpecialUpdateManyMutationInput, DrinkSpecialUncheckedUpdateManyInput>
+    /**
+     * Filter which DrinkSpecials to update
+     */
+    where?: DrinkSpecialWhereInput
+    /**
+     * Limit how many DrinkSpecials to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DrinkSpecialIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DrinkSpecial upsert
+   */
+  export type DrinkSpecialUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DrinkSpecial
+     */
+    select?: DrinkSpecialSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DrinkSpecial
+     */
+    omit?: DrinkSpecialOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DrinkSpecialInclude<ExtArgs> | null
+    /**
+     * The filter to search for the DrinkSpecial to update in case it exists.
+     */
+    where: DrinkSpecialWhereUniqueInput
+    /**
+     * In case the DrinkSpecial found by the `where` argument doesn't exist, create a new DrinkSpecial with this data.
+     */
+    create: XOR<DrinkSpecialCreateInput, DrinkSpecialUncheckedCreateInput>
+    /**
+     * In case the DrinkSpecial was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DrinkSpecialUpdateInput, DrinkSpecialUncheckedUpdateInput>
+  }
+
+  /**
+   * DrinkSpecial delete
+   */
+  export type DrinkSpecialDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DrinkSpecial
+     */
+    select?: DrinkSpecialSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DrinkSpecial
+     */
+    omit?: DrinkSpecialOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DrinkSpecialInclude<ExtArgs> | null
+    /**
+     * Filter which DrinkSpecial to delete.
+     */
+    where: DrinkSpecialWhereUniqueInput
+  }
+
+  /**
+   * DrinkSpecial deleteMany
+   */
+  export type DrinkSpecialDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DrinkSpecials to delete
+     */
+    where?: DrinkSpecialWhereInput
+    /**
+     * Limit how many DrinkSpecials to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * DrinkSpecial without action
+   */
+  export type DrinkSpecialDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DrinkSpecial
+     */
+    select?: DrinkSpecialSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DrinkSpecial
+     */
+    omit?: DrinkSpecialOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DrinkSpecialInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model FoodOffering
+   */
+
+  export type AggregateFoodOffering = {
+    _count: FoodOfferingCountAggregateOutputType | null
+    _avg: FoodOfferingAvgAggregateOutputType | null
+    _sum: FoodOfferingSumAggregateOutputType | null
+    _min: FoodOfferingMinAggregateOutputType | null
+    _max: FoodOfferingMaxAggregateOutputType | null
+  }
+
+  export type FoodOfferingAvgAggregateOutputType = {
+    specialDays: number | null
+  }
+
+  export type FoodOfferingSumAggregateOutputType = {
+    specialDays: number[]
+  }
+
+  export type FoodOfferingMinAggregateOutputType = {
+    id: string | null
+    barId: string | null
+    name: string | null
+    description: string | null
+    isSpecial: boolean | null
+    active: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type FoodOfferingMaxAggregateOutputType = {
+    id: string | null
+    barId: string | null
+    name: string | null
+    description: string | null
+    isSpecial: boolean | null
+    active: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type FoodOfferingCountAggregateOutputType = {
+    id: number
+    barId: number
+    name: number
+    description: number
+    specialDays: number
+    isSpecial: number
+    active: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type FoodOfferingAvgAggregateInputType = {
+    specialDays?: true
+  }
+
+  export type FoodOfferingSumAggregateInputType = {
+    specialDays?: true
+  }
+
+  export type FoodOfferingMinAggregateInputType = {
+    id?: true
+    barId?: true
+    name?: true
+    description?: true
+    isSpecial?: true
+    active?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type FoodOfferingMaxAggregateInputType = {
+    id?: true
+    barId?: true
+    name?: true
+    description?: true
+    isSpecial?: true
+    active?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type FoodOfferingCountAggregateInputType = {
+    id?: true
+    barId?: true
+    name?: true
+    description?: true
+    specialDays?: true
+    isSpecial?: true
+    active?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type FoodOfferingAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FoodOffering to aggregate.
+     */
+    where?: FoodOfferingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FoodOfferings to fetch.
+     */
+    orderBy?: FoodOfferingOrderByWithRelationInput | FoodOfferingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: FoodOfferingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FoodOfferings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FoodOfferings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned FoodOfferings
+    **/
+    _count?: true | FoodOfferingCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: FoodOfferingAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: FoodOfferingSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FoodOfferingMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FoodOfferingMaxAggregateInputType
+  }
+
+  export type GetFoodOfferingAggregateType<T extends FoodOfferingAggregateArgs> = {
+        [P in keyof T & keyof AggregateFoodOffering]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFoodOffering[P]>
+      : GetScalarType<T[P], AggregateFoodOffering[P]>
+  }
+
+
+
+
+  export type FoodOfferingGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FoodOfferingWhereInput
+    orderBy?: FoodOfferingOrderByWithAggregationInput | FoodOfferingOrderByWithAggregationInput[]
+    by: FoodOfferingScalarFieldEnum[] | FoodOfferingScalarFieldEnum
+    having?: FoodOfferingScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FoodOfferingCountAggregateInputType | true
+    _avg?: FoodOfferingAvgAggregateInputType
+    _sum?: FoodOfferingSumAggregateInputType
+    _min?: FoodOfferingMinAggregateInputType
+    _max?: FoodOfferingMaxAggregateInputType
+  }
+
+  export type FoodOfferingGroupByOutputType = {
+    id: string
+    barId: string
+    name: string
+    description: string | null
+    specialDays: number[]
+    isSpecial: boolean
+    active: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: FoodOfferingCountAggregateOutputType | null
+    _avg: FoodOfferingAvgAggregateOutputType | null
+    _sum: FoodOfferingSumAggregateOutputType | null
+    _min: FoodOfferingMinAggregateOutputType | null
+    _max: FoodOfferingMaxAggregateOutputType | null
+  }
+
+  type GetFoodOfferingGroupByPayload<T extends FoodOfferingGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FoodOfferingGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FoodOfferingGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FoodOfferingGroupByOutputType[P]>
+            : GetScalarType<T[P], FoodOfferingGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type FoodOfferingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    barId?: boolean
+    name?: boolean
+    description?: boolean
+    specialDays?: boolean
+    isSpecial?: boolean
+    active?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    bar?: boolean | BarDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["foodOffering"]>
+
+  export type FoodOfferingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    barId?: boolean
+    name?: boolean
+    description?: boolean
+    specialDays?: boolean
+    isSpecial?: boolean
+    active?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    bar?: boolean | BarDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["foodOffering"]>
+
+  export type FoodOfferingSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    barId?: boolean
+    name?: boolean
+    description?: boolean
+    specialDays?: boolean
+    isSpecial?: boolean
+    active?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    bar?: boolean | BarDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["foodOffering"]>
+
+  export type FoodOfferingSelectScalar = {
+    id?: boolean
+    barId?: boolean
+    name?: boolean
+    description?: boolean
+    specialDays?: boolean
+    isSpecial?: boolean
+    active?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type FoodOfferingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "barId" | "name" | "description" | "specialDays" | "isSpecial" | "active" | "createdAt" | "updatedAt", ExtArgs["result"]["foodOffering"]>
+  export type FoodOfferingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bar?: boolean | BarDefaultArgs<ExtArgs>
+  }
+  export type FoodOfferingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bar?: boolean | BarDefaultArgs<ExtArgs>
+  }
+  export type FoodOfferingIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bar?: boolean | BarDefaultArgs<ExtArgs>
+  }
+
+  export type $FoodOfferingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "FoodOffering"
+    objects: {
+      bar: Prisma.$BarPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      barId: string
+      name: string
+      description: string | null
+      specialDays: number[]
+      isSpecial: boolean
+      active: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["foodOffering"]>
+    composites: {}
+  }
+
+  type FoodOfferingGetPayload<S extends boolean | null | undefined | FoodOfferingDefaultArgs> = $Result.GetResult<Prisma.$FoodOfferingPayload, S>
+
+  type FoodOfferingCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<FoodOfferingFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FoodOfferingCountAggregateInputType | true
+    }
+
+  export interface FoodOfferingDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FoodOffering'], meta: { name: 'FoodOffering' } }
+    /**
+     * Find zero or one FoodOffering that matches the filter.
+     * @param {FoodOfferingFindUniqueArgs} args - Arguments to find a FoodOffering
+     * @example
+     * // Get one FoodOffering
+     * const foodOffering = await prisma.foodOffering.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends FoodOfferingFindUniqueArgs>(args: SelectSubset<T, FoodOfferingFindUniqueArgs<ExtArgs>>): Prisma__FoodOfferingClient<$Result.GetResult<Prisma.$FoodOfferingPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one FoodOffering that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {FoodOfferingFindUniqueOrThrowArgs} args - Arguments to find a FoodOffering
+     * @example
+     * // Get one FoodOffering
+     * const foodOffering = await prisma.foodOffering.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends FoodOfferingFindUniqueOrThrowArgs>(args: SelectSubset<T, FoodOfferingFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FoodOfferingClient<$Result.GetResult<Prisma.$FoodOfferingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FoodOffering that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FoodOfferingFindFirstArgs} args - Arguments to find a FoodOffering
+     * @example
+     * // Get one FoodOffering
+     * const foodOffering = await prisma.foodOffering.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends FoodOfferingFindFirstArgs>(args?: SelectSubset<T, FoodOfferingFindFirstArgs<ExtArgs>>): Prisma__FoodOfferingClient<$Result.GetResult<Prisma.$FoodOfferingPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FoodOffering that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FoodOfferingFindFirstOrThrowArgs} args - Arguments to find a FoodOffering
+     * @example
+     * // Get one FoodOffering
+     * const foodOffering = await prisma.foodOffering.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends FoodOfferingFindFirstOrThrowArgs>(args?: SelectSubset<T, FoodOfferingFindFirstOrThrowArgs<ExtArgs>>): Prisma__FoodOfferingClient<$Result.GetResult<Prisma.$FoodOfferingPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more FoodOfferings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FoodOfferingFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all FoodOfferings
+     * const foodOfferings = await prisma.foodOffering.findMany()
+     * 
+     * // Get first 10 FoodOfferings
+     * const foodOfferings = await prisma.foodOffering.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const foodOfferingWithIdOnly = await prisma.foodOffering.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends FoodOfferingFindManyArgs>(args?: SelectSubset<T, FoodOfferingFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FoodOfferingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a FoodOffering.
+     * @param {FoodOfferingCreateArgs} args - Arguments to create a FoodOffering.
+     * @example
+     * // Create one FoodOffering
+     * const FoodOffering = await prisma.foodOffering.create({
+     *   data: {
+     *     // ... data to create a FoodOffering
+     *   }
+     * })
+     * 
+     */
+    create<T extends FoodOfferingCreateArgs>(args: SelectSubset<T, FoodOfferingCreateArgs<ExtArgs>>): Prisma__FoodOfferingClient<$Result.GetResult<Prisma.$FoodOfferingPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many FoodOfferings.
+     * @param {FoodOfferingCreateManyArgs} args - Arguments to create many FoodOfferings.
+     * @example
+     * // Create many FoodOfferings
+     * const foodOffering = await prisma.foodOffering.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends FoodOfferingCreateManyArgs>(args?: SelectSubset<T, FoodOfferingCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many FoodOfferings and returns the data saved in the database.
+     * @param {FoodOfferingCreateManyAndReturnArgs} args - Arguments to create many FoodOfferings.
+     * @example
+     * // Create many FoodOfferings
+     * const foodOffering = await prisma.foodOffering.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many FoodOfferings and only return the `id`
+     * const foodOfferingWithIdOnly = await prisma.foodOffering.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends FoodOfferingCreateManyAndReturnArgs>(args?: SelectSubset<T, FoodOfferingCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FoodOfferingPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a FoodOffering.
+     * @param {FoodOfferingDeleteArgs} args - Arguments to delete one FoodOffering.
+     * @example
+     * // Delete one FoodOffering
+     * const FoodOffering = await prisma.foodOffering.delete({
+     *   where: {
+     *     // ... filter to delete one FoodOffering
+     *   }
+     * })
+     * 
+     */
+    delete<T extends FoodOfferingDeleteArgs>(args: SelectSubset<T, FoodOfferingDeleteArgs<ExtArgs>>): Prisma__FoodOfferingClient<$Result.GetResult<Prisma.$FoodOfferingPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one FoodOffering.
+     * @param {FoodOfferingUpdateArgs} args - Arguments to update one FoodOffering.
+     * @example
+     * // Update one FoodOffering
+     * const foodOffering = await prisma.foodOffering.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends FoodOfferingUpdateArgs>(args: SelectSubset<T, FoodOfferingUpdateArgs<ExtArgs>>): Prisma__FoodOfferingClient<$Result.GetResult<Prisma.$FoodOfferingPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more FoodOfferings.
+     * @param {FoodOfferingDeleteManyArgs} args - Arguments to filter FoodOfferings to delete.
+     * @example
+     * // Delete a few FoodOfferings
+     * const { count } = await prisma.foodOffering.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends FoodOfferingDeleteManyArgs>(args?: SelectSubset<T, FoodOfferingDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FoodOfferings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FoodOfferingUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many FoodOfferings
+     * const foodOffering = await prisma.foodOffering.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends FoodOfferingUpdateManyArgs>(args: SelectSubset<T, FoodOfferingUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FoodOfferings and returns the data updated in the database.
+     * @param {FoodOfferingUpdateManyAndReturnArgs} args - Arguments to update many FoodOfferings.
+     * @example
+     * // Update many FoodOfferings
+     * const foodOffering = await prisma.foodOffering.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more FoodOfferings and only return the `id`
+     * const foodOfferingWithIdOnly = await prisma.foodOffering.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends FoodOfferingUpdateManyAndReturnArgs>(args: SelectSubset<T, FoodOfferingUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FoodOfferingPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one FoodOffering.
+     * @param {FoodOfferingUpsertArgs} args - Arguments to update or create a FoodOffering.
+     * @example
+     * // Update or create a FoodOffering
+     * const foodOffering = await prisma.foodOffering.upsert({
+     *   create: {
+     *     // ... data to create a FoodOffering
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the FoodOffering we want to update
+     *   }
+     * })
+     */
+    upsert<T extends FoodOfferingUpsertArgs>(args: SelectSubset<T, FoodOfferingUpsertArgs<ExtArgs>>): Prisma__FoodOfferingClient<$Result.GetResult<Prisma.$FoodOfferingPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of FoodOfferings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FoodOfferingCountArgs} args - Arguments to filter FoodOfferings to count.
+     * @example
+     * // Count the number of FoodOfferings
+     * const count = await prisma.foodOffering.count({
+     *   where: {
+     *     // ... the filter for the FoodOfferings we want to count
+     *   }
+     * })
+    **/
+    count<T extends FoodOfferingCountArgs>(
+      args?: Subset<T, FoodOfferingCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FoodOfferingCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a FoodOffering.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FoodOfferingAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FoodOfferingAggregateArgs>(args: Subset<T, FoodOfferingAggregateArgs>): Prisma.PrismaPromise<GetFoodOfferingAggregateType<T>>
+
+    /**
+     * Group by FoodOffering.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FoodOfferingGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends FoodOfferingGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: FoodOfferingGroupByArgs['orderBy'] }
+        : { orderBy?: FoodOfferingGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, FoodOfferingGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFoodOfferingGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the FoodOffering model
+   */
+  readonly fields: FoodOfferingFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for FoodOffering.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__FoodOfferingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    bar<T extends BarDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BarDefaultArgs<ExtArgs>>): Prisma__BarClient<$Result.GetResult<Prisma.$BarPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the FoodOffering model
+   */
+  interface FoodOfferingFieldRefs {
+    readonly id: FieldRef<"FoodOffering", 'String'>
+    readonly barId: FieldRef<"FoodOffering", 'String'>
+    readonly name: FieldRef<"FoodOffering", 'String'>
+    readonly description: FieldRef<"FoodOffering", 'String'>
+    readonly specialDays: FieldRef<"FoodOffering", 'Int[]'>
+    readonly isSpecial: FieldRef<"FoodOffering", 'Boolean'>
+    readonly active: FieldRef<"FoodOffering", 'Boolean'>
+    readonly createdAt: FieldRef<"FoodOffering", 'DateTime'>
+    readonly updatedAt: FieldRef<"FoodOffering", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * FoodOffering findUnique
+   */
+  export type FoodOfferingFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FoodOffering
+     */
+    select?: FoodOfferingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FoodOffering
+     */
+    omit?: FoodOfferingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodOfferingInclude<ExtArgs> | null
+    /**
+     * Filter, which FoodOffering to fetch.
+     */
+    where: FoodOfferingWhereUniqueInput
+  }
+
+  /**
+   * FoodOffering findUniqueOrThrow
+   */
+  export type FoodOfferingFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FoodOffering
+     */
+    select?: FoodOfferingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FoodOffering
+     */
+    omit?: FoodOfferingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodOfferingInclude<ExtArgs> | null
+    /**
+     * Filter, which FoodOffering to fetch.
+     */
+    where: FoodOfferingWhereUniqueInput
+  }
+
+  /**
+   * FoodOffering findFirst
+   */
+  export type FoodOfferingFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FoodOffering
+     */
+    select?: FoodOfferingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FoodOffering
+     */
+    omit?: FoodOfferingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodOfferingInclude<ExtArgs> | null
+    /**
+     * Filter, which FoodOffering to fetch.
+     */
+    where?: FoodOfferingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FoodOfferings to fetch.
+     */
+    orderBy?: FoodOfferingOrderByWithRelationInput | FoodOfferingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FoodOfferings.
+     */
+    cursor?: FoodOfferingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FoodOfferings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FoodOfferings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FoodOfferings.
+     */
+    distinct?: FoodOfferingScalarFieldEnum | FoodOfferingScalarFieldEnum[]
+  }
+
+  /**
+   * FoodOffering findFirstOrThrow
+   */
+  export type FoodOfferingFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FoodOffering
+     */
+    select?: FoodOfferingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FoodOffering
+     */
+    omit?: FoodOfferingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodOfferingInclude<ExtArgs> | null
+    /**
+     * Filter, which FoodOffering to fetch.
+     */
+    where?: FoodOfferingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FoodOfferings to fetch.
+     */
+    orderBy?: FoodOfferingOrderByWithRelationInput | FoodOfferingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FoodOfferings.
+     */
+    cursor?: FoodOfferingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FoodOfferings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FoodOfferings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FoodOfferings.
+     */
+    distinct?: FoodOfferingScalarFieldEnum | FoodOfferingScalarFieldEnum[]
+  }
+
+  /**
+   * FoodOffering findMany
+   */
+  export type FoodOfferingFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FoodOffering
+     */
+    select?: FoodOfferingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FoodOffering
+     */
+    omit?: FoodOfferingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodOfferingInclude<ExtArgs> | null
+    /**
+     * Filter, which FoodOfferings to fetch.
+     */
+    where?: FoodOfferingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FoodOfferings to fetch.
+     */
+    orderBy?: FoodOfferingOrderByWithRelationInput | FoodOfferingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing FoodOfferings.
+     */
+    cursor?: FoodOfferingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FoodOfferings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FoodOfferings.
+     */
+    skip?: number
+    distinct?: FoodOfferingScalarFieldEnum | FoodOfferingScalarFieldEnum[]
+  }
+
+  /**
+   * FoodOffering create
+   */
+  export type FoodOfferingCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FoodOffering
+     */
+    select?: FoodOfferingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FoodOffering
+     */
+    omit?: FoodOfferingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodOfferingInclude<ExtArgs> | null
+    /**
+     * The data needed to create a FoodOffering.
+     */
+    data: XOR<FoodOfferingCreateInput, FoodOfferingUncheckedCreateInput>
+  }
+
+  /**
+   * FoodOffering createMany
+   */
+  export type FoodOfferingCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many FoodOfferings.
+     */
+    data: FoodOfferingCreateManyInput | FoodOfferingCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * FoodOffering createManyAndReturn
+   */
+  export type FoodOfferingCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FoodOffering
+     */
+    select?: FoodOfferingSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the FoodOffering
+     */
+    omit?: FoodOfferingOmit<ExtArgs> | null
+    /**
+     * The data used to create many FoodOfferings.
+     */
+    data: FoodOfferingCreateManyInput | FoodOfferingCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodOfferingIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * FoodOffering update
+   */
+  export type FoodOfferingUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FoodOffering
+     */
+    select?: FoodOfferingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FoodOffering
+     */
+    omit?: FoodOfferingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodOfferingInclude<ExtArgs> | null
+    /**
+     * The data needed to update a FoodOffering.
+     */
+    data: XOR<FoodOfferingUpdateInput, FoodOfferingUncheckedUpdateInput>
+    /**
+     * Choose, which FoodOffering to update.
+     */
+    where: FoodOfferingWhereUniqueInput
+  }
+
+  /**
+   * FoodOffering updateMany
+   */
+  export type FoodOfferingUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update FoodOfferings.
+     */
+    data: XOR<FoodOfferingUpdateManyMutationInput, FoodOfferingUncheckedUpdateManyInput>
+    /**
+     * Filter which FoodOfferings to update
+     */
+    where?: FoodOfferingWhereInput
+    /**
+     * Limit how many FoodOfferings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * FoodOffering updateManyAndReturn
+   */
+  export type FoodOfferingUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FoodOffering
+     */
+    select?: FoodOfferingSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the FoodOffering
+     */
+    omit?: FoodOfferingOmit<ExtArgs> | null
+    /**
+     * The data used to update FoodOfferings.
+     */
+    data: XOR<FoodOfferingUpdateManyMutationInput, FoodOfferingUncheckedUpdateManyInput>
+    /**
+     * Filter which FoodOfferings to update
+     */
+    where?: FoodOfferingWhereInput
+    /**
+     * Limit how many FoodOfferings to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodOfferingIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * FoodOffering upsert
+   */
+  export type FoodOfferingUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FoodOffering
+     */
+    select?: FoodOfferingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FoodOffering
+     */
+    omit?: FoodOfferingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodOfferingInclude<ExtArgs> | null
+    /**
+     * The filter to search for the FoodOffering to update in case it exists.
+     */
+    where: FoodOfferingWhereUniqueInput
+    /**
+     * In case the FoodOffering found by the `where` argument doesn't exist, create a new FoodOffering with this data.
+     */
+    create: XOR<FoodOfferingCreateInput, FoodOfferingUncheckedCreateInput>
+    /**
+     * In case the FoodOffering was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<FoodOfferingUpdateInput, FoodOfferingUncheckedUpdateInput>
+  }
+
+  /**
+   * FoodOffering delete
+   */
+  export type FoodOfferingDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FoodOffering
+     */
+    select?: FoodOfferingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FoodOffering
+     */
+    omit?: FoodOfferingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodOfferingInclude<ExtArgs> | null
+    /**
+     * Filter which FoodOffering to delete.
+     */
+    where: FoodOfferingWhereUniqueInput
+  }
+
+  /**
+   * FoodOffering deleteMany
+   */
+  export type FoodOfferingDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FoodOfferings to delete
+     */
+    where?: FoodOfferingWhereInput
+    /**
+     * Limit how many FoodOfferings to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * FoodOffering without action
+   */
+  export type FoodOfferingDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FoodOffering
+     */
+    select?: FoodOfferingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FoodOffering
+     */
+    omit?: FoodOfferingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodOfferingInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -37280,6 +41088,51 @@ export namespace Prisma {
   };
 
   export type BarVisitScalarFieldEnum = (typeof BarVisitScalarFieldEnum)[keyof typeof BarVisitScalarFieldEnum]
+
+
+  export const StaticOfferingScalarFieldEnum: {
+    id: 'id',
+    barId: 'barId',
+    name: 'name',
+    icon: 'icon',
+    description: 'description',
+    position: 'position',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type StaticOfferingScalarFieldEnum = (typeof StaticOfferingScalarFieldEnum)[keyof typeof StaticOfferingScalarFieldEnum]
+
+
+  export const DrinkSpecialScalarFieldEnum: {
+    id: 'id',
+    barId: 'barId',
+    name: 'name',
+    description: 'description',
+    startTime: 'startTime',
+    endTime: 'endTime',
+    daysOfWeek: 'daysOfWeek',
+    active: 'active',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type DrinkSpecialScalarFieldEnum = (typeof DrinkSpecialScalarFieldEnum)[keyof typeof DrinkSpecialScalarFieldEnum]
+
+
+  export const FoodOfferingScalarFieldEnum: {
+    id: 'id',
+    barId: 'barId',
+    name: 'name',
+    description: 'description',
+    specialDays: 'specialDays',
+    isSpecial: 'isSpecial',
+    active: 'active',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type FoodOfferingScalarFieldEnum = (typeof FoodOfferingScalarFieldEnum)[keyof typeof FoodOfferingScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -37974,6 +41827,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotListRelationFilter
     visits?: BarVisitListRelationFilter
     varianceAlerts?: VarianceAlertListRelationFilter
+    staticOfferings?: StaticOfferingListRelationFilter
+    drinkSpecials?: DrinkSpecialListRelationFilter
+    foodOfferings?: FoodOfferingListRelationFilter
   }
 
   export type BarOrderByWithRelationInput = {
@@ -38017,6 +41873,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotOrderByRelationAggregateInput
     visits?: BarVisitOrderByRelationAggregateInput
     varianceAlerts?: VarianceAlertOrderByRelationAggregateInput
+    staticOfferings?: StaticOfferingOrderByRelationAggregateInput
+    drinkSpecials?: DrinkSpecialOrderByRelationAggregateInput
+    foodOfferings?: FoodOfferingOrderByRelationAggregateInput
   }
 
   export type BarWhereUniqueInput = Prisma.AtLeast<{
@@ -38063,6 +41922,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotListRelationFilter
     visits?: BarVisitListRelationFilter
     varianceAlerts?: VarianceAlertListRelationFilter
+    staticOfferings?: StaticOfferingListRelationFilter
+    drinkSpecials?: DrinkSpecialListRelationFilter
+    foodOfferings?: FoodOfferingListRelationFilter
   }, "id" | "slug">
 
   export type BarOrderByWithAggregationInput = {
@@ -39891,6 +43753,238 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"BarVisit"> | Date | string
   }
 
+  export type StaticOfferingWhereInput = {
+    AND?: StaticOfferingWhereInput | StaticOfferingWhereInput[]
+    OR?: StaticOfferingWhereInput[]
+    NOT?: StaticOfferingWhereInput | StaticOfferingWhereInput[]
+    id?: StringFilter<"StaticOffering"> | string
+    barId?: StringFilter<"StaticOffering"> | string
+    name?: StringFilter<"StaticOffering"> | string
+    icon?: StringFilter<"StaticOffering"> | string
+    description?: StringNullableFilter<"StaticOffering"> | string | null
+    position?: IntFilter<"StaticOffering"> | number
+    createdAt?: DateTimeFilter<"StaticOffering"> | Date | string
+    updatedAt?: DateTimeFilter<"StaticOffering"> | Date | string
+    bar?: XOR<BarScalarRelationFilter, BarWhereInput>
+  }
+
+  export type StaticOfferingOrderByWithRelationInput = {
+    id?: SortOrder
+    barId?: SortOrder
+    name?: SortOrder
+    icon?: SortOrder
+    description?: SortOrderInput | SortOrder
+    position?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    bar?: BarOrderByWithRelationInput
+  }
+
+  export type StaticOfferingWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    barId_position?: StaticOfferingBarIdPositionCompoundUniqueInput
+    AND?: StaticOfferingWhereInput | StaticOfferingWhereInput[]
+    OR?: StaticOfferingWhereInput[]
+    NOT?: StaticOfferingWhereInput | StaticOfferingWhereInput[]
+    barId?: StringFilter<"StaticOffering"> | string
+    name?: StringFilter<"StaticOffering"> | string
+    icon?: StringFilter<"StaticOffering"> | string
+    description?: StringNullableFilter<"StaticOffering"> | string | null
+    position?: IntFilter<"StaticOffering"> | number
+    createdAt?: DateTimeFilter<"StaticOffering"> | Date | string
+    updatedAt?: DateTimeFilter<"StaticOffering"> | Date | string
+    bar?: XOR<BarScalarRelationFilter, BarWhereInput>
+  }, "id" | "barId_position">
+
+  export type StaticOfferingOrderByWithAggregationInput = {
+    id?: SortOrder
+    barId?: SortOrder
+    name?: SortOrder
+    icon?: SortOrder
+    description?: SortOrderInput | SortOrder
+    position?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: StaticOfferingCountOrderByAggregateInput
+    _avg?: StaticOfferingAvgOrderByAggregateInput
+    _max?: StaticOfferingMaxOrderByAggregateInput
+    _min?: StaticOfferingMinOrderByAggregateInput
+    _sum?: StaticOfferingSumOrderByAggregateInput
+  }
+
+  export type StaticOfferingScalarWhereWithAggregatesInput = {
+    AND?: StaticOfferingScalarWhereWithAggregatesInput | StaticOfferingScalarWhereWithAggregatesInput[]
+    OR?: StaticOfferingScalarWhereWithAggregatesInput[]
+    NOT?: StaticOfferingScalarWhereWithAggregatesInput | StaticOfferingScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"StaticOffering"> | string
+    barId?: StringWithAggregatesFilter<"StaticOffering"> | string
+    name?: StringWithAggregatesFilter<"StaticOffering"> | string
+    icon?: StringWithAggregatesFilter<"StaticOffering"> | string
+    description?: StringNullableWithAggregatesFilter<"StaticOffering"> | string | null
+    position?: IntWithAggregatesFilter<"StaticOffering"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"StaticOffering"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"StaticOffering"> | Date | string
+  }
+
+  export type DrinkSpecialWhereInput = {
+    AND?: DrinkSpecialWhereInput | DrinkSpecialWhereInput[]
+    OR?: DrinkSpecialWhereInput[]
+    NOT?: DrinkSpecialWhereInput | DrinkSpecialWhereInput[]
+    id?: StringFilter<"DrinkSpecial"> | string
+    barId?: StringFilter<"DrinkSpecial"> | string
+    name?: StringFilter<"DrinkSpecial"> | string
+    description?: StringNullableFilter<"DrinkSpecial"> | string | null
+    startTime?: StringFilter<"DrinkSpecial"> | string
+    endTime?: StringFilter<"DrinkSpecial"> | string
+    daysOfWeek?: IntNullableListFilter<"DrinkSpecial">
+    active?: BoolFilter<"DrinkSpecial"> | boolean
+    createdAt?: DateTimeFilter<"DrinkSpecial"> | Date | string
+    updatedAt?: DateTimeFilter<"DrinkSpecial"> | Date | string
+    bar?: XOR<BarScalarRelationFilter, BarWhereInput>
+  }
+
+  export type DrinkSpecialOrderByWithRelationInput = {
+    id?: SortOrder
+    barId?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    daysOfWeek?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    bar?: BarOrderByWithRelationInput
+  }
+
+  export type DrinkSpecialWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: DrinkSpecialWhereInput | DrinkSpecialWhereInput[]
+    OR?: DrinkSpecialWhereInput[]
+    NOT?: DrinkSpecialWhereInput | DrinkSpecialWhereInput[]
+    barId?: StringFilter<"DrinkSpecial"> | string
+    name?: StringFilter<"DrinkSpecial"> | string
+    description?: StringNullableFilter<"DrinkSpecial"> | string | null
+    startTime?: StringFilter<"DrinkSpecial"> | string
+    endTime?: StringFilter<"DrinkSpecial"> | string
+    daysOfWeek?: IntNullableListFilter<"DrinkSpecial">
+    active?: BoolFilter<"DrinkSpecial"> | boolean
+    createdAt?: DateTimeFilter<"DrinkSpecial"> | Date | string
+    updatedAt?: DateTimeFilter<"DrinkSpecial"> | Date | string
+    bar?: XOR<BarScalarRelationFilter, BarWhereInput>
+  }, "id">
+
+  export type DrinkSpecialOrderByWithAggregationInput = {
+    id?: SortOrder
+    barId?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    daysOfWeek?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: DrinkSpecialCountOrderByAggregateInput
+    _avg?: DrinkSpecialAvgOrderByAggregateInput
+    _max?: DrinkSpecialMaxOrderByAggregateInput
+    _min?: DrinkSpecialMinOrderByAggregateInput
+    _sum?: DrinkSpecialSumOrderByAggregateInput
+  }
+
+  export type DrinkSpecialScalarWhereWithAggregatesInput = {
+    AND?: DrinkSpecialScalarWhereWithAggregatesInput | DrinkSpecialScalarWhereWithAggregatesInput[]
+    OR?: DrinkSpecialScalarWhereWithAggregatesInput[]
+    NOT?: DrinkSpecialScalarWhereWithAggregatesInput | DrinkSpecialScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"DrinkSpecial"> | string
+    barId?: StringWithAggregatesFilter<"DrinkSpecial"> | string
+    name?: StringWithAggregatesFilter<"DrinkSpecial"> | string
+    description?: StringNullableWithAggregatesFilter<"DrinkSpecial"> | string | null
+    startTime?: StringWithAggregatesFilter<"DrinkSpecial"> | string
+    endTime?: StringWithAggregatesFilter<"DrinkSpecial"> | string
+    daysOfWeek?: IntNullableListFilter<"DrinkSpecial">
+    active?: BoolWithAggregatesFilter<"DrinkSpecial"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"DrinkSpecial"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"DrinkSpecial"> | Date | string
+  }
+
+  export type FoodOfferingWhereInput = {
+    AND?: FoodOfferingWhereInput | FoodOfferingWhereInput[]
+    OR?: FoodOfferingWhereInput[]
+    NOT?: FoodOfferingWhereInput | FoodOfferingWhereInput[]
+    id?: StringFilter<"FoodOffering"> | string
+    barId?: StringFilter<"FoodOffering"> | string
+    name?: StringFilter<"FoodOffering"> | string
+    description?: StringNullableFilter<"FoodOffering"> | string | null
+    specialDays?: IntNullableListFilter<"FoodOffering">
+    isSpecial?: BoolFilter<"FoodOffering"> | boolean
+    active?: BoolFilter<"FoodOffering"> | boolean
+    createdAt?: DateTimeFilter<"FoodOffering"> | Date | string
+    updatedAt?: DateTimeFilter<"FoodOffering"> | Date | string
+    bar?: XOR<BarScalarRelationFilter, BarWhereInput>
+  }
+
+  export type FoodOfferingOrderByWithRelationInput = {
+    id?: SortOrder
+    barId?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    specialDays?: SortOrder
+    isSpecial?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    bar?: BarOrderByWithRelationInput
+  }
+
+  export type FoodOfferingWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: FoodOfferingWhereInput | FoodOfferingWhereInput[]
+    OR?: FoodOfferingWhereInput[]
+    NOT?: FoodOfferingWhereInput | FoodOfferingWhereInput[]
+    barId?: StringFilter<"FoodOffering"> | string
+    name?: StringFilter<"FoodOffering"> | string
+    description?: StringNullableFilter<"FoodOffering"> | string | null
+    specialDays?: IntNullableListFilter<"FoodOffering">
+    isSpecial?: BoolFilter<"FoodOffering"> | boolean
+    active?: BoolFilter<"FoodOffering"> | boolean
+    createdAt?: DateTimeFilter<"FoodOffering"> | Date | string
+    updatedAt?: DateTimeFilter<"FoodOffering"> | Date | string
+    bar?: XOR<BarScalarRelationFilter, BarWhereInput>
+  }, "id">
+
+  export type FoodOfferingOrderByWithAggregationInput = {
+    id?: SortOrder
+    barId?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    specialDays?: SortOrder
+    isSpecial?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: FoodOfferingCountOrderByAggregateInput
+    _avg?: FoodOfferingAvgOrderByAggregateInput
+    _max?: FoodOfferingMaxOrderByAggregateInput
+    _min?: FoodOfferingMinOrderByAggregateInput
+    _sum?: FoodOfferingSumOrderByAggregateInput
+  }
+
+  export type FoodOfferingScalarWhereWithAggregatesInput = {
+    AND?: FoodOfferingScalarWhereWithAggregatesInput | FoodOfferingScalarWhereWithAggregatesInput[]
+    OR?: FoodOfferingScalarWhereWithAggregatesInput[]
+    NOT?: FoodOfferingScalarWhereWithAggregatesInput | FoodOfferingScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"FoodOffering"> | string
+    barId?: StringWithAggregatesFilter<"FoodOffering"> | string
+    name?: StringWithAggregatesFilter<"FoodOffering"> | string
+    description?: StringNullableWithAggregatesFilter<"FoodOffering"> | string | null
+    specialDays?: IntNullableListFilter<"FoodOffering">
+    isSpecial?: BoolWithAggregatesFilter<"FoodOffering"> | boolean
+    active?: BoolWithAggregatesFilter<"FoodOffering"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"FoodOffering"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"FoodOffering"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     email: string
@@ -40399,6 +44493,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotCreateNestedManyWithoutBarInput
     visits?: BarVisitCreateNestedManyWithoutBarInput
     varianceAlerts?: VarianceAlertCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateInput = {
@@ -40441,6 +44538,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUncheckedCreateNestedManyWithoutBarInput
     visits?: BarVisitUncheckedCreateNestedManyWithoutBarInput
     varianceAlerts?: VarianceAlertUncheckedCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarUpdateInput = {
@@ -40483,6 +44583,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUpdateManyWithoutBarNestedInput
     visits?: BarVisitUpdateManyWithoutBarNestedInput
     varianceAlerts?: VarianceAlertUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateInput = {
@@ -40525,6 +44628,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUncheckedUpdateManyWithoutBarNestedInput
     visits?: BarVisitUncheckedUpdateManyWithoutBarNestedInput
     varianceAlerts?: VarianceAlertUncheckedUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type BarCreateManyInput = {
@@ -42503,6 +46609,255 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type StaticOfferingCreateInput = {
+    id?: string
+    name: string
+    icon: string
+    description?: string | null
+    position?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bar: BarCreateNestedOneWithoutStaticOfferingsInput
+  }
+
+  export type StaticOfferingUncheckedCreateInput = {
+    id?: string
+    barId: string
+    name: string
+    icon: string
+    description?: string | null
+    position?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StaticOfferingUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    position?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bar?: BarUpdateOneRequiredWithoutStaticOfferingsNestedInput
+  }
+
+  export type StaticOfferingUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    barId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    position?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StaticOfferingCreateManyInput = {
+    id?: string
+    barId: string
+    name: string
+    icon: string
+    description?: string | null
+    position?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StaticOfferingUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    position?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StaticOfferingUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    barId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    position?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DrinkSpecialCreateInput = {
+    id?: string
+    name: string
+    description?: string | null
+    startTime: string
+    endTime: string
+    daysOfWeek?: DrinkSpecialCreatedaysOfWeekInput | number[]
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bar: BarCreateNestedOneWithoutDrinkSpecialsInput
+  }
+
+  export type DrinkSpecialUncheckedCreateInput = {
+    id?: string
+    barId: string
+    name: string
+    description?: string | null
+    startTime: string
+    endTime: string
+    daysOfWeek?: DrinkSpecialCreatedaysOfWeekInput | number[]
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DrinkSpecialUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    daysOfWeek?: DrinkSpecialUpdatedaysOfWeekInput | number[]
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bar?: BarUpdateOneRequiredWithoutDrinkSpecialsNestedInput
+  }
+
+  export type DrinkSpecialUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    barId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    daysOfWeek?: DrinkSpecialUpdatedaysOfWeekInput | number[]
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DrinkSpecialCreateManyInput = {
+    id?: string
+    barId: string
+    name: string
+    description?: string | null
+    startTime: string
+    endTime: string
+    daysOfWeek?: DrinkSpecialCreatedaysOfWeekInput | number[]
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DrinkSpecialUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    daysOfWeek?: DrinkSpecialUpdatedaysOfWeekInput | number[]
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DrinkSpecialUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    barId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    daysOfWeek?: DrinkSpecialUpdatedaysOfWeekInput | number[]
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FoodOfferingCreateInput = {
+    id?: string
+    name: string
+    description?: string | null
+    specialDays?: FoodOfferingCreatespecialDaysInput | number[]
+    isSpecial?: boolean
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bar: BarCreateNestedOneWithoutFoodOfferingsInput
+  }
+
+  export type FoodOfferingUncheckedCreateInput = {
+    id?: string
+    barId: string
+    name: string
+    description?: string | null
+    specialDays?: FoodOfferingCreatespecialDaysInput | number[]
+    isSpecial?: boolean
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FoodOfferingUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    specialDays?: FoodOfferingUpdatespecialDaysInput | number[]
+    isSpecial?: BoolFieldUpdateOperationsInput | boolean
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bar?: BarUpdateOneRequiredWithoutFoodOfferingsNestedInput
+  }
+
+  export type FoodOfferingUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    barId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    specialDays?: FoodOfferingUpdatespecialDaysInput | number[]
+    isSpecial?: BoolFieldUpdateOperationsInput | boolean
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FoodOfferingCreateManyInput = {
+    id?: string
+    barId: string
+    name: string
+    description?: string | null
+    specialDays?: FoodOfferingCreatespecialDaysInput | number[]
+    isSpecial?: boolean
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FoodOfferingUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    specialDays?: FoodOfferingUpdatespecialDaysInput | number[]
+    isSpecial?: BoolFieldUpdateOperationsInput | boolean
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FoodOfferingUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    barId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    specialDays?: FoodOfferingUpdatespecialDaysInput | number[]
+    isSpecial?: BoolFieldUpdateOperationsInput | boolean
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -43138,6 +47493,24 @@ export namespace Prisma {
     none?: VarianceAlertWhereInput
   }
 
+  export type StaticOfferingListRelationFilter = {
+    every?: StaticOfferingWhereInput
+    some?: StaticOfferingWhereInput
+    none?: StaticOfferingWhereInput
+  }
+
+  export type DrinkSpecialListRelationFilter = {
+    every?: DrinkSpecialWhereInput
+    some?: DrinkSpecialWhereInput
+    none?: DrinkSpecialWhereInput
+  }
+
+  export type FoodOfferingListRelationFilter = {
+    every?: FoodOfferingWhereInput
+    some?: FoodOfferingWhereInput
+    none?: FoodOfferingWhereInput
+  }
+
   export type OfferingOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -43163,6 +47536,18 @@ export namespace Prisma {
   }
 
   export type VarianceAlertOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type StaticOfferingOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type DrinkSpecialOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type FoodOfferingOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -44526,6 +48911,147 @@ export namespace Prisma {
     createdAt?: SortOrder
   }
 
+  export type StaticOfferingBarIdPositionCompoundUniqueInput = {
+    barId: string
+    position: number
+  }
+
+  export type StaticOfferingCountOrderByAggregateInput = {
+    id?: SortOrder
+    barId?: SortOrder
+    name?: SortOrder
+    icon?: SortOrder
+    description?: SortOrder
+    position?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StaticOfferingAvgOrderByAggregateInput = {
+    position?: SortOrder
+  }
+
+  export type StaticOfferingMaxOrderByAggregateInput = {
+    id?: SortOrder
+    barId?: SortOrder
+    name?: SortOrder
+    icon?: SortOrder
+    description?: SortOrder
+    position?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StaticOfferingMinOrderByAggregateInput = {
+    id?: SortOrder
+    barId?: SortOrder
+    name?: SortOrder
+    icon?: SortOrder
+    description?: SortOrder
+    position?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StaticOfferingSumOrderByAggregateInput = {
+    position?: SortOrder
+  }
+
+  export type IntNullableListFilter<$PrismaModel = never> = {
+    equals?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    has?: number | IntFieldRefInput<$PrismaModel> | null
+    hasEvery?: number[] | ListIntFieldRefInput<$PrismaModel>
+    hasSome?: number[] | ListIntFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
+  export type DrinkSpecialCountOrderByAggregateInput = {
+    id?: SortOrder
+    barId?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    daysOfWeek?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DrinkSpecialAvgOrderByAggregateInput = {
+    daysOfWeek?: SortOrder
+  }
+
+  export type DrinkSpecialMaxOrderByAggregateInput = {
+    id?: SortOrder
+    barId?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DrinkSpecialMinOrderByAggregateInput = {
+    id?: SortOrder
+    barId?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DrinkSpecialSumOrderByAggregateInput = {
+    daysOfWeek?: SortOrder
+  }
+
+  export type FoodOfferingCountOrderByAggregateInput = {
+    id?: SortOrder
+    barId?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    specialDays?: SortOrder
+    isSpecial?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type FoodOfferingAvgOrderByAggregateInput = {
+    specialDays?: SortOrder
+  }
+
+  export type FoodOfferingMaxOrderByAggregateInput = {
+    id?: SortOrder
+    barId?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    isSpecial?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type FoodOfferingMinOrderByAggregateInput = {
+    id?: SortOrder
+    barId?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    isSpecial?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type FoodOfferingSumOrderByAggregateInput = {
+    specialDays?: SortOrder
+  }
+
   export type AccountCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -45165,6 +49691,27 @@ export namespace Prisma {
     connect?: VarianceAlertWhereUniqueInput | VarianceAlertWhereUniqueInput[]
   }
 
+  export type StaticOfferingCreateNestedManyWithoutBarInput = {
+    create?: XOR<StaticOfferingCreateWithoutBarInput, StaticOfferingUncheckedCreateWithoutBarInput> | StaticOfferingCreateWithoutBarInput[] | StaticOfferingUncheckedCreateWithoutBarInput[]
+    connectOrCreate?: StaticOfferingCreateOrConnectWithoutBarInput | StaticOfferingCreateOrConnectWithoutBarInput[]
+    createMany?: StaticOfferingCreateManyBarInputEnvelope
+    connect?: StaticOfferingWhereUniqueInput | StaticOfferingWhereUniqueInput[]
+  }
+
+  export type DrinkSpecialCreateNestedManyWithoutBarInput = {
+    create?: XOR<DrinkSpecialCreateWithoutBarInput, DrinkSpecialUncheckedCreateWithoutBarInput> | DrinkSpecialCreateWithoutBarInput[] | DrinkSpecialUncheckedCreateWithoutBarInput[]
+    connectOrCreate?: DrinkSpecialCreateOrConnectWithoutBarInput | DrinkSpecialCreateOrConnectWithoutBarInput[]
+    createMany?: DrinkSpecialCreateManyBarInputEnvelope
+    connect?: DrinkSpecialWhereUniqueInput | DrinkSpecialWhereUniqueInput[]
+  }
+
+  export type FoodOfferingCreateNestedManyWithoutBarInput = {
+    create?: XOR<FoodOfferingCreateWithoutBarInput, FoodOfferingUncheckedCreateWithoutBarInput> | FoodOfferingCreateWithoutBarInput[] | FoodOfferingUncheckedCreateWithoutBarInput[]
+    connectOrCreate?: FoodOfferingCreateOrConnectWithoutBarInput | FoodOfferingCreateOrConnectWithoutBarInput[]
+    createMany?: FoodOfferingCreateManyBarInputEnvelope
+    connect?: FoodOfferingWhereUniqueInput | FoodOfferingWhereUniqueInput[]
+  }
+
   export type OfferingUncheckedCreateNestedManyWithoutBarInput = {
     create?: XOR<OfferingCreateWithoutBarInput, OfferingUncheckedCreateWithoutBarInput> | OfferingCreateWithoutBarInput[] | OfferingUncheckedCreateWithoutBarInput[]
     connectOrCreate?: OfferingCreateOrConnectWithoutBarInput | OfferingCreateOrConnectWithoutBarInput[]
@@ -45254,6 +49801,27 @@ export namespace Prisma {
     connectOrCreate?: VarianceAlertCreateOrConnectWithoutBarInput | VarianceAlertCreateOrConnectWithoutBarInput[]
     createMany?: VarianceAlertCreateManyBarInputEnvelope
     connect?: VarianceAlertWhereUniqueInput | VarianceAlertWhereUniqueInput[]
+  }
+
+  export type StaticOfferingUncheckedCreateNestedManyWithoutBarInput = {
+    create?: XOR<StaticOfferingCreateWithoutBarInput, StaticOfferingUncheckedCreateWithoutBarInput> | StaticOfferingCreateWithoutBarInput[] | StaticOfferingUncheckedCreateWithoutBarInput[]
+    connectOrCreate?: StaticOfferingCreateOrConnectWithoutBarInput | StaticOfferingCreateOrConnectWithoutBarInput[]
+    createMany?: StaticOfferingCreateManyBarInputEnvelope
+    connect?: StaticOfferingWhereUniqueInput | StaticOfferingWhereUniqueInput[]
+  }
+
+  export type DrinkSpecialUncheckedCreateNestedManyWithoutBarInput = {
+    create?: XOR<DrinkSpecialCreateWithoutBarInput, DrinkSpecialUncheckedCreateWithoutBarInput> | DrinkSpecialCreateWithoutBarInput[] | DrinkSpecialUncheckedCreateWithoutBarInput[]
+    connectOrCreate?: DrinkSpecialCreateOrConnectWithoutBarInput | DrinkSpecialCreateOrConnectWithoutBarInput[]
+    createMany?: DrinkSpecialCreateManyBarInputEnvelope
+    connect?: DrinkSpecialWhereUniqueInput | DrinkSpecialWhereUniqueInput[]
+  }
+
+  export type FoodOfferingUncheckedCreateNestedManyWithoutBarInput = {
+    create?: XOR<FoodOfferingCreateWithoutBarInput, FoodOfferingUncheckedCreateWithoutBarInput> | FoodOfferingCreateWithoutBarInput[] | FoodOfferingUncheckedCreateWithoutBarInput[]
+    connectOrCreate?: FoodOfferingCreateOrConnectWithoutBarInput | FoodOfferingCreateOrConnectWithoutBarInput[]
+    createMany?: FoodOfferingCreateManyBarInputEnvelope
+    connect?: FoodOfferingWhereUniqueInput | FoodOfferingWhereUniqueInput[]
   }
 
   export type FloatFieldUpdateOperationsInput = {
@@ -45467,6 +50035,48 @@ export namespace Prisma {
     deleteMany?: VarianceAlertScalarWhereInput | VarianceAlertScalarWhereInput[]
   }
 
+  export type StaticOfferingUpdateManyWithoutBarNestedInput = {
+    create?: XOR<StaticOfferingCreateWithoutBarInput, StaticOfferingUncheckedCreateWithoutBarInput> | StaticOfferingCreateWithoutBarInput[] | StaticOfferingUncheckedCreateWithoutBarInput[]
+    connectOrCreate?: StaticOfferingCreateOrConnectWithoutBarInput | StaticOfferingCreateOrConnectWithoutBarInput[]
+    upsert?: StaticOfferingUpsertWithWhereUniqueWithoutBarInput | StaticOfferingUpsertWithWhereUniqueWithoutBarInput[]
+    createMany?: StaticOfferingCreateManyBarInputEnvelope
+    set?: StaticOfferingWhereUniqueInput | StaticOfferingWhereUniqueInput[]
+    disconnect?: StaticOfferingWhereUniqueInput | StaticOfferingWhereUniqueInput[]
+    delete?: StaticOfferingWhereUniqueInput | StaticOfferingWhereUniqueInput[]
+    connect?: StaticOfferingWhereUniqueInput | StaticOfferingWhereUniqueInput[]
+    update?: StaticOfferingUpdateWithWhereUniqueWithoutBarInput | StaticOfferingUpdateWithWhereUniqueWithoutBarInput[]
+    updateMany?: StaticOfferingUpdateManyWithWhereWithoutBarInput | StaticOfferingUpdateManyWithWhereWithoutBarInput[]
+    deleteMany?: StaticOfferingScalarWhereInput | StaticOfferingScalarWhereInput[]
+  }
+
+  export type DrinkSpecialUpdateManyWithoutBarNestedInput = {
+    create?: XOR<DrinkSpecialCreateWithoutBarInput, DrinkSpecialUncheckedCreateWithoutBarInput> | DrinkSpecialCreateWithoutBarInput[] | DrinkSpecialUncheckedCreateWithoutBarInput[]
+    connectOrCreate?: DrinkSpecialCreateOrConnectWithoutBarInput | DrinkSpecialCreateOrConnectWithoutBarInput[]
+    upsert?: DrinkSpecialUpsertWithWhereUniqueWithoutBarInput | DrinkSpecialUpsertWithWhereUniqueWithoutBarInput[]
+    createMany?: DrinkSpecialCreateManyBarInputEnvelope
+    set?: DrinkSpecialWhereUniqueInput | DrinkSpecialWhereUniqueInput[]
+    disconnect?: DrinkSpecialWhereUniqueInput | DrinkSpecialWhereUniqueInput[]
+    delete?: DrinkSpecialWhereUniqueInput | DrinkSpecialWhereUniqueInput[]
+    connect?: DrinkSpecialWhereUniqueInput | DrinkSpecialWhereUniqueInput[]
+    update?: DrinkSpecialUpdateWithWhereUniqueWithoutBarInput | DrinkSpecialUpdateWithWhereUniqueWithoutBarInput[]
+    updateMany?: DrinkSpecialUpdateManyWithWhereWithoutBarInput | DrinkSpecialUpdateManyWithWhereWithoutBarInput[]
+    deleteMany?: DrinkSpecialScalarWhereInput | DrinkSpecialScalarWhereInput[]
+  }
+
+  export type FoodOfferingUpdateManyWithoutBarNestedInput = {
+    create?: XOR<FoodOfferingCreateWithoutBarInput, FoodOfferingUncheckedCreateWithoutBarInput> | FoodOfferingCreateWithoutBarInput[] | FoodOfferingUncheckedCreateWithoutBarInput[]
+    connectOrCreate?: FoodOfferingCreateOrConnectWithoutBarInput | FoodOfferingCreateOrConnectWithoutBarInput[]
+    upsert?: FoodOfferingUpsertWithWhereUniqueWithoutBarInput | FoodOfferingUpsertWithWhereUniqueWithoutBarInput[]
+    createMany?: FoodOfferingCreateManyBarInputEnvelope
+    set?: FoodOfferingWhereUniqueInput | FoodOfferingWhereUniqueInput[]
+    disconnect?: FoodOfferingWhereUniqueInput | FoodOfferingWhereUniqueInput[]
+    delete?: FoodOfferingWhereUniqueInput | FoodOfferingWhereUniqueInput[]
+    connect?: FoodOfferingWhereUniqueInput | FoodOfferingWhereUniqueInput[]
+    update?: FoodOfferingUpdateWithWhereUniqueWithoutBarInput | FoodOfferingUpdateWithWhereUniqueWithoutBarInput[]
+    updateMany?: FoodOfferingUpdateManyWithWhereWithoutBarInput | FoodOfferingUpdateManyWithWhereWithoutBarInput[]
+    deleteMany?: FoodOfferingScalarWhereInput | FoodOfferingScalarWhereInput[]
+  }
+
   export type OfferingUncheckedUpdateManyWithoutBarNestedInput = {
     create?: XOR<OfferingCreateWithoutBarInput, OfferingUncheckedCreateWithoutBarInput> | OfferingCreateWithoutBarInput[] | OfferingUncheckedCreateWithoutBarInput[]
     connectOrCreate?: OfferingCreateOrConnectWithoutBarInput | OfferingCreateOrConnectWithoutBarInput[]
@@ -45647,6 +50257,48 @@ export namespace Prisma {
     update?: VarianceAlertUpdateWithWhereUniqueWithoutBarInput | VarianceAlertUpdateWithWhereUniqueWithoutBarInput[]
     updateMany?: VarianceAlertUpdateManyWithWhereWithoutBarInput | VarianceAlertUpdateManyWithWhereWithoutBarInput[]
     deleteMany?: VarianceAlertScalarWhereInput | VarianceAlertScalarWhereInput[]
+  }
+
+  export type StaticOfferingUncheckedUpdateManyWithoutBarNestedInput = {
+    create?: XOR<StaticOfferingCreateWithoutBarInput, StaticOfferingUncheckedCreateWithoutBarInput> | StaticOfferingCreateWithoutBarInput[] | StaticOfferingUncheckedCreateWithoutBarInput[]
+    connectOrCreate?: StaticOfferingCreateOrConnectWithoutBarInput | StaticOfferingCreateOrConnectWithoutBarInput[]
+    upsert?: StaticOfferingUpsertWithWhereUniqueWithoutBarInput | StaticOfferingUpsertWithWhereUniqueWithoutBarInput[]
+    createMany?: StaticOfferingCreateManyBarInputEnvelope
+    set?: StaticOfferingWhereUniqueInput | StaticOfferingWhereUniqueInput[]
+    disconnect?: StaticOfferingWhereUniqueInput | StaticOfferingWhereUniqueInput[]
+    delete?: StaticOfferingWhereUniqueInput | StaticOfferingWhereUniqueInput[]
+    connect?: StaticOfferingWhereUniqueInput | StaticOfferingWhereUniqueInput[]
+    update?: StaticOfferingUpdateWithWhereUniqueWithoutBarInput | StaticOfferingUpdateWithWhereUniqueWithoutBarInput[]
+    updateMany?: StaticOfferingUpdateManyWithWhereWithoutBarInput | StaticOfferingUpdateManyWithWhereWithoutBarInput[]
+    deleteMany?: StaticOfferingScalarWhereInput | StaticOfferingScalarWhereInput[]
+  }
+
+  export type DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput = {
+    create?: XOR<DrinkSpecialCreateWithoutBarInput, DrinkSpecialUncheckedCreateWithoutBarInput> | DrinkSpecialCreateWithoutBarInput[] | DrinkSpecialUncheckedCreateWithoutBarInput[]
+    connectOrCreate?: DrinkSpecialCreateOrConnectWithoutBarInput | DrinkSpecialCreateOrConnectWithoutBarInput[]
+    upsert?: DrinkSpecialUpsertWithWhereUniqueWithoutBarInput | DrinkSpecialUpsertWithWhereUniqueWithoutBarInput[]
+    createMany?: DrinkSpecialCreateManyBarInputEnvelope
+    set?: DrinkSpecialWhereUniqueInput | DrinkSpecialWhereUniqueInput[]
+    disconnect?: DrinkSpecialWhereUniqueInput | DrinkSpecialWhereUniqueInput[]
+    delete?: DrinkSpecialWhereUniqueInput | DrinkSpecialWhereUniqueInput[]
+    connect?: DrinkSpecialWhereUniqueInput | DrinkSpecialWhereUniqueInput[]
+    update?: DrinkSpecialUpdateWithWhereUniqueWithoutBarInput | DrinkSpecialUpdateWithWhereUniqueWithoutBarInput[]
+    updateMany?: DrinkSpecialUpdateManyWithWhereWithoutBarInput | DrinkSpecialUpdateManyWithWhereWithoutBarInput[]
+    deleteMany?: DrinkSpecialScalarWhereInput | DrinkSpecialScalarWhereInput[]
+  }
+
+  export type FoodOfferingUncheckedUpdateManyWithoutBarNestedInput = {
+    create?: XOR<FoodOfferingCreateWithoutBarInput, FoodOfferingUncheckedCreateWithoutBarInput> | FoodOfferingCreateWithoutBarInput[] | FoodOfferingUncheckedCreateWithoutBarInput[]
+    connectOrCreate?: FoodOfferingCreateOrConnectWithoutBarInput | FoodOfferingCreateOrConnectWithoutBarInput[]
+    upsert?: FoodOfferingUpsertWithWhereUniqueWithoutBarInput | FoodOfferingUpsertWithWhereUniqueWithoutBarInput[]
+    createMany?: FoodOfferingCreateManyBarInputEnvelope
+    set?: FoodOfferingWhereUniqueInput | FoodOfferingWhereUniqueInput[]
+    disconnect?: FoodOfferingWhereUniqueInput | FoodOfferingWhereUniqueInput[]
+    delete?: FoodOfferingWhereUniqueInput | FoodOfferingWhereUniqueInput[]
+    connect?: FoodOfferingWhereUniqueInput | FoodOfferingWhereUniqueInput[]
+    update?: FoodOfferingUpdateWithWhereUniqueWithoutBarInput | FoodOfferingUpdateWithWhereUniqueWithoutBarInput[]
+    updateMany?: FoodOfferingUpdateManyWithWhereWithoutBarInput | FoodOfferingUpdateManyWithWhereWithoutBarInput[]
+    deleteMany?: FoodOfferingScalarWhereInput | FoodOfferingScalarWhereInput[]
   }
 
   export type OfferingCreatetagsInput = {
@@ -46483,6 +51135,66 @@ export namespace Prisma {
     delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutVisitsInput, UserUpdateWithoutVisitsInput>, UserUncheckedUpdateWithoutVisitsInput>
+  }
+
+  export type BarCreateNestedOneWithoutStaticOfferingsInput = {
+    create?: XOR<BarCreateWithoutStaticOfferingsInput, BarUncheckedCreateWithoutStaticOfferingsInput>
+    connectOrCreate?: BarCreateOrConnectWithoutStaticOfferingsInput
+    connect?: BarWhereUniqueInput
+  }
+
+  export type BarUpdateOneRequiredWithoutStaticOfferingsNestedInput = {
+    create?: XOR<BarCreateWithoutStaticOfferingsInput, BarUncheckedCreateWithoutStaticOfferingsInput>
+    connectOrCreate?: BarCreateOrConnectWithoutStaticOfferingsInput
+    upsert?: BarUpsertWithoutStaticOfferingsInput
+    connect?: BarWhereUniqueInput
+    update?: XOR<XOR<BarUpdateToOneWithWhereWithoutStaticOfferingsInput, BarUpdateWithoutStaticOfferingsInput>, BarUncheckedUpdateWithoutStaticOfferingsInput>
+  }
+
+  export type DrinkSpecialCreatedaysOfWeekInput = {
+    set: number[]
+  }
+
+  export type BarCreateNestedOneWithoutDrinkSpecialsInput = {
+    create?: XOR<BarCreateWithoutDrinkSpecialsInput, BarUncheckedCreateWithoutDrinkSpecialsInput>
+    connectOrCreate?: BarCreateOrConnectWithoutDrinkSpecialsInput
+    connect?: BarWhereUniqueInput
+  }
+
+  export type DrinkSpecialUpdatedaysOfWeekInput = {
+    set?: number[]
+    push?: number | number[]
+  }
+
+  export type BarUpdateOneRequiredWithoutDrinkSpecialsNestedInput = {
+    create?: XOR<BarCreateWithoutDrinkSpecialsInput, BarUncheckedCreateWithoutDrinkSpecialsInput>
+    connectOrCreate?: BarCreateOrConnectWithoutDrinkSpecialsInput
+    upsert?: BarUpsertWithoutDrinkSpecialsInput
+    connect?: BarWhereUniqueInput
+    update?: XOR<XOR<BarUpdateToOneWithWhereWithoutDrinkSpecialsInput, BarUpdateWithoutDrinkSpecialsInput>, BarUncheckedUpdateWithoutDrinkSpecialsInput>
+  }
+
+  export type FoodOfferingCreatespecialDaysInput = {
+    set: number[]
+  }
+
+  export type BarCreateNestedOneWithoutFoodOfferingsInput = {
+    create?: XOR<BarCreateWithoutFoodOfferingsInput, BarUncheckedCreateWithoutFoodOfferingsInput>
+    connectOrCreate?: BarCreateOrConnectWithoutFoodOfferingsInput
+    connect?: BarWhereUniqueInput
+  }
+
+  export type FoodOfferingUpdatespecialDaysInput = {
+    set?: number[]
+    push?: number | number[]
+  }
+
+  export type BarUpdateOneRequiredWithoutFoodOfferingsNestedInput = {
+    create?: XOR<BarCreateWithoutFoodOfferingsInput, BarUncheckedCreateWithoutFoodOfferingsInput>
+    connectOrCreate?: BarCreateOrConnectWithoutFoodOfferingsInput
+    upsert?: BarUpsertWithoutFoodOfferingsInput
+    connect?: BarWhereUniqueInput
+    update?: XOR<XOR<BarUpdateToOneWithWhereWithoutFoodOfferingsInput, BarUpdateWithoutFoodOfferingsInput>, BarUncheckedUpdateWithoutFoodOfferingsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -47542,6 +52254,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotCreateNestedManyWithoutBarInput
     visits?: BarVisitCreateNestedManyWithoutBarInput
     varianceAlerts?: VarianceAlertCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutOwnerInput = {
@@ -47583,6 +52298,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUncheckedCreateNestedManyWithoutBarInput
     visits?: BarVisitUncheckedCreateNestedManyWithoutBarInput
     varianceAlerts?: VarianceAlertUncheckedCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutOwnerInput = {
@@ -48410,6 +53128,102 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type StaticOfferingCreateWithoutBarInput = {
+    id?: string
+    name: string
+    icon: string
+    description?: string | null
+    position?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StaticOfferingUncheckedCreateWithoutBarInput = {
+    id?: string
+    name: string
+    icon: string
+    description?: string | null
+    position?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StaticOfferingCreateOrConnectWithoutBarInput = {
+    where: StaticOfferingWhereUniqueInput
+    create: XOR<StaticOfferingCreateWithoutBarInput, StaticOfferingUncheckedCreateWithoutBarInput>
+  }
+
+  export type StaticOfferingCreateManyBarInputEnvelope = {
+    data: StaticOfferingCreateManyBarInput | StaticOfferingCreateManyBarInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type DrinkSpecialCreateWithoutBarInput = {
+    id?: string
+    name: string
+    description?: string | null
+    startTime: string
+    endTime: string
+    daysOfWeek?: DrinkSpecialCreatedaysOfWeekInput | number[]
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DrinkSpecialUncheckedCreateWithoutBarInput = {
+    id?: string
+    name: string
+    description?: string | null
+    startTime: string
+    endTime: string
+    daysOfWeek?: DrinkSpecialCreatedaysOfWeekInput | number[]
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DrinkSpecialCreateOrConnectWithoutBarInput = {
+    where: DrinkSpecialWhereUniqueInput
+    create: XOR<DrinkSpecialCreateWithoutBarInput, DrinkSpecialUncheckedCreateWithoutBarInput>
+  }
+
+  export type DrinkSpecialCreateManyBarInputEnvelope = {
+    data: DrinkSpecialCreateManyBarInput | DrinkSpecialCreateManyBarInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type FoodOfferingCreateWithoutBarInput = {
+    id?: string
+    name: string
+    description?: string | null
+    specialDays?: FoodOfferingCreatespecialDaysInput | number[]
+    isSpecial?: boolean
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FoodOfferingUncheckedCreateWithoutBarInput = {
+    id?: string
+    name: string
+    description?: string | null
+    specialDays?: FoodOfferingCreatespecialDaysInput | number[]
+    isSpecial?: boolean
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FoodOfferingCreateOrConnectWithoutBarInput = {
+    where: FoodOfferingWhereUniqueInput
+    create: XOR<FoodOfferingCreateWithoutBarInput, FoodOfferingUncheckedCreateWithoutBarInput>
+  }
+
+  export type FoodOfferingCreateManyBarInputEnvelope = {
+    data: FoodOfferingCreateManyBarInput | FoodOfferingCreateManyBarInput[]
+    skipDuplicates?: boolean
+  }
+
   export type OwnerUpsertWithoutBarsInput = {
     update: XOR<OwnerUpdateWithoutBarsInput, OwnerUncheckedUpdateWithoutBarsInput>
     create: XOR<OwnerCreateWithoutBarsInput, OwnerUncheckedCreateWithoutBarsInput>
@@ -48795,6 +53609,99 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"VarianceAlert"> | Date | string
   }
 
+  export type StaticOfferingUpsertWithWhereUniqueWithoutBarInput = {
+    where: StaticOfferingWhereUniqueInput
+    update: XOR<StaticOfferingUpdateWithoutBarInput, StaticOfferingUncheckedUpdateWithoutBarInput>
+    create: XOR<StaticOfferingCreateWithoutBarInput, StaticOfferingUncheckedCreateWithoutBarInput>
+  }
+
+  export type StaticOfferingUpdateWithWhereUniqueWithoutBarInput = {
+    where: StaticOfferingWhereUniqueInput
+    data: XOR<StaticOfferingUpdateWithoutBarInput, StaticOfferingUncheckedUpdateWithoutBarInput>
+  }
+
+  export type StaticOfferingUpdateManyWithWhereWithoutBarInput = {
+    where: StaticOfferingScalarWhereInput
+    data: XOR<StaticOfferingUpdateManyMutationInput, StaticOfferingUncheckedUpdateManyWithoutBarInput>
+  }
+
+  export type StaticOfferingScalarWhereInput = {
+    AND?: StaticOfferingScalarWhereInput | StaticOfferingScalarWhereInput[]
+    OR?: StaticOfferingScalarWhereInput[]
+    NOT?: StaticOfferingScalarWhereInput | StaticOfferingScalarWhereInput[]
+    id?: StringFilter<"StaticOffering"> | string
+    barId?: StringFilter<"StaticOffering"> | string
+    name?: StringFilter<"StaticOffering"> | string
+    icon?: StringFilter<"StaticOffering"> | string
+    description?: StringNullableFilter<"StaticOffering"> | string | null
+    position?: IntFilter<"StaticOffering"> | number
+    createdAt?: DateTimeFilter<"StaticOffering"> | Date | string
+    updatedAt?: DateTimeFilter<"StaticOffering"> | Date | string
+  }
+
+  export type DrinkSpecialUpsertWithWhereUniqueWithoutBarInput = {
+    where: DrinkSpecialWhereUniqueInput
+    update: XOR<DrinkSpecialUpdateWithoutBarInput, DrinkSpecialUncheckedUpdateWithoutBarInput>
+    create: XOR<DrinkSpecialCreateWithoutBarInput, DrinkSpecialUncheckedCreateWithoutBarInput>
+  }
+
+  export type DrinkSpecialUpdateWithWhereUniqueWithoutBarInput = {
+    where: DrinkSpecialWhereUniqueInput
+    data: XOR<DrinkSpecialUpdateWithoutBarInput, DrinkSpecialUncheckedUpdateWithoutBarInput>
+  }
+
+  export type DrinkSpecialUpdateManyWithWhereWithoutBarInput = {
+    where: DrinkSpecialScalarWhereInput
+    data: XOR<DrinkSpecialUpdateManyMutationInput, DrinkSpecialUncheckedUpdateManyWithoutBarInput>
+  }
+
+  export type DrinkSpecialScalarWhereInput = {
+    AND?: DrinkSpecialScalarWhereInput | DrinkSpecialScalarWhereInput[]
+    OR?: DrinkSpecialScalarWhereInput[]
+    NOT?: DrinkSpecialScalarWhereInput | DrinkSpecialScalarWhereInput[]
+    id?: StringFilter<"DrinkSpecial"> | string
+    barId?: StringFilter<"DrinkSpecial"> | string
+    name?: StringFilter<"DrinkSpecial"> | string
+    description?: StringNullableFilter<"DrinkSpecial"> | string | null
+    startTime?: StringFilter<"DrinkSpecial"> | string
+    endTime?: StringFilter<"DrinkSpecial"> | string
+    daysOfWeek?: IntNullableListFilter<"DrinkSpecial">
+    active?: BoolFilter<"DrinkSpecial"> | boolean
+    createdAt?: DateTimeFilter<"DrinkSpecial"> | Date | string
+    updatedAt?: DateTimeFilter<"DrinkSpecial"> | Date | string
+  }
+
+  export type FoodOfferingUpsertWithWhereUniqueWithoutBarInput = {
+    where: FoodOfferingWhereUniqueInput
+    update: XOR<FoodOfferingUpdateWithoutBarInput, FoodOfferingUncheckedUpdateWithoutBarInput>
+    create: XOR<FoodOfferingCreateWithoutBarInput, FoodOfferingUncheckedCreateWithoutBarInput>
+  }
+
+  export type FoodOfferingUpdateWithWhereUniqueWithoutBarInput = {
+    where: FoodOfferingWhereUniqueInput
+    data: XOR<FoodOfferingUpdateWithoutBarInput, FoodOfferingUncheckedUpdateWithoutBarInput>
+  }
+
+  export type FoodOfferingUpdateManyWithWhereWithoutBarInput = {
+    where: FoodOfferingScalarWhereInput
+    data: XOR<FoodOfferingUpdateManyMutationInput, FoodOfferingUncheckedUpdateManyWithoutBarInput>
+  }
+
+  export type FoodOfferingScalarWhereInput = {
+    AND?: FoodOfferingScalarWhereInput | FoodOfferingScalarWhereInput[]
+    OR?: FoodOfferingScalarWhereInput[]
+    NOT?: FoodOfferingScalarWhereInput | FoodOfferingScalarWhereInput[]
+    id?: StringFilter<"FoodOffering"> | string
+    barId?: StringFilter<"FoodOffering"> | string
+    name?: StringFilter<"FoodOffering"> | string
+    description?: StringNullableFilter<"FoodOffering"> | string | null
+    specialDays?: IntNullableListFilter<"FoodOffering">
+    isSpecial?: BoolFilter<"FoodOffering"> | boolean
+    active?: BoolFilter<"FoodOffering"> | boolean
+    createdAt?: DateTimeFilter<"FoodOffering"> | Date | string
+    updatedAt?: DateTimeFilter<"FoodOffering"> | Date | string
+  }
+
   export type BarCreateWithoutOfferingsInput = {
     id?: string
     name: string
@@ -48834,6 +53741,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotCreateNestedManyWithoutBarInput
     visits?: BarVisitCreateNestedManyWithoutBarInput
     varianceAlerts?: VarianceAlertCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutOfferingsInput = {
@@ -48875,6 +53785,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUncheckedCreateNestedManyWithoutBarInput
     visits?: BarVisitUncheckedCreateNestedManyWithoutBarInput
     varianceAlerts?: VarianceAlertUncheckedCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutOfferingsInput = {
@@ -48932,6 +53845,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUpdateManyWithoutBarNestedInput
     visits?: BarVisitUpdateManyWithoutBarNestedInput
     varianceAlerts?: VarianceAlertUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutOfferingsInput = {
@@ -48973,6 +53889,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUncheckedUpdateManyWithoutBarNestedInput
     visits?: BarVisitUncheckedUpdateManyWithoutBarNestedInput
     varianceAlerts?: VarianceAlertUncheckedUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type BarCreateWithoutEventsInput = {
@@ -49014,6 +53933,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotCreateNestedManyWithoutBarInput
     visits?: BarVisitCreateNestedManyWithoutBarInput
     varianceAlerts?: VarianceAlertCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutEventsInput = {
@@ -49055,6 +53977,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUncheckedCreateNestedManyWithoutBarInput
     visits?: BarVisitUncheckedCreateNestedManyWithoutBarInput
     varianceAlerts?: VarianceAlertUncheckedCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutEventsInput = {
@@ -49112,6 +54037,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUpdateManyWithoutBarNestedInput
     visits?: BarVisitUpdateManyWithoutBarNestedInput
     varianceAlerts?: VarianceAlertUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutEventsInput = {
@@ -49153,6 +54081,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUncheckedUpdateManyWithoutBarNestedInput
     visits?: BarVisitUncheckedUpdateManyWithoutBarNestedInput
     varianceAlerts?: VarianceAlertUncheckedUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type UserCreateWithoutFavoritesInput = {
@@ -49233,6 +54164,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotCreateNestedManyWithoutBarInput
     visits?: BarVisitCreateNestedManyWithoutBarInput
     varianceAlerts?: VarianceAlertCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutFavoritesInput = {
@@ -49274,6 +54208,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUncheckedCreateNestedManyWithoutBarInput
     visits?: BarVisitUncheckedCreateNestedManyWithoutBarInput
     varianceAlerts?: VarianceAlertUncheckedCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutFavoritesInput = {
@@ -49376,6 +54313,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUpdateManyWithoutBarNestedInput
     visits?: BarVisitUpdateManyWithoutBarNestedInput
     varianceAlerts?: VarianceAlertUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutFavoritesInput = {
@@ -49417,6 +54357,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUncheckedUpdateManyWithoutBarNestedInput
     visits?: BarVisitUncheckedUpdateManyWithoutBarNestedInput
     varianceAlerts?: VarianceAlertUncheckedUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type PromoRedemptionCreateWithoutPromoCodeInput = {
@@ -49648,6 +54591,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotCreateNestedManyWithoutBarInput
     visits?: BarVisitCreateNestedManyWithoutBarInput
     varianceAlerts?: VarianceAlertCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutAnalyticsInput = {
@@ -49689,6 +54635,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUncheckedCreateNestedManyWithoutBarInput
     visits?: BarVisitUncheckedCreateNestedManyWithoutBarInput
     varianceAlerts?: VarianceAlertUncheckedCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutAnalyticsInput = {
@@ -49746,6 +54695,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUpdateManyWithoutBarNestedInput
     visits?: BarVisitUpdateManyWithoutBarNestedInput
     varianceAlerts?: VarianceAlertUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutAnalyticsInput = {
@@ -49787,6 +54739,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUncheckedUpdateManyWithoutBarNestedInput
     visits?: BarVisitUncheckedUpdateManyWithoutBarNestedInput
     varianceAlerts?: VarianceAlertUncheckedUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type BarCreateWithoutClicksInput = {
@@ -49828,6 +54783,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotCreateNestedManyWithoutBarInput
     visits?: BarVisitCreateNestedManyWithoutBarInput
     varianceAlerts?: VarianceAlertCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutClicksInput = {
@@ -49869,6 +54827,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUncheckedCreateNestedManyWithoutBarInput
     visits?: BarVisitUncheckedCreateNestedManyWithoutBarInput
     varianceAlerts?: VarianceAlertUncheckedCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutClicksInput = {
@@ -49926,6 +54887,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUpdateManyWithoutBarNestedInput
     visits?: BarVisitUpdateManyWithoutBarNestedInput
     varianceAlerts?: VarianceAlertUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutClicksInput = {
@@ -49967,6 +54931,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUncheckedUpdateManyWithoutBarNestedInput
     visits?: BarVisitUncheckedUpdateManyWithoutBarNestedInput
     varianceAlerts?: VarianceAlertUncheckedUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type BarBadgeCreateWithoutBadgeInput = {
@@ -50050,6 +55017,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotCreateNestedManyWithoutBarInput
     visits?: BarVisitCreateNestedManyWithoutBarInput
     varianceAlerts?: VarianceAlertCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutBadgesInput = {
@@ -50091,6 +55061,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUncheckedCreateNestedManyWithoutBarInput
     visits?: BarVisitUncheckedCreateNestedManyWithoutBarInput
     varianceAlerts?: VarianceAlertUncheckedCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutBadgesInput = {
@@ -50185,6 +55158,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUpdateManyWithoutBarNestedInput
     visits?: BarVisitUpdateManyWithoutBarNestedInput
     varianceAlerts?: VarianceAlertUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutBadgesInput = {
@@ -50226,6 +55202,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUncheckedUpdateManyWithoutBarNestedInput
     visits?: BarVisitUncheckedUpdateManyWithoutBarNestedInput
     varianceAlerts?: VarianceAlertUncheckedUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type BadgeUpsertWithoutBarBadgesInput = {
@@ -50310,6 +55289,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotCreateNestedManyWithoutBarInput
     visits?: BarVisitCreateNestedManyWithoutBarInput
     varianceAlerts?: VarianceAlertCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutInventoryItemsInput = {
@@ -50351,6 +55333,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUncheckedCreateNestedManyWithoutBarInput
     visits?: BarVisitUncheckedCreateNestedManyWithoutBarInput
     varianceAlerts?: VarianceAlertUncheckedCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutInventoryItemsInput = {
@@ -50526,6 +55511,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUpdateManyWithoutBarNestedInput
     visits?: BarVisitUpdateManyWithoutBarNestedInput
     varianceAlerts?: VarianceAlertUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutInventoryItemsInput = {
@@ -50567,6 +55555,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUncheckedUpdateManyWithoutBarNestedInput
     visits?: BarVisitUncheckedUpdateManyWithoutBarNestedInput
     varianceAlerts?: VarianceAlertUncheckedUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type InventorySnapshotItemUpsertWithWhereUniqueWithoutInventoryItemInput = {
@@ -50708,6 +55699,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotCreateNestedManyWithoutBarInput
     visits?: BarVisitCreateNestedManyWithoutBarInput
     varianceAlerts?: VarianceAlertCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutInventoryImportsInput = {
@@ -50749,6 +55743,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUncheckedCreateNestedManyWithoutBarInput
     visits?: BarVisitUncheckedCreateNestedManyWithoutBarInput
     varianceAlerts?: VarianceAlertUncheckedCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutInventoryImportsInput = {
@@ -50845,6 +55842,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUpdateManyWithoutBarNestedInput
     visits?: BarVisitUpdateManyWithoutBarNestedInput
     varianceAlerts?: VarianceAlertUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutInventoryImportsInput = {
@@ -50886,6 +55886,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUncheckedUpdateManyWithoutBarNestedInput
     visits?: BarVisitUncheckedUpdateManyWithoutBarNestedInput
     varianceAlerts?: VarianceAlertUncheckedUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type UserUpsertWithoutInventoryImportsInput = {
@@ -50972,6 +55975,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotCreateNestedManyWithoutBarInput
     visits?: BarVisitCreateNestedManyWithoutBarInput
     varianceAlerts?: VarianceAlertCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutShiftUsagesInput = {
@@ -51013,6 +56019,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUncheckedCreateNestedManyWithoutBarInput
     visits?: BarVisitUncheckedCreateNestedManyWithoutBarInput
     varianceAlerts?: VarianceAlertUncheckedCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutShiftUsagesInput = {
@@ -51133,6 +56142,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUpdateManyWithoutBarNestedInput
     visits?: BarVisitUpdateManyWithoutBarNestedInput
     varianceAlerts?: VarianceAlertUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutShiftUsagesInput = {
@@ -51174,6 +56186,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUncheckedUpdateManyWithoutBarNestedInput
     visits?: BarVisitUncheckedUpdateManyWithoutBarNestedInput
     varianceAlerts?: VarianceAlertUncheckedUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type UserUpsertWithoutShiftUsagesInput = {
@@ -51408,6 +56423,9 @@ export namespace Prisma {
     inventoryImports?: InventoryImportCreateNestedManyWithoutBarInput
     visits?: BarVisitCreateNestedManyWithoutBarInput
     varianceAlerts?: VarianceAlertCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutInventorySnapshotsInput = {
@@ -51449,6 +56467,9 @@ export namespace Prisma {
     inventoryImports?: InventoryImportUncheckedCreateNestedManyWithoutBarInput
     visits?: BarVisitUncheckedCreateNestedManyWithoutBarInput
     varianceAlerts?: VarianceAlertUncheckedCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutInventorySnapshotsInput = {
@@ -51571,6 +56592,9 @@ export namespace Prisma {
     inventoryImports?: InventoryImportUpdateManyWithoutBarNestedInput
     visits?: BarVisitUpdateManyWithoutBarNestedInput
     varianceAlerts?: VarianceAlertUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutInventorySnapshotsInput = {
@@ -51612,6 +56636,9 @@ export namespace Prisma {
     inventoryImports?: InventoryImportUncheckedUpdateManyWithoutBarNestedInput
     visits?: BarVisitUncheckedUpdateManyWithoutBarNestedInput
     varianceAlerts?: VarianceAlertUncheckedUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type UserUpsertWithoutInventorySnapshotsInput = {
@@ -52026,6 +57053,9 @@ export namespace Prisma {
     inventoryImports?: InventoryImportCreateNestedManyWithoutBarInput
     inventorySnapshots?: InventorySnapshotCreateNestedManyWithoutBarInput
     visits?: BarVisitCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutVarianceAlertsInput = {
@@ -52067,6 +57097,9 @@ export namespace Prisma {
     inventoryImports?: InventoryImportUncheckedCreateNestedManyWithoutBarInput
     inventorySnapshots?: InventorySnapshotUncheckedCreateNestedManyWithoutBarInput
     visits?: BarVisitUncheckedCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutVarianceAlertsInput = {
@@ -52161,6 +57194,9 @@ export namespace Prisma {
     inventoryImports?: InventoryImportUpdateManyWithoutBarNestedInput
     inventorySnapshots?: InventorySnapshotUpdateManyWithoutBarNestedInput
     visits?: BarVisitUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutVarianceAlertsInput = {
@@ -52202,6 +57238,9 @@ export namespace Prisma {
     inventoryImports?: InventoryImportUncheckedUpdateManyWithoutBarNestedInput
     inventorySnapshots?: InventorySnapshotUncheckedUpdateManyWithoutBarNestedInput
     visits?: BarVisitUncheckedUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type InventoryItemUpsertWithoutVarianceAlertsInput = {
@@ -52286,6 +57325,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotCreateNestedManyWithoutBarInput
     visits?: BarVisitCreateNestedManyWithoutBarInput
     varianceAlerts?: VarianceAlertCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutBarLicensesInput = {
@@ -52327,6 +57369,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUncheckedCreateNestedManyWithoutBarInput
     visits?: BarVisitUncheckedCreateNestedManyWithoutBarInput
     varianceAlerts?: VarianceAlertUncheckedCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutBarLicensesInput = {
@@ -52421,6 +57466,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUpdateManyWithoutBarNestedInput
     visits?: BarVisitUpdateManyWithoutBarNestedInput
     varianceAlerts?: VarianceAlertUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutBarLicensesInput = {
@@ -52462,6 +57510,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUncheckedUpdateManyWithoutBarNestedInput
     visits?: BarVisitUncheckedUpdateManyWithoutBarNestedInput
     varianceAlerts?: VarianceAlertUncheckedUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type OwnerUpsertWithoutBarLicensesInput = {
@@ -52546,6 +57597,9 @@ export namespace Prisma {
     inventoryImports?: InventoryImportCreateNestedManyWithoutBarInput
     inventorySnapshots?: InventorySnapshotCreateNestedManyWithoutBarInput
     varianceAlerts?: VarianceAlertCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutVisitsInput = {
@@ -52587,6 +57641,9 @@ export namespace Prisma {
     inventoryImports?: InventoryImportUncheckedCreateNestedManyWithoutBarInput
     inventorySnapshots?: InventorySnapshotUncheckedCreateNestedManyWithoutBarInput
     varianceAlerts?: VarianceAlertUncheckedCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutVisitsInput = {
@@ -52683,6 +57740,9 @@ export namespace Prisma {
     inventoryImports?: InventoryImportUpdateManyWithoutBarNestedInput
     inventorySnapshots?: InventorySnapshotUpdateManyWithoutBarNestedInput
     varianceAlerts?: VarianceAlertUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutVisitsInput = {
@@ -52724,6 +57784,9 @@ export namespace Prisma {
     inventoryImports?: InventoryImportUncheckedUpdateManyWithoutBarNestedInput
     inventorySnapshots?: InventorySnapshotUncheckedUpdateManyWithoutBarNestedInput
     varianceAlerts?: VarianceAlertUncheckedUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type UserUpsertWithoutVisitsInput = {
@@ -52769,6 +57832,582 @@ export namespace Prisma {
     inventoryImports?: InventoryImportUncheckedUpdateManyWithoutCreatedByNestedInput
     shiftUsages?: ShiftUsageUncheckedUpdateManyWithoutUserNestedInput
     inventorySnapshots?: InventorySnapshotUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type BarCreateWithoutStaticOfferingsInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    address: string
+    city: string
+    cityNormalized: string
+    state: string
+    zipCode: string
+    neighborhood?: string | null
+    neighborhoodNormalized?: string | null
+    latitude: number
+    longitude: number
+    phone?: string | null
+    website?: string | null
+    logo?: string | null
+    photos?: BarCreatephotosInput | string[]
+    hours?: NullableJsonNullValueInput | InputJsonValue
+    isActive?: boolean
+    isPublished?: boolean
+    publishedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profileViews?: number
+    searchAppearances?: number
+    owner: OwnerCreateNestedOneWithoutBarsInput
+    offerings?: OfferingCreateNestedManyWithoutBarInput
+    events?: EventCreateNestedManyWithoutBarInput
+    favorites?: FavoriteCreateNestedManyWithoutBarInput
+    analytics?: BarAnalyticsCreateNestedManyWithoutBarInput
+    clicks?: BarClickCreateNestedManyWithoutBarInput
+    badges?: BarBadgeCreateNestedManyWithoutBarInput
+    barLicenses?: BarLicenseCreateNestedManyWithoutBarInput
+    shiftUsages?: ShiftUsageCreateNestedManyWithoutBarInput
+    inventoryItems?: InventoryItemCreateNestedManyWithoutBarInput
+    inventoryImports?: InventoryImportCreateNestedManyWithoutBarInput
+    inventorySnapshots?: InventorySnapshotCreateNestedManyWithoutBarInput
+    visits?: BarVisitCreateNestedManyWithoutBarInput
+    varianceAlerts?: VarianceAlertCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
+  }
+
+  export type BarUncheckedCreateWithoutStaticOfferingsInput = {
+    id?: string
+    ownerId: string
+    name: string
+    slug: string
+    description?: string | null
+    address: string
+    city: string
+    cityNormalized: string
+    state: string
+    zipCode: string
+    neighborhood?: string | null
+    neighborhoodNormalized?: string | null
+    latitude: number
+    longitude: number
+    phone?: string | null
+    website?: string | null
+    logo?: string | null
+    photos?: BarCreatephotosInput | string[]
+    hours?: NullableJsonNullValueInput | InputJsonValue
+    isActive?: boolean
+    isPublished?: boolean
+    publishedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profileViews?: number
+    searchAppearances?: number
+    offerings?: OfferingUncheckedCreateNestedManyWithoutBarInput
+    events?: EventUncheckedCreateNestedManyWithoutBarInput
+    favorites?: FavoriteUncheckedCreateNestedManyWithoutBarInput
+    analytics?: BarAnalyticsUncheckedCreateNestedManyWithoutBarInput
+    clicks?: BarClickUncheckedCreateNestedManyWithoutBarInput
+    badges?: BarBadgeUncheckedCreateNestedManyWithoutBarInput
+    barLicenses?: BarLicenseUncheckedCreateNestedManyWithoutBarInput
+    shiftUsages?: ShiftUsageUncheckedCreateNestedManyWithoutBarInput
+    inventoryItems?: InventoryItemUncheckedCreateNestedManyWithoutBarInput
+    inventoryImports?: InventoryImportUncheckedCreateNestedManyWithoutBarInput
+    inventorySnapshots?: InventorySnapshotUncheckedCreateNestedManyWithoutBarInput
+    visits?: BarVisitUncheckedCreateNestedManyWithoutBarInput
+    varianceAlerts?: VarianceAlertUncheckedCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
+  }
+
+  export type BarCreateOrConnectWithoutStaticOfferingsInput = {
+    where: BarWhereUniqueInput
+    create: XOR<BarCreateWithoutStaticOfferingsInput, BarUncheckedCreateWithoutStaticOfferingsInput>
+  }
+
+  export type BarUpsertWithoutStaticOfferingsInput = {
+    update: XOR<BarUpdateWithoutStaticOfferingsInput, BarUncheckedUpdateWithoutStaticOfferingsInput>
+    create: XOR<BarCreateWithoutStaticOfferingsInput, BarUncheckedCreateWithoutStaticOfferingsInput>
+    where?: BarWhereInput
+  }
+
+  export type BarUpdateToOneWithWhereWithoutStaticOfferingsInput = {
+    where?: BarWhereInput
+    data: XOR<BarUpdateWithoutStaticOfferingsInput, BarUncheckedUpdateWithoutStaticOfferingsInput>
+  }
+
+  export type BarUpdateWithoutStaticOfferingsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    cityNormalized?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    zipCode?: StringFieldUpdateOperationsInput | string
+    neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: FloatFieldUpdateOperationsInput | number
+    longitude?: FloatFieldUpdateOperationsInput | number
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    photos?: BarUpdatephotosInput | string[]
+    hours?: NullableJsonNullValueInput | InputJsonValue
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileViews?: IntFieldUpdateOperationsInput | number
+    searchAppearances?: IntFieldUpdateOperationsInput | number
+    owner?: OwnerUpdateOneRequiredWithoutBarsNestedInput
+    offerings?: OfferingUpdateManyWithoutBarNestedInput
+    events?: EventUpdateManyWithoutBarNestedInput
+    favorites?: FavoriteUpdateManyWithoutBarNestedInput
+    analytics?: BarAnalyticsUpdateManyWithoutBarNestedInput
+    clicks?: BarClickUpdateManyWithoutBarNestedInput
+    badges?: BarBadgeUpdateManyWithoutBarNestedInput
+    barLicenses?: BarLicenseUpdateManyWithoutBarNestedInput
+    shiftUsages?: ShiftUsageUpdateManyWithoutBarNestedInput
+    inventoryItems?: InventoryItemUpdateManyWithoutBarNestedInput
+    inventoryImports?: InventoryImportUpdateManyWithoutBarNestedInput
+    inventorySnapshots?: InventorySnapshotUpdateManyWithoutBarNestedInput
+    visits?: BarVisitUpdateManyWithoutBarNestedInput
+    varianceAlerts?: VarianceAlertUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
+  }
+
+  export type BarUncheckedUpdateWithoutStaticOfferingsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    cityNormalized?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    zipCode?: StringFieldUpdateOperationsInput | string
+    neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: FloatFieldUpdateOperationsInput | number
+    longitude?: FloatFieldUpdateOperationsInput | number
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    photos?: BarUpdatephotosInput | string[]
+    hours?: NullableJsonNullValueInput | InputJsonValue
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileViews?: IntFieldUpdateOperationsInput | number
+    searchAppearances?: IntFieldUpdateOperationsInput | number
+    offerings?: OfferingUncheckedUpdateManyWithoutBarNestedInput
+    events?: EventUncheckedUpdateManyWithoutBarNestedInput
+    favorites?: FavoriteUncheckedUpdateManyWithoutBarNestedInput
+    analytics?: BarAnalyticsUncheckedUpdateManyWithoutBarNestedInput
+    clicks?: BarClickUncheckedUpdateManyWithoutBarNestedInput
+    badges?: BarBadgeUncheckedUpdateManyWithoutBarNestedInput
+    barLicenses?: BarLicenseUncheckedUpdateManyWithoutBarNestedInput
+    shiftUsages?: ShiftUsageUncheckedUpdateManyWithoutBarNestedInput
+    inventoryItems?: InventoryItemUncheckedUpdateManyWithoutBarNestedInput
+    inventoryImports?: InventoryImportUncheckedUpdateManyWithoutBarNestedInput
+    inventorySnapshots?: InventorySnapshotUncheckedUpdateManyWithoutBarNestedInput
+    visits?: BarVisitUncheckedUpdateManyWithoutBarNestedInput
+    varianceAlerts?: VarianceAlertUncheckedUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
+  }
+
+  export type BarCreateWithoutDrinkSpecialsInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    address: string
+    city: string
+    cityNormalized: string
+    state: string
+    zipCode: string
+    neighborhood?: string | null
+    neighborhoodNormalized?: string | null
+    latitude: number
+    longitude: number
+    phone?: string | null
+    website?: string | null
+    logo?: string | null
+    photos?: BarCreatephotosInput | string[]
+    hours?: NullableJsonNullValueInput | InputJsonValue
+    isActive?: boolean
+    isPublished?: boolean
+    publishedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profileViews?: number
+    searchAppearances?: number
+    owner: OwnerCreateNestedOneWithoutBarsInput
+    offerings?: OfferingCreateNestedManyWithoutBarInput
+    events?: EventCreateNestedManyWithoutBarInput
+    favorites?: FavoriteCreateNestedManyWithoutBarInput
+    analytics?: BarAnalyticsCreateNestedManyWithoutBarInput
+    clicks?: BarClickCreateNestedManyWithoutBarInput
+    badges?: BarBadgeCreateNestedManyWithoutBarInput
+    barLicenses?: BarLicenseCreateNestedManyWithoutBarInput
+    shiftUsages?: ShiftUsageCreateNestedManyWithoutBarInput
+    inventoryItems?: InventoryItemCreateNestedManyWithoutBarInput
+    inventoryImports?: InventoryImportCreateNestedManyWithoutBarInput
+    inventorySnapshots?: InventorySnapshotCreateNestedManyWithoutBarInput
+    visits?: BarVisitCreateNestedManyWithoutBarInput
+    varianceAlerts?: VarianceAlertCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
+  }
+
+  export type BarUncheckedCreateWithoutDrinkSpecialsInput = {
+    id?: string
+    ownerId: string
+    name: string
+    slug: string
+    description?: string | null
+    address: string
+    city: string
+    cityNormalized: string
+    state: string
+    zipCode: string
+    neighborhood?: string | null
+    neighborhoodNormalized?: string | null
+    latitude: number
+    longitude: number
+    phone?: string | null
+    website?: string | null
+    logo?: string | null
+    photos?: BarCreatephotosInput | string[]
+    hours?: NullableJsonNullValueInput | InputJsonValue
+    isActive?: boolean
+    isPublished?: boolean
+    publishedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profileViews?: number
+    searchAppearances?: number
+    offerings?: OfferingUncheckedCreateNestedManyWithoutBarInput
+    events?: EventUncheckedCreateNestedManyWithoutBarInput
+    favorites?: FavoriteUncheckedCreateNestedManyWithoutBarInput
+    analytics?: BarAnalyticsUncheckedCreateNestedManyWithoutBarInput
+    clicks?: BarClickUncheckedCreateNestedManyWithoutBarInput
+    badges?: BarBadgeUncheckedCreateNestedManyWithoutBarInput
+    barLicenses?: BarLicenseUncheckedCreateNestedManyWithoutBarInput
+    shiftUsages?: ShiftUsageUncheckedCreateNestedManyWithoutBarInput
+    inventoryItems?: InventoryItemUncheckedCreateNestedManyWithoutBarInput
+    inventoryImports?: InventoryImportUncheckedCreateNestedManyWithoutBarInput
+    inventorySnapshots?: InventorySnapshotUncheckedCreateNestedManyWithoutBarInput
+    visits?: BarVisitUncheckedCreateNestedManyWithoutBarInput
+    varianceAlerts?: VarianceAlertUncheckedCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
+  }
+
+  export type BarCreateOrConnectWithoutDrinkSpecialsInput = {
+    where: BarWhereUniqueInput
+    create: XOR<BarCreateWithoutDrinkSpecialsInput, BarUncheckedCreateWithoutDrinkSpecialsInput>
+  }
+
+  export type BarUpsertWithoutDrinkSpecialsInput = {
+    update: XOR<BarUpdateWithoutDrinkSpecialsInput, BarUncheckedUpdateWithoutDrinkSpecialsInput>
+    create: XOR<BarCreateWithoutDrinkSpecialsInput, BarUncheckedCreateWithoutDrinkSpecialsInput>
+    where?: BarWhereInput
+  }
+
+  export type BarUpdateToOneWithWhereWithoutDrinkSpecialsInput = {
+    where?: BarWhereInput
+    data: XOR<BarUpdateWithoutDrinkSpecialsInput, BarUncheckedUpdateWithoutDrinkSpecialsInput>
+  }
+
+  export type BarUpdateWithoutDrinkSpecialsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    cityNormalized?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    zipCode?: StringFieldUpdateOperationsInput | string
+    neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: FloatFieldUpdateOperationsInput | number
+    longitude?: FloatFieldUpdateOperationsInput | number
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    photos?: BarUpdatephotosInput | string[]
+    hours?: NullableJsonNullValueInput | InputJsonValue
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileViews?: IntFieldUpdateOperationsInput | number
+    searchAppearances?: IntFieldUpdateOperationsInput | number
+    owner?: OwnerUpdateOneRequiredWithoutBarsNestedInput
+    offerings?: OfferingUpdateManyWithoutBarNestedInput
+    events?: EventUpdateManyWithoutBarNestedInput
+    favorites?: FavoriteUpdateManyWithoutBarNestedInput
+    analytics?: BarAnalyticsUpdateManyWithoutBarNestedInput
+    clicks?: BarClickUpdateManyWithoutBarNestedInput
+    badges?: BarBadgeUpdateManyWithoutBarNestedInput
+    barLicenses?: BarLicenseUpdateManyWithoutBarNestedInput
+    shiftUsages?: ShiftUsageUpdateManyWithoutBarNestedInput
+    inventoryItems?: InventoryItemUpdateManyWithoutBarNestedInput
+    inventoryImports?: InventoryImportUpdateManyWithoutBarNestedInput
+    inventorySnapshots?: InventorySnapshotUpdateManyWithoutBarNestedInput
+    visits?: BarVisitUpdateManyWithoutBarNestedInput
+    varianceAlerts?: VarianceAlertUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
+  }
+
+  export type BarUncheckedUpdateWithoutDrinkSpecialsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    cityNormalized?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    zipCode?: StringFieldUpdateOperationsInput | string
+    neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: FloatFieldUpdateOperationsInput | number
+    longitude?: FloatFieldUpdateOperationsInput | number
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    photos?: BarUpdatephotosInput | string[]
+    hours?: NullableJsonNullValueInput | InputJsonValue
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileViews?: IntFieldUpdateOperationsInput | number
+    searchAppearances?: IntFieldUpdateOperationsInput | number
+    offerings?: OfferingUncheckedUpdateManyWithoutBarNestedInput
+    events?: EventUncheckedUpdateManyWithoutBarNestedInput
+    favorites?: FavoriteUncheckedUpdateManyWithoutBarNestedInput
+    analytics?: BarAnalyticsUncheckedUpdateManyWithoutBarNestedInput
+    clicks?: BarClickUncheckedUpdateManyWithoutBarNestedInput
+    badges?: BarBadgeUncheckedUpdateManyWithoutBarNestedInput
+    barLicenses?: BarLicenseUncheckedUpdateManyWithoutBarNestedInput
+    shiftUsages?: ShiftUsageUncheckedUpdateManyWithoutBarNestedInput
+    inventoryItems?: InventoryItemUncheckedUpdateManyWithoutBarNestedInput
+    inventoryImports?: InventoryImportUncheckedUpdateManyWithoutBarNestedInput
+    inventorySnapshots?: InventorySnapshotUncheckedUpdateManyWithoutBarNestedInput
+    visits?: BarVisitUncheckedUpdateManyWithoutBarNestedInput
+    varianceAlerts?: VarianceAlertUncheckedUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
+  }
+
+  export type BarCreateWithoutFoodOfferingsInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    address: string
+    city: string
+    cityNormalized: string
+    state: string
+    zipCode: string
+    neighborhood?: string | null
+    neighborhoodNormalized?: string | null
+    latitude: number
+    longitude: number
+    phone?: string | null
+    website?: string | null
+    logo?: string | null
+    photos?: BarCreatephotosInput | string[]
+    hours?: NullableJsonNullValueInput | InputJsonValue
+    isActive?: boolean
+    isPublished?: boolean
+    publishedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profileViews?: number
+    searchAppearances?: number
+    owner: OwnerCreateNestedOneWithoutBarsInput
+    offerings?: OfferingCreateNestedManyWithoutBarInput
+    events?: EventCreateNestedManyWithoutBarInput
+    favorites?: FavoriteCreateNestedManyWithoutBarInput
+    analytics?: BarAnalyticsCreateNestedManyWithoutBarInput
+    clicks?: BarClickCreateNestedManyWithoutBarInput
+    badges?: BarBadgeCreateNestedManyWithoutBarInput
+    barLicenses?: BarLicenseCreateNestedManyWithoutBarInput
+    shiftUsages?: ShiftUsageCreateNestedManyWithoutBarInput
+    inventoryItems?: InventoryItemCreateNestedManyWithoutBarInput
+    inventoryImports?: InventoryImportCreateNestedManyWithoutBarInput
+    inventorySnapshots?: InventorySnapshotCreateNestedManyWithoutBarInput
+    visits?: BarVisitCreateNestedManyWithoutBarInput
+    varianceAlerts?: VarianceAlertCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
+  }
+
+  export type BarUncheckedCreateWithoutFoodOfferingsInput = {
+    id?: string
+    ownerId: string
+    name: string
+    slug: string
+    description?: string | null
+    address: string
+    city: string
+    cityNormalized: string
+    state: string
+    zipCode: string
+    neighborhood?: string | null
+    neighborhoodNormalized?: string | null
+    latitude: number
+    longitude: number
+    phone?: string | null
+    website?: string | null
+    logo?: string | null
+    photos?: BarCreatephotosInput | string[]
+    hours?: NullableJsonNullValueInput | InputJsonValue
+    isActive?: boolean
+    isPublished?: boolean
+    publishedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profileViews?: number
+    searchAppearances?: number
+    offerings?: OfferingUncheckedCreateNestedManyWithoutBarInput
+    events?: EventUncheckedCreateNestedManyWithoutBarInput
+    favorites?: FavoriteUncheckedCreateNestedManyWithoutBarInput
+    analytics?: BarAnalyticsUncheckedCreateNestedManyWithoutBarInput
+    clicks?: BarClickUncheckedCreateNestedManyWithoutBarInput
+    badges?: BarBadgeUncheckedCreateNestedManyWithoutBarInput
+    barLicenses?: BarLicenseUncheckedCreateNestedManyWithoutBarInput
+    shiftUsages?: ShiftUsageUncheckedCreateNestedManyWithoutBarInput
+    inventoryItems?: InventoryItemUncheckedCreateNestedManyWithoutBarInput
+    inventoryImports?: InventoryImportUncheckedCreateNestedManyWithoutBarInput
+    inventorySnapshots?: InventorySnapshotUncheckedCreateNestedManyWithoutBarInput
+    visits?: BarVisitUncheckedCreateNestedManyWithoutBarInput
+    varianceAlerts?: VarianceAlertUncheckedCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
+  }
+
+  export type BarCreateOrConnectWithoutFoodOfferingsInput = {
+    where: BarWhereUniqueInput
+    create: XOR<BarCreateWithoutFoodOfferingsInput, BarUncheckedCreateWithoutFoodOfferingsInput>
+  }
+
+  export type BarUpsertWithoutFoodOfferingsInput = {
+    update: XOR<BarUpdateWithoutFoodOfferingsInput, BarUncheckedUpdateWithoutFoodOfferingsInput>
+    create: XOR<BarCreateWithoutFoodOfferingsInput, BarUncheckedCreateWithoutFoodOfferingsInput>
+    where?: BarWhereInput
+  }
+
+  export type BarUpdateToOneWithWhereWithoutFoodOfferingsInput = {
+    where?: BarWhereInput
+    data: XOR<BarUpdateWithoutFoodOfferingsInput, BarUncheckedUpdateWithoutFoodOfferingsInput>
+  }
+
+  export type BarUpdateWithoutFoodOfferingsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    cityNormalized?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    zipCode?: StringFieldUpdateOperationsInput | string
+    neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: FloatFieldUpdateOperationsInput | number
+    longitude?: FloatFieldUpdateOperationsInput | number
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    photos?: BarUpdatephotosInput | string[]
+    hours?: NullableJsonNullValueInput | InputJsonValue
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileViews?: IntFieldUpdateOperationsInput | number
+    searchAppearances?: IntFieldUpdateOperationsInput | number
+    owner?: OwnerUpdateOneRequiredWithoutBarsNestedInput
+    offerings?: OfferingUpdateManyWithoutBarNestedInput
+    events?: EventUpdateManyWithoutBarNestedInput
+    favorites?: FavoriteUpdateManyWithoutBarNestedInput
+    analytics?: BarAnalyticsUpdateManyWithoutBarNestedInput
+    clicks?: BarClickUpdateManyWithoutBarNestedInput
+    badges?: BarBadgeUpdateManyWithoutBarNestedInput
+    barLicenses?: BarLicenseUpdateManyWithoutBarNestedInput
+    shiftUsages?: ShiftUsageUpdateManyWithoutBarNestedInput
+    inventoryItems?: InventoryItemUpdateManyWithoutBarNestedInput
+    inventoryImports?: InventoryImportUpdateManyWithoutBarNestedInput
+    inventorySnapshots?: InventorySnapshotUpdateManyWithoutBarNestedInput
+    visits?: BarVisitUpdateManyWithoutBarNestedInput
+    varianceAlerts?: VarianceAlertUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
+  }
+
+  export type BarUncheckedUpdateWithoutFoodOfferingsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    cityNormalized?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    zipCode?: StringFieldUpdateOperationsInput | string
+    neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: FloatFieldUpdateOperationsInput | number
+    longitude?: FloatFieldUpdateOperationsInput | number
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    photos?: BarUpdatephotosInput | string[]
+    hours?: NullableJsonNullValueInput | InputJsonValue
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileViews?: IntFieldUpdateOperationsInput | number
+    searchAppearances?: IntFieldUpdateOperationsInput | number
+    offerings?: OfferingUncheckedUpdateManyWithoutBarNestedInput
+    events?: EventUncheckedUpdateManyWithoutBarNestedInput
+    favorites?: FavoriteUncheckedUpdateManyWithoutBarNestedInput
+    analytics?: BarAnalyticsUncheckedUpdateManyWithoutBarNestedInput
+    clicks?: BarClickUncheckedUpdateManyWithoutBarNestedInput
+    badges?: BarBadgeUncheckedUpdateManyWithoutBarNestedInput
+    barLicenses?: BarLicenseUncheckedUpdateManyWithoutBarNestedInput
+    shiftUsages?: ShiftUsageUncheckedUpdateManyWithoutBarNestedInput
+    inventoryItems?: InventoryItemUncheckedUpdateManyWithoutBarNestedInput
+    inventoryImports?: InventoryImportUncheckedUpdateManyWithoutBarNestedInput
+    inventorySnapshots?: InventorySnapshotUncheckedUpdateManyWithoutBarNestedInput
+    visits?: BarVisitUncheckedUpdateManyWithoutBarNestedInput
+    varianceAlerts?: VarianceAlertUncheckedUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type AccountCreateManyUserInput = {
@@ -53112,6 +58751,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUpdateManyWithoutBarNestedInput
     visits?: BarVisitUpdateManyWithoutBarNestedInput
     varianceAlerts?: VarianceAlertUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutOwnerInput = {
@@ -53153,6 +58795,9 @@ export namespace Prisma {
     inventorySnapshots?: InventorySnapshotUncheckedUpdateManyWithoutBarNestedInput
     visits?: BarVisitUncheckedUpdateManyWithoutBarNestedInput
     varianceAlerts?: VarianceAlertUncheckedUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateManyWithoutOwnerInput = {
@@ -53396,6 +59041,39 @@ export namespace Prisma {
     severity: string
     reasonHint?: string | null
     createdAt?: Date | string
+  }
+
+  export type StaticOfferingCreateManyBarInput = {
+    id?: string
+    name: string
+    icon: string
+    description?: string | null
+    position?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DrinkSpecialCreateManyBarInput = {
+    id?: string
+    name: string
+    description?: string | null
+    startTime: string
+    endTime: string
+    daysOfWeek?: DrinkSpecialCreatedaysOfWeekInput | number[]
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FoodOfferingCreateManyBarInput = {
+    id?: string
+    name: string
+    description?: string | null
+    specialDays?: FoodOfferingCreatespecialDaysInput | number[]
+    isSpecial?: boolean
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type OfferingUpdateWithoutBarInput = {
@@ -53891,6 +59569,105 @@ export namespace Prisma {
     severity?: StringFieldUpdateOperationsInput | string
     reasonHint?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StaticOfferingUpdateWithoutBarInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    position?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StaticOfferingUncheckedUpdateWithoutBarInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    position?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StaticOfferingUncheckedUpdateManyWithoutBarInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    position?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DrinkSpecialUpdateWithoutBarInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    daysOfWeek?: DrinkSpecialUpdatedaysOfWeekInput | number[]
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DrinkSpecialUncheckedUpdateWithoutBarInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    daysOfWeek?: DrinkSpecialUpdatedaysOfWeekInput | number[]
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DrinkSpecialUncheckedUpdateManyWithoutBarInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    daysOfWeek?: DrinkSpecialUpdatedaysOfWeekInput | number[]
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FoodOfferingUpdateWithoutBarInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    specialDays?: FoodOfferingUpdatespecialDaysInput | number[]
+    isSpecial?: BoolFieldUpdateOperationsInput | boolean
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FoodOfferingUncheckedUpdateWithoutBarInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    specialDays?: FoodOfferingUpdatespecialDaysInput | number[]
+    isSpecial?: BoolFieldUpdateOperationsInput | boolean
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FoodOfferingUncheckedUpdateManyWithoutBarInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    specialDays?: FoodOfferingUpdatespecialDaysInput | number[]
+    isSpecial?: BoolFieldUpdateOperationsInput | boolean
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PromoRedemptionCreateManyPromoCodeInput = {

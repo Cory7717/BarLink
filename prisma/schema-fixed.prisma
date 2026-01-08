@@ -154,6 +154,9 @@ model Bar {
   inventorySnapshots InventorySnapshot[]
   visits             BarVisit[]
   varianceAlerts     VarianceAlert[]
+  staticOfferings    StaticOffering[]
+  drinkSpecials      DrinkSpecial[]
+  foodOfferings      FoodOffering[]
 
   @@index([cityNormalized])
   @@index([neighborhoodNormalized])
@@ -583,5 +586,56 @@ model BarVisit {
   @@index([userId])
   @@index([visitedAt])
   @@index([source])
-  @@index([clickId])
+}
+
+// Static offerings - always available (up to 3)
+model StaticOffering {
+  id              String   @id @default(cuid())
+  barId           String
+  name            String   // e.g., "Sweepstakes Games", "Pool Tables", "Darts"
+  icon            String   // emoji or icon name
+  description     String?  @db.Text
+  position        Int      @default(0) // 0, 1, or 2 for ordering (max 3)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  bar             Bar      @relation(fields: [barId], references: [id], onDelete: Cascade)
+
+  @@unique([barId, position])
+  @@index([barId])
+}
+
+// Drink specials - with time windows
+model DrinkSpecial {
+  id              String   @id @default(cuid())
+  barId           String
+  name            String   // e.g., "$2 Wells", "Half-price appetizers"
+  description     String?  @db.Text
+  startTime       String   // HH:MM format (24-hour)
+  endTime         String   // HH:MM format (24-hour)
+  daysOfWeek      Int[]    // 0=Sunday, 1=Monday, ..., 6=Saturday. Empty = daily
+  active          Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  bar             Bar      @relation(fields: [barId], references: [id], onDelete: Cascade)
+
+  @@index([barId])
+}
+
+// Food offerings - with optional daily specials
+model FoodOffering {
+  id              String   @id @default(cuid())
+  barId           String
+  name            String   // e.g., "Wings", "Nachos", "Sliders"
+  description     String?  @db.Text
+  specialDays     Int[]    // Days this is a special (0-6). Empty = always available
+  isSpecial       Boolean  @default(false) // True if it's a special/limited
+  active          Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  bar             Bar      @relation(fields: [barId], references: [id], onDelete: Cascade)
+
+  @@index([barId])
 }

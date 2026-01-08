@@ -479,6 +479,42 @@ exports.Prisma.BarVisitScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.StaticOfferingScalarFieldEnum = {
+  id: 'id',
+  barId: 'barId',
+  name: 'name',
+  icon: 'icon',
+  description: 'description',
+  position: 'position',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.DrinkSpecialScalarFieldEnum = {
+  id: 'id',
+  barId: 'barId',
+  name: 'name',
+  description: 'description',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  daysOfWeek: 'daysOfWeek',
+  active: 'active',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.FoodOfferingScalarFieldEnum = {
+  id: 'id',
+  barId: 'barId',
+  name: 'name',
+  description: 'description',
+  specialDays: 'specialDays',
+  isSpecial: 'isSpecial',
+  active: 'active',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -579,7 +615,10 @@ exports.Prisma.ModelName = {
   CostingProfile: 'CostingProfile',
   VarianceAlert: 'VarianceAlert',
   BarLicense: 'BarLicense',
-  BarVisit: 'BarVisit'
+  BarVisit: 'BarVisit',
+  StaticOffering: 'StaticOffering',
+  DrinkSpecial: 'DrinkSpecial',
+  FoodOffering: 'FoodOffering'
 };
 
 /**
