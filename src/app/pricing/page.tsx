@@ -35,7 +35,6 @@ export default function PricingPage() {
           <p className="text-sm text-emerald-200">Owners</p>
           <h1 className="text-4xl font-bold">Stay visible with BarPulse</h1>
           <p className="text-slate-300">Publish your bar, keep offerings fresh, and appear in patron searches.</p>
-          <p className="text-xs text-slate-400">Pricing shown before Texas sales tax (8.25%). We cover processing fees.</p>
         </header>
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -44,8 +43,8 @@ export default function PricingPage() {
               key={plan.id}
               className={`group relative rounded-2xl border backdrop-blur-md p-6 shadow-2xl transition-all duration-300 hover:shadow-emerald-500/20 hover:scale-105 ${
                 plan.popular
-                  ? "border-emerald-400/50 bg-gradient-to-br from-emerald-500/10 to-emerald-600/5"
-                  : "border-slate-700/50 bg-gradient-to-br from-slate-800/40 to-slate-900/40"
+                  ? "border-emerald-400/50 bg-linear-to-br from-emerald-500/10 to-emerald-600/5"
+                  : "border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40"
               } ${plan.popular ? "ring-2 ring-emerald-400/30" : ""}`}
             >
               {plan.popular && (
@@ -75,7 +74,7 @@ export default function PricingPage() {
                 disabled={isLoading || status === "loading"}
                 className={`mt-6 inline-flex w-full justify-center rounded-lg px-4 py-3 text-sm font-semibold transition-all duration-200 ${
                   plan.popular
-                    ? "bg-gradient-to-r from-emerald-500 to-emerald-600 text-slate-950 hover:from-emerald-400 hover:to-emerald-500 hover:shadow-lg hover:shadow-emerald-500/30 active:scale-95"
+                    ? "bg-linear-to-r from-emerald-500 to-emerald-600 text-slate-950 hover:from-emerald-400 hover:to-emerald-500 hover:shadow-lg hover:shadow-emerald-500/30 active:scale-95"
                     : "bg-slate-700 text-white hover:bg-slate-600 active:scale-95"
                 } disabled:opacity-50 disabled:cursor-not-allowed`}
               >
@@ -85,7 +84,7 @@ export default function PricingPage() {
           ))}
         </div>
 
-        <section className="mt-12 grid gap-6 rounded-2xl border border-slate-700/50 bg-gradient-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 md:grid-cols-2 shadow-lg">
+        <section className="mt-12 grid gap-6 rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 md:grid-cols-2 shadow-lg">
           <div>
             <h3 className="text-xl font-semibold text-white">What&apos;s included</h3>
             <ul className="mt-3 space-y-2 text-sm text-slate-200">
