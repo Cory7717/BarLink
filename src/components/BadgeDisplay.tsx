@@ -198,7 +198,7 @@ interface BadgeShowcaseProps {
   badges: Array<{
     badgeKey: string;
     awardedAt: Date;
-    definition?: BadgeDefinition;
+    definition?: BadgeDefinitionClient;
   }>;
   limit?: number;
 }
