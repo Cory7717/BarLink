@@ -109,27 +109,30 @@ export default function AnalyticsDashboard({ barId }: { barId: string }) {
 
       {/* Summary metrics */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-4">
-          <h3 className="text-sm text-slate-400">Profile Views</h3>
-          <p className="mt-2 text-3xl font-bold text-white">{analytics.summary.totalViews}</p>
-          <p className="mt-1 text-xs text-slate-500">Last {timeframe} days</p>
+        <div className="group relative rounded-xl border border-blue-500/30 bg-linear-to-br from-blue-500/10 to-blue-600/5 backdrop-blur-md p-4 transition-all duration-300 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/20 hover:scale-105">
+          <h3 className="text-sm text-blue-300">Profile Views</h3>
+          <p className="mt-2 text-3xl font-bold text-blue-100">{analytics.summary.totalViews}</p>
+          <p className="mt-1 text-xs text-blue-400/70">Last {timeframe} days</p>
+          <div className="absolute inset-0 rounded-xl bg-linear-to-r from-blue-500/0 to-blue-500/0 opacity-0 transition-opacity group-hover:opacity-20"></div>
         </div>
 
-        <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-4">
-          <h3 className="text-sm text-slate-400">Profile Clicks</h3>
-          <p className="mt-2 text-3xl font-bold text-emerald-400">{analytics.summary.totalClicks}</p>
-          <p className="mt-1 text-xs text-slate-500">{analytics.summary.averageClicksPerDay.toFixed(1)}/day avg</p>
+        <div className="group relative rounded-xl border border-emerald-500/30 bg-linear-to-br from-emerald-500/10 to-emerald-600/5 backdrop-blur-md p-4 transition-all duration-300 hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/20 hover:scale-105">
+          <h3 className="text-sm text-emerald-300">Profile Clicks</h3>
+          <p className="mt-2 text-3xl font-bold text-emerald-100">{analytics.summary.totalClicks}</p>
+          <p className="mt-1 text-xs text-emerald-400/70">{analytics.summary.averageClicksPerDay.toFixed(1)}/day avg</p>
+          <div className="absolute inset-0 rounded-xl bg-linear-to-r from-emerald-500/0 to-emerald-500/0 opacity-0 transition-opacity group-hover:opacity-20"></div>
         </div>
 
-        <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-4">
-          <h3 className="text-sm text-slate-400">Search Appearances</h3>
-          <p className="mt-2 text-3xl font-bold text-blue-400">{analytics.summary.totalSearchAppears}</p>
-          <p className="mt-1 text-xs text-slate-500">In search results</p>
+        <div className="group relative rounded-xl border border-purple-500/30 bg-linear-to-br from-purple-500/10 to-purple-600/5 backdrop-blur-md p-4 transition-all duration-300 hover:border-purple-500/50 hover:shadow-lg hover:shadow-purple-500/20 hover:scale-105">
+          <h3 className="text-sm text-purple-300">Search Appearances</h3>
+          <p className="mt-2 text-3xl font-bold text-purple-100">{analytics.summary.totalSearchAppears}</p>
+          <p className="mt-1 text-xs text-purple-400/70">In search results</p>
+          <div className="absolute inset-0 rounded-xl bg-linear-to-r from-purple-500/0 to-purple-500/0 opacity-0 transition-opacity group-hover:opacity-20"></div>
         </div>
 
-        <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-4">
-          <h3 className="text-sm text-slate-400">Best Performing Day</h3>
-          <p className="mt-2 text-lg font-bold text-white">
+        <div className="group relative rounded-xl border border-amber-500/30 bg-linear-to-br from-amber-500/10 to-amber-600/5 backdrop-blur-md p-4 transition-all duration-300 hover:border-amber-500/50 hover:shadow-lg hover:shadow-amber-500/20 hover:scale-105">
+          <h3 className="text-sm text-amber-300">Best Performing Day</h3>
+          <p className="mt-2 text-lg font-bold text-amber-100">
             {analytics.summary.bestDay
               ? [
                   "Sunday",
@@ -142,27 +145,28 @@ export default function AnalyticsDashboard({ barId }: { barId: string }) {
                 ][analytics.summary.bestDay.dayOfWeek]
               : "N/A"}
           </p>
-          <p className="mt-1 text-xs text-slate-500">
+          <p className="mt-1 text-xs text-amber-400/70">
             {analytics.summary.bestDay ? `${analytics.summary.bestDay.profileClicks} clicks` : "No data"}
           </p>
+          <div className="absolute inset-0 rounded-xl bg-linear-to-r from-amber-500/0 to-amber-500/0 opacity-0 transition-opacity group-hover:opacity-20"></div>
         </div>
       </div>
 
       {/* Day of week trends */}
-      <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+      <div className="rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
         <h2 className="text-xl font-semibold text-white">Activity by Day of Week</h2>
         <div className="mt-6 grid gap-4 sm:grid-cols-7">
           {analytics.dayOfWeekTrends.map((trend) => (
             <div
               key={trend.day}
-              className="rounded-lg border border-slate-700 bg-slate-800/50 p-4 text-center"
+              className="group relative rounded-lg border border-emerald-500/20 bg-linear-to-br from-emerald-500/5 to-emerald-600/0 backdrop-blur-sm p-4 text-center transition-all duration-300 hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/20 hover:scale-105"
             >
               <h3 className="text-sm font-semibold text-slate-300">{trend.dayName.slice(0, 3)}</h3>
               <p className="mt-3 text-2xl font-bold text-emerald-400">{trend.clicks}</p>
               <div className="mt-3 space-y-1 text-xs text-slate-400">
-                <p>🔍 {trend.bySource.search}</p>
-                <p>📍 {trend.bySource.map}</p>
-                <p>❤️ {trend.bySource.favorites}</p>
+                <p>🔍 <span className="text-blue-300">{trend.bySource.search}</span></p>
+                <p>📍 <span className="text-amber-300">{trend.bySource.map}</span></p>
+                <p>❤️ <span className="text-red-300">{trend.bySource.favorites}</span></p>
               </div>
             </div>
           ))}
@@ -171,18 +175,18 @@ export default function AnalyticsDashboard({ barId }: { barId: string }) {
 
       {/* Top search queries */}
       {analytics.topSearchQueries.length > 0 && (
-        <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+        <div className="rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
           <h2 className="text-xl font-semibold text-white">Top Search Queries</h2>
           <div className="mt-4 space-y-2">
             {analytics.topSearchQueries.map((query, idx) => (
-              <div key={query.id} className="flex items-center justify-between rounded-lg bg-slate-800/50 px-4 py-3">
+              <div key={query.id} className="group flex items-center justify-between rounded-lg border border-blue-500/20 bg-linear-to-r from-blue-500/5 to-transparent p-4 transition-all duration-300 hover:border-blue-500/50 hover:bg-blue-500/10">
                 <div className="flex items-center gap-3">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500/20 text-xs font-semibold text-emerald-300">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-linear-to-br from-blue-500 to-blue-600 text-xs font-semibold text-white">
                     {idx + 1}
                   </span>
-                  <span className="text-slate-200">{query.query}</span>
+                  <span className="text-slate-200 font-medium">{query.query}</span>
                 </div>
-                <span className="text-sm font-semibold text-slate-400">{query.count} searches</span>
+                <span className="text-sm font-semibold text-blue-300">{query.count} searches</span>
               </div>
             ))}
           </div>
@@ -191,7 +195,7 @@ export default function AnalyticsDashboard({ barId }: { barId: string }) {
 
       {/* Top performing days */}
       {analytics.topDays.length > 0 && (
-        <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+        <div className="rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
           <h2 className="text-xl font-semibold text-white">Top Performing Days</h2>
           <div className="mt-4 space-y-3">
             {analytics.topDays.map((day) => {
@@ -208,20 +212,20 @@ export default function AnalyticsDashboard({ barId }: { barId: string }) {
               return (
                 <div
                   key={day.date}
-                  className="flex items-center justify-between rounded-lg border border-slate-700 bg-slate-800/50 p-4"
+                  className="group flex items-center justify-between rounded-lg border border-emerald-500/20 bg-linear-to-r from-emerald-500/5 to-transparent p-4 transition-all duration-300 hover:border-emerald-500/50 hover:bg-emerald-500/10"
                 >
                   <div>
                     <p className="font-semibold text-white">
                       {dayName}, {date.toLocaleDateString()}
                     </p>
                     <div className="mt-1 flex gap-4 text-sm text-slate-400">
-                      <span>👁️ {day.profileViews} views</span>
-                      <span>🔗 {day.profileClicks} clicks</span>
-                      <span>🔍 {day.searchAppears} search appearances</span>
+                      <span className="flex items-center gap-1"><span className="text-blue-300">👁️ {day.profileViews}</span></span>
+                      <span className="flex items-center gap-1"><span className="text-emerald-300">🔗 {day.profileClicks}</span></span>
+                      <span className="flex items-center gap-1"><span className="text-purple-300">🔍 {day.searchAppears}</span></span>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-xl font-bold text-emerald-400">{day.profileClicks}</p>
+                    <p className="text-xl font-bold text-emerald-300">{day.profileClicks}</p>
                     <p className="text-xs text-slate-500">clicks</p>
                   </div>
                 </div>
@@ -232,7 +236,7 @@ export default function AnalyticsDashboard({ barId }: { barId: string }) {
       )}
 
       {/* Insights and recommendations */}
-      <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-6">
+      <div className="rounded-2xl border border-emerald-500/40 bg-linear-to-br from-emerald-500/15 to-emerald-600/5 backdrop-blur-md p-6 shadow-lg">
         <h2 className="text-lg font-semibold text-emerald-200">Insights & Recommendations</h2>
         <ul className="mt-4 space-y-2 text-sm text-emerald-100/90">
           {analytics.dayOfWeekTrends.some((d) => d.clicks === 0) && (

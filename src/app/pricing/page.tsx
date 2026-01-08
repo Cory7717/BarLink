@@ -41,7 +41,11 @@ export default function PricingPage() {
           {plans.map((plan) => (
             <div
               key={plan.id}
-              className={`rounded-2xl border border-slate-800 bg-slate-900/60 p-6 shadow-xl ${plan.popular ? "ring-2 ring-emerald-400" : ""}`}
+              className={`group relative rounded-2xl border backdrop-blur-md p-6 shadow-2xl transition-all duration-300 hover:shadow-emerald-500/20 hover:scale-105 ${
+                plan.popular
+                  ? "border-emerald-400/50 bg-linear-to-br from-emerald-500/10 to-emerald-600/5"
+                  : "border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40"
+              } ${plan.popular ? "ring-2 ring-emerald-400/30" : ""}`}
             >
               {plan.popular && (
                 <span className="mb-3 inline-flex rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-100 ring-1 ring-emerald-500/40">
@@ -68,7 +72,11 @@ export default function PricingPage() {
               <button
                 onClick={() => handleChoosePlan(plan.id)}
                 disabled={isLoading || status === "loading"}
-                className="mt-6 inline-flex w-full justify-center rounded-lg bg-emerald-500 px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-emerald-400 disabled:opacity-50"
+                className={`mt-6 inline-flex w-full justify-center rounded-lg px-4 py-3 text-sm font-semibold transition-all duration-200 ${
+                  plan.popular
+                    ? "bg-linear-to-r from-emerald-500 to-emerald-600 text-slate-950 hover:from-emerald-400 hover:to-emerald-500 hover:shadow-lg hover:shadow-emerald-500/30 active:scale-95"
+                    : "bg-slate-700 text-white hover:bg-slate-600 active:scale-95"
+                } disabled:opacity-50 disabled:cursor-not-allowed`}
               >
                 {isLoading ? "Redirecting..." : `Choose ${plan.name}`}
               </button>
@@ -76,15 +84,15 @@ export default function PricingPage() {
           ))}
         </div>
 
-        <section className="mt-12 grid gap-6 rounded-2xl border border-slate-800 bg-slate-900/50 p-6 md:grid-cols-2">
+        <section className="mt-12 grid gap-6 rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 md:grid-cols-2 shadow-lg">
           <div>
             <h3 className="text-xl font-semibold text-white">What&apos;s included</h3>
             <ul className="mt-3 space-y-2 text-sm text-slate-200">
-              <li>Unlimited offerings & events</li>
-              <li>Special/new badges with auto-expiry</li>
-              <li>Map + list placement for active subscriptions</li>
-              <li>Owner billing portal (update card, cancel, renewal date)</li>
-              <li>Basic analytics: profile views, search appearances, top clicks</li>
+              <li className="flex items-center gap-2"><span className="text-emerald-400">✓</span> Unlimited offerings & events</li>
+              <li className="flex items-center gap-2"><span className="text-emerald-400">✓</span> Special/new badges with auto-expiry</li>
+              <li className="flex items-center gap-2"><span className="text-emerald-400">✓</span> Map + list placement for active subscriptions</li>
+              <li className="flex items-center gap-2"><span className="text-emerald-400">✓</span> Owner billing portal (update card, cancel, renewal date)</li>
+              <li className="flex items-center gap-2"><span className="text-emerald-400">✓</span> Basic analytics: profile views, search appearances, top clicks</li>
             </ul>
           </div>
           <div>
@@ -92,7 +100,7 @@ export default function PricingPage() {
             <p className="text-sm text-slate-300">
               Need a custom setup or multiple locations? Email support@barpulse.com and we&apos;ll help tailor a plan.
             </p>
-            <Link href="/contact" className="mt-3 inline-flex text-emerald-200 hover:text-emerald-100">
+            <Link href="/contact" className="mt-3 inline-flex text-emerald-300 hover:text-emerald-200 transition-colors font-medium">
               Contact support →
             </Link>
           </div>

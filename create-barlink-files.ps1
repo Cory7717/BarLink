@@ -15,7 +15,7 @@ export default function HomePage() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className=\"bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 text-white py-20\">
+      <section className=\"bg-linear-to-br from-purple-900 via-indigo-900 to-blue-900 text-white py-20\">
         <div className=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center\">
           <h1 className=\"text-5xl md:text-6xl font-bold mb-6 leading-tight\">
             Find what's happening at bars—<br />by day, by vibe, by activity.
@@ -149,7 +149,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className=\"py-16 bg-gradient-to-r from-purple-900 to-indigo-900 text-white\">
+      <section className=\"py-16 bg-linear-to-r from-purple-900 to-indigo-900 text-white\">
         <div className=\"max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center\">
           <h2 className=\"text-4xl font-bold mb-6\">Ready to Get Your Bar Discovered?</h2>
           <p className=\"text-xl mb-8 text-purple-200\">

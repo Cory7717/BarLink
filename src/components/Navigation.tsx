@@ -12,42 +12,56 @@ export default function Navigation() {
   const isActive = (path: string) => pathname === path;
 
   return (
-    <nav className="bg-slate-950/90 text-white backdrop-blur-md border-b border-slate-800/80">
+    <nav className="sticky top-0 z-50 bg-linear-to-r from-purple-900 via-indigo-900 to-blue-900 text-white backdrop-blur-lg border-b border-white/10 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
+          {/* Logo */}
           <div className="flex items-center space-x-8">
-            <Link href="/" className="text-2xl font-bold tracking-tight hover:text-emerald-200 transition">
+            <Link 
+              href="/" 
+              className="text-2xl font-bold tracking-tight bg-linear-to-r from-cyan-200 to-blue-200 bg-clip-text text-transparent hover:from-cyan-100 hover:to-blue-100 transition"
+            >
               BarPulse
             </Link>
-            <div className="hidden md:flex space-x-2">
+            
+            {/* Navigation Links */}
+            <div className="hidden md:flex space-x-1">
               <Link
                 href="/explore"
-                className={`px-3 py-2 rounded-md text-sm font-medium transition ${
-                  isActive("/explore") ? "bg-emerald-600/20 text-emerald-100" : "hover:bg-slate-800"
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                  isActive("/explore") 
+                    ? "bg-white/20 text-cyan-100 shadow-lg" 
+                    : "hover:bg-white/10 text-white/80 hover:text-white"
                 }`}
               >
                 Explore Bars
               </Link>
               <Link
                 href="/pricing"
-                className={`px-3 py-2 rounded-md text-sm font-medium transition ${
-                  isActive("/pricing") ? "bg-emerald-600/20 text-emerald-100" : "hover:bg-slate-800"
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                  isActive("/pricing") 
+                    ? "bg-white/20 text-cyan-100 shadow-lg" 
+                    : "hover:bg-white/10 text-white/80 hover:text-white"
                 }`}
               >
                 Pricing
               </Link>
               <Link
                 href="/about"
-                className={`px-3 py-2 rounded-md text-sm font-medium transition ${
-                  isActive("/about") ? "bg-emerald-600/20 text-emerald-100" : "hover:bg-slate-800"
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                  isActive("/about") 
+                    ? "bg-white/20 text-cyan-100 shadow-lg" 
+                    : "hover:bg-white/10 text-white/80 hover:text-white"
                 }`}
               >
                 About
               </Link>
               <Link
                 href="/contact"
-                className={`px-3 py-2 rounded-md text-sm font-medium transition ${
-                  isActive("/contact") ? "bg-emerald-600/20 text-emerald-100" : "hover:bg-slate-800"
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                  isActive("/contact") 
+                    ? "bg-white/20 text-cyan-100 shadow-lg" 
+                    : "hover:bg-white/10 text-white/80 hover:text-white"
                 }`}
               >
                 Contact
@@ -55,6 +69,7 @@ export default function Navigation() {
             </div>
           </div>
 
+          {/* Right Side Actions */}
           <div className="flex items-center space-x-3">
             <ThemeToggle />
             {session ? (
@@ -62,20 +77,20 @@ export default function Navigation() {
                 {session.user?.email?.toLowerCase() === "coryarmer@gmail.com" && (
                   <Link
                     href="/admin"
-                    className="px-4 py-2 rounded-md bg-purple-500 text-white font-semibold hover:bg-purple-400 transition"
+                    className="px-4 py-2 rounded-lg bg-linear-to-r from-purple-500 to-pink-500 text-white font-semibold hover:from-purple-600 hover:to-pink-600 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                   >
                     Admin
                   </Link>
                 )}
                 <Link
                   href="/dashboard"
-                  className="px-4 py-2 rounded-md bg-emerald-500 text-slate-950 font-semibold hover:bg-emerald-400 transition"
+                  className="px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:from-cyan-600 hover:to-blue-600 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                 >
                   Dashboard
                 </Link>
                 <button
                   onClick={() => signOut()}
-                  className="px-4 py-2 rounded-md border border-slate-700 hover:bg-slate-800 transition"
+                  className="px-4 py-2 rounded-lg border border-white/30 text-white/80 hover:text-white hover:bg-white/10 transition-all font-medium"
                 >
                   Sign Out
                 </button>
@@ -84,13 +99,13 @@ export default function Navigation() {
               <>
                 <Link
                   href="/auth/signin"
-                  className="px-4 py-2 rounded-md hover:bg-slate-800 transition"
+                  className="px-4 py-2 rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-all font-medium"
                 >
                   Sign In
                 </Link>
                 <Link
                   href="/auth/signup"
-                  className="px-4 py-2 rounded-md bg-emerald-500 text-slate-950 font-semibold hover:bg-emerald-400 transition"
+                  className="px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:from-cyan-600 hover:to-blue-600 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                 >
                   List Your Bar
                 </Link>
