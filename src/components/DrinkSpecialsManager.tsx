@@ -35,21 +35,21 @@ export default function DrinkSpecialsManager({ barId }: { barId: string }) {
   });
 
   useEffect(() => {
+    const fetchSpecials = async () => {
+      try {
+        const res = await fetch(`/api/bars/${barId}/drink-specials`);
+        if (res.ok) {
+          setSpecials(await res.json());
+        }
+      } catch (error) {
+        console.error('Failed to fetch specials:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchSpecials();
   }, [barId]);
-
-  const fetchSpecials = async () => {
-    try {
-      const res = await fetch(`/api/bars/${barId}/drink-specials`);
-      if (res.ok) {
-        setSpecials(await res.json());
-      }
-    } catch (error) {
-      console.error('Failed to fetch specials:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleAdd = async () => {
     if (!newSpecial.name.trim()) {
@@ -167,8 +167,9 @@ export default function DrinkSpecialsManager({ barId }: { barId: string }) {
           <h4 className="font-medium">Add New Drink Special</h4>
           
           <div>
-            <label className="block text-sm font-medium mb-1">Drink Name *</label>
+            <label className="block text-sm font-medium mb-1" htmlFor="drink-name">Drink Name *</label>
             <input
+              id="drink-name"
               type="text"
               value={newSpecial.name}
               onChange={(e) => setNewSpecial({ ...newSpecial, name: e.target.value })}
@@ -178,8 +179,9 @@ export default function DrinkSpecialsManager({ barId }: { barId: string }) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1">Description</label>
+            <label className="block text-sm font-medium mb-1" htmlFor="drink-description">Description</label>
             <input
+              id="drink-description"
               type="text"
               value={newSpecial.description}
               onChange={(e) => setNewSpecial({ ...newSpecial, description: e.target.value })}
@@ -190,8 +192,9 @@ export default function DrinkSpecialsManager({ barId }: { barId: string }) {
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-sm font-medium mb-1">Start Time</label>
+              <label className="block text-sm font-medium mb-1" htmlFor="drink-start">Start Time</label>
               <input
+                id="drink-start"
                 type="time"
                 value={newSpecial.startTime}
                 onChange={(e) => setNewSpecial({ ...newSpecial, startTime: e.target.value })}
@@ -199,8 +202,9 @@ export default function DrinkSpecialsManager({ barId }: { barId: string }) {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">End Time</label>
+              <label className="block text-sm font-medium mb-1" htmlFor="drink-end">End Time</label>
               <input
+                id="drink-end"
                 type="time"
                 value={newSpecial.endTime}
                 onChange={(e) => setNewSpecial({ ...newSpecial, endTime: e.target.value })}

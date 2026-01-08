@@ -32,21 +32,21 @@ export default function FoodOfferingsManager({ barId }: { barId: string }) {
   });
 
   useEffect(() => {
+    const fetchOfferings = async () => {
+      try {
+        const res = await fetch(`/api/bars/${barId}/food-offerings`);
+        if (res.ok) {
+          setOfferings(await res.json());
+        }
+      } catch (error) {
+        console.error('Failed to fetch offerings:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchOfferings();
   }, [barId]);
-
-  const fetchOfferings = async () => {
-    try {
-      const res = await fetch(`/api/bars/${barId}/food-offerings`);
-      if (res.ok) {
-        setOfferings(await res.json());
-      }
-    } catch (error) {
-      console.error('Failed to fetch offerings:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleAdd = async () => {
     if (!newOffering.name.trim()) {
@@ -165,8 +165,9 @@ export default function FoodOfferingsManager({ barId }: { barId: string }) {
           <h4 className="font-medium">Add New Food Offering</h4>
           
           <div>
-            <label className="block text-sm font-medium mb-1">Food Name *</label>
+            <label className="block text-sm font-medium mb-1" htmlFor="food-name">Food Name *</label>
             <input
+              id="food-name"
               type="text"
               value={newOffering.name}
               onChange={(e) => setNewOffering({ ...newOffering, name: e.target.value })}
@@ -176,8 +177,9 @@ export default function FoodOfferingsManager({ barId }: { barId: string }) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1">Description</label>
+            <label className="block text-sm font-medium mb-1" htmlFor="food-description">Description</label>
             <input
+              id="food-description"
               type="text"
               value={newOffering.description}
               onChange={(e) => setNewOffering({ ...newOffering, description: e.target.value })}

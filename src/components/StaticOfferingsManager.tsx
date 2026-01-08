@@ -29,21 +29,21 @@ export default function StaticOfferingsManager({ barId }: { barId: string }) {
   });
 
   useEffect(() => {
+    const fetchOfferings = async () => {
+      try {
+        const res = await fetch(`/api/bars/${barId}/static-offerings`);
+        if (res.ok) {
+          setOfferings(await res.json());
+        }
+      } catch (error) {
+        console.error('Failed to fetch offerings:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchOfferings();
   }, [barId]);
-
-  const fetchOfferings = async () => {
-    try {
-      const res = await fetch(`/api/bars/${barId}/static-offerings`);
-      if (res.ok) {
-        setOfferings(await res.json());
-      }
-    } catch (error) {
-      console.error('Failed to fetch offerings:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleAdd = async () => {
     if (!newOffering.name.trim()) {
@@ -140,8 +140,9 @@ export default function StaticOfferingsManager({ barId }: { barId: string }) {
             <h4 className="font-medium">Add New Offering</h4>
             
             <div>
-              <label className="block text-sm font-medium mb-1">Name *</label>
+              <label className="block text-sm font-medium mb-1" htmlFor="static-name">Name *</label>
               <input
+                id="static-name"
                 type="text"
                 value={newOffering.name}
                 onChange={(e) => setNewOffering({ ...newOffering, name: e.target.value })}
@@ -168,8 +169,9 @@ export default function StaticOfferingsManager({ barId }: { barId: string }) {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">Description</label>
+              <label className="block text-sm font-medium mb-1" htmlFor="static-description">Description</label>
               <input
+                id="static-description"
                 type="text"
                 value={newOffering.description}
                 onChange={(e) => setNewOffering({ ...newOffering, description: e.target.value })}
@@ -179,12 +181,13 @@ export default function StaticOfferingsManager({ barId }: { barId: string }) {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">Position</label>
+              <label className="block text-sm font-medium mb-1" htmlFor="static-position">Position</label>
               <select
-                value={newOffering.position}
-                onChange={(e) => setNewOffering({ ...newOffering, position: parseInt(e.target.value) })}
-                className="w-full px-3 py-2 border rounded"
-              >
+                  id="static-position"
+                  value={newOffering.position}
+                  onChange={(e) => setNewOffering({ ...newOffering, position: parseInt(e.target.value) })}
+                  className="w-full px-3 py-2 border rounded"
+                >
                 {availablePositions.map(p => (
                   <option key={p} value={p}>
                     Position {p + 1}
