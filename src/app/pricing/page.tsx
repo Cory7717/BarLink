@@ -35,6 +35,7 @@ export default function PricingPage() {
           <p className="text-sm text-emerald-200">Owners</p>
           <h1 className="text-4xl font-bold">Stay visible with BarPulse</h1>
           <p className="text-slate-300">Publish your bar, keep offerings fresh, and appear in patron searches.</p>
+          <p className="text-xs text-slate-400">Pricing shown before Texas sales tax (8.25%). We cover processing fees.</p>
         </header>
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">

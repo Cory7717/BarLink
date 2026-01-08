@@ -13,6 +13,7 @@ export async function POST(req: Request) {
     const planId = getPlanIdFromKey(planKey);
     const returnUrl = `${process.env.NEXTAUTH_URL}/dashboard/subscription/success`;
     const cancelUrl = `${process.env.NEXTAUTH_URL}/pricing`;
+    const taxes = { percentage: '8.25', inclusive: false };
 
     // Create PayPal subscription
     const response = await fetch('https://api-m.sandbox.paypal.com/v1/billing/subscriptions', {
@@ -23,6 +24,7 @@ export async function POST(req: Request) {
       },
       body: JSON.stringify({
         plan_id: planId,
+        plan: { taxes }, // Override plan to apply TX sales tax on each billing cycle
         application_context: {
           brand_name: 'BarPulse',
           return_url: returnUrl,
