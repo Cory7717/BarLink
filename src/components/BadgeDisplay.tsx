@@ -71,7 +71,7 @@ interface BadgeGridProps {
   badges: Array<{
     badgeKey: string;
     awardedAt: Date;
-    definition?: BadgeDefinition;
+    definition?: BadgeDefinitionClient;
   }>;
   emptyMessage?: string;
 }
