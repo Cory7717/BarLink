@@ -5,7 +5,8 @@ import Navigation from "@/components/Navigation";
 import Link from "next/link";
 import InventoryManagementClient from "./InventoryManagementClient";
 
-export default async function InventoryPage({ params }: { params: { barId: string } }) {
+export default async function InventoryPage({ params }: { params: Promise<{ barId: string }> }) {
+  const { barId } = await params;
   const session = await auth();
 
   if (!session?.user) {
@@ -22,7 +23,7 @@ export default async function InventoryPage({ params }: { params: { barId: strin
 
   const bar = await prisma.bar.findFirst({
     where: {
-      id: params.barId,
+      id: barId,
       ownerId: owner.id,
     },
     include: {

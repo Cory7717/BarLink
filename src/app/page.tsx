@@ -1,5 +1,8 @@
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
+import dynamic from "next/dynamic";
+
+const BetaModal = dynamic(() => import("@/components/BetaModal"), { ssr: false });
 
 const steps = [
   {
@@ -28,6 +31,7 @@ const features = [
 export default function Home() {
   return (
     <div className="min-h-screen bg-linear-to-br from-slate-950 via-purple-900 to-slate-950 text-white overflow-hidden">
+      <BetaModal />
       {/* Animated gradient background */}
       <div className="fixed inset-0 z-0">
         <div className="absolute inset-0 bg-linear-to-br from-purple-900/20 via-blue-900/20 to-slate-950/20"></div>

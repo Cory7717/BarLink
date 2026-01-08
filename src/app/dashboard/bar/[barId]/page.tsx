@@ -7,8 +7,9 @@ import Link from "next/link";
 export default async function BarManagementPage({
   params,
 }: {
-  params: { barId: string };
+  params: Promise<{ barId: string }>;
 }) {
+  const { barId } = await params;
   const session = await auth();
 
   if (!session?.user) {
@@ -16,7 +17,7 @@ export default async function BarManagementPage({
   }
 
   const bar = await prisma.bar.findUnique({
-    where: { id: params.barId },
+    where: { id: barId },
     include: {
       owner: true,
       offerings: true,
