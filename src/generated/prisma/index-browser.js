@@ -335,6 +335,31 @@ exports.Prisma.BarClickScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.BadgeScalarFieldEnum = {
+  id: 'id',
+  key: 'key',
+  name: 'name',
+  description: 'description',
+  icon: 'icon',
+  tier: 'tier',
+  category: 'category',
+  requirement: 'requirement',
+  color: 'color',
+  isActive: 'isActive',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.BarBadgeScalarFieldEnum = {
+  id: 'id',
+  barId: 'barId',
+  badgeKey: 'badgeKey',
+  awardedAt: 'awardedAt',
+  progress: 'progress',
+  metadata: 'metadata'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -390,6 +415,23 @@ exports.Recurrence = exports.$Enums.Recurrence = {
   MONTHLY: 'MONTHLY'
 };
 
+exports.BadgeTier = exports.$Enums.BadgeTier = {
+  BRONZE: 'BRONZE',
+  SILVER: 'SILVER',
+  GOLD: 'GOLD',
+  PLATINUM: 'PLATINUM'
+};
+
+exports.BadgeCategory = exports.$Enums.BadgeCategory = {
+  FOUNDING: 'FOUNDING',
+  ENGAGEMENT: 'ENGAGEMENT',
+  CONTENT: 'CONTENT',
+  PATRON_LOVE: 'PATRON_LOVE',
+  ACHIEVEMENT: 'ACHIEVEMENT',
+  COMMUNITY: 'COMMUNITY',
+  SEASONAL: 'SEASONAL'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   Account: 'Account',
@@ -405,7 +447,9 @@ exports.Prisma.ModelName = {
   PromoRedemption: 'PromoRedemption',
   BarAnalytics: 'BarAnalytics',
   SearchQuery: 'SearchQuery',
-  BarClick: 'BarClick'
+  BarClick: 'BarClick',
+  Badge: 'Badge',
+  BarBadge: 'BarBadge'
 };
 
 /**

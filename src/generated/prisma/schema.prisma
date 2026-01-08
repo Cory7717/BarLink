@@ -141,6 +141,7 @@ model Bar {
   favorites Favorite[]
   analytics BarAnalytics[]
   clicks    BarClick[]
+  badges    BarBadge[]
 
   @@index([cityNormalized])
   @@index([neighborhoodNormalized])
@@ -326,4 +327,56 @@ model BarClick {
   @@index([source])
   @@index([dayOfWeek])
   @@index([createdAt])
+}
+
+model Badge {
+  id          String        @id @default(cuid())
+  key         String        @unique // e.g., 'founding_member', 'rising_star'
+  name        String // Display name
+  description String        @db.Text
+  icon        String // Emoji or icon identifier
+  tier        BadgeTier     @default(BRONZE)
+  category    BadgeCategory
+  requirement String        @db.Text // JSON string describing requirements
+  color       String // Tailwind color class like 'blue', 'emerald', 'purple'
+  isActive    Boolean       @default(true)
+  sortOrder   Int           @default(0)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  barBadges BarBadge[]
+}
+
+enum BadgeTier {
+  BRONZE
+  SILVER
+  GOLD
+  PLATINUM
+}
+
+enum BadgeCategory {
+  FOUNDING
+  ENGAGEMENT
+  CONTENT
+  PATRON_LOVE
+  ACHIEVEMENT
+  COMMUNITY
+  SEASONAL
+}
+
+model BarBadge {
+  id        String   @id @default(cuid())
+  barId     String
+  badgeKey  String
+  awardedAt DateTime @default(now())
+  progress  Json? // Track progress towards next tier
+  metadata  Json? // Additional data like which month/week earned
+
+  bar   Bar   @relation(fields: [barId], references: [id], onDelete: Cascade)
+  badge Badge @relation(fields: [badgeKey], references: [key], onDelete: Cascade)
+
+  @@unique([barId, badgeKey])
+  @@index([barId])
+  @@index([badgeKey])
+  @@index([awardedAt])
 }

@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
-import { ThemeToggle } from "@/components/ThemeToggle";
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -71,7 +70,6 @@ export default function Navigation() {
 
           {/* Right Side Actions */}
           <div className="flex items-center space-x-3">
-            <ThemeToggle />
             {session ? (
               <>
                 {session.user?.email?.toLowerCase() === "coryarmer@gmail.com" && (
