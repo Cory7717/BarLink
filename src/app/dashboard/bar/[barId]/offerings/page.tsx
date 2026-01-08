@@ -1,7 +1,7 @@
 import { auth } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 import { prisma } from '@/lib/prisma';
-import OfferingsClient from './OfferingsClient.js';
+import OfferingsClient from './OfferingsClient';
 
 export default async function OfferingsPage({
   params,
