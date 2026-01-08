@@ -13,7 +13,16 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
     "*.md", // Ignore markdown files from linting
+    // Ignore generated Prisma client files
+    "src/generated/**",
   ]),
+  {
+    rules: {
+      // Allow inline styles for dynamic width/height calculations
+      "@next/next/no-img-element": "warn",
+      "@next/next/no-inline-styles": "off",
+    },
+  },
 ]);
 
 export default eslintConfig;

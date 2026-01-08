@@ -116,6 +116,8 @@ export default function BarQRCode({ barId }: { barId: string }) {
 
         {qrCode && (
           <div className="inline-block p-4 bg-white rounded-xl mb-6">
+            {/* QR code as base64 data URL - no external image optimization needed */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={qrCode} alt="Check-in QR Code" className="w-64 h-64" />
           </div>
         )}

@@ -79,7 +79,7 @@ export const BADGE_DEFINITIONS: BadgeDefinition[] = [
     category: 'FOUNDING',
     color: 'purple',
     requirement: 'Be in the first 100 bars to join',
-    checkCriteria: (_data) => {
+    checkCriteria: () => {
       // This would be set manually or checked against bar creation order
       return false; // Will be awarded manually
     },

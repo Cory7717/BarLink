@@ -74,7 +74,7 @@ export async function importInventoryItems(params: {
         barId,
         fileName,
         rowsImported: records.count,
-        mapping: mapping ?? null,
+        mapping: mapping === undefined ? undefined : (mapping as Prisma.InputJsonValue),
         createdById: createdById ?? null,
       },
     });

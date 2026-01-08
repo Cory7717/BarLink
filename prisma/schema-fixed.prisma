@@ -20,6 +20,9 @@ model User {
   sessions      Session[]
   favorites     Favorite[]
   visits        BarVisit[]
+  inventoryImports InventoryImport[]
+  shiftUsages       ShiftUsage[]
+  inventorySnapshots InventorySnapshot[]
   role          UserRole  @default(PATRON)
 }
 
@@ -150,6 +153,7 @@ model Bar {
   inventoryImports   InventoryImport[]
   inventorySnapshots InventorySnapshot[]
   visits             BarVisit[]
+  varianceAlerts     VarianceAlert[]
 
   @@index([cityNormalized])
   @@index([neighborhoodNormalized])
@@ -387,6 +391,7 @@ model BarBadge {
   @@index([barId])
   @@index([badgeKey])
   @@index([awardedAt])
+}
 
 model InventoryItem {
   id                 String   @id @default(cuid())
@@ -557,7 +562,6 @@ model BarLicense {
 
   @@index([ownerId])
   @@index([status])
-}
 }
 
 model BarVisit {

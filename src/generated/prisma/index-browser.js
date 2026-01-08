@@ -360,6 +360,125 @@ exports.Prisma.BarBadgeScalarFieldEnum = {
   metadata: 'metadata'
 };
 
+exports.Prisma.InventoryItemScalarFieldEnum = {
+  id: 'id',
+  barId: 'barId',
+  name: 'name',
+  category: 'category',
+  bottleSizeMl: 'bottleSizeMl',
+  startingQtyBottles: 'startingQtyBottles',
+  costPerBottle: 'costPerBottle',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.InventoryImportScalarFieldEnum = {
+  id: 'id',
+  barId: 'barId',
+  fileName: 'fileName',
+  rowsImported: 'rowsImported',
+  mapping: 'mapping',
+  createdById: 'createdById',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.ShiftUsageScalarFieldEnum = {
+  id: 'id',
+  barId: 'barId',
+  userId: 'userId',
+  shiftTime: 'shiftTime',
+  notes: 'notes',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.ShiftUsageItemScalarFieldEnum = {
+  id: 'id',
+  shiftUsageId: 'shiftUsageId',
+  inventoryItemId: 'inventoryItemId',
+  quantityUsed: 'quantityUsed',
+  notes: 'notes'
+};
+
+exports.Prisma.InventorySnapshotScalarFieldEnum = {
+  id: 'id',
+  barId: 'barId',
+  userId: 'userId',
+  snapshotDate: 'snapshotDate',
+  notes: 'notes',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.InventorySnapshotItemScalarFieldEnum = {
+  id: 'id',
+  snapshotId: 'snapshotId',
+  inventoryItemId: 'inventoryItemId',
+  quantityOnHand: 'quantityOnHand',
+  notes: 'notes'
+};
+
+exports.Prisma.BottlePhotoScalarFieldEnum = {
+  id: 'id',
+  snapshotItemId: 'snapshotItemId',
+  imageUrl: 'imageUrl',
+  estimatedPct: 'estimatedPct',
+  estimatedMl: 'estimatedMl',
+  modelVersion: 'modelVersion',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.CostingProfileScalarFieldEnum = {
+  id: 'id',
+  inventoryItemId: 'inventoryItemId',
+  pourSizeOz: 'pourSizeOz',
+  menuPrice: 'menuPrice',
+  costPerPour: 'costPerPour',
+  marginPct: 'marginPct',
+  profitPerBottle: 'profitPerBottle',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.VarianceAlertScalarFieldEnum = {
+  id: 'id',
+  barId: 'barId',
+  inventoryItemId: 'inventoryItemId',
+  periodStart: 'periodStart',
+  periodEnd: 'periodEnd',
+  expectedMl: 'expectedMl',
+  observedMl: 'observedMl',
+  varianceMl: 'varianceMl',
+  variancePct: 'variancePct',
+  severity: 'severity',
+  reasonHint: 'reasonHint',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.BarLicenseScalarFieldEnum = {
+  id: 'id',
+  barId: 'barId',
+  ownerId: 'ownerId',
+  status: 'status',
+  priceCents: 'priceCents',
+  currency: 'currency',
+  billingCycle: 'billingCycle',
+  externalId: 'externalId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.BarVisitScalarFieldEnum = {
+  id: 'id',
+  barId: 'barId',
+  userId: 'userId',
+  source: 'source',
+  verificationMethod: 'verificationMethod',
+  clickId: 'clickId',
+  promoCodeId: 'promoCodeId',
+  metadata: 'metadata',
+  visitedAt: 'visitedAt',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -449,7 +568,18 @@ exports.Prisma.ModelName = {
   SearchQuery: 'SearchQuery',
   BarClick: 'BarClick',
   Badge: 'Badge',
-  BarBadge: 'BarBadge'
+  BarBadge: 'BarBadge',
+  InventoryItem: 'InventoryItem',
+  InventoryImport: 'InventoryImport',
+  ShiftUsage: 'ShiftUsage',
+  ShiftUsageItem: 'ShiftUsageItem',
+  InventorySnapshot: 'InventorySnapshot',
+  InventorySnapshotItem: 'InventorySnapshotItem',
+  BottlePhoto: 'BottlePhoto',
+  CostingProfile: 'CostingProfile',
+  VarianceAlert: 'VarianceAlert',
+  BarLicense: 'BarLicense',
+  BarVisit: 'BarVisit'
 };
 
 /**

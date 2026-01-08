@@ -5,10 +5,11 @@ import { BadgeService } from '@/lib/badgeService';
 
 export async function GET(
   request: Request,
-  { params }: { params: { barId: string } }
+  { params }: { params: Promise<{ barId: string }> }
 ) {
   try {
-    const badges = await BadgeService.getBarBadges(params.barId);
+    const { barId } = await params;
+    const badges = await BadgeService.getBarBadges(barId);
     return NextResponse.json({ badges });
   } catch (error) {
     console.error('Error fetching badges:', error);
@@ -21,7 +22,7 @@ export async function GET(
 
 export async function POST(
   request: Request,
-  { params }: { params: { barId: string } }
+  { params }: { params: Promise<{ barId: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions);
@@ -30,7 +31,8 @@ export async function POST(
     }
 
     // Check and award badges for the bar
-    const result = await BadgeService.checkAndAwardBadges(params.barId);
+    const { barId } = await params;
+    const result = await BadgeService.checkAndAwardBadges(barId);
 
     return NextResponse.json({
       success: true,

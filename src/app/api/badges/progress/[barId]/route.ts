@@ -5,7 +5,7 @@ import { BadgeService } from '@/lib/badgeService';
 
 export async function GET(
   request: Request,
-  { params }: { params: { barId: string } }
+  { params }: { params: Promise<{ barId: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions);
@@ -13,7 +13,8 @@ export async function GET(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const progress = await BadgeService.getBadgeProgress(params.barId);
+    const { barId } = await params;
+    const progress = await BadgeService.getBadgeProgress(barId);
 
     return NextResponse.json({ progress });
   } catch (error) {

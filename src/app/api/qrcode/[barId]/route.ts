@@ -6,9 +6,10 @@ import { prisma } from '@/lib/prisma';
 
 export async function GET(
   request: Request,
-  { params }: { params: { barId: string } }
+  { params }: { params: Promise<{ barId: string }> }
 ) {
   try {
+    const { barId } = await params;
     const session = await getServerSession(authOptions);
     if (!session?.user?.email) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -19,7 +20,7 @@ export async function GET(
       where: { email: session.user.email },
       include: {
         bars: {
-          where: { id: params.barId },
+          where: { id: barId },
           select: { id: true, name: true },
         },
       },

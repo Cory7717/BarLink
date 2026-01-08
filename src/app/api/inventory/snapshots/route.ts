@@ -22,7 +22,7 @@ const payloadSchema = z.object({
 export async function POST(req: Request) {
   try {
     const session = await auth();
-    const ownerId = session?.user?.id;
+    const ownerId = session?.user && typeof session.user === 'object' ? (session.user as { id?: string }).id : undefined;
     if (!ownerId) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
@@ -38,7 +38,7 @@ export async function POST(req: Request) {
 
     const snapshot = await recordSnapshot({
       ...body,
-      userId: session.user?.id,
+      userId: ownerId,
     });
 
     return NextResponse.json({ snapshot }, { status: 201 });

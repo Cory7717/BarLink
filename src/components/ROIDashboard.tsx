@@ -277,8 +277,9 @@ export default function ROIDashboard({ barId }: { barId: string }) {
         <h2 className="text-xl font-semibold text-white mb-4">ROI Calculator Settings</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
-            <label className="block text-sm text-slate-300 mb-2">Monthly Subscription Cost ($)</label>
+            <label className="block text-sm text-slate-300 mb-2" htmlFor="subscriptionCost">Monthly Subscription Cost ($)</label>
             <input
+              id="subscriptionCost"
               type="number"
               value={settings.subscriptionCost}
               onChange={(e) => setSettings({ ...settings, subscriptionCost: parseFloat(e.target.value) || 0 })}
@@ -286,8 +287,9 @@ export default function ROIDashboard({ barId }: { barId: string }) {
             />
           </div>
           <div>
-            <label className="block text-sm text-slate-300 mb-2">Average Check Size ($)</label>
+            <label className="block text-sm text-slate-300 mb-2" htmlFor="averageCheckSize">Average Check Size ($)</label>
             <input
+              id="averageCheckSize"
               type="number"
               value={settings.averageCheckSize}
               onChange={(e) => setSettings({ ...settings, averageCheckSize: parseFloat(e.target.value) || 0 })}

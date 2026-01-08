@@ -19,6 +19,10 @@ model User {
   accounts      Account[]
   sessions      Session[]
   favorites     Favorite[]
+  visits        BarVisit[]
+  inventoryImports InventoryImport[]
+  shiftUsages       ShiftUsage[]
+  inventorySnapshots InventorySnapshot[]
   role          UserRole  @default(PATRON)
 }
 
@@ -145,6 +149,8 @@ model Bar {
   inventoryImports   InventoryImport[]
   inventorySnapshots InventorySnapshot[]
   shiftUsages        ShiftUsage[]
+  visits             BarVisit[]
+  varianceAlerts     VarianceAlert[]
 
   @@index([cityNormalized])
   @@index([neighborhoodNormalized])
@@ -449,4 +455,26 @@ model BarLicense {
 
   @@index([ownerId])
   @@index([status])
+}
+
+model BarVisit {
+  id                 String   @id @default(cuid())
+  barId              String
+  userId             String?  // Can be null for anonymous check-ins
+  source             String   // 'qr_code', 'promo_code', 'manual', 'location'
+  verificationMethod String   // 'qr_scan', 'promo_redemption', 'self_reported', 'geo_fence'
+  clickId            String?  // Link to the BarClick that led to this visit
+  promoCodeId        String?  // If they used a promo code
+  metadata           Json?    // Additional data: receipt info, amount spent, etc.
+  visitedAt          DateTime @default(now())
+  createdAt          DateTime @default(now())
+
+  bar                Bar      @relation(fields: [barId], references: [id], onDelete: Cascade)
+  user               User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([barId])
+  @@index([userId])
+  @@index([visitedAt])
+  @@index([source])
+  @@index([clickId])
 }

@@ -14,7 +14,7 @@ const importSchema = z.object({
 export async function POST(req: Request) {
   try {
     const session = await auth();
-    const ownerId = session?.user?.id;
+    const ownerId = session?.user && typeof session.user === 'object' ? (session.user as { id?: string }).id : undefined;
     if (!ownerId) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
@@ -31,7 +31,7 @@ export async function POST(req: Request) {
     const items = await importInventoryItems({
       barId: payload.barId,
       items: payload.items,
-      createdById: session.user?.id,
+      createdById: ownerId,
       fileName: payload.fileName,
       mapping: payload.mapping,
     });
