@@ -130,7 +130,7 @@ export function BadgeGrid({ badges, emptyMessage = 'No badges earned yet' }: Bad
 
 interface BadgeProgressProps {
   progress: Array<{
-    badge: BadgeDefinition;
+    badge: BadgeDefinitionClient;
     progress: {
       percentage: number;
       current: number;
