@@ -8,9 +8,9 @@ import { DAYS_OF_WEEK } from '@/lib/constants';
 export default async function OfferingsPage({
   params,
 }: {
-  params: { barId: string };
+  params: Promise<{ barId: string }>;
 }) {
-  const { barId } = params;
+  const { barId } = await params;
   const session = await auth();
 
   if (!session?.user) {
