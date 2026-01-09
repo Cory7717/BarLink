@@ -80,7 +80,12 @@ Sent from BarLink Contact Form
           html: emailHtml,
         });
 
-        console.log('Email sent successfully via Gmail SMTP to:', TO_EMAIL);
+        console.log(
+          'Email sent successfully via Gmail SMTP to:',
+          TO_EMAIL,
+          'Message ID:',
+          mailResult?.messageId || 'N/A'
+        );
       } catch (smtpError) {
         console.error('Gmail SMTP error:', smtpError);
         throw new Error('Failed to send email via SMTP');
