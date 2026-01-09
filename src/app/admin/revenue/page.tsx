@@ -18,13 +18,13 @@ export default async function AdminRevenuePage() {
 
   return (
     <section className="space-y-6">
-      <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-        <h2 className="mb-2 text-xl font-semibold">Revenue overview</h2>
+      <div className="glass-panel rounded-3xl p-4">
+        <h2 className="mb-2 text-xl font-semibold text-gradient">Revenue overview</h2>
         <div className="text-slate-300">Estimated MRR</div>
-        <div className="text-4xl font-bold">${mrr.toFixed(0)}/mo</div>
+        <div className="text-4xl font-semibold">${mrr.toFixed(0)}/mo</div>
       </div>
-      <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-        <h3 className="mb-2 text-lg font-semibold">Active subscriptions by plan</h3>
+      <div className="glass-panel rounded-3xl p-4">
+        <h3 className="mb-2 text-lg font-semibold text-gradient">Active subscriptions by plan</h3>
         <ul className="text-sm text-slate-200">
           {Object.entries(byPlan).map(([plan, count]) => (
             <li key={plan}>{plan}: {count}</li>

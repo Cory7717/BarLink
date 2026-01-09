@@ -1,13 +1,19 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Manrope, Space_Grotesk } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
 import { Providers } from '@/components/Providers'
 
-const inter = Inter({ 
+const displayFont = Space_Grotesk({
   subsets: ['latin'],
   display: 'swap',
-  preload: true,
+  variable: '--font-display',
+})
+
+const bodyFont = Manrope({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-body',
 })
 
 export const metadata: Metadata = {
@@ -50,7 +56,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={inter.className}>
+      <body className={`${bodyFont.variable} ${displayFont.variable} antialiased`}>
         <Providers>
           {children}
         </Providers>

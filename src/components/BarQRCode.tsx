@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export default function BarQRCode({ barId }: { barId: string }) {
-  const [qrCode, setQrCode] = useState<string>('');
+  const [qrCode, setQrCode] = useState<string>("");
   const [loading, setLoading] = useState(true);
   const [showInstructions, setShowInstructions] = useState(false);
 
@@ -16,7 +16,7 @@ export default function BarQRCode({ barId }: { barId: string }) {
           setQrCode(data.qrCode);
         }
       } catch (error) {
-        console.error('Failed to load QR code:', error);
+        console.error("Failed to load QR code:", error);
       } finally {
         setLoading(false);
       }
@@ -26,14 +26,14 @@ export default function BarQRCode({ barId }: { barId: string }) {
   }, [barId]);
 
   const handleDownload = () => {
-    const link = document.createElement('a');
+    const link = document.createElement("a");
     link.href = qrCode;
     link.download = `barpulse-qr-code-${barId}.png`;
     link.click();
   };
 
   const handlePrint = () => {
-    const printWindow = window.open('', '_blank');
+    const printWindow = window.open("", "_blank");
     if (printWindow) {
       printWindow.document.write(`
         <html>
@@ -97,9 +97,9 @@ export default function BarQRCode({ barId }: { barId: string }) {
 
   if (loading) {
     return (
-      <div className="rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg text-center">
+      <div className="glass-panel rounded-3xl p-6 shadow-lg text-center">
         <div className="flex justify-center mb-4">
-          <div className="h-12 w-12 animate-spin rounded-full border-4 border-emerald-500 border-t-transparent"></div>
+          <div className="h-12 w-12 animate-spin rounded-full border-4 border-cyan-400 border-t-transparent"></div>
         </div>
         <p className="text-slate-300">Generating QR code...</p>
       </div>
@@ -107,67 +107,57 @@ export default function BarQRCode({ barId }: { barId: string }) {
   }
 
   return (
-    <div className="rounded-2xl border border-emerald-500/30 bg-linear-to-br from-emerald-500/10 to-emerald-600/5 backdrop-blur-md p-6 shadow-lg">
+    <div className="glass-panel rounded-3xl p-6 shadow-lg">
       <div className="text-center">
-        <h2 className="text-xl font-semibold text-emerald-200 mb-2">📱 Patron Check-In QR Code</h2>
-        <p className="text-sm text-emerald-100/80 mb-6">
-          Display this QR code at your bar for patrons to scan and verify their visit
+        <h2 className="text-xl font-semibold text-white mb-2">Patron check-in QR code</h2>
+        <p className="text-sm text-slate-200 mb-6">
+          Display this QR code at your bar for patrons to scan and verify their visit.
         </p>
 
         {qrCode && (
           <div className="inline-block p-4 bg-white rounded-xl mb-6">
-            {/* QR code as base64 data URL - no external image optimization needed */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={qrCode} alt="Check-in QR Code" className="w-64 h-64" />
           </div>
         )}
 
-        <div className="flex gap-3 justify-center mb-6">
-          <button
-            onClick={handleDownload}
-            className="rounded-lg bg-linear-to-r from-emerald-500 to-emerald-600 px-6 py-3 text-sm font-semibold text-slate-950 hover:from-emerald-400 hover:to-emerald-500 transition-all"
-          >
-            📥 Download QR Code
+        <div className="flex flex-wrap gap-3 justify-center mb-6">
+          <button onClick={handleDownload} className="btn-primary px-6 py-3 text-sm">
+            Download QR code
           </button>
-          <button
-            onClick={handlePrint}
-            className="rounded-lg border border-emerald-500/50 bg-emerald-500/10 px-6 py-3 text-sm font-semibold text-emerald-200 hover:bg-emerald-500/20 transition-all"
-          >
-            🖨️ Print QR Code
+          <button onClick={handlePrint} className="btn-secondary px-6 py-3 text-sm">
+            Print QR code
           </button>
-          <button
-            onClick={() => setShowInstructions(!showInstructions)}
-            className="rounded-lg border border-slate-600/50 bg-slate-800/50 px-6 py-3 text-sm font-semibold text-slate-200 hover:bg-slate-700/50 transition-all"
-          >
-            ℹ️ Instructions
+          <button onClick={() => setShowInstructions(!showInstructions)} className="btn-secondary px-6 py-3 text-sm">
+            Instructions
           </button>
         </div>
 
         {showInstructions && (
-          <div className="rounded-lg border border-emerald-500/20 bg-emerald-500/5 p-4 text-left">
-            <h3 className="font-semibold text-emerald-200 mb-3">How to use your QR code:</h3>
-            <ol className="space-y-2 text-sm text-emerald-100/90">
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-left">
+            <h3 className="font-semibold text-white mb-3">How to use your QR code:</h3>
+            <ol className="space-y-2 text-sm text-slate-200">
               <li className="flex gap-2">
-                <span className="font-bold text-emerald-400">1.</span>
+                <span className="font-bold text-cyan-300">1.</span>
                 <span>Download or print the QR code</span>
               </li>
               <li className="flex gap-2">
-                <span className="font-bold text-emerald-400">2.</span>
-                <span>Display it prominently at your bar (near entrance, bar top, or tables)</span>
+                <span className="font-bold text-cyan-300">2.</span>
+                <span>Display it prominently at your bar</span>
               </li>
               <li className="flex gap-2">
-                <span className="font-bold text-emerald-400">3.</span>
+                <span className="font-bold text-cyan-300">3.</span>
                 <span>Encourage patrons to scan it when they arrive</span>
               </li>
               <li className="flex gap-2">
-                <span className="font-bold text-emerald-400">4.</span>
-                <span>Track verified visits in your ROI dashboard above</span>
+                <span className="font-bold text-cyan-300">4.</span>
+                <span>Track verified visits in your ROI dashboard</span>
               </li>
             </ol>
-            <div className="mt-4 p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
-              <p className="text-xs text-emerald-200">
-                <strong>💡 Pro Tip:</strong> Offer a small incentive (like 5% off) for patrons who check in via QR code. 
-                This increases adoption and gives you valuable visit data for ROI tracking!
+            <div className="mt-4 p-3 rounded-2xl bg-cyan-500/10 border border-cyan-500/20">
+              <p className="text-xs text-slate-200">
+                <strong>Pro tip:</strong> Offer a small incentive (like 5% off) for patrons who check in via QR code.
+                This increases adoption and gives you valuable visit data for ROI tracking.
               </p>
             </div>
           </div>

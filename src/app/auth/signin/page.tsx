@@ -42,15 +42,15 @@ export default function SignInPage() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-950 via-purple-900/20 to-slate-950 text-white">
+    <div className="min-h-screen app-shell text-white">
       <Navigation />
       <main className="mx-auto max-w-md px-4 pb-16 pt-12">
         <header className="space-y-2 text-center">
-          <h1 className="text-3xl font-bold bg-linear-to-r from-cyan-200 to-blue-200 bg-clip-text text-transparent">Owner Sign In</h1>
+          <h1 className="text-3xl font-semibold text-gradient">Owner sign in</h1>
           <p className="text-sm text-slate-200">Access your BarPulse dashboard</p>
         </header>
 
-        <form onSubmit={handleSubmit} className="mt-8 space-y-4 rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
+        <form onSubmit={handleSubmit} className="mt-8 space-y-4 glass-panel rounded-3xl p-6 shadow-lg">
           {error && (
             <div className="rounded-lg bg-red-500/10 border border-red-500/30 px-4 py-3 text-sm text-red-100">
               {error}
@@ -63,7 +63,7 @@ export default function SignInPage() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-2 w-full rounded-lg border border-slate-600/50 bg-slate-800/50 backdrop-blur-sm px-3 py-2 text-white placeholder:text-slate-400 focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all"
+              className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder:text-slate-400 focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/30 transition-all"
               required
             />
           </label>
@@ -74,7 +74,7 @@ export default function SignInPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="mt-2 w-full rounded-lg border border-slate-600/50 bg-slate-800/50 backdrop-blur-sm px-3 py-2 text-white placeholder:text-slate-400 focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all"
+              className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder:text-slate-400 focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/30 transition-all"
               required
             />
           </label>
@@ -82,14 +82,14 @@ export default function SignInPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-lg bg-linear-to-r from-emerald-500 to-emerald-600 px-4 py-3 text-sm font-semibold text-slate-950 hover:from-emerald-400 hover:to-emerald-500 hover:shadow-lg hover:shadow-emerald-500/30 transition-all disabled:opacity-50"
+            className="w-full btn-primary px-4 py-3 text-sm disabled:opacity-50"
           >
             {loading ? "Signing in..." : "Sign in"}
           </button>
 
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-slate-600/50"></div>
+              <div className="w-full border-t border-white/10"></div>
             </div>
             <div className="relative flex justify-center text-sm">
               <span className="bg-slate-900/80 backdrop-blur-sm px-2 text-slate-300">Or</span>
@@ -99,14 +99,14 @@ export default function SignInPage() {
           <button
             type="button"
             onClick={handleGoogleSignIn}
-            className="w-full rounded-lg border border-slate-600/50 bg-slate-800/50 backdrop-blur-sm px-4 py-3 text-sm font-semibold text-white hover:bg-slate-700/50 transition-all"
+            className="w-full btn-secondary px-4 py-3 text-sm"
           >
             Continue with Google
           </button>
 
           <p className="text-center text-sm text-slate-300">
             Don&apos;t have an account?{" "}
-            <Link href="/auth/signup" className="text-emerald-300 hover:text-emerald-100 transition-colors">
+            <Link href="/auth/signup" className="text-cyan-200 hover:text-cyan-100 transition-colors">
               Sign up
             </Link>
           </p>

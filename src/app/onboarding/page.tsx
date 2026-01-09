@@ -131,11 +131,11 @@ function OnboardingContent() {
   const selectedPlan = SUBSCRIPTION_PLANS.find((p) => p.id === planKey);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
+    <div className="min-h-screen app-shell text-white">
       <Navigation />
       <main className="mx-auto max-w-3xl px-4 pb-16 pt-12">
         <header className="space-y-2 text-center">
-          <h1 className="text-3xl font-bold">Welcome to BarPulse</h1>
+          <h1 className="text-3xl font-semibold text-gradient">Welcome to BarPulse</h1>
           <p className="text-sm text-slate-300">Complete setup in 2 steps</p>
         </header>
 
@@ -156,7 +156,7 @@ function OnboardingContent() {
         )}
 
         {step === 1 && (
-          <form onSubmit={handleBarProfileSubmit} className="mt-8 space-y-4 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+          <form onSubmit={handleBarProfileSubmit} className="mt-8 space-y-4 glass-panel rounded-3xl p-6">
             <h2 className="text-xl font-semibold">Step 1: Create your bar profile</h2>
 
             <label className="block text-sm text-slate-200">
@@ -253,7 +253,7 @@ function OnboardingContent() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded-lg bg-emerald-500 px-4 py-3 text-sm font-semibold text-slate-950 hover:bg-emerald-400 disabled:opacity-50"
+              className="w-full btn-primary px-4 py-3 text-sm disabled:opacity-50"
             >
               {loading ? "Saving..." : "Continue to subscription"}
             </button>
@@ -261,7 +261,7 @@ function OnboardingContent() {
         )}
 
         {step === 2 && selectedPlan && (
-          <div className="mt-8 space-y-4 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+          <div className="mt-8 space-y-4 glass-panel rounded-3xl p-6">
             <h2 className="text-xl font-semibold">Step 2: Subscribe to activate</h2>
             <div className="rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-4">
               <h3 className="text-lg font-semibold text-white">{selectedPlan.name}</h3>
@@ -276,7 +276,7 @@ function OnboardingContent() {
             <button
               onClick={handleSubscriptionSubmit}
               disabled={loading}
-              className="w-full rounded-lg bg-emerald-500 px-4 py-3 text-sm font-semibold text-slate-950 hover:bg-emerald-400 disabled:opacity-50"
+              className="w-full btn-primary px-4 py-3 text-sm disabled:opacity-50"
             >
               {loading ? "Redirecting..." : "Continue to PayPal"}
             </button>
@@ -289,7 +289,7 @@ function OnboardingContent() {
 
 export default function OnboardingPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-slate-950 text-white flex items-center justify-center">Loading...</div>}>
+    <Suspense fallback={<div className="min-h-screen app-shell text-white flex items-center justify-center">Loading...</div>}>
       <OnboardingContent />
     </Suspense>
   );

@@ -16,7 +16,6 @@ export default async function DashboardPage() {
     redirect("/auth/signin");
   }
 
-  // Fetch owner and their bars
   const owner = await prisma.owner.findUnique({
     where: { email: session.user.email! },
     include: {
@@ -39,51 +38,51 @@ export default async function DashboardPage() {
   const bars = owner.bars;
   const primaryBar = bars[0];
 
-  // Fetch badges for the bar
   let badges: Awaited<ReturnType<typeof BadgeService.getBarBadges>> = [];
   let badgeProgress: Awaited<ReturnType<typeof BadgeService.getBadgeProgress>> = [];
-  
+
   if (primaryBar) {
     badges = await BadgeService.getBarBadges(primaryBar.id);
     badgeProgress = await BadgeService.getBadgeProgress(primaryBar.id);
   }
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-950 via-purple-900/20 to-slate-950 text-white">
+    <div className="min-h-screen app-shell text-white">
       <Navigation />
       <main className="mx-auto max-w-6xl px-4 pb-16 pt-8">
-        <header className="flex items-center justify-between">
+        <header className="flex flex-wrap items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold bg-linear-to-r from-cyan-200 to-blue-200 bg-clip-text text-transparent">Dashboard</h1>
+            <h1 className="text-3xl font-semibold text-gradient">Dashboard</h1>
             <p className="text-sm text-slate-200">Welcome back, {owner.name}</p>
           </div>
-          <Link
-            href="/dashboard/settings"
-            className="rounded-lg border border-white/20 bg-white/5 backdrop-blur-md px-4 py-2 text-sm font-semibold text-white hover:bg-white/10 transition-all"
-          >
+          <Link href="/dashboard/settings" className="btn-secondary px-4 py-2 text-sm">
             Settings
           </Link>
         </header>
 
         {!hasActiveSubscription && (
-          <div className="mt-6 rounded-xl border border-amber-500/30 bg-linear-to-br from-amber-500/10 to-amber-600/5 backdrop-blur-md p-4">
+          <div className="mt-6 glass-panel rounded-3xl p-4">
             <h3 className="font-semibold text-amber-50">Subscription required</h3>
             <p className="text-sm text-amber-100">
-              Your bar won&apos;t appear in searches until you have an active subscription.
+              Your bar will not appear in searches until you have an active subscription.
             </p>
-            <Link href="/pricing" className="mt-2 inline-flex text-sm font-semibold text-amber-50 hover:text-white transition-colors">
-              View plans →
+            <Link href="/pricing" className="mt-2 inline-flex text-sm font-semibold text-amber-100 hover:text-white transition-colors">
+              View plans
             </Link>
           </div>
         )}
 
         {owner.subscription && (
-          <section className="mt-6 rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
+          <section className="mt-6 glass-panel rounded-3xl p-6 shadow-lg">
             <h2 className="text-xl font-semibold text-white">Subscription</h2>
             <div className="mt-3 flex items-center gap-3">
-              <span className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${
-                owner.subscription.status === "ACTIVE" ? "bg-emerald-500/20 text-emerald-100" : "bg-red-500/20 text-red-100"
-              }`}>
+              <span
+                className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${
+                  owner.subscription.status === "ACTIVE"
+                    ? "bg-emerald-500/20 text-emerald-100"
+                    : "bg-red-500/20 text-red-100"
+                }`}
+              >
                 {owner.subscription.status}
               </span>
               <span className="text-sm text-slate-300">
@@ -97,27 +96,24 @@ export default async function DashboardPage() {
               </p>
             )}
             <a
-              href={`https://www.paypal.com/myaccount/autopay`}
+              href="https://www.paypal.com/myaccount/autopay"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-3 inline-flex text-sm font-semibold text-emerald-200 hover:text-emerald-100"
+              className="mt-3 inline-flex text-sm font-semibold text-cyan-200 hover:text-cyan-100"
             >
-              Manage billing on PayPal →
+              Manage billing on PayPal
             </a>
           </section>
         )}
 
         {bars.length > 0 && (
-          <section className="mt-6 rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
+          <section className="mt-6 glass-panel rounded-3xl p-6 shadow-lg">
             <div className="flex items-center justify-between">
               <div>
                 <h2 className="text-xl font-semibold text-white">Locations</h2>
                 <p className="text-sm text-slate-300">Manage each bar and its per-location license.</p>
               </div>
-              <Link
-                href="/onboarding"
-                className="rounded-lg bg-linear-to-r from-cyan-400 to-sky-500 px-4 py-2 text-sm font-semibold text-slate-950 hover:from-cyan-300 hover:to-sky-400 hover:shadow-lg hover:shadow-cyan-500/30 transition-all"
-              >
+              <Link href="/onboarding" className="btn-primary px-4 py-2 text-sm">
                 Add location
               </Link>
             </div>
@@ -125,23 +121,24 @@ export default async function DashboardPage() {
               {bars.map((b) => {
                 const license = b.barLicenses?.[0];
                 return (
-                  <div
-                    key={b.id}
-                    className="rounded-xl border border-slate-700/60 bg-slate-900/50 p-4 shadow-inner shadow-slate-900"
-                  >
+                  <div key={b.id} className="rounded-2xl border border-white/10 bg-white/5 p-4">
                     <div className="flex items-center justify-between">
                       <div>
                         <h3 className="text-lg font-semibold text-white">{b.name}</h3>
-                        <p className="text-xs text-slate-300">{b.city}, {b.state}</p>
+                        <p className="text-xs text-slate-300">
+                          {b.city}, {b.state}
+                        </p>
                       </div>
-                      <span className={`text-xs font-semibold rounded-full px-3 py-1 ${
-                        license?.status === 'ACTIVE'
-                          ? 'bg-emerald-500/20 text-emerald-100'
-                          : license?.status === 'PAST_DUE'
-                          ? 'bg-amber-500/20 text-amber-100'
-                          : 'bg-slate-600/40 text-slate-200'
-                      }`}>
-                        {license?.status ?? 'UNLICENSED'}
+                      <span
+                        className={`text-xs font-semibold rounded-full px-3 py-1 ${
+                          license?.status === "ACTIVE"
+                            ? "bg-emerald-500/20 text-emerald-100"
+                            : license?.status === "PAST_DUE"
+                            ? "bg-amber-500/20 text-amber-100"
+                            : "bg-slate-600/40 text-slate-200"
+                        }`}
+                      >
+                        {license?.status ?? "UNLICENSED"}
                       </span>
                     </div>
                     <div className="mt-3 flex items-center gap-3 text-xs text-slate-300">
@@ -152,16 +149,10 @@ export default async function DashboardPage() {
                       <span>{b.profileViews} views</span>
                     </div>
                     <div className="mt-3 flex gap-2">
-                      <Link
-                        href={`/dashboard/bar/${b.id}`}
-                        className="rounded-md border border-white/10 bg-white/5 px-3 py-2 text-xs font-semibold text-white hover:bg-white/10"
-                      >
+                      <Link href={`/dashboard/bar/${b.id}`} className="btn-secondary px-3 py-2 text-xs">
                         Manage
                       </Link>
-                      <Link
-                        href={`/dashboard/bar/${b.id}/inventory`}
-                        className="rounded-md border border-cyan-400/30 bg-cyan-500/15 px-3 py-2 text-xs font-semibold text-cyan-50 hover:bg-cyan-500/25"
-                      >
+                      <Link href={`/dashboard/bar/${b.id}/inventory`} className="btn-secondary px-3 py-2 text-xs">
                         Inventory
                       </Link>
                     </div>
@@ -173,7 +164,7 @@ export default async function DashboardPage() {
         )}
 
         {primaryBar ? (
-          <section className="mt-6 rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
+          <section className="mt-6 glass-panel rounded-3xl p-6 shadow-lg">
             <div className="flex items-center justify-between">
               <div>
                 <h2 className="text-xl font-semibold text-white">{primaryBar.name}</h2>
@@ -193,37 +184,31 @@ export default async function DashboardPage() {
                   </div>
                 )}
               </div>
-              <Link
-                href={`/dashboard/bar/${primaryBar.id}`}
-                className="rounded-lg bg-linear-to-r from-emerald-500 to-emerald-600 px-4 py-2 text-sm font-semibold text-slate-950 hover:from-emerald-400 hover:to-emerald-500 hover:shadow-lg hover:shadow-emerald-500/30 transition-all"
-              >
+              <Link href={`/dashboard/bar/${primaryBar.id}`} className="btn-primary px-4 py-2 text-sm">
                 Manage bar
               </Link>
             </div>
           </section>
         ) : (
-          <div className="mt-6 rounded-xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 text-center shadow-lg">
-            <p className="text-slate-200">You haven&apos;t created a bar profile yet.</p>
-            <Link
-              href="/onboarding"
-              className="mt-3 inline-flex rounded-lg bg-linear-to-r from-emerald-500 to-emerald-600 px-4 py-2 text-sm font-semibold text-slate-950 hover:from-emerald-400 hover:to-emerald-500 hover:shadow-lg hover:shadow-emerald-500/30 transition-all"
-            >
+          <div className="mt-6 glass-panel rounded-3xl p-6 text-center shadow-lg">
+            <p className="text-slate-200">You have not created a bar profile yet.</p>
+            <Link href="/onboarding" className="mt-3 inline-flex btn-primary px-4 py-2 text-sm">
               Create bar profile
             </Link>
           </div>
         )}
 
         <section className="mt-6 grid gap-4 sm:grid-cols-3">
-          <div className="group relative rounded-xl border border-blue-500/30 bg-linear-to-br from-blue-500/10 to-blue-600/5 backdrop-blur-md p-4 transition-all duration-300 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/20 hover:scale-105">
-            <h3 className="text-sm text-blue-300">Profile views</h3>
-            <p className="text-2xl font-bold text-blue-100">{primaryBar?.profileViews || 0}</p>
+          <div className="glass-panel rounded-2xl p-4">
+            <h3 className="text-sm text-cyan-200">Profile views</h3>
+            <p className="text-2xl font-semibold text-white">{primaryBar?.profileViews || 0}</p>
           </div>
-          <div className="group relative rounded-xl border border-purple-500/30 bg-linear-to-br from-purple-500/10 to-purple-600/5 backdrop-blur-md p-4 transition-all duration-300 hover:border-purple-500/50 hover:shadow-lg hover:shadow-purple-500/20 hover:scale-105">
-            <h3 className="text-sm text-purple-300">Search appearances</h3>
-            <p className="text-2xl font-bold text-purple-100">{primaryBar?.searchAppearances || 0}</p>
+          <div className="glass-panel rounded-2xl p-4">
+            <h3 className="text-sm text-cyan-200">Search appearances</h3>
+            <p className="text-2xl font-semibold text-white">{primaryBar?.searchAppearances || 0}</p>
           </div>
-          <div className="group relative rounded-xl border border-amber-500/30 bg-linear-to-br from-amber-500/10 to-amber-600/5 backdrop-blur-md p-4 transition-all duration-300 hover:border-amber-500/50 hover:shadow-lg hover:shadow-amber-500/20 hover:scale-105">
-            <h3 className="text-sm text-amber-300">Status</h3>
+          <div className="glass-panel rounded-2xl p-4">
+            <h3 className="text-sm text-cyan-200">Status</h3>
             <p className="text-lg font-semibold">
               {primaryBar?.isPublished ? (
                 <span className="text-emerald-100">Live</span>
@@ -235,32 +220,32 @@ export default async function DashboardPage() {
         </section>
 
         {primaryBar && badges.length > 0 && (
-          <section className="mt-6 rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
-            <h2 className="text-xl font-semibold text-white mb-4">🏆 Your Badges</h2>
+          <section className="mt-6 glass-panel rounded-3xl p-6 shadow-lg">
+            <h2 className="text-xl font-semibold text-white mb-4">Your badges</h2>
             <BadgeGrid badges={badges} />
           </section>
         )}
 
         {primaryBar && badgeProgress.length > 0 && (
-          <section className="mt-6 rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
-            <h2 className="text-xl font-semibold text-white mb-4">🎯 Badge Progress</h2>
+          <section className="mt-6 glass-panel rounded-3xl p-6 shadow-lg">
+            <h2 className="text-xl font-semibold text-white mb-4">Badge progress</h2>
             <BadgeProgress progress={badgeProgress} limit={5} />
           </section>
         )}
 
         {primaryBar && (
           <section className="mt-10">
-            <h2 className="text-2xl font-bold text-white mb-6">ROI & Verified Visits</h2>
-                        <div className="mb-8">
-                          <BarQRCode barId={primaryBar.id} />
-                        </div>
+            <h2 className="text-2xl font-semibold text-white mb-6">ROI and verified visits</h2>
+            <div className="mb-8">
+              <BarQRCode barId={primaryBar.id} />
+            </div>
             <ROIDashboard barId={primaryBar.id} />
           </section>
         )}
 
         {primaryBar && (
           <section className="mt-10">
-            <h2 className="text-2xl font-bold text-white mb-6">Analytics & Performance</h2>
+            <h2 className="text-2xl font-semibold text-white mb-6">Analytics and performance</h2>
             <AnalyticsDashboard barId={primaryBar.id} />
           </section>
         )}

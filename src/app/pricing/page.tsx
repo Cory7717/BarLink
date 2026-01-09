@@ -18,38 +18,36 @@ export default function PricingPage() {
     setIsLoading(true);
 
     if (status === "authenticated" && session?.user?.email) {
-      // User is logged in - send them to onboarding first
-      // They'll create/confirm their bar, then be sent to payment
       router.push(`/onboarding?plan=${planId}`);
     } else {
-      // User not logged in - go to signup first
-      // They'll complete signup, then onboarding, then payment
       router.push(`/auth/signup?plan=${planId}`);
     }
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
+    <div className="min-h-screen app-shell text-white">
       <Navigation />
       <main className="mx-auto max-w-5xl px-4 pb-20 pt-12">
         <header className="space-y-3 text-center">
-          <p className="text-sm text-emerald-200">Owners</p>
-          <h1 className="text-4xl font-bold">Stay visible with BarPulse</h1>
-          <p className="text-slate-300">Publish your bar, keep offerings fresh, and appear in patron searches.</p>
+          <p className="text-sm text-cyan-200">Owners</p>
+          <h1 className="text-4xl sm:text-5xl font-semibold text-gradient">Stay visible with BarPulse</h1>
+          <p className="text-slate-200">
+            Publish your bar, keep offerings fresh, and appear in patron searches.
+          </p>
         </header>
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {plans.map((plan) => (
             <div
               key={plan.id}
-              className={`group relative rounded-2xl border backdrop-blur-md p-6 shadow-2xl transition-all duration-300 hover:shadow-emerald-500/20 hover:scale-105 ${
+              className={`group relative rounded-3xl border p-6 shadow-2xl transition-all duration-300 hover:shadow-cyan-500/20 hover:scale-[1.02] ${
                 plan.popular
-                  ? "border-emerald-400/50 bg-linear-to-br from-emerald-500/10 to-emerald-600/5"
-                  : "border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40"
-              } ${plan.popular ? "ring-2 ring-emerald-400/30" : ""}`}
+                  ? "border-cyan-400/40 bg-gradient-to-br from-cyan-500/10 to-amber-500/5"
+                  : "border-white/10 bg-white/5"
+              } ${plan.popular ? "ring-2 ring-cyan-400/20" : ""}`}
             >
               {plan.popular && (
-                <span className="mb-3 inline-flex rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-100 ring-1 ring-emerald-500/40">
+                <span className="pill mb-3 inline-flex px-3 py-1 text-xs uppercase">
                   Most popular
                 </span>
               )}
@@ -60,12 +58,14 @@ export default function PricingPage() {
                 <span className="text-sm text-slate-400">/{plan.interval}</span>
               </div>
               {plan.originalPrice && (
-                <p className="text-xs text-emerald-200">Save {formatCurrency((plan.originalPrice ?? 0) - plan.price)}</p>
+                <p className="text-xs text-cyan-200">
+                  Save {formatCurrency((plan.originalPrice ?? 0) - plan.price)}
+                </p>
               )}
               <ul className="mt-4 space-y-2 text-sm text-slate-200">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-center gap-2">
-                    <span className="text-emerald-300">•</span>
+                    <span className="text-cyan-300">*</span>
                     <span>{feature}</span>
                   </li>
                 ))}
@@ -73,10 +73,8 @@ export default function PricingPage() {
               <button
                 onClick={() => handleChoosePlan(plan.id)}
                 disabled={isLoading || status === "loading"}
-                className={`mt-6 inline-flex w-full justify-center rounded-lg px-4 py-3 text-sm font-semibold transition-all duration-200 ${
-                  plan.popular
-                    ? "bg-linear-to-r from-emerald-500 to-emerald-600 text-slate-950 hover:from-emerald-400 hover:to-emerald-500 hover:shadow-lg hover:shadow-emerald-500/30 active:scale-95"
-                    : "bg-slate-700 text-white hover:bg-slate-600 active:scale-95"
+                className={`mt-6 inline-flex w-full justify-center px-4 py-3 text-sm font-semibold transition-all duration-200 ${
+                  plan.popular ? "btn-primary" : "btn-secondary"
                 } disabled:opacity-50 disabled:cursor-not-allowed`}
               >
                 {isLoading ? "Redirecting..." : `Choose ${plan.name}`}
@@ -85,24 +83,35 @@ export default function PricingPage() {
           ))}
         </div>
 
-        <section className="mt-12 grid gap-6 rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 md:grid-cols-2 shadow-lg">
+        <section className="mt-12 grid gap-6 glass-panel rounded-3xl p-6 md:grid-cols-2 shadow-lg">
           <div>
-            <h3 className="text-xl font-semibold text-white">What&apos;s included</h3>
+            <h3 className="text-xl font-semibold text-white">What is included</h3>
             <ul className="mt-3 space-y-2 text-sm text-slate-200">
-              <li className="flex items-center gap-2"><span className="text-emerald-400">✓</span> Unlimited offerings & events</li>
-              <li className="flex items-center gap-2"><span className="text-emerald-400">✓</span> Special/new badges with auto-expiry</li>
-              <li className="flex items-center gap-2"><span className="text-emerald-400">✓</span> Map + list placement for active subscriptions</li>
-              <li className="flex items-center gap-2"><span className="text-emerald-400">✓</span> Owner billing portal (update card, cancel, renewal date)</li>
-              <li className="flex items-center gap-2"><span className="text-emerald-400">✓</span> Basic analytics: profile views, search appearances, top clicks</li>
+              <li className="flex items-center gap-2">
+                <span className="text-cyan-300">*</span> Unlimited offerings and events
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-cyan-300">*</span> Special and new badges with auto expiry
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-cyan-300">*</span> Map and list placement for active subscriptions
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-cyan-300">*</span> Owner billing portal for card updates and renewals
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-cyan-300">*</span> Basic analytics for views, searches, and clicks
+              </li>
             </ul>
           </div>
           <div>
             <h3 className="text-xl font-semibold text-white">Questions</h3>
             <p className="text-sm text-slate-300">
-              Need a custom setup or multiple locations? Email coryarmer@gmail.com and we&apos;ll help tailor a plan.
+              Need a custom setup or multiple locations? Email coryarmer@gmail.com and we will
+              tailor a plan.
             </p>
-            <Link href="/contact" className="mt-3 inline-flex text-emerald-300 hover:text-emerald-200 transition-colors font-medium">
-              Contact support →
+            <Link href="/contact" className="mt-3 inline-flex text-cyan-200 hover:text-cyan-100 transition-colors font-medium">
+              Contact support
             </Link>
           </div>
         </section>

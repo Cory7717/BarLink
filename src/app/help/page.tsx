@@ -268,7 +268,7 @@ export default function HelpPage() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-950 via-purple-900/20 to-slate-950 text-white">
+    <div className="min-h-screen app-shell text-white">
       <Navigation />
       <main className="mx-auto max-w-4xl px-4 pb-16 pt-8">
         {/* Header */}

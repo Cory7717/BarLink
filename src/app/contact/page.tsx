@@ -43,32 +43,32 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-950 via-purple-900/20 to-slate-950 text-white">
+    <div className="min-h-screen app-shell text-white">
       <Navigation />
       <main className="mx-auto max-w-3xl px-4 pb-16 pt-10 space-y-6">
         <header>
-          <p className="text-sm text-emerald-300">Support</p>
-          <h1 className="text-3xl font-bold bg-linear-to-r from-cyan-200 to-blue-200 bg-clip-text text-transparent">Contact BarPulse</h1>
+          <p className="text-sm text-cyan-200">Support</p>
+          <h1 className="text-3xl font-semibold text-gradient">Contact BarPulse</h1>
           <p className="text-slate-200">Questions, issues, or feedback? We usually reply within one business day.</p>
         </header>
 
         <form
           onSubmit={handleSubmit}
-          className="space-y-4 rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg"
+          className="space-y-4 glass-panel rounded-3xl p-6 shadow-lg"
         >
           <div className="grid gap-4 sm:grid-cols-2">
             <label className="text-sm text-slate-100">
               Name
-              <input name="name" className="mt-2 w-full rounded-lg border border-slate-600/50 bg-slate-800/50 backdrop-blur-sm px-3 py-2 text-white placeholder:text-slate-400 focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all" required />
+              <input name="name" className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder:text-slate-400 focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/30 transition-all" required />
             </label>
             <label className="text-sm text-slate-100">
               Email
-              <input name="email" type="email" className="mt-2 w-full rounded-lg border border-slate-600/50 bg-slate-800/50 backdrop-blur-sm px-3 py-2 text-white placeholder:text-slate-400 focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all" required />
+              <input name="email" type="email" className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder:text-slate-400 focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/30 transition-all" required />
             </label>
           </div>
           <label className="text-sm text-slate-100">
             Topic
-            <select name="topic" className="mt-2 w-full rounded-lg border border-slate-600/50 bg-slate-800/50 backdrop-blur-sm px-3 py-2 text-white focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all">
+            <select name="topic" className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/30 transition-all">
               <option value="General question">General question</option>
               <option value="Billing">Billing</option>
               <option value="Report an issue">Report an issue</option>
@@ -77,7 +77,7 @@ export default function ContactPage() {
           </label>
           <label className="text-sm text-slate-100">
             Message
-            <textarea name="message" className="mt-2 w-full rounded-lg border border-slate-600/50 bg-slate-800/50 backdrop-blur-sm px-3 py-3 text-white placeholder:text-slate-400 focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all" rows={4} required />
+            <textarea name="message" className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-3 py-3 text-white placeholder:text-slate-400 focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/30 transition-all" rows={4} required />
           </label>
           {status === 'success' && (
             <div className="rounded-lg bg-emerald-500/20 border border-emerald-500/50 p-4 text-emerald-100">
@@ -92,12 +92,12 @@ export default function ContactPage() {
           <button 
             type="submit" 
             disabled={status === 'loading'}
-            className="w-full rounded-lg bg-linear-to-r from-emerald-500 to-emerald-600 px-4 py-3 text-sm font-semibold text-slate-950 hover:from-emerald-400 hover:to-emerald-500 hover:shadow-lg hover:shadow-emerald-500/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full btn-primary px-4 py-3 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {status === 'loading' ? 'Sending...' : 'Send message'}
           </button>
           <p className="text-xs text-slate-400">
-            Or email us directly at <a className="underline hover:text-emerald-200" href="mailto:coryarmer@gmail.com">coryarmer@gmail.com</a>.
+            Or email us directly at <a className="underline hover:text-cyan-200" href="mailto:coryarmer@gmail.com">coryarmer@gmail.com</a>.
           </p>
         </form>
       </main>

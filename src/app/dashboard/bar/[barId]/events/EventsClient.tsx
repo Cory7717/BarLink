@@ -1,9 +1,9 @@
 "use client";
 
-import { useMemo, useState } from 'react';
-import Navigation from '@/components/Navigation';
-import Link from 'next/link';
-import { DAYS_OF_WEEK } from '@/lib/constants';
+import { useMemo, useState } from "react";
+import Navigation from "@/components/Navigation";
+import Link from "next/link";
+import { DAYS_OF_WEEK } from "@/lib/constants";
 
 type EventItem = {
   id: string;
@@ -27,14 +27,14 @@ export type EventsClientProps = {
 };
 
 const PRESET_CATEGORIES = [
-  'Trivia',
-  'Poker',
-  'Karaoke',
-  'Live Music',
-  'DJ Night',
-  'Happy Hour',
-  'Sports Watch Party',
-  'Custom',
+  "Trivia",
+  "Poker",
+  "Karaoke",
+  "Live Music",
+  "DJ Night",
+  "Happy Hour",
+  "Sports Watch Party",
+  "Custom",
 ];
 
 function dayFromDate(dateStr: string) {
@@ -59,14 +59,14 @@ export default function EventsClient({ bar }: EventsClientProps) {
   const [error, setError] = useState<string | null>(null);
   const [editing, setEditing] = useState<EventItem | null>(null);
   const [form, setForm] = useState({
-    title: '',
-    description: '',
+    title: "",
+    description: "",
     category: PRESET_CATEGORIES[0],
-    customCategory: '',
+    customCategory: "",
     startDate: new Date().toISOString().slice(0, 10),
-    endDate: '',
-    startTime: '19:00',
-    endTime: '',
+    endDate: "",
+    startTime: "19:00",
+    endTime: "",
     isActive: true,
     isSpecial: false,
   });
@@ -82,27 +82,27 @@ export default function EventsClient({ bar }: EventsClientProps) {
       setEditing(event);
       setForm({
         title: event.title,
-        description: event.description || '',
-        category: PRESET_CATEGORIES.includes(event.category || '') ? (event.category as string) : 'Custom',
-        customCategory: PRESET_CATEGORIES.includes(event.category || '') ? '' : event.category || '',
+        description: event.description || "",
+        category: PRESET_CATEGORIES.includes(event.category || "") ? (event.category as string) : "Custom",
+        customCategory: PRESET_CATEGORIES.includes(event.category || "") ? "" : event.category || "",
         startDate: event.startDate.slice(0, 10),
-        endDate: event.endDate ? event.endDate.slice(0, 10) : '',
+        endDate: event.endDate ? event.endDate.slice(0, 10) : "",
         startTime: event.startTime,
-        endTime: event.endTime || '',
+        endTime: event.endTime || "",
         isActive: event.isActive,
         isSpecial: event.isSpecial,
       });
     } else {
       setEditing(null);
       setForm({
-        title: '',
-        description: '',
+        title: "",
+        description: "",
         category: PRESET_CATEGORIES[0],
-        customCategory: '',
+        customCategory: "",
         startDate: nextDateForDay(activeDay),
-        endDate: '',
-        startTime: '19:00',
-        endTime: '',
+        endDate: "",
+        startTime: "19:00",
+        endTime: "",
         isActive: true,
         isSpecial: false,
       });
@@ -125,7 +125,7 @@ export default function EventsClient({ bar }: EventsClientProps) {
       const payload = {
         title: form.title,
         description: form.description || null,
-        category: form.category === 'Custom' ? form.customCategory || form.title : form.category,
+        category: form.category === "Custom" ? form.customCategory || form.title : form.category,
         startDate: form.startDate,
         endDate: form.endDate || null,
         startTime: form.startTime,
@@ -134,20 +134,18 @@ export default function EventsClient({ bar }: EventsClientProps) {
         isSpecial: form.isSpecial,
       };
 
-      const endpoint = editing
-        ? `/api/bars/${bar.id}/events/${editing.id}`
-        : `/api/bars/${bar.id}/events`;
-      const method = editing ? 'PATCH' : 'POST';
+      const endpoint = editing ? `/api/bars/${bar.id}/events/${editing.id}` : `/api/bars/${bar.id}/events`;
+      const method = editing ? "PATCH" : "POST";
 
       const res = await fetch(endpoint, {
         method,
-        headers: { 'Content-Type': 'application/json' },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
       const data = await res.json();
       if (!res.ok) {
-        throw new Error(data.error || 'Failed to save event');
+        throw new Error(data.error || "Failed to save event");
       }
 
       if (editing) {
@@ -157,56 +155,47 @@ export default function EventsClient({ bar }: EventsClientProps) {
       }
       closeModal();
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to save event');
+      setError(err instanceof Error ? err.message : "Failed to save event");
     } finally {
       setSaving(false);
     }
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm('Delete this event?')) return;
+    if (!confirm("Delete this event?")) return;
     setSaving(true);
     try {
-      const res = await fetch(`/api/bars/${bar.id}/events/${id}`, { method: 'DELETE' });
-      if (!res.ok) throw new Error('Failed to delete');
+      const res = await fetch(`/api/bars/${bar.id}/events/${id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("Failed to delete");
       setEvents((prev) => prev.filter((ev) => ev.id !== id));
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to delete');
+      setError(err instanceof Error ? err.message : "Failed to delete");
     } finally {
       setSaving(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-slate-950">
+    <div className="min-h-screen app-shell text-white">
       <Navigation />
       <main className="container mx-auto max-w-6xl px-4 py-8">
         <div className="mb-8 flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold bg-linear-to-r from-purple-200 to-pink-200 bg-clip-text text-transparent">
-              Events & Promotions
-            </h1>
-            <p className="text-slate-400 mt-2">{bar.name}</p>
+            <h1 className="text-3xl font-semibold text-gradient">Events and promotions</h1>
+            <p className="text-slate-300 mt-2">{bar.name}</p>
           </div>
-          <Link
-            href={`/dashboard/bar/${bar.id}`}
-            className="rounded-lg border border-white/20 bg-white/5 backdrop-blur-md px-4 py-2 text-sm font-semibold text-white hover:bg-white/10 transition-all"
-          >
+          <Link href={`/dashboard/bar/${bar.id}`} className="btn-secondary px-4 py-2 text-sm">
             Back
           </Link>
         </div>
 
-        <div className="rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg space-y-6">
+        <div className="glass-panel rounded-3xl p-6 shadow-lg space-y-6">
           <div className="flex flex-wrap gap-2">
             {DAYS_OF_WEEK.map((day) => (
               <button
                 key={day.value}
                 onClick={() => setActiveDay(day.value)}
-                className={`px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
-                  activeDay === day.value
-                    ? 'bg-purple-500 text-slate-950'
-                    : 'bg-slate-800/60 text-slate-200 hover:bg-slate-700'
-                }`}
+                className={activeDay === day.value ? "btn-primary px-3 py-2 text-xs" : "btn-secondary px-3 py-2 text-xs"}
               >
                 {day.label}
               </button>
@@ -217,11 +206,8 @@ export default function EventsClient({ bar }: EventsClientProps) {
             <h2 className="text-xl font-semibold text-white">
               {DAYS_OF_WEEK.find((d) => d.value === activeDay)?.label} ({filteredEvents.length})
             </h2>
-            <button
-              onClick={() => openModal()}
-              className="rounded-lg bg-linear-to-r from-purple-400 to-pink-500 px-4 py-2 text-sm font-semibold text-slate-950 hover:from-purple-300 hover:to-pink-400 transition-all"
-            >
-              + Add Event
+            <button onClick={() => openModal()} className="btn-primary px-4 py-2 text-sm">
+              Add event
             </button>
           </div>
 
@@ -230,13 +216,13 @@ export default function EventsClient({ bar }: EventsClientProps) {
           ) : (
             <div className="space-y-3">
               {filteredEvents.map((event) => (
-                <div key={event.id} className="rounded-lg border border-slate-700/40 bg-slate-900/40 p-4">
+                <div key={event.id} className="rounded-2xl border border-white/10 bg-white/5 p-4">
                   <div className="flex items-start justify-between">
                     <div className="flex-1 space-y-1">
                       <div className="flex items-center gap-2">
                         <h3 className="text-lg font-semibold text-white">{event.title}</h3>
-                        <span className="text-xs px-2 py-1 rounded bg-purple-500/20 text-purple-200">
-                          {event.category || 'Event'}
+                        <span className="text-xs px-2 py-1 rounded bg-cyan-500/20 text-cyan-200">
+                          {event.category || "Event"}
                         </span>
                         {event.isSpecial && (
                           <span className="text-xs px-2 py-1 rounded bg-amber-500/20 text-amber-200">Special</span>
@@ -245,24 +231,19 @@ export default function EventsClient({ bar }: EventsClientProps) {
                           <span className="text-xs px-2 py-1 rounded bg-slate-600/40 text-slate-200">Inactive</span>
                         )}
                       </div>
-                      {event.description && (
-                        <p className="text-sm text-slate-300">{event.description}</p>
-                      )}
+                      {event.description && <p className="text-sm text-slate-300">{event.description}</p>}
                       <p className="text-xs text-slate-400">
                         {new Date(event.startDate).toLocaleDateString()} • {event.startTime}
-                        {event.endTime ? ` - ${event.endTime}` : ''}
+                        {event.endTime ? ` - ${event.endTime}` : ""}
                       </p>
                     </div>
                     <div className="flex gap-2">
-                      <button
-                        onClick={() => openModal(event)}
-                        className="px-3 py-1 rounded bg-blue-500/20 text-blue-200 hover:bg-blue-500/30 text-sm"
-                      >
+                      <button onClick={() => openModal(event)} className="btn-secondary px-3 py-1 text-xs">
                         Edit
                       </button>
                       <button
                         onClick={() => handleDelete(event.id)}
-                        className="px-3 py-1 rounded bg-red-500/20 text-red-200 hover:bg-red-500/30 text-sm"
+                        className="rounded-full border border-red-500/40 px-3 py-1 text-xs text-red-200 hover:bg-red-500/10"
                       >
                         Delete
                       </button>
@@ -277,61 +258,71 @@ export default function EventsClient({ bar }: EventsClientProps) {
 
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-slate-900 border border-slate-700 rounded-2xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <h2 className="text-2xl font-bold text-white mb-4">{editing ? 'Edit Event' : 'Add Event'}</h2>
+          <div className="glass-panel rounded-3xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <h2 className="text-2xl font-semibold text-white mb-4">{editing ? "Edit event" : "Add event"}</h2>
             {error && (
-              <div className="mb-3 rounded-lg border border-red-500/60 bg-red-500/10 text-red-100 px-4 py-3 text-sm">
+              <div className="mb-3 rounded-2xl border border-red-500/60 bg-red-500/10 text-red-100 px-4 py-3 text-sm">
                 {error}
               </div>
             )}
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label htmlFor="event-title" className="block text-sm text-slate-300 mb-1">Title *</label>
+                <label htmlFor="event-title" className="block text-sm text-slate-300 mb-1">
+                  Title *
+                </label>
                 <input
                   id="event-title"
                   type="text"
                   value={form.title}
                   onChange={(e) => setForm({ ...form, title: e.target.value })}
-                  className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-white"
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white"
                   required
                 />
               </div>
 
               <div>
-                <label htmlFor="event-description" className="block text-sm text-slate-300 mb-1">Description</label>
+                <label htmlFor="event-description" className="block text-sm text-slate-300 mb-1">
+                  Description
+                </label>
                 <textarea
                   id="event-description"
                   value={form.description}
                   onChange={(e) => setForm({ ...form, description: e.target.value })}
-                  className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-white"
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white"
                   rows={3}
                 />
               </div>
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="event-category" className="block text-sm text-slate-300 mb-1">Category</label>
+                  <label htmlFor="event-category" className="block text-sm text-slate-300 mb-1">
+                    Category
+                  </label>
                   <select
                     id="event-category"
                     value={form.category}
                     onChange={(e) => setForm({ ...form, category: e.target.value })}
-                    className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-white"
+                    className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white"
                   >
                     {PRESET_CATEGORIES.map((cat) => (
-                      <option key={cat} value={cat}>{cat}</option>
+                      <option key={cat} value={cat}>
+                        {cat}
+                      </option>
                     ))}
                   </select>
                 </div>
-                {form.category === 'Custom' && (
+                {form.category === "Custom" && (
                   <div>
-                    <label htmlFor="event-custom" className="block text-sm text-slate-300 mb-1">Custom category</label>
+                    <label htmlFor="event-custom" className="block text-sm text-slate-300 mb-1">
+                      Custom category
+                    </label>
                     <input
                       id="event-custom"
                       type="text"
                       value={form.customCategory}
                       onChange={(e) => setForm({ ...form, customCategory: e.target.value })}
-                      className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-white"
+                      className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white"
                       placeholder="e.g., Poker Night"
                     />
                   </div>
@@ -340,24 +331,28 @@ export default function EventsClient({ bar }: EventsClientProps) {
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="event-start-date" className="block text-sm text-slate-300 mb-1">Start date *</label>
+                  <label htmlFor="event-start-date" className="block text-sm text-slate-300 mb-1">
+                    Start date *
+                  </label>
                   <input
                     id="event-start-date"
                     type="date"
                     value={form.startDate}
                     onChange={(e) => setForm({ ...form, startDate: e.target.value })}
-                    className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-white"
+                    className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white"
                     required
                   />
                 </div>
                 <div>
-                  <label htmlFor="event-start-time" className="block text-sm text-slate-300 mb-1">Start time *</label>
+                  <label htmlFor="event-start-time" className="block text-sm text-slate-300 mb-1">
+                    Start time *
+                  </label>
                   <input
                     id="event-start-time"
                     type="time"
                     value={form.startTime}
                     onChange={(e) => setForm({ ...form, startTime: e.target.value })}
-                    className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-white"
+                    className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white"
                     required
                   />
                 </div>
@@ -365,23 +360,27 @@ export default function EventsClient({ bar }: EventsClientProps) {
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="event-end-date" className="block text-sm text-slate-300 mb-1">End date</label>
+                  <label htmlFor="event-end-date" className="block text-sm text-slate-300 mb-1">
+                    End date
+                  </label>
                   <input
                     id="event-end-date"
                     type="date"
                     value={form.endDate}
                     onChange={(e) => setForm({ ...form, endDate: e.target.value })}
-                    className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-white"
+                    className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white"
                   />
                 </div>
                 <div>
-                  <label htmlFor="event-end-time" className="block text-sm text-slate-300 mb-1">End time</label>
+                  <label htmlFor="event-end-time" className="block text-sm text-slate-300 mb-1">
+                    End time
+                  </label>
                   <input
                     id="event-end-time"
                     type="time"
                     value={form.endTime}
                     onChange={(e) => setForm({ ...form, endTime: e.target.value })}
-                    className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-white"
+                    className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white"
                   />
                 </div>
               </div>
@@ -406,19 +405,10 @@ export default function EventsClient({ bar }: EventsClientProps) {
               </div>
 
               <div className="flex gap-3 pt-2">
-                <button
-                  type="submit"
-                  disabled={saving}
-                  className="flex-1 rounded-lg bg-linear-to-r from-purple-400 to-pink-500 px-4 py-3 text-sm font-semibold text-slate-950 hover:from-purple-300 hover:to-pink-400 transition-all disabled:opacity-50"
-                >
-                  {saving ? 'Saving...' : editing ? 'Update event' : 'Create event'}
+                <button type="submit" disabled={saving} className="flex-1 btn-primary px-4 py-3 text-sm disabled:opacity-50">
+                  {saving ? "Saving..." : editing ? "Update event" : "Create event"}
                 </button>
-                <button
-                  type="button"
-                  onClick={closeModal}
-                  disabled={saving}
-                  className="px-6 py-3 rounded-lg border border-slate-600 text-slate-300 hover:bg-slate-800/60 transition-all"
-                >
+                <button type="button" onClick={closeModal} disabled={saving} className="btn-secondary px-6 py-3 text-sm">
                   Cancel
                 </button>
               </div>

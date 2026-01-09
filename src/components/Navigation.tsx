@@ -11,66 +11,66 @@ export default function Navigation() {
   const isActive = (path: string) => pathname === path;
 
   return (
-    <nav className="sticky top-0 z-50 bg-linear-to-r from-purple-900 via-indigo-900 to-blue-900 text-white backdrop-blur-lg border-b border-white/10 shadow-lg">
+    <nav className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/70 text-white backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center space-x-8">
             <Link 
               href="/" 
-              className="text-2xl font-bold tracking-tight bg-linear-to-r from-cyan-200 to-blue-200 bg-clip-text text-transparent hover:from-cyan-100 hover:to-blue-100 transition"
+              className="text-2xl font-semibold tracking-tight text-gradient"
             >
               BarPulse
             </Link>
             
             {/* Navigation Links */}
-            <div className="hidden md:flex space-x-1">
+            <div className="hidden md:flex items-center gap-1 rounded-full border border-white/10 bg-white/5 px-2 py-1">
               <Link
                 href="/explore"
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
                   isActive("/explore") 
-                    ? "bg-white/20 text-cyan-100 shadow-lg" 
-                    : "hover:bg-white/10 text-white/80 hover:text-white"
+                    ? "bg-cyan-500/20 text-cyan-100 shadow-lg shadow-cyan-500/20" 
+                    : "text-white/70 hover:text-white hover:bg-white/10"
                 }`}
               >
                 Explore Bars
               </Link>
               <Link
                 href="/pricing"
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
                   isActive("/pricing") 
-                    ? "bg-white/20 text-cyan-100 shadow-lg" 
-                    : "hover:bg-white/10 text-white/80 hover:text-white"
+                    ? "bg-cyan-500/20 text-cyan-100 shadow-lg shadow-cyan-500/20" 
+                    : "text-white/70 hover:text-white hover:bg-white/10"
                 }`}
               >
                 Pricing
               </Link>
               <Link
                 href="/help"
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
                   isActive("/help") 
-                    ? "bg-white/20 text-cyan-100 shadow-lg" 
-                    : "hover:bg-white/10 text-white/80 hover:text-white"
+                    ? "bg-cyan-500/20 text-cyan-100 shadow-lg shadow-cyan-500/20" 
+                    : "text-white/70 hover:text-white hover:bg-white/10"
                 }`}
               >
                 Help
               </Link>
               <Link
                 href="/about"
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
                   isActive("/about") 
-                    ? "bg-white/20 text-cyan-100 shadow-lg" 
-                    : "hover:bg-white/10 text-white/80 hover:text-white"
+                    ? "bg-cyan-500/20 text-cyan-100 shadow-lg shadow-cyan-500/20" 
+                    : "text-white/70 hover:text-white hover:bg-white/10"
                 }`}
               >
                 About
               </Link>
               <Link
                 href="/contact"
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
                   isActive("/contact") 
-                    ? "bg-white/20 text-cyan-100 shadow-lg" 
-                    : "hover:bg-white/10 text-white/80 hover:text-white"
+                    ? "bg-cyan-500/20 text-cyan-100 shadow-lg shadow-cyan-500/20" 
+                    : "text-white/70 hover:text-white hover:bg-white/10"
                 }`}
               >
                 Contact
@@ -85,20 +85,20 @@ export default function Navigation() {
                 {session.user?.email?.toLowerCase() === "coryarmer@gmail.com" && (
                   <Link
                     href="/admin"
-                    className="px-4 py-2 rounded-lg bg-linear-to-r from-purple-500 to-pink-500 text-white font-semibold hover:from-purple-600 hover:to-pink-600 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                    className="px-4 py-2 text-sm btn-secondary"
                   >
                     Admin
                   </Link>
                 )}
                 <Link
                   href="/dashboard"
-                  className="px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:from-cyan-600 hover:to-blue-600 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  className="px-4 py-2 text-sm btn-primary"
                 >
                   Dashboard
                 </Link>
                 <button
                   onClick={() => signOut()}
-                  className="px-4 py-2 rounded-lg border border-white/30 text-white/80 hover:text-white hover:bg-white/10 transition-all font-medium"
+                  className="px-4 py-2 text-sm btn-secondary"
                 >
                   Sign Out
                 </button>
@@ -107,13 +107,13 @@ export default function Navigation() {
               <>
                 <Link
                   href="/auth/signin"
-                  className="px-4 py-2 rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-all font-medium"
+                  className="px-4 py-2 text-sm btn-secondary"
                 >
                   Sign In
                 </Link>
                 <Link
                   href="/auth/signup"
-                  className="px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:from-cyan-600 hover:to-blue-600 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  className="px-4 py-2 text-sm btn-primary"
                 >
                   List Your Bar
                 </Link>

@@ -8,8 +8,8 @@ export default async function AdminSubscriptionsPage() {
   }) as any[];
 
   return (
-    <section className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-      <h2 className="mb-4 text-xl font-semibold">Manage subscriptions</h2>
+    <section className="glass-panel rounded-3xl p-4">
+      <h2 className="mb-4 text-xl font-semibold text-gradient">Manage subscriptions</h2>
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead className="text-left text-slate-300">
@@ -22,7 +22,7 @@ export default async function AdminSubscriptionsPage() {
               <th className="py-2">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-800">
+          <tbody className="divide-y divide-white/10">
             {subs.map((s: any) => (
               <tr key={s.id}>
                 <td className="py-2">{s.owner.name}</td>
@@ -34,17 +34,17 @@ export default async function AdminSubscriptionsPage() {
                   <form className="inline" action={`/api/admin/subscriptions/update`} method="post">
                     <input type="hidden" name="subscriptionId" value={s.id} />
                     <input type="hidden" name="status" value="ACTIVE" />
-                    <button className="mr-2 rounded border border-emerald-500/40 px-2 py-1 text-emerald-200 hover:bg-emerald-500/10">Activate</button>
+                    <button className="mr-2 rounded-full border border-emerald-500/40 px-3 py-1 text-emerald-200 hover:bg-emerald-500/10">Activate</button>
                   </form>
                   <form className="inline" action={`/api/admin/subscriptions/update`} method="post">
                     <input type="hidden" name="subscriptionId" value={s.id} />
                     <input type="hidden" name="status" value="CANCELED" />
-                    <button className="mr-2 rounded border border-red-500/40 px-2 py-1 text-red-200 hover:bg-red-500/10">Cancel</button>
+                    <button className="mr-2 rounded-full border border-red-500/40 px-3 py-1 text-red-200 hover:bg-red-500/10">Cancel</button>
                   </form>
                   <form className="inline" action={`/api/admin/subscriptions/update`} method="post">
                     <input type="hidden" name="subscriptionId" value={s.id} />
                     <input type="hidden" name="status" value="PAUSED" />
-                    <button className="rounded border border-yellow-500/40 px-2 py-1 text-yellow-200 hover:bg-yellow-500/10">Pause</button>
+                    <button className="rounded-full border border-yellow-500/40 px-3 py-1 text-yellow-200 hover:bg-yellow-500/10">Pause</button>
                   </form>
                 </td>
               </tr>

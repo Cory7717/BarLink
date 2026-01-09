@@ -9,17 +9,17 @@ export default async function AdminOverviewPage() {
 
   return (
     <section className="grid gap-4 sm:grid-cols-3">
-      <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-5">
-        <div className="text-slate-400 text-sm">Owners</div>
-        <div className="text-3xl font-bold">{ownersCount}</div>
+      <div className="glass-panel rounded-2xl p-5">
+        <div className="text-slate-300 text-sm">Owners</div>
+        <div className="text-3xl font-semibold">{ownersCount}</div>
       </div>
-      <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-5">
-        <div className="text-slate-400 text-sm">Active subscriptions</div>
-        <div className="text-3xl font-bold">{activeSubs}</div>
+      <div className="glass-panel rounded-2xl p-5">
+        <div className="text-slate-300 text-sm">Active subscriptions</div>
+        <div className="text-3xl font-semibold">{activeSubs}</div>
       </div>
-      <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-5">
-        <div className="text-slate-400 text-sm">Bars</div>
-        <div className="text-3xl font-bold">{barsCount}</div>
+      <div className="glass-panel rounded-2xl p-5">
+        <div className="text-slate-300 text-sm">Bars</div>
+        <div className="text-3xl font-semibold">{barsCount}</div>
       </div>
     </section>
   );
