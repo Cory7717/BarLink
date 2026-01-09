@@ -59,17 +59,19 @@ Sent from BarLink Contact Form
       try {
         const nodemailer = await import('nodemailer');
         
+        const portNum = parseInt(SMTP_PORT);
+        
         const transporter = nodemailer.default.createTransport({
           host: SMTP_HOST,
-          port: parseInt(SMTP_PORT),
-          secure: SMTP_PORT === '465',
+          port: portNum,
+          secure: portNum === 465, // Use secure connection for port 465, use STARTTLS for 587
           auth: {
             user: SMTP_USER,
             pass: SMTP_PASS,
           },
         });
 
-        await transporter.sendMail({
+        const mailResult = await transporter.sendMail({
           from: `"BarLink Contact Form" <${FROM_EMAIL}>`,
           to: TO_EMAIL,
           replyTo: email,
@@ -92,11 +94,11 @@ Sent from BarLink Contact Form
       console.log('Content:', emailText);
       console.log('==============================');
       console.warn('⚠️  Gmail SMTP not configured. Email logged to console only.');
-      console.warn('Configure these environment variables on Render:');
-      console.warn('  SMTP_USER (your Gmail address)');
-      console.warn('  SMTP_PASS (Gmail app password)');
-      console.warn('  SMTP_HOST (smtp.gmail.com)');
-      console.warn('  SMTP_PORT (587)');
+      console.warn('SMTP_USER:', SMTP_USER ? 'set' : 'MISSING');
+      console.warn('SMTP_PASS:', SMTP_PASS ? 'set' : 'MISSING');
+      console.warn('Environment check:');
+      console.warn('  SMTP_HOST:', SMTP_HOST);
+      console.warn('  SMTP_PORT:', SMTP_PORT);
     }
 
     return NextResponse.json(
