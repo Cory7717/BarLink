@@ -157,6 +157,80 @@
     font-weight: 600;
     letter-spacing: 0.02em;
   }
+
+  .map-pin {
+    position: relative;
+    width: 34px;
+    height: 34px;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    background: linear-gradient(135deg, #22d3ee, #34d399);
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    box-shadow: 0 12px 20px rgba(15, 23, 42, 0.35);
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+
+  .map-pin:hover {
+    filter: brightness(1.08);
+    transform: translateY(-2px) rotate(-45deg);
+  }
+
+  .map-pin__dot {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 12px;
+    height: 12px;
+    border-radius: 9999px;
+    background: #0b1020;
+    border: 2px solid rgba(255, 255, 255, 0.75);
+    transform: rotate(45deg);
+  }
+
+  .map-pin::after {
+    content: "";
+    position: absolute;
+    width: 46px;
+    height: 46px;
+    border-radius: 9999px;
+    background: rgba(34, 211, 238, 0.25);
+    top: -6px;
+    left: -6px;
+    z-index: -1;
+    animation: pin-pulse 2.5s ease-in-out infinite;
+  }
+
+  .map-pin--special {
+    background: linear-gradient(135deg, #f97316, #facc15);
+  }
+
+  .map-pin--special::after {
+    background: rgba(249, 115, 22, 0.25);
+  }
+
+  .map-pin--new {
+    background: linear-gradient(135deg, #38bdf8, #a855f7);
+  }
+
+  .map-pin--new::after {
+    background: rgba(56, 189, 248, 0.3);
+  }
+
+  .map-popup {
+    font-family: var(--font-body), "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    color: #0f172a;
+  }
+
+  .map-popup__title {
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .map-popup__meta {
+    font-size: 12px;
+    color: #475569;
+  }
 }
 
 .light .glass-panel {
@@ -272,24 +346,24 @@ body {
 
 /* Text color mappings */
 .light .text-white {
-  color: #1e293b !important;
+  color: #0f172a !important;
 }
 
 .light .text-slate-50,
 .light .text-slate-100 {
-  color: #1e293b !important;
+  color: #0f172a !important;
 }
 
 .light .text-slate-200 {
-  color: #475569 !important;
+  color: #1f2937 !important;
 }
 
 .light .text-slate-300 {
-  color: #475569 !important;
+  color: #334155 !important;
 }
 
 .light .text-slate-400 {
-  color: #64748b !important;
+  color: #475569 !important;
 }
 
 .light .text-slate-500 {
@@ -354,6 +428,28 @@ body {
 
 .light .ring-emerald-500\/30 {
   --tw-ring-color: rgba(16, 185, 129, 0.3) !important;
+}
+
+/* Amber color mappings for light mode */
+.light .text-amber-50,
+.light .text-amber-100 {
+  color: #92400e !important;
+}
+
+.light .text-amber-200 {
+  color: #b45309 !important;
+}
+
+.light .text-amber-300 {
+  color: #d97706 !important;
+}
+
+.light .bg-amber-500\/10 {
+  background-color: rgba(251, 146, 60, 0.18) !important;
+}
+
+.light .border-amber-500\/30 {
+  border-color: rgba(251, 146, 60, 0.45) !important;
 }
 
 /* Shadow adjustments for light mode */
@@ -456,6 +552,17 @@ body {
   }
   50% {
     transform: translateY(-8px);
+  }
+}
+
+@keyframes pin-pulse {
+  0%, 100% {
+    transform: scale(0.6);
+    opacity: 0.15;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0.35;
   }
 }
 

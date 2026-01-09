@@ -1,5 +1,5 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma';
+import { NextRequest, NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
 
 /**
  * Diagnostic endpoint to help debug why bars don't appear in search
@@ -8,13 +8,10 @@ import { prisma } from '@/lib/prisma';
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
-    const barId = searchParams.get('barId');
+    const barId = searchParams.get("barId");
 
     if (!barId) {
-      return NextResponse.json(
-        { error: 'barId query parameter required' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "barId query parameter required" }, { status: 400 });
     }
 
     const bar = await prisma.bar.findUnique({
@@ -32,66 +29,62 @@ export async function GET(req: NextRequest) {
     });
 
     if (!bar) {
-      return NextResponse.json({ error: 'Bar not found' }, { status: 404 });
+      return NextResponse.json({ error: "Bar not found" }, { status: 404 });
     }
 
     const issues: string[] = [];
 
-    // Check if published
-    if (!bar.isPublished) {
-      issues.push('❌ Bar is NOT published - owner must have active subscription');
+    if (bar.isPublished) {
+      issues.push("OK: Bar is published");
+    } else if (bar.owner.allowFreeListings) {
+      issues.push("OK: Free listings enabled for owner");
     } else {
-      issues.push('✅ Bar is published');
+      issues.push("ERR: Bar is NOT published - active subscription or free listings required");
     }
 
-    // Check if active
     if (!bar.isActive) {
-      issues.push('❌ Bar is NOT active');
+      issues.push("ERR: Bar is NOT active");
     } else {
-      issues.push('✅ Bar is active');
+      issues.push("OK: Bar is active");
     }
 
-    // Check subscription status
     if (bar.owner.subscription) {
-      if (bar.owner.subscription.status === 'ACTIVE') {
-        issues.push('✅ Subscription is ACTIVE');
+      if (bar.owner.subscription.status === "ACTIVE") {
+        issues.push("OK: Subscription is ACTIVE");
       } else {
-        issues.push(`❌ Subscription status is ${bar.owner.subscription.status}`);
+        issues.push(`WARN: Subscription status is ${bar.owner.subscription.status}`);
       }
     } else {
-      issues.push('❌ No subscription found');
+      issues.push("WARN: No subscription found");
     }
 
-    // Check location
     if (!bar.cityNormalized) {
-      issues.push('❌ cityNormalized is empty - required for search');
+      issues.push("ERR: cityNormalized is empty - required for search");
     } else {
-      issues.push(`✅ cityNormalized: "${bar.cityNormalized}"`);
+      issues.push(`OK: cityNormalized: "${bar.cityNormalized}"`);
     }
 
-    // Check offerings
     const activeOfferings = bar.offerings.filter((o) => o.isActive);
     if (activeOfferings.length === 0) {
-      issues.push('❌ No active offerings - add at least one to appear in search');
+      issues.push("WARN: No active offerings - add at least one to appear in search");
     } else {
-      issues.push(`✅ ${activeOfferings.length} active offering(s)`);
+      issues.push(`OK: ${activeOfferings.length} active offering(s)`);
       activeOfferings.forEach((o) => {
         issues.push(`   - ${o.customTitle || o.category} (day ${o.dayOfWeek})`);
       });
     }
 
-    // Check events
     const activeEvents = bar.events.filter((e) => e.isActive);
     if (activeEvents.length === 0) {
-      issues.push('⚠️  No active events (optional, but helps with search)');
+      issues.push("INFO: No active events (optional, but helps with search)");
     } else {
-      issues.push(`✅ ${activeEvents.length} active event(s)`);
+      issues.push(`OK: ${activeEvents.length} active event(s)`);
     }
 
     const canAppearInSearch =
-      bar.isPublished &&
+      (bar.isPublished || bar.owner.allowFreeListings) &&
       bar.isActive &&
-      bar.owner.subscription?.status === 'ACTIVE' &&
+      (bar.owner.subscription?.status === "ACTIVE" || bar.owner.allowFreeListings) &&
       bar.cityNormalized &&
       activeOfferings.length > 0;
 
@@ -103,7 +96,8 @@ export async function GET(req: NextRequest) {
       details: {
         isPublished: bar.isPublished,
         isActive: bar.isActive,
-        subscriptionStatus: bar.owner.subscription?.status || 'NONE',
+        subscriptionStatus: bar.owner.subscription?.status || "NONE",
+        allowFreeListings: bar.owner.allowFreeListings,
         cityNormalized: bar.cityNormalized,
         activeOfferingCount: activeOfferings.length,
         activeEventCount: activeEvents.length,
@@ -113,10 +107,7 @@ export async function GET(req: NextRequest) {
       },
     });
   } catch (error) {
-    console.error('Diagnostic error:', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
+    console.error("Diagnostic error:", error);
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }

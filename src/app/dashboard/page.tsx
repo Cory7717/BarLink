@@ -34,7 +34,8 @@ export default async function DashboardPage() {
     redirect("/auth/signup");
   }
 
-  const hasActiveSubscription = owner.subscription?.status === "ACTIVE";
+  const hasActiveSubscription =
+    owner.subscription?.status === "ACTIVE" || owner.allowFreeListings;
   const bars = owner.bars;
   const primaryBar = bars[0];
 
@@ -69,6 +70,14 @@ export default async function DashboardPage() {
             <Link href="/pricing" className="mt-2 inline-flex text-sm font-semibold text-amber-100 hover:text-white transition-colors">
               View plans
             </Link>
+          </div>
+        )}
+        {owner.allowFreeListings && !owner.subscription && (
+          <div className="mt-6 glass-panel rounded-3xl p-4">
+            <h3 className="font-semibold text-emerald-100">Free listing enabled</h3>
+            <p className="text-sm text-slate-200">
+              This owner can publish listings without an active subscription.
+            </p>
           </div>
         )}
 
@@ -210,7 +219,7 @@ export default async function DashboardPage() {
           <div className="glass-panel rounded-2xl p-4">
             <h3 className="text-sm text-cyan-200">Status</h3>
             <p className="text-lg font-semibold">
-              {primaryBar?.isPublished ? (
+              {primaryBar?.isPublished || owner.allowFreeListings ? (
                 <span className="text-emerald-100">Live</span>
               ) : (
                 <span className="text-amber-100">Unpublished</span>

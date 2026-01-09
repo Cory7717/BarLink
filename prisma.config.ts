@@ -1,6 +1,5 @@
 // Prisma 7 configuration
 // See: https://pris.ly/d/config-datasource
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { defineConfig } from '@prisma/config'
 import dotenv from 'dotenv'
 

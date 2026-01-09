@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { requireAdmin } from "@/lib/admin";
+import { SubscriptionStatus } from "@/generated/prisma";
 
 export async function POST(req: Request) {
   try {
@@ -23,9 +24,13 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Missing subscriptionId or status" }, { status: 400 });
     }
 
+    if (!Object.values(SubscriptionStatus).includes(status as SubscriptionStatus)) {
+      return NextResponse.json({ error: "Invalid status" }, { status: 400 });
+    }
+
     const updated = await prisma.subscription.update({
       where: { id: subscriptionId },
-      data: { status: status as any },
+      data: { status: status as SubscriptionStatus },
     });
 
     // Optionally publish/unpublish bars based on ACTIVE status

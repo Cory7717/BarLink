@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Navigation from "@/components/Navigation";
-import { ACTIVITY_CATEGORIES, DAYS_OF_WEEK } from "@/lib/constants";
+import { DAYS_OF_WEEK } from "@/lib/constants";
 import { getCurrentDayIndex } from "@/lib/utils";
 import dynamic from "next/dynamic";
 
@@ -10,7 +10,7 @@ type MapProps = {
   latitude: number;
   longitude: number;
   zoom: number;
-  bars: { id: string; name: string; latitude: number; longitude: number; hasNew?: boolean; hasSpecial?: boolean }[];
+  bars: { id: string; slug: string; name: string; latitude: number; longitude: number; hasNew?: boolean; hasSpecial?: boolean }[];
 };
 
 const MapComponent = dynamic<MapProps>(
@@ -27,6 +27,7 @@ const MapComponent = dynamic<MapProps>(
 
 type BarResult = {
   id: string;
+  slug: string;
   name: string;
   address: string;
   city: string;
@@ -39,6 +40,32 @@ type BarResult = {
   hasSpecial?: boolean;
 };
 
+type EventCategory = {
+  name: string;
+  displayName: string;
+  icon?: string | null;
+};
+
+const fallbackCategories: EventCategory[] = [
+  { name: "trivia", displayName: "Trivia Night" },
+  { name: "karaoke", displayName: "Karaoke" },
+  { name: "live-music", displayName: "Live Music" },
+  { name: "darts", displayName: "Darts Tournament" },
+  { name: "pool", displayName: "Billiards/Pool" },
+  { name: "poker", displayName: "Poker Night" },
+  { name: "dj", displayName: "DJ Night" },
+  { name: "open-mic", displayName: "Open Mic" },
+  { name: "comedy", displayName: "Comedy Night" },
+  { name: "watch-party", displayName: "Watch Party" },
+  { name: "happy-hour", displayName: "Happy Hour" },
+  { name: "food-special", displayName: "Food Special" },
+  { name: "drink-special", displayName: "Drink Special" },
+  { name: "themed-night", displayName: "Themed Night" },
+  { name: "paint-night", displayName: "Paint and Sip" },
+  { name: "bingo", displayName: "Bingo" },
+  { name: "other", displayName: "Other" },
+];
+
 export default function ExplorePage() {
   const [day, setDay] = useState<number>(getCurrentDayIndex());
   const [activity, setActivity] = useState<string>("trivia");
@@ -50,6 +77,7 @@ export default function ExplorePage() {
   const [bars, setBars] = useState<BarResult[]>([]);
   const [loading, setLoading] = useState(false);
   const [autoSearch, setAutoSearch] = useState(true);
+  const [categories, setCategories] = useState<EventCategory[]>([]);
 
   const mapCenter = useMemo(
     () => userLocation || { latitude: 47.61, longitude: -122.33 },
@@ -72,7 +100,32 @@ export default function ExplorePage() {
     }
   }, []);
 
-  const performSearch = async () => {
+  useEffect(() => {
+    let isMounted = true;
+    const loadCategories = async () => {
+      try {
+        const res = await fetch("/api/event-categories");
+        const data = await res.json();
+        if (isMounted && res.ok) {
+          setCategories(data.categories || []);
+        }
+      } catch (error) {
+        console.error("Failed to load categories:", error);
+      }
+    };
+    loadCategories();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (categories.length > 0 && !categories.some((cat) => cat.name === activity)) {
+      setActivity(categories[0].name);
+    }
+  }, [activity, categories]);
+
+  const performSearch = useCallback(async () => {
     setLoading(true);
     try {
       const params = new URLSearchParams({
@@ -103,13 +156,15 @@ export default function ExplorePage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [activity, city, day, distance, happeningNow, showSpecial, userLocation]);
 
   useEffect(() => {
     if (autoSearch) {
       performSearch();
     }
-  }, [day, activity, showSpecial, happeningNow, city, distance, userLocation, autoSearch]);
+  }, [autoSearch, performSearch]);
+
+  const activityOptions = categories.length > 0 ? categories : fallbackCategories;
 
   return (
     <div className="min-h-screen app-shell text-white">
@@ -153,9 +208,9 @@ export default function ExplorePage() {
                 onChange={(e) => setActivity(e.target.value)}
                 className="mt-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/30 transition-all"
               >
-                {ACTIVITY_CATEGORIES.map((c) => (
-                  <option key={c.value} value={c.value}>
-                    {c.label}
+                {activityOptions.map((c) => (
+                  <option key={c.name} value={c.name}>
+                    {c.displayName}
                   </option>
                 ))}
               </select>

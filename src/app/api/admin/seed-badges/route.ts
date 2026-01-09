@@ -4,7 +4,7 @@ import { authOptions } from '@/lib/auth';
 import { BadgeService } from '@/lib/badgeService';
 
 // Admin-only endpoint to seed badges
-export async function POST(request: Request) {
+export async function POST() {
   try {
     const session = await getServerSession(authOptions);
     

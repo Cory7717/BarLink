@@ -36,7 +36,7 @@ export default function ContactPage() {
         setStatus('error');
         setMessage(result.error || 'Failed to send message');
       }
-    } catch (error) {
+    } catch {
       setStatus('error');
       setMessage('Network error. Please try emailing us directly.');
     }

@@ -1,11 +1,16 @@
 import { prisma } from "@/lib/prisma";
+import type { Prisma } from "@/generated/prisma";
+
+type SubscriptionWithOwner = Prisma.SubscriptionGetPayload<{
+  include: { owner: true };
+}>;
 
 export default async function AdminSubscriptionsPage() {
-  const subs = await prisma.subscription.findMany({
+  const subs: SubscriptionWithOwner[] = await prisma.subscription.findMany({
     include: { owner: true },
     orderBy: { createdAt: "desc" },
     take: 100,
-  }) as any[];
+  });
 
   return (
     <section className="glass-panel rounded-3xl p-4">
@@ -23,7 +28,7 @@ export default async function AdminSubscriptionsPage() {
             </tr>
           </thead>
           <tbody className="divide-y divide-white/10">
-            {subs.map((s: any) => (
+            {subs.map((s) => (
               <tr key={s.id}>
                 <td className="py-2">{s.owner.name}</td>
                 <td className="py-2 text-slate-300">{s.owner.email}</td>

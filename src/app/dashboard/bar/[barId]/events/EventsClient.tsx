@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Navigation from "@/components/Navigation";
 import Link from "next/link";
 import { DAYS_OF_WEEK } from "@/lib/constants";
@@ -26,20 +26,64 @@ export type EventsClientProps = {
   };
 };
 
-const PRESET_CATEGORIES = [
-  "Trivia",
-  "Poker",
-  "Karaoke",
-  "Live Music",
-  "DJ Night",
-  "Happy Hour",
-  "Sports Watch Party",
-  "Custom",
+type EventCategory = {
+  name: string;
+  displayName: string;
+  icon?: string | null;
+};
+
+const FALLBACK_CATEGORIES: EventCategory[] = [
+  { name: "trivia", displayName: "Trivia" },
+  { name: "poker", displayName: "Poker" },
+  { name: "karaoke", displayName: "Karaoke" },
+  { name: "live-music", displayName: "Live Music" },
+  { name: "dj", displayName: "DJ Night" },
+  { name: "happy-hour", displayName: "Happy Hour" },
+  { name: "watch-party", displayName: "Sports Watch Party" },
 ];
 
+function toSlug(value: string) {
+  return value
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)+/g, "");
+}
+
+function resolveCategoryName(value: string | null | undefined, options: EventCategory[]) {
+  if (!value) return "";
+  const normalized = value.toLowerCase().trim();
+  const slug = toSlug(value);
+  const match = options.find(
+    (category) =>
+      category.name === normalized ||
+      category.name === slug ||
+      category.displayName.toLowerCase() === normalized
+  );
+  return match?.name || "";
+}
+
+function resolveCategoryLabel(value: string | null | undefined, options: EventCategory[]) {
+  if (!value) return "Event";
+  const normalized = value.toLowerCase().trim();
+  const slug = toSlug(value);
+  const match = options.find(
+    (category) =>
+      category.name === normalized ||
+      category.name === slug ||
+      category.displayName.toLowerCase() === normalized
+  );
+  return match?.displayName || value;
+}
+
 function dayFromDate(dateStr: string) {
-  const d = new Date(dateStr);
+  const d = new Date(`${dateStr}T12:00:00`);
   return d.getDay();
+}
+
+function formatLocalDate(dateStr: string) {
+  const d = new Date(`${dateStr}T12:00:00`);
+  return d.toLocaleDateString();
 }
 
 function nextDateForDay(targetDay: number) {
@@ -58,10 +102,11 @@ export default function EventsClient({ bar }: EventsClientProps) {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [editing, setEditing] = useState<EventItem | null>(null);
+  const [categories, setCategories] = useState<EventCategory[]>([]);
   const [form, setForm] = useState({
     title: "",
     description: "",
-    category: PRESET_CATEGORIES[0],
+    category: FALLBACK_CATEGORIES[0].name,
     customCategory: "",
     startDate: new Date().toISOString().slice(0, 10),
     endDate: "",
@@ -70,6 +115,27 @@ export default function EventsClient({ bar }: EventsClientProps) {
     isActive: true,
     isSpecial: false,
   });
+
+  useEffect(() => {
+    let isMounted = true;
+    const loadCategories = async () => {
+      try {
+        const res = await fetch("/api/event-categories");
+        const data = await res.json();
+        if (res.ok && isMounted) {
+          setCategories(data.categories || []);
+        }
+      } catch (err) {
+        console.error("Failed to load categories:", err);
+      }
+    };
+    loadCategories();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const categoryOptions = categories.length > 0 ? categories : FALLBACK_CATEGORIES;
 
   const filteredEvents = useMemo(
     () => events.filter((e) => dayFromDate(e.startDate) === activeDay),
@@ -80,11 +146,13 @@ export default function EventsClient({ bar }: EventsClientProps) {
     setError(null);
     if (event) {
       setEditing(event);
+      const resolvedCategory = resolveCategoryName(event.category, categoryOptions);
+      const isCustom = !resolvedCategory;
       setForm({
         title: event.title,
         description: event.description || "",
-        category: PRESET_CATEGORIES.includes(event.category || "") ? (event.category as string) : "Custom",
-        customCategory: PRESET_CATEGORIES.includes(event.category || "") ? "" : event.category || "",
+        category: isCustom ? "custom" : resolvedCategory,
+        customCategory: isCustom ? event.category || "" : "",
         startDate: event.startDate.slice(0, 10),
         endDate: event.endDate ? event.endDate.slice(0, 10) : "",
         startTime: event.startTime,
@@ -97,7 +165,7 @@ export default function EventsClient({ bar }: EventsClientProps) {
       setForm({
         title: "",
         description: "",
-        category: PRESET_CATEGORIES[0],
+        category: categoryOptions[0]?.name || "custom",
         customCategory: "",
         startDate: nextDateForDay(activeDay),
         endDate: "",
@@ -125,7 +193,7 @@ export default function EventsClient({ bar }: EventsClientProps) {
       const payload = {
         title: form.title,
         description: form.description || null,
-        category: form.category === "Custom" ? form.customCategory || form.title : form.category,
+        category: form.category === "custom" ? form.customCategory || form.title : form.category,
         startDate: form.startDate,
         endDate: form.endDate || null,
         startTime: form.startTime,
@@ -222,7 +290,7 @@ export default function EventsClient({ bar }: EventsClientProps) {
                       <div className="flex items-center gap-2">
                         <h3 className="text-lg font-semibold text-white">{event.title}</h3>
                         <span className="text-xs px-2 py-1 rounded bg-cyan-500/20 text-cyan-200">
-                          {event.category || "Event"}
+                          {resolveCategoryLabel(event.category, categoryOptions)}
                         </span>
                         {event.isSpecial && (
                           <span className="text-xs px-2 py-1 rounded bg-amber-500/20 text-amber-200">Special</span>
@@ -233,7 +301,7 @@ export default function EventsClient({ bar }: EventsClientProps) {
                       </div>
                       {event.description && <p className="text-sm text-slate-300">{event.description}</p>}
                       <p className="text-xs text-slate-400">
-                        {new Date(event.startDate).toLocaleDateString()} • {event.startTime}
+                        {formatLocalDate(event.startDate)} • {event.startTime}
                         {event.endTime ? ` - ${event.endTime}` : ""}
                       </p>
                     </div>
@@ -305,14 +373,15 @@ export default function EventsClient({ bar }: EventsClientProps) {
                     onChange={(e) => setForm({ ...form, category: e.target.value })}
                     className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white"
                   >
-                    {PRESET_CATEGORIES.map((cat) => (
-                      <option key={cat} value={cat}>
-                        {cat}
+                    {categoryOptions.map((cat) => (
+                      <option key={cat.name} value={cat.name}>
+                        {cat.displayName}
                       </option>
                     ))}
+                    <option value="custom">Custom</option>
                   </select>
                 </div>
-                {form.category === "Custom" && (
+                {form.category === "custom" && (
                   <div>
                     <label htmlFor="event-custom" className="block text-sm text-slate-300 mb-1">
                       Custom category

@@ -66,11 +66,33 @@ export async function GET(req: Request) {
     const dayInt = parseInt(day);
     const now = new Date();
     const currentTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+    const activityLower = activity.toLowerCase();
 
-    // Build query filters - must be published and active to appear in search
+    const categories = await prisma.activityCategory.findMany({
+      select: { name: true, displayName: true },
+    });
+
+    const categoryLabelMap = new Map(categories.map((category) => [category.name, category.displayName]));
+    const matchedCategory = categories.find(
+      (category) =>
+        category.name === activityLower ||
+        category.displayName.toLowerCase() === activityLower
+    );
+
+    const activityValues = new Set<string>([activity]);
+    if (matchedCategory) {
+      activityValues.add(matchedCategory.name);
+      activityValues.add(matchedCategory.displayName);
+    }
+
+    const activityFilters = Array.from(activityValues).map((value) => ({
+      category: { equals: value, mode: "insensitive" as const },
+    }));
+
+    // Build query filters - must be active and either published or allowed via free listings
     const baseBarFilter: Record<string, unknown> = {
-      isPublished: true,
       isActive: true,
+      OR: [{ isPublished: true }, { owner: { allowFreeListings: true } }],
     };
 
     // Add city filter if provided
@@ -86,7 +108,7 @@ export async function GET(req: Request) {
           some: {
             isActive: true,
             dayOfWeek: dayInt,
-            category: activity,
+            OR: activityFilters.length > 0 ? activityFilters : [{ category: activity }],
             ...(special ? { isSpecial: true } : {}),
             ...(happeningNow ? {
               startTime: { lte: currentTime },
@@ -119,13 +141,13 @@ export async function GET(req: Request) {
         where: {
           ...baseBarFilter,
           events: {
-            some: {
-              isActive: true,
-              category: activity,
-              startDate: { lte: now },
-              ...(special ? { isSpecial: true } : {}),
-            },
+          some: {
+            isActive: true,
+            OR: activityFilters.length > 0 ? activityFilters : [{ category: activity }],
+            startDate: { lte: now },
+            ...(special ? { isSpecial: true } : {}),
           },
+        },
         },
         include: {
           offerings: true,
@@ -194,7 +216,7 @@ export async function GET(req: Request) {
         city: bar.city,
         latitude: bar.latitude,
         longitude: bar.longitude,
-        todayOfferings: bar.offerings.map((o) => o.customTitle || o.category),
+        todayOfferings: bar.offerings.map((o) => o.customTitle || categoryLabelMap.get(o.category) || o.category),
         hasSpecial: bar.offerings.some((o) => o.isSpecial) || bar.events.some((e) => e.isSpecial),
         hasNew: bar.offerings.some((o) => o.isNew) || bar.events.some((e) => e.isNew),
         ...(distance_miles !== undefined && { distance: distance_miles }),

@@ -29,7 +29,7 @@ export async function POST(req: Request) {
       },
     });
     return NextResponse.json({ code: created });
-  } catch (e) {
+  } catch {
     return NextResponse.json({ error: "Failed to create" }, { status: 500 });
   }
 }

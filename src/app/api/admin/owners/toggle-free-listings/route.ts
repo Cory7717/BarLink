@@ -11,7 +11,7 @@ export async function POST(req: Request) {
     }
     await prisma.owner.update({ where: { id: ownerId }, data: { allowFreeListings: allow } });
     return NextResponse.json({ ok: true });
-  } catch (e) {
+  } catch {
     return NextResponse.json({ error: "Unauthorized or failed" }, { status: 500 });
   }
 }

@@ -1,50 +1,13 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
-
-// Create a simple context wrapper that doesn't error if not inside provider
-const SafeThemeContext = createContext<{
-  theme: "light" | "dark";
-  toggleTheme: () => void;
-} | null>(null);
+import { useTheme } from "@/contexts/ThemeContext";
 
 export function ThemeToggle() {
-  const [mounted, setMounted] = useState(false);
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
-  
-  useEffect(() => {
-    setMounted(true);
-    // Restore theme from localStorage
-    const stored = localStorage.getItem("theme") as "light" | "dark" | null;
-    if (stored) {
-      setTheme(stored);
-    } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
-      setTheme("light");
-    }
-  }, []);
-
-  const handleToggle = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    setTheme(newTheme);
-    
-    const root = document.documentElement;
-    if (newTheme === "light") {
-      root.classList.remove("dark");
-      root.classList.add("light");
-    } else {
-      root.classList.remove("light");
-      root.classList.add("dark");
-    }
-    localStorage.setItem("theme", newTheme);
-  };
-
-  if (!mounted) {
-    return <div className="w-9 h-9" />;
-  }
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <button
-      onClick={handleToggle}
+      onClick={toggleTheme}
       className="p-2 rounded-md hover:bg-slate-800 transition"
       aria-label="Toggle theme"
     >
