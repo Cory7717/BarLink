@@ -80,7 +80,7 @@ export default function BottlePhotoUpload({ barId, bottleSizeMl = 750, onUploadS
         ref={fileInputRef}
         type="file"
         accept="image/*"
-        capture={useCameraMode && isMobile ? "environment" : undefined}
+        {...(useCameraMode && isMobile ? { capture: "environment" as const } : {})}
         onChange={handleFileSelect}
         className="hidden"
       />

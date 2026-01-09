@@ -20,11 +20,14 @@ export async function GET(req: NextRequest) {
     const bar = await prisma.bar.findUnique({
       where: { id: barId },
       include: {
-        owner: true,
+        owner: {
+          include: {
+            subscription: true,
+          },
+        },
         offerings: true,
         events: true,
         barLicenses: true,
-        subscription: true,
       },
     });
 
@@ -49,11 +52,11 @@ export async function GET(req: NextRequest) {
     }
 
     // Check subscription status
-    if (bar.subscription) {
-      if (bar.subscription.status === 'ACTIVE') {
+    if (bar.owner.subscription) {
+      if (bar.owner.subscription.status === 'ACTIVE') {
         issues.push('✅ Subscription is ACTIVE');
       } else {
-        issues.push(`❌ Subscription status is ${bar.subscription.status}`);
+        issues.push(`❌ Subscription status is ${bar.owner.subscription.status}`);
       }
     } else {
       issues.push('❌ No subscription found');
@@ -88,7 +91,7 @@ export async function GET(req: NextRequest) {
     const canAppearInSearch =
       bar.isPublished &&
       bar.isActive &&
-      bar.subscription?.status === 'ACTIVE' &&
+      bar.owner.subscription?.status === 'ACTIVE' &&
       bar.cityNormalized &&
       activeOfferings.length > 0;
 
@@ -100,7 +103,7 @@ export async function GET(req: NextRequest) {
       details: {
         isPublished: bar.isPublished,
         isActive: bar.isActive,
-        subscriptionStatus: bar.subscription?.status || 'NONE',
+        subscriptionStatus: bar.owner.subscription?.status || 'NONE',
         cityNormalized: bar.cityNormalized,
         activeOfferingCount: activeOfferings.length,
         activeEventCount: activeEvents.length,
