@@ -9,7 +9,16 @@ export async function logAnalyticsEvent(
   query?: string
 ) {
   try {
-    await fetch("/api/analytics/log", {
+    const isBrowser = typeof window !== "undefined";
+    const baseUrl = isBrowser
+      ? ""
+      : process.env.NEXTAUTH_URL || process.env.RENDER_EXTERNAL_URL || "";
+
+    if (!isBrowser && !baseUrl) {
+      return;
+    }
+
+    await fetch(`${baseUrl}/api/analytics/log`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
