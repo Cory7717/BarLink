@@ -297,6 +297,15 @@ exports.Prisma.CategoryRequestScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.OwnerPasswordResetScalarFieldEnum = {
+  id: 'id',
+  ownerId: 'ownerId',
+  tokenHash: 'tokenHash',
+  expiresAt: 'expiresAt',
+  usedAt: 'usedAt',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.PromoCodeScalarFieldEnum = {
   id: 'id',
   code: 'code',
@@ -620,6 +629,7 @@ exports.Prisma.ModelName = {
   Favorite: 'Favorite',
   ActivityCategory: 'ActivityCategory',
   CategoryRequest: 'CategoryRequest',
+  OwnerPasswordReset: 'OwnerPasswordReset',
   PromoCode: 'PromoCode',
   PromoRedemption: 'PromoRedemption',
   BarAnalytics: 'BarAnalytics',

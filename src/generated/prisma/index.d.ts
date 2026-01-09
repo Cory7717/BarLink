@@ -69,6 +69,11 @@ export type ActivityCategory = $Result.DefaultSelection<Prisma.$ActivityCategory
  */
 export type CategoryRequest = $Result.DefaultSelection<Prisma.$CategoryRequestPayload>
 /**
+ * Model OwnerPasswordReset
+ * 
+ */
+export type OwnerPasswordReset = $Result.DefaultSelection<Prisma.$OwnerPasswordResetPayload>
+/**
  * Model PromoCode
  * 
  */
@@ -514,6 +519,16 @@ export class PrismaClient<
     * ```
     */
   get categoryRequest(): Prisma.CategoryRequestDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.ownerPasswordReset`: Exposes CRUD operations for the **OwnerPasswordReset** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more OwnerPasswordResets
+    * const ownerPasswordResets = await prisma.ownerPasswordReset.findMany()
+    * ```
+    */
+  get ownerPasswordReset(): Prisma.OwnerPasswordResetDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.promoCode`: Exposes CRUD operations for the **PromoCode** model.
@@ -1169,6 +1184,7 @@ export namespace Prisma {
     Favorite: 'Favorite',
     ActivityCategory: 'ActivityCategory',
     CategoryRequest: 'CategoryRequest',
+    OwnerPasswordReset: 'OwnerPasswordReset',
     PromoCode: 'PromoCode',
     PromoRedemption: 'PromoRedemption',
     BarAnalytics: 'BarAnalytics',
@@ -1205,7 +1221,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "account" | "session" | "owner" | "subscription" | "bar" | "offering" | "event" | "favorite" | "activityCategory" | "categoryRequest" | "promoCode" | "promoRedemption" | "barAnalytics" | "searchQuery" | "barClick" | "badge" | "barBadge" | "inventoryItem" | "inventoryImport" | "shiftUsage" | "shiftUsageItem" | "inventorySnapshot" | "inventorySnapshotItem" | "bottlePhoto" | "costingProfile" | "varianceAlert" | "barLicense" | "barVisit" | "staticOffering" | "drinkSpecial" | "foodOffering"
+      modelProps: "user" | "account" | "session" | "owner" | "subscription" | "bar" | "offering" | "event" | "favorite" | "activityCategory" | "categoryRequest" | "ownerPasswordReset" | "promoCode" | "promoRedemption" | "barAnalytics" | "searchQuery" | "barClick" | "badge" | "barBadge" | "inventoryItem" | "inventoryImport" | "shiftUsage" | "shiftUsageItem" | "inventorySnapshot" | "inventorySnapshotItem" | "bottlePhoto" | "costingProfile" | "varianceAlert" | "barLicense" | "barVisit" | "staticOffering" | "drinkSpecial" | "foodOffering"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2020,6 +2036,80 @@ export namespace Prisma {
           count: {
             args: Prisma.CategoryRequestCountArgs<ExtArgs>
             result: $Utils.Optional<CategoryRequestCountAggregateOutputType> | number
+          }
+        }
+      }
+      OwnerPasswordReset: {
+        payload: Prisma.$OwnerPasswordResetPayload<ExtArgs>
+        fields: Prisma.OwnerPasswordResetFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.OwnerPasswordResetFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OwnerPasswordResetPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.OwnerPasswordResetFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OwnerPasswordResetPayload>
+          }
+          findFirst: {
+            args: Prisma.OwnerPasswordResetFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OwnerPasswordResetPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.OwnerPasswordResetFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OwnerPasswordResetPayload>
+          }
+          findMany: {
+            args: Prisma.OwnerPasswordResetFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OwnerPasswordResetPayload>[]
+          }
+          create: {
+            args: Prisma.OwnerPasswordResetCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OwnerPasswordResetPayload>
+          }
+          createMany: {
+            args: Prisma.OwnerPasswordResetCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.OwnerPasswordResetCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OwnerPasswordResetPayload>[]
+          }
+          delete: {
+            args: Prisma.OwnerPasswordResetDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OwnerPasswordResetPayload>
+          }
+          update: {
+            args: Prisma.OwnerPasswordResetUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OwnerPasswordResetPayload>
+          }
+          deleteMany: {
+            args: Prisma.OwnerPasswordResetDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.OwnerPasswordResetUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.OwnerPasswordResetUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OwnerPasswordResetPayload>[]
+          }
+          upsert: {
+            args: Prisma.OwnerPasswordResetUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OwnerPasswordResetPayload>
+          }
+          aggregate: {
+            args: Prisma.OwnerPasswordResetAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateOwnerPasswordReset>
+          }
+          groupBy: {
+            args: Prisma.OwnerPasswordResetGroupByArgs<ExtArgs>
+            result: $Utils.Optional<OwnerPasswordResetGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.OwnerPasswordResetCountArgs<ExtArgs>
+            result: $Utils.Optional<OwnerPasswordResetCountAggregateOutputType> | number
           }
         }
       }
@@ -3696,6 +3786,7 @@ export namespace Prisma {
     favorite?: FavoriteOmit
     activityCategory?: ActivityCategoryOmit
     categoryRequest?: CategoryRequestOmit
+    ownerPasswordReset?: OwnerPasswordResetOmit
     promoCode?: PromoCodeOmit
     promoRedemption?: PromoRedemptionOmit
     barAnalytics?: BarAnalyticsOmit
@@ -3886,6 +3977,7 @@ export namespace Prisma {
     barLicenses: number
     promoRedemptions: number
     categoryRequests: number
+    passwordResets: number
   }
 
   export type OwnerCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3893,6 +3985,7 @@ export namespace Prisma {
     barLicenses?: boolean | OwnerCountOutputTypeCountBarLicensesArgs
     promoRedemptions?: boolean | OwnerCountOutputTypeCountPromoRedemptionsArgs
     categoryRequests?: boolean | OwnerCountOutputTypeCountCategoryRequestsArgs
+    passwordResets?: boolean | OwnerCountOutputTypeCountPasswordResetsArgs
   }
 
   // Custom InputTypes
@@ -3932,6 +4025,13 @@ export namespace Prisma {
    */
   export type OwnerCountOutputTypeCountCategoryRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CategoryRequestWhereInput
+  }
+
+  /**
+   * OwnerCountOutputType without action
+   */
+  export type OwnerCountOutputTypeCountPasswordResetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OwnerPasswordResetWhereInput
   }
 
 
@@ -8010,6 +8110,7 @@ export namespace Prisma {
     barLicenses?: boolean | Owner$barLicensesArgs<ExtArgs>
     promoRedemptions?: boolean | Owner$promoRedemptionsArgs<ExtArgs>
     categoryRequests?: boolean | Owner$categoryRequestsArgs<ExtArgs>
+    passwordResets?: boolean | Owner$passwordResetsArgs<ExtArgs>
     _count?: boolean | OwnerCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["owner"]>
 
@@ -8059,6 +8160,7 @@ export namespace Prisma {
     barLicenses?: boolean | Owner$barLicensesArgs<ExtArgs>
     promoRedemptions?: boolean | Owner$promoRedemptionsArgs<ExtArgs>
     categoryRequests?: boolean | Owner$categoryRequestsArgs<ExtArgs>
+    passwordResets?: boolean | Owner$passwordResetsArgs<ExtArgs>
     _count?: boolean | OwnerCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type OwnerIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -8072,6 +8174,7 @@ export namespace Prisma {
       barLicenses: Prisma.$BarLicensePayload<ExtArgs>[]
       promoRedemptions: Prisma.$PromoRedemptionPayload<ExtArgs>[]
       categoryRequests: Prisma.$CategoryRequestPayload<ExtArgs>[]
+      passwordResets: Prisma.$OwnerPasswordResetPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -8483,6 +8586,7 @@ export namespace Prisma {
     barLicenses<T extends Owner$barLicensesArgs<ExtArgs> = {}>(args?: Subset<T, Owner$barLicensesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BarLicensePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     promoRedemptions<T extends Owner$promoRedemptionsArgs<ExtArgs> = {}>(args?: Subset<T, Owner$promoRedemptionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PromoRedemptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     categoryRequests<T extends Owner$categoryRequestsArgs<ExtArgs> = {}>(args?: Subset<T, Owner$categoryRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    passwordResets<T extends Owner$passwordResetsArgs<ExtArgs> = {}>(args?: Subset<T, Owner$passwordResetsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OwnerPasswordResetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9022,6 +9126,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CategoryRequestScalarFieldEnum | CategoryRequestScalarFieldEnum[]
+  }
+
+  /**
+   * Owner.passwordResets
+   */
+  export type Owner$passwordResetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OwnerPasswordReset
+     */
+    select?: OwnerPasswordResetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OwnerPasswordReset
+     */
+    omit?: OwnerPasswordResetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OwnerPasswordResetInclude<ExtArgs> | null
+    where?: OwnerPasswordResetWhereInput
+    orderBy?: OwnerPasswordResetOrderByWithRelationInput | OwnerPasswordResetOrderByWithRelationInput[]
+    cursor?: OwnerPasswordResetWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: OwnerPasswordResetScalarFieldEnum | OwnerPasswordResetScalarFieldEnum[]
   }
 
   /**
@@ -18004,6 +18132,1077 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: CategoryRequestInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model OwnerPasswordReset
+   */
+
+  export type AggregateOwnerPasswordReset = {
+    _count: OwnerPasswordResetCountAggregateOutputType | null
+    _min: OwnerPasswordResetMinAggregateOutputType | null
+    _max: OwnerPasswordResetMaxAggregateOutputType | null
+  }
+
+  export type OwnerPasswordResetMinAggregateOutputType = {
+    id: string | null
+    ownerId: string | null
+    tokenHash: string | null
+    expiresAt: Date | null
+    usedAt: Date | null
+    createdAt: Date | null
+  }
+
+  export type OwnerPasswordResetMaxAggregateOutputType = {
+    id: string | null
+    ownerId: string | null
+    tokenHash: string | null
+    expiresAt: Date | null
+    usedAt: Date | null
+    createdAt: Date | null
+  }
+
+  export type OwnerPasswordResetCountAggregateOutputType = {
+    id: number
+    ownerId: number
+    tokenHash: number
+    expiresAt: number
+    usedAt: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type OwnerPasswordResetMinAggregateInputType = {
+    id?: true
+    ownerId?: true
+    tokenHash?: true
+    expiresAt?: true
+    usedAt?: true
+    createdAt?: true
+  }
+
+  export type OwnerPasswordResetMaxAggregateInputType = {
+    id?: true
+    ownerId?: true
+    tokenHash?: true
+    expiresAt?: true
+    usedAt?: true
+    createdAt?: true
+  }
+
+  export type OwnerPasswordResetCountAggregateInputType = {
+    id?: true
+    ownerId?: true
+    tokenHash?: true
+    expiresAt?: true
+    usedAt?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type OwnerPasswordResetAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OwnerPasswordReset to aggregate.
+     */
+    where?: OwnerPasswordResetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OwnerPasswordResets to fetch.
+     */
+    orderBy?: OwnerPasswordResetOrderByWithRelationInput | OwnerPasswordResetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: OwnerPasswordResetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OwnerPasswordResets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OwnerPasswordResets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned OwnerPasswordResets
+    **/
+    _count?: true | OwnerPasswordResetCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: OwnerPasswordResetMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: OwnerPasswordResetMaxAggregateInputType
+  }
+
+  export type GetOwnerPasswordResetAggregateType<T extends OwnerPasswordResetAggregateArgs> = {
+        [P in keyof T & keyof AggregateOwnerPasswordReset]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateOwnerPasswordReset[P]>
+      : GetScalarType<T[P], AggregateOwnerPasswordReset[P]>
+  }
+
+
+
+
+  export type OwnerPasswordResetGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OwnerPasswordResetWhereInput
+    orderBy?: OwnerPasswordResetOrderByWithAggregationInput | OwnerPasswordResetOrderByWithAggregationInput[]
+    by: OwnerPasswordResetScalarFieldEnum[] | OwnerPasswordResetScalarFieldEnum
+    having?: OwnerPasswordResetScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: OwnerPasswordResetCountAggregateInputType | true
+    _min?: OwnerPasswordResetMinAggregateInputType
+    _max?: OwnerPasswordResetMaxAggregateInputType
+  }
+
+  export type OwnerPasswordResetGroupByOutputType = {
+    id: string
+    ownerId: string
+    tokenHash: string
+    expiresAt: Date
+    usedAt: Date | null
+    createdAt: Date
+    _count: OwnerPasswordResetCountAggregateOutputType | null
+    _min: OwnerPasswordResetMinAggregateOutputType | null
+    _max: OwnerPasswordResetMaxAggregateOutputType | null
+  }
+
+  type GetOwnerPasswordResetGroupByPayload<T extends OwnerPasswordResetGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<OwnerPasswordResetGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof OwnerPasswordResetGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], OwnerPasswordResetGroupByOutputType[P]>
+            : GetScalarType<T[P], OwnerPasswordResetGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type OwnerPasswordResetSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    ownerId?: boolean
+    tokenHash?: boolean
+    expiresAt?: boolean
+    usedAt?: boolean
+    createdAt?: boolean
+    owner?: boolean | OwnerDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["ownerPasswordReset"]>
+
+  export type OwnerPasswordResetSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    ownerId?: boolean
+    tokenHash?: boolean
+    expiresAt?: boolean
+    usedAt?: boolean
+    createdAt?: boolean
+    owner?: boolean | OwnerDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["ownerPasswordReset"]>
+
+  export type OwnerPasswordResetSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    ownerId?: boolean
+    tokenHash?: boolean
+    expiresAt?: boolean
+    usedAt?: boolean
+    createdAt?: boolean
+    owner?: boolean | OwnerDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["ownerPasswordReset"]>
+
+  export type OwnerPasswordResetSelectScalar = {
+    id?: boolean
+    ownerId?: boolean
+    tokenHash?: boolean
+    expiresAt?: boolean
+    usedAt?: boolean
+    createdAt?: boolean
+  }
+
+  export type OwnerPasswordResetOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ownerId" | "tokenHash" | "expiresAt" | "usedAt" | "createdAt", ExtArgs["result"]["ownerPasswordReset"]>
+  export type OwnerPasswordResetInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    owner?: boolean | OwnerDefaultArgs<ExtArgs>
+  }
+  export type OwnerPasswordResetIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    owner?: boolean | OwnerDefaultArgs<ExtArgs>
+  }
+  export type OwnerPasswordResetIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    owner?: boolean | OwnerDefaultArgs<ExtArgs>
+  }
+
+  export type $OwnerPasswordResetPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "OwnerPasswordReset"
+    objects: {
+      owner: Prisma.$OwnerPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      ownerId: string
+      tokenHash: string
+      expiresAt: Date
+      usedAt: Date | null
+      createdAt: Date
+    }, ExtArgs["result"]["ownerPasswordReset"]>
+    composites: {}
+  }
+
+  type OwnerPasswordResetGetPayload<S extends boolean | null | undefined | OwnerPasswordResetDefaultArgs> = $Result.GetResult<Prisma.$OwnerPasswordResetPayload, S>
+
+  type OwnerPasswordResetCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<OwnerPasswordResetFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: OwnerPasswordResetCountAggregateInputType | true
+    }
+
+  export interface OwnerPasswordResetDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['OwnerPasswordReset'], meta: { name: 'OwnerPasswordReset' } }
+    /**
+     * Find zero or one OwnerPasswordReset that matches the filter.
+     * @param {OwnerPasswordResetFindUniqueArgs} args - Arguments to find a OwnerPasswordReset
+     * @example
+     * // Get one OwnerPasswordReset
+     * const ownerPasswordReset = await prisma.ownerPasswordReset.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends OwnerPasswordResetFindUniqueArgs>(args: SelectSubset<T, OwnerPasswordResetFindUniqueArgs<ExtArgs>>): Prisma__OwnerPasswordResetClient<$Result.GetResult<Prisma.$OwnerPasswordResetPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one OwnerPasswordReset that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {OwnerPasswordResetFindUniqueOrThrowArgs} args - Arguments to find a OwnerPasswordReset
+     * @example
+     * // Get one OwnerPasswordReset
+     * const ownerPasswordReset = await prisma.ownerPasswordReset.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends OwnerPasswordResetFindUniqueOrThrowArgs>(args: SelectSubset<T, OwnerPasswordResetFindUniqueOrThrowArgs<ExtArgs>>): Prisma__OwnerPasswordResetClient<$Result.GetResult<Prisma.$OwnerPasswordResetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first OwnerPasswordReset that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OwnerPasswordResetFindFirstArgs} args - Arguments to find a OwnerPasswordReset
+     * @example
+     * // Get one OwnerPasswordReset
+     * const ownerPasswordReset = await prisma.ownerPasswordReset.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends OwnerPasswordResetFindFirstArgs>(args?: SelectSubset<T, OwnerPasswordResetFindFirstArgs<ExtArgs>>): Prisma__OwnerPasswordResetClient<$Result.GetResult<Prisma.$OwnerPasswordResetPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first OwnerPasswordReset that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OwnerPasswordResetFindFirstOrThrowArgs} args - Arguments to find a OwnerPasswordReset
+     * @example
+     * // Get one OwnerPasswordReset
+     * const ownerPasswordReset = await prisma.ownerPasswordReset.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends OwnerPasswordResetFindFirstOrThrowArgs>(args?: SelectSubset<T, OwnerPasswordResetFindFirstOrThrowArgs<ExtArgs>>): Prisma__OwnerPasswordResetClient<$Result.GetResult<Prisma.$OwnerPasswordResetPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more OwnerPasswordResets that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OwnerPasswordResetFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all OwnerPasswordResets
+     * const ownerPasswordResets = await prisma.ownerPasswordReset.findMany()
+     * 
+     * // Get first 10 OwnerPasswordResets
+     * const ownerPasswordResets = await prisma.ownerPasswordReset.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const ownerPasswordResetWithIdOnly = await prisma.ownerPasswordReset.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends OwnerPasswordResetFindManyArgs>(args?: SelectSubset<T, OwnerPasswordResetFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OwnerPasswordResetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a OwnerPasswordReset.
+     * @param {OwnerPasswordResetCreateArgs} args - Arguments to create a OwnerPasswordReset.
+     * @example
+     * // Create one OwnerPasswordReset
+     * const OwnerPasswordReset = await prisma.ownerPasswordReset.create({
+     *   data: {
+     *     // ... data to create a OwnerPasswordReset
+     *   }
+     * })
+     * 
+     */
+    create<T extends OwnerPasswordResetCreateArgs>(args: SelectSubset<T, OwnerPasswordResetCreateArgs<ExtArgs>>): Prisma__OwnerPasswordResetClient<$Result.GetResult<Prisma.$OwnerPasswordResetPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many OwnerPasswordResets.
+     * @param {OwnerPasswordResetCreateManyArgs} args - Arguments to create many OwnerPasswordResets.
+     * @example
+     * // Create many OwnerPasswordResets
+     * const ownerPasswordReset = await prisma.ownerPasswordReset.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends OwnerPasswordResetCreateManyArgs>(args?: SelectSubset<T, OwnerPasswordResetCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many OwnerPasswordResets and returns the data saved in the database.
+     * @param {OwnerPasswordResetCreateManyAndReturnArgs} args - Arguments to create many OwnerPasswordResets.
+     * @example
+     * // Create many OwnerPasswordResets
+     * const ownerPasswordReset = await prisma.ownerPasswordReset.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many OwnerPasswordResets and only return the `id`
+     * const ownerPasswordResetWithIdOnly = await prisma.ownerPasswordReset.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends OwnerPasswordResetCreateManyAndReturnArgs>(args?: SelectSubset<T, OwnerPasswordResetCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OwnerPasswordResetPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a OwnerPasswordReset.
+     * @param {OwnerPasswordResetDeleteArgs} args - Arguments to delete one OwnerPasswordReset.
+     * @example
+     * // Delete one OwnerPasswordReset
+     * const OwnerPasswordReset = await prisma.ownerPasswordReset.delete({
+     *   where: {
+     *     // ... filter to delete one OwnerPasswordReset
+     *   }
+     * })
+     * 
+     */
+    delete<T extends OwnerPasswordResetDeleteArgs>(args: SelectSubset<T, OwnerPasswordResetDeleteArgs<ExtArgs>>): Prisma__OwnerPasswordResetClient<$Result.GetResult<Prisma.$OwnerPasswordResetPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one OwnerPasswordReset.
+     * @param {OwnerPasswordResetUpdateArgs} args - Arguments to update one OwnerPasswordReset.
+     * @example
+     * // Update one OwnerPasswordReset
+     * const ownerPasswordReset = await prisma.ownerPasswordReset.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends OwnerPasswordResetUpdateArgs>(args: SelectSubset<T, OwnerPasswordResetUpdateArgs<ExtArgs>>): Prisma__OwnerPasswordResetClient<$Result.GetResult<Prisma.$OwnerPasswordResetPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more OwnerPasswordResets.
+     * @param {OwnerPasswordResetDeleteManyArgs} args - Arguments to filter OwnerPasswordResets to delete.
+     * @example
+     * // Delete a few OwnerPasswordResets
+     * const { count } = await prisma.ownerPasswordReset.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends OwnerPasswordResetDeleteManyArgs>(args?: SelectSubset<T, OwnerPasswordResetDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more OwnerPasswordResets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OwnerPasswordResetUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many OwnerPasswordResets
+     * const ownerPasswordReset = await prisma.ownerPasswordReset.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends OwnerPasswordResetUpdateManyArgs>(args: SelectSubset<T, OwnerPasswordResetUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more OwnerPasswordResets and returns the data updated in the database.
+     * @param {OwnerPasswordResetUpdateManyAndReturnArgs} args - Arguments to update many OwnerPasswordResets.
+     * @example
+     * // Update many OwnerPasswordResets
+     * const ownerPasswordReset = await prisma.ownerPasswordReset.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more OwnerPasswordResets and only return the `id`
+     * const ownerPasswordResetWithIdOnly = await prisma.ownerPasswordReset.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends OwnerPasswordResetUpdateManyAndReturnArgs>(args: SelectSubset<T, OwnerPasswordResetUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OwnerPasswordResetPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one OwnerPasswordReset.
+     * @param {OwnerPasswordResetUpsertArgs} args - Arguments to update or create a OwnerPasswordReset.
+     * @example
+     * // Update or create a OwnerPasswordReset
+     * const ownerPasswordReset = await prisma.ownerPasswordReset.upsert({
+     *   create: {
+     *     // ... data to create a OwnerPasswordReset
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the OwnerPasswordReset we want to update
+     *   }
+     * })
+     */
+    upsert<T extends OwnerPasswordResetUpsertArgs>(args: SelectSubset<T, OwnerPasswordResetUpsertArgs<ExtArgs>>): Prisma__OwnerPasswordResetClient<$Result.GetResult<Prisma.$OwnerPasswordResetPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of OwnerPasswordResets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OwnerPasswordResetCountArgs} args - Arguments to filter OwnerPasswordResets to count.
+     * @example
+     * // Count the number of OwnerPasswordResets
+     * const count = await prisma.ownerPasswordReset.count({
+     *   where: {
+     *     // ... the filter for the OwnerPasswordResets we want to count
+     *   }
+     * })
+    **/
+    count<T extends OwnerPasswordResetCountArgs>(
+      args?: Subset<T, OwnerPasswordResetCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], OwnerPasswordResetCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a OwnerPasswordReset.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OwnerPasswordResetAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends OwnerPasswordResetAggregateArgs>(args: Subset<T, OwnerPasswordResetAggregateArgs>): Prisma.PrismaPromise<GetOwnerPasswordResetAggregateType<T>>
+
+    /**
+     * Group by OwnerPasswordReset.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OwnerPasswordResetGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends OwnerPasswordResetGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: OwnerPasswordResetGroupByArgs['orderBy'] }
+        : { orderBy?: OwnerPasswordResetGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, OwnerPasswordResetGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOwnerPasswordResetGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the OwnerPasswordReset model
+   */
+  readonly fields: OwnerPasswordResetFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for OwnerPasswordReset.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__OwnerPasswordResetClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    owner<T extends OwnerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OwnerDefaultArgs<ExtArgs>>): Prisma__OwnerClient<$Result.GetResult<Prisma.$OwnerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the OwnerPasswordReset model
+   */
+  interface OwnerPasswordResetFieldRefs {
+    readonly id: FieldRef<"OwnerPasswordReset", 'String'>
+    readonly ownerId: FieldRef<"OwnerPasswordReset", 'String'>
+    readonly tokenHash: FieldRef<"OwnerPasswordReset", 'String'>
+    readonly expiresAt: FieldRef<"OwnerPasswordReset", 'DateTime'>
+    readonly usedAt: FieldRef<"OwnerPasswordReset", 'DateTime'>
+    readonly createdAt: FieldRef<"OwnerPasswordReset", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * OwnerPasswordReset findUnique
+   */
+  export type OwnerPasswordResetFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OwnerPasswordReset
+     */
+    select?: OwnerPasswordResetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OwnerPasswordReset
+     */
+    omit?: OwnerPasswordResetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OwnerPasswordResetInclude<ExtArgs> | null
+    /**
+     * Filter, which OwnerPasswordReset to fetch.
+     */
+    where: OwnerPasswordResetWhereUniqueInput
+  }
+
+  /**
+   * OwnerPasswordReset findUniqueOrThrow
+   */
+  export type OwnerPasswordResetFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OwnerPasswordReset
+     */
+    select?: OwnerPasswordResetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OwnerPasswordReset
+     */
+    omit?: OwnerPasswordResetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OwnerPasswordResetInclude<ExtArgs> | null
+    /**
+     * Filter, which OwnerPasswordReset to fetch.
+     */
+    where: OwnerPasswordResetWhereUniqueInput
+  }
+
+  /**
+   * OwnerPasswordReset findFirst
+   */
+  export type OwnerPasswordResetFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OwnerPasswordReset
+     */
+    select?: OwnerPasswordResetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OwnerPasswordReset
+     */
+    omit?: OwnerPasswordResetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OwnerPasswordResetInclude<ExtArgs> | null
+    /**
+     * Filter, which OwnerPasswordReset to fetch.
+     */
+    where?: OwnerPasswordResetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OwnerPasswordResets to fetch.
+     */
+    orderBy?: OwnerPasswordResetOrderByWithRelationInput | OwnerPasswordResetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OwnerPasswordResets.
+     */
+    cursor?: OwnerPasswordResetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OwnerPasswordResets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OwnerPasswordResets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OwnerPasswordResets.
+     */
+    distinct?: OwnerPasswordResetScalarFieldEnum | OwnerPasswordResetScalarFieldEnum[]
+  }
+
+  /**
+   * OwnerPasswordReset findFirstOrThrow
+   */
+  export type OwnerPasswordResetFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OwnerPasswordReset
+     */
+    select?: OwnerPasswordResetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OwnerPasswordReset
+     */
+    omit?: OwnerPasswordResetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OwnerPasswordResetInclude<ExtArgs> | null
+    /**
+     * Filter, which OwnerPasswordReset to fetch.
+     */
+    where?: OwnerPasswordResetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OwnerPasswordResets to fetch.
+     */
+    orderBy?: OwnerPasswordResetOrderByWithRelationInput | OwnerPasswordResetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OwnerPasswordResets.
+     */
+    cursor?: OwnerPasswordResetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OwnerPasswordResets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OwnerPasswordResets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OwnerPasswordResets.
+     */
+    distinct?: OwnerPasswordResetScalarFieldEnum | OwnerPasswordResetScalarFieldEnum[]
+  }
+
+  /**
+   * OwnerPasswordReset findMany
+   */
+  export type OwnerPasswordResetFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OwnerPasswordReset
+     */
+    select?: OwnerPasswordResetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OwnerPasswordReset
+     */
+    omit?: OwnerPasswordResetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OwnerPasswordResetInclude<ExtArgs> | null
+    /**
+     * Filter, which OwnerPasswordResets to fetch.
+     */
+    where?: OwnerPasswordResetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OwnerPasswordResets to fetch.
+     */
+    orderBy?: OwnerPasswordResetOrderByWithRelationInput | OwnerPasswordResetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing OwnerPasswordResets.
+     */
+    cursor?: OwnerPasswordResetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OwnerPasswordResets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OwnerPasswordResets.
+     */
+    skip?: number
+    distinct?: OwnerPasswordResetScalarFieldEnum | OwnerPasswordResetScalarFieldEnum[]
+  }
+
+  /**
+   * OwnerPasswordReset create
+   */
+  export type OwnerPasswordResetCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OwnerPasswordReset
+     */
+    select?: OwnerPasswordResetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OwnerPasswordReset
+     */
+    omit?: OwnerPasswordResetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OwnerPasswordResetInclude<ExtArgs> | null
+    /**
+     * The data needed to create a OwnerPasswordReset.
+     */
+    data: XOR<OwnerPasswordResetCreateInput, OwnerPasswordResetUncheckedCreateInput>
+  }
+
+  /**
+   * OwnerPasswordReset createMany
+   */
+  export type OwnerPasswordResetCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many OwnerPasswordResets.
+     */
+    data: OwnerPasswordResetCreateManyInput | OwnerPasswordResetCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * OwnerPasswordReset createManyAndReturn
+   */
+  export type OwnerPasswordResetCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OwnerPasswordReset
+     */
+    select?: OwnerPasswordResetSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the OwnerPasswordReset
+     */
+    omit?: OwnerPasswordResetOmit<ExtArgs> | null
+    /**
+     * The data used to create many OwnerPasswordResets.
+     */
+    data: OwnerPasswordResetCreateManyInput | OwnerPasswordResetCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OwnerPasswordResetIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * OwnerPasswordReset update
+   */
+  export type OwnerPasswordResetUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OwnerPasswordReset
+     */
+    select?: OwnerPasswordResetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OwnerPasswordReset
+     */
+    omit?: OwnerPasswordResetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OwnerPasswordResetInclude<ExtArgs> | null
+    /**
+     * The data needed to update a OwnerPasswordReset.
+     */
+    data: XOR<OwnerPasswordResetUpdateInput, OwnerPasswordResetUncheckedUpdateInput>
+    /**
+     * Choose, which OwnerPasswordReset to update.
+     */
+    where: OwnerPasswordResetWhereUniqueInput
+  }
+
+  /**
+   * OwnerPasswordReset updateMany
+   */
+  export type OwnerPasswordResetUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update OwnerPasswordResets.
+     */
+    data: XOR<OwnerPasswordResetUpdateManyMutationInput, OwnerPasswordResetUncheckedUpdateManyInput>
+    /**
+     * Filter which OwnerPasswordResets to update
+     */
+    where?: OwnerPasswordResetWhereInput
+    /**
+     * Limit how many OwnerPasswordResets to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * OwnerPasswordReset updateManyAndReturn
+   */
+  export type OwnerPasswordResetUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OwnerPasswordReset
+     */
+    select?: OwnerPasswordResetSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the OwnerPasswordReset
+     */
+    omit?: OwnerPasswordResetOmit<ExtArgs> | null
+    /**
+     * The data used to update OwnerPasswordResets.
+     */
+    data: XOR<OwnerPasswordResetUpdateManyMutationInput, OwnerPasswordResetUncheckedUpdateManyInput>
+    /**
+     * Filter which OwnerPasswordResets to update
+     */
+    where?: OwnerPasswordResetWhereInput
+    /**
+     * Limit how many OwnerPasswordResets to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OwnerPasswordResetIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * OwnerPasswordReset upsert
+   */
+  export type OwnerPasswordResetUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OwnerPasswordReset
+     */
+    select?: OwnerPasswordResetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OwnerPasswordReset
+     */
+    omit?: OwnerPasswordResetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OwnerPasswordResetInclude<ExtArgs> | null
+    /**
+     * The filter to search for the OwnerPasswordReset to update in case it exists.
+     */
+    where: OwnerPasswordResetWhereUniqueInput
+    /**
+     * In case the OwnerPasswordReset found by the `where` argument doesn't exist, create a new OwnerPasswordReset with this data.
+     */
+    create: XOR<OwnerPasswordResetCreateInput, OwnerPasswordResetUncheckedCreateInput>
+    /**
+     * In case the OwnerPasswordReset was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<OwnerPasswordResetUpdateInput, OwnerPasswordResetUncheckedUpdateInput>
+  }
+
+  /**
+   * OwnerPasswordReset delete
+   */
+  export type OwnerPasswordResetDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OwnerPasswordReset
+     */
+    select?: OwnerPasswordResetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OwnerPasswordReset
+     */
+    omit?: OwnerPasswordResetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OwnerPasswordResetInclude<ExtArgs> | null
+    /**
+     * Filter which OwnerPasswordReset to delete.
+     */
+    where: OwnerPasswordResetWhereUniqueInput
+  }
+
+  /**
+   * OwnerPasswordReset deleteMany
+   */
+  export type OwnerPasswordResetDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OwnerPasswordResets to delete
+     */
+    where?: OwnerPasswordResetWhereInput
+    /**
+     * Limit how many OwnerPasswordResets to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * OwnerPasswordReset without action
+   */
+  export type OwnerPasswordResetDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OwnerPasswordReset
+     */
+    select?: OwnerPasswordResetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OwnerPasswordReset
+     */
+    omit?: OwnerPasswordResetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OwnerPasswordResetInclude<ExtArgs> | null
   }
 
 
@@ -42192,6 +43391,18 @@ export namespace Prisma {
   export type CategoryRequestScalarFieldEnum = (typeof CategoryRequestScalarFieldEnum)[keyof typeof CategoryRequestScalarFieldEnum]
 
 
+  export const OwnerPasswordResetScalarFieldEnum: {
+    id: 'id',
+    ownerId: 'ownerId',
+    tokenHash: 'tokenHash',
+    expiresAt: 'expiresAt',
+    usedAt: 'usedAt',
+    createdAt: 'createdAt'
+  };
+
+  export type OwnerPasswordResetScalarFieldEnum = (typeof OwnerPasswordResetScalarFieldEnum)[keyof typeof OwnerPasswordResetScalarFieldEnum]
+
+
   export const PromoCodeScalarFieldEnum: {
     id: 'id',
     code: 'code',
@@ -42990,6 +44201,7 @@ export namespace Prisma {
     barLicenses?: BarLicenseListRelationFilter
     promoRedemptions?: PromoRedemptionListRelationFilter
     categoryRequests?: CategoryRequestListRelationFilter
+    passwordResets?: OwnerPasswordResetListRelationFilter
   }
 
   export type OwnerOrderByWithRelationInput = {
@@ -43008,6 +44220,7 @@ export namespace Prisma {
     barLicenses?: BarLicenseOrderByRelationAggregateInput
     promoRedemptions?: PromoRedemptionOrderByRelationAggregateInput
     categoryRequests?: CategoryRequestOrderByRelationAggregateInput
+    passwordResets?: OwnerPasswordResetOrderByRelationAggregateInput
   }
 
   export type OwnerWhereUniqueInput = Prisma.AtLeast<{
@@ -43029,6 +44242,7 @@ export namespace Prisma {
     barLicenses?: BarLicenseListRelationFilter
     promoRedemptions?: PromoRedemptionListRelationFilter
     categoryRequests?: CategoryRequestListRelationFilter
+    passwordResets?: OwnerPasswordResetListRelationFilter
   }, "id" | "email">
 
   export type OwnerOrderByWithAggregationInput = {
@@ -43884,6 +45098,66 @@ export namespace Prisma {
     reviewedAt?: DateTimeNullableWithAggregatesFilter<"CategoryRequest"> | Date | string | null
     reviewedByEmail?: StringNullableWithAggregatesFilter<"CategoryRequest"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"CategoryRequest"> | Date | string
+  }
+
+  export type OwnerPasswordResetWhereInput = {
+    AND?: OwnerPasswordResetWhereInput | OwnerPasswordResetWhereInput[]
+    OR?: OwnerPasswordResetWhereInput[]
+    NOT?: OwnerPasswordResetWhereInput | OwnerPasswordResetWhereInput[]
+    id?: StringFilter<"OwnerPasswordReset"> | string
+    ownerId?: StringFilter<"OwnerPasswordReset"> | string
+    tokenHash?: StringFilter<"OwnerPasswordReset"> | string
+    expiresAt?: DateTimeFilter<"OwnerPasswordReset"> | Date | string
+    usedAt?: DateTimeNullableFilter<"OwnerPasswordReset"> | Date | string | null
+    createdAt?: DateTimeFilter<"OwnerPasswordReset"> | Date | string
+    owner?: XOR<OwnerScalarRelationFilter, OwnerWhereInput>
+  }
+
+  export type OwnerPasswordResetOrderByWithRelationInput = {
+    id?: SortOrder
+    ownerId?: SortOrder
+    tokenHash?: SortOrder
+    expiresAt?: SortOrder
+    usedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    owner?: OwnerOrderByWithRelationInput
+  }
+
+  export type OwnerPasswordResetWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    tokenHash?: string
+    AND?: OwnerPasswordResetWhereInput | OwnerPasswordResetWhereInput[]
+    OR?: OwnerPasswordResetWhereInput[]
+    NOT?: OwnerPasswordResetWhereInput | OwnerPasswordResetWhereInput[]
+    ownerId?: StringFilter<"OwnerPasswordReset"> | string
+    expiresAt?: DateTimeFilter<"OwnerPasswordReset"> | Date | string
+    usedAt?: DateTimeNullableFilter<"OwnerPasswordReset"> | Date | string | null
+    createdAt?: DateTimeFilter<"OwnerPasswordReset"> | Date | string
+    owner?: XOR<OwnerScalarRelationFilter, OwnerWhereInput>
+  }, "id" | "tokenHash">
+
+  export type OwnerPasswordResetOrderByWithAggregationInput = {
+    id?: SortOrder
+    ownerId?: SortOrder
+    tokenHash?: SortOrder
+    expiresAt?: SortOrder
+    usedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: OwnerPasswordResetCountOrderByAggregateInput
+    _max?: OwnerPasswordResetMaxOrderByAggregateInput
+    _min?: OwnerPasswordResetMinOrderByAggregateInput
+  }
+
+  export type OwnerPasswordResetScalarWhereWithAggregatesInput = {
+    AND?: OwnerPasswordResetScalarWhereWithAggregatesInput | OwnerPasswordResetScalarWhereWithAggregatesInput[]
+    OR?: OwnerPasswordResetScalarWhereWithAggregatesInput[]
+    NOT?: OwnerPasswordResetScalarWhereWithAggregatesInput | OwnerPasswordResetScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"OwnerPasswordReset"> | string
+    ownerId?: StringWithAggregatesFilter<"OwnerPasswordReset"> | string
+    tokenHash?: StringWithAggregatesFilter<"OwnerPasswordReset"> | string
+    expiresAt?: DateTimeWithAggregatesFilter<"OwnerPasswordReset"> | Date | string
+    usedAt?: DateTimeNullableWithAggregatesFilter<"OwnerPasswordReset"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"OwnerPasswordReset"> | Date | string
   }
 
   export type PromoCodeWhereInput = {
@@ -45724,6 +46998,7 @@ export namespace Prisma {
     barLicenses?: BarLicenseCreateNestedManyWithoutOwnerInput
     promoRedemptions?: PromoRedemptionCreateNestedManyWithoutOwnerInput
     categoryRequests?: CategoryRequestCreateNestedManyWithoutOwnerInput
+    passwordResets?: OwnerPasswordResetCreateNestedManyWithoutOwnerInput
   }
 
   export type OwnerUncheckedCreateInput = {
@@ -45742,6 +47017,7 @@ export namespace Prisma {
     barLicenses?: BarLicenseUncheckedCreateNestedManyWithoutOwnerInput
     promoRedemptions?: PromoRedemptionUncheckedCreateNestedManyWithoutOwnerInput
     categoryRequests?: CategoryRequestUncheckedCreateNestedManyWithoutOwnerInput
+    passwordResets?: OwnerPasswordResetUncheckedCreateNestedManyWithoutOwnerInput
   }
 
   export type OwnerUpdateInput = {
@@ -45760,6 +47036,7 @@ export namespace Prisma {
     barLicenses?: BarLicenseUpdateManyWithoutOwnerNestedInput
     promoRedemptions?: PromoRedemptionUpdateManyWithoutOwnerNestedInput
     categoryRequests?: CategoryRequestUpdateManyWithoutOwnerNestedInput
+    passwordResets?: OwnerPasswordResetUpdateManyWithoutOwnerNestedInput
   }
 
   export type OwnerUncheckedUpdateInput = {
@@ -45778,6 +47055,7 @@ export namespace Prisma {
     barLicenses?: BarLicenseUncheckedUpdateManyWithoutOwnerNestedInput
     promoRedemptions?: PromoRedemptionUncheckedUpdateManyWithoutOwnerNestedInput
     categoryRequests?: CategoryRequestUncheckedUpdateManyWithoutOwnerNestedInput
+    passwordResets?: OwnerPasswordResetUncheckedUpdateManyWithoutOwnerNestedInput
   }
 
   export type OwnerCreateManyInput = {
@@ -46793,6 +48071,68 @@ export namespace Prisma {
     status?: EnumCategoryRequestStatusFieldUpdateOperationsInput | $Enums.CategoryRequestStatus
     reviewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     reviewedByEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OwnerPasswordResetCreateInput = {
+    id?: string
+    tokenHash: string
+    expiresAt: Date | string
+    usedAt?: Date | string | null
+    createdAt?: Date | string
+    owner: OwnerCreateNestedOneWithoutPasswordResetsInput
+  }
+
+  export type OwnerPasswordResetUncheckedCreateInput = {
+    id?: string
+    ownerId: string
+    tokenHash: string
+    expiresAt: Date | string
+    usedAt?: Date | string | null
+    createdAt?: Date | string
+  }
+
+  export type OwnerPasswordResetUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tokenHash?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    usedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    owner?: OwnerUpdateOneRequiredWithoutPasswordResetsNestedInput
+  }
+
+  export type OwnerPasswordResetUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    tokenHash?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    usedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OwnerPasswordResetCreateManyInput = {
+    id?: string
+    ownerId: string
+    tokenHash: string
+    expiresAt: Date | string
+    usedAt?: Date | string | null
+    createdAt?: Date | string
+  }
+
+  export type OwnerPasswordResetUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tokenHash?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    usedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OwnerPasswordResetUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    tokenHash?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    usedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -48828,6 +50168,12 @@ export namespace Prisma {
     none?: CategoryRequestWhereInput
   }
 
+  export type OwnerPasswordResetListRelationFilter = {
+    every?: OwnerPasswordResetWhereInput
+    some?: OwnerPasswordResetWhereInput
+    none?: OwnerPasswordResetWhereInput
+  }
+
   export type BarOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -48841,6 +50187,10 @@ export namespace Prisma {
   }
 
   export type CategoryRequestOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type OwnerPasswordResetOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -49670,6 +51020,33 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumCategoryRequestStatusFilter<$PrismaModel>
     _max?: NestedEnumCategoryRequestStatusFilter<$PrismaModel>
+  }
+
+  export type OwnerPasswordResetCountOrderByAggregateInput = {
+    id?: SortOrder
+    ownerId?: SortOrder
+    tokenHash?: SortOrder
+    expiresAt?: SortOrder
+    usedAt?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type OwnerPasswordResetMaxOrderByAggregateInput = {
+    id?: SortOrder
+    ownerId?: SortOrder
+    tokenHash?: SortOrder
+    expiresAt?: SortOrder
+    usedAt?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type OwnerPasswordResetMinOrderByAggregateInput = {
+    id?: SortOrder
+    ownerId?: SortOrder
+    tokenHash?: SortOrder
+    expiresAt?: SortOrder
+    usedAt?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type EnumSubscriptionPlanNullableFilter<$PrismaModel = never> = {
@@ -51085,6 +52462,13 @@ export namespace Prisma {
     connect?: CategoryRequestWhereUniqueInput | CategoryRequestWhereUniqueInput[]
   }
 
+  export type OwnerPasswordResetCreateNestedManyWithoutOwnerInput = {
+    create?: XOR<OwnerPasswordResetCreateWithoutOwnerInput, OwnerPasswordResetUncheckedCreateWithoutOwnerInput> | OwnerPasswordResetCreateWithoutOwnerInput[] | OwnerPasswordResetUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: OwnerPasswordResetCreateOrConnectWithoutOwnerInput | OwnerPasswordResetCreateOrConnectWithoutOwnerInput[]
+    createMany?: OwnerPasswordResetCreateManyOwnerInputEnvelope
+    connect?: OwnerPasswordResetWhereUniqueInput | OwnerPasswordResetWhereUniqueInput[]
+  }
+
   export type BarUncheckedCreateNestedManyWithoutOwnerInput = {
     create?: XOR<BarCreateWithoutOwnerInput, BarUncheckedCreateWithoutOwnerInput> | BarCreateWithoutOwnerInput[] | BarUncheckedCreateWithoutOwnerInput[]
     connectOrCreate?: BarCreateOrConnectWithoutOwnerInput | BarCreateOrConnectWithoutOwnerInput[]
@@ -51117,6 +52501,13 @@ export namespace Prisma {
     connectOrCreate?: CategoryRequestCreateOrConnectWithoutOwnerInput | CategoryRequestCreateOrConnectWithoutOwnerInput[]
     createMany?: CategoryRequestCreateManyOwnerInputEnvelope
     connect?: CategoryRequestWhereUniqueInput | CategoryRequestWhereUniqueInput[]
+  }
+
+  export type OwnerPasswordResetUncheckedCreateNestedManyWithoutOwnerInput = {
+    create?: XOR<OwnerPasswordResetCreateWithoutOwnerInput, OwnerPasswordResetUncheckedCreateWithoutOwnerInput> | OwnerPasswordResetCreateWithoutOwnerInput[] | OwnerPasswordResetUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: OwnerPasswordResetCreateOrConnectWithoutOwnerInput | OwnerPasswordResetCreateOrConnectWithoutOwnerInput[]
+    createMany?: OwnerPasswordResetCreateManyOwnerInputEnvelope
+    connect?: OwnerPasswordResetWhereUniqueInput | OwnerPasswordResetWhereUniqueInput[]
   }
 
   export type BoolFieldUpdateOperationsInput = {
@@ -51193,6 +52584,20 @@ export namespace Prisma {
     deleteMany?: CategoryRequestScalarWhereInput | CategoryRequestScalarWhereInput[]
   }
 
+  export type OwnerPasswordResetUpdateManyWithoutOwnerNestedInput = {
+    create?: XOR<OwnerPasswordResetCreateWithoutOwnerInput, OwnerPasswordResetUncheckedCreateWithoutOwnerInput> | OwnerPasswordResetCreateWithoutOwnerInput[] | OwnerPasswordResetUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: OwnerPasswordResetCreateOrConnectWithoutOwnerInput | OwnerPasswordResetCreateOrConnectWithoutOwnerInput[]
+    upsert?: OwnerPasswordResetUpsertWithWhereUniqueWithoutOwnerInput | OwnerPasswordResetUpsertWithWhereUniqueWithoutOwnerInput[]
+    createMany?: OwnerPasswordResetCreateManyOwnerInputEnvelope
+    set?: OwnerPasswordResetWhereUniqueInput | OwnerPasswordResetWhereUniqueInput[]
+    disconnect?: OwnerPasswordResetWhereUniqueInput | OwnerPasswordResetWhereUniqueInput[]
+    delete?: OwnerPasswordResetWhereUniqueInput | OwnerPasswordResetWhereUniqueInput[]
+    connect?: OwnerPasswordResetWhereUniqueInput | OwnerPasswordResetWhereUniqueInput[]
+    update?: OwnerPasswordResetUpdateWithWhereUniqueWithoutOwnerInput | OwnerPasswordResetUpdateWithWhereUniqueWithoutOwnerInput[]
+    updateMany?: OwnerPasswordResetUpdateManyWithWhereWithoutOwnerInput | OwnerPasswordResetUpdateManyWithWhereWithoutOwnerInput[]
+    deleteMany?: OwnerPasswordResetScalarWhereInput | OwnerPasswordResetScalarWhereInput[]
+  }
+
   export type BarUncheckedUpdateManyWithoutOwnerNestedInput = {
     create?: XOR<BarCreateWithoutOwnerInput, BarUncheckedCreateWithoutOwnerInput> | BarCreateWithoutOwnerInput[] | BarUncheckedCreateWithoutOwnerInput[]
     connectOrCreate?: BarCreateOrConnectWithoutOwnerInput | BarCreateOrConnectWithoutOwnerInput[]
@@ -51257,6 +52662,20 @@ export namespace Prisma {
     update?: CategoryRequestUpdateWithWhereUniqueWithoutOwnerInput | CategoryRequestUpdateWithWhereUniqueWithoutOwnerInput[]
     updateMany?: CategoryRequestUpdateManyWithWhereWithoutOwnerInput | CategoryRequestUpdateManyWithWhereWithoutOwnerInput[]
     deleteMany?: CategoryRequestScalarWhereInput | CategoryRequestScalarWhereInput[]
+  }
+
+  export type OwnerPasswordResetUncheckedUpdateManyWithoutOwnerNestedInput = {
+    create?: XOR<OwnerPasswordResetCreateWithoutOwnerInput, OwnerPasswordResetUncheckedCreateWithoutOwnerInput> | OwnerPasswordResetCreateWithoutOwnerInput[] | OwnerPasswordResetUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: OwnerPasswordResetCreateOrConnectWithoutOwnerInput | OwnerPasswordResetCreateOrConnectWithoutOwnerInput[]
+    upsert?: OwnerPasswordResetUpsertWithWhereUniqueWithoutOwnerInput | OwnerPasswordResetUpsertWithWhereUniqueWithoutOwnerInput[]
+    createMany?: OwnerPasswordResetCreateManyOwnerInputEnvelope
+    set?: OwnerPasswordResetWhereUniqueInput | OwnerPasswordResetWhereUniqueInput[]
+    disconnect?: OwnerPasswordResetWhereUniqueInput | OwnerPasswordResetWhereUniqueInput[]
+    delete?: OwnerPasswordResetWhereUniqueInput | OwnerPasswordResetWhereUniqueInput[]
+    connect?: OwnerPasswordResetWhereUniqueInput | OwnerPasswordResetWhereUniqueInput[]
+    update?: OwnerPasswordResetUpdateWithWhereUniqueWithoutOwnerInput | OwnerPasswordResetUpdateWithWhereUniqueWithoutOwnerInput[]
+    updateMany?: OwnerPasswordResetUpdateManyWithWhereWithoutOwnerInput | OwnerPasswordResetUpdateManyWithWhereWithoutOwnerInput[]
+    deleteMany?: OwnerPasswordResetScalarWhereInput | OwnerPasswordResetScalarWhereInput[]
   }
 
   export type OwnerCreateNestedOneWithoutSubscriptionInput = {
@@ -52154,6 +53573,20 @@ export namespace Prisma {
     upsert?: OwnerUpsertWithoutCategoryRequestsInput
     connect?: OwnerWhereUniqueInput
     update?: XOR<XOR<OwnerUpdateToOneWithWhereWithoutCategoryRequestsInput, OwnerUpdateWithoutCategoryRequestsInput>, OwnerUncheckedUpdateWithoutCategoryRequestsInput>
+  }
+
+  export type OwnerCreateNestedOneWithoutPasswordResetsInput = {
+    create?: XOR<OwnerCreateWithoutPasswordResetsInput, OwnerUncheckedCreateWithoutPasswordResetsInput>
+    connectOrCreate?: OwnerCreateOrConnectWithoutPasswordResetsInput
+    connect?: OwnerWhereUniqueInput
+  }
+
+  export type OwnerUpdateOneRequiredWithoutPasswordResetsNestedInput = {
+    create?: XOR<OwnerCreateWithoutPasswordResetsInput, OwnerUncheckedCreateWithoutPasswordResetsInput>
+    connectOrCreate?: OwnerCreateOrConnectWithoutPasswordResetsInput
+    upsert?: OwnerUpsertWithoutPasswordResetsInput
+    connect?: OwnerWhereUniqueInput
+    update?: XOR<XOR<OwnerUpdateToOneWithWhereWithoutPasswordResetsInput, OwnerUpdateWithoutPasswordResetsInput>, OwnerUncheckedUpdateWithoutPasswordResetsInput>
   }
 
   export type PromoRedemptionCreateNestedManyWithoutPromoCodeInput = {
@@ -54224,6 +55657,32 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type OwnerPasswordResetCreateWithoutOwnerInput = {
+    id?: string
+    tokenHash: string
+    expiresAt: Date | string
+    usedAt?: Date | string | null
+    createdAt?: Date | string
+  }
+
+  export type OwnerPasswordResetUncheckedCreateWithoutOwnerInput = {
+    id?: string
+    tokenHash: string
+    expiresAt: Date | string
+    usedAt?: Date | string | null
+    createdAt?: Date | string
+  }
+
+  export type OwnerPasswordResetCreateOrConnectWithoutOwnerInput = {
+    where: OwnerPasswordResetWhereUniqueInput
+    create: XOR<OwnerPasswordResetCreateWithoutOwnerInput, OwnerPasswordResetUncheckedCreateWithoutOwnerInput>
+  }
+
+  export type OwnerPasswordResetCreateManyOwnerInputEnvelope = {
+    data: OwnerPasswordResetCreateManyOwnerInput | OwnerPasswordResetCreateManyOwnerInput[]
+    skipDuplicates?: boolean
+  }
+
   export type BarUpsertWithWhereUniqueWithoutOwnerInput = {
     where: BarWhereUniqueInput
     update: XOR<BarUpdateWithoutOwnerInput, BarUncheckedUpdateWithoutOwnerInput>
@@ -54405,6 +55864,34 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"CategoryRequest"> | Date | string
   }
 
+  export type OwnerPasswordResetUpsertWithWhereUniqueWithoutOwnerInput = {
+    where: OwnerPasswordResetWhereUniqueInput
+    update: XOR<OwnerPasswordResetUpdateWithoutOwnerInput, OwnerPasswordResetUncheckedUpdateWithoutOwnerInput>
+    create: XOR<OwnerPasswordResetCreateWithoutOwnerInput, OwnerPasswordResetUncheckedCreateWithoutOwnerInput>
+  }
+
+  export type OwnerPasswordResetUpdateWithWhereUniqueWithoutOwnerInput = {
+    where: OwnerPasswordResetWhereUniqueInput
+    data: XOR<OwnerPasswordResetUpdateWithoutOwnerInput, OwnerPasswordResetUncheckedUpdateWithoutOwnerInput>
+  }
+
+  export type OwnerPasswordResetUpdateManyWithWhereWithoutOwnerInput = {
+    where: OwnerPasswordResetScalarWhereInput
+    data: XOR<OwnerPasswordResetUpdateManyMutationInput, OwnerPasswordResetUncheckedUpdateManyWithoutOwnerInput>
+  }
+
+  export type OwnerPasswordResetScalarWhereInput = {
+    AND?: OwnerPasswordResetScalarWhereInput | OwnerPasswordResetScalarWhereInput[]
+    OR?: OwnerPasswordResetScalarWhereInput[]
+    NOT?: OwnerPasswordResetScalarWhereInput | OwnerPasswordResetScalarWhereInput[]
+    id?: StringFilter<"OwnerPasswordReset"> | string
+    ownerId?: StringFilter<"OwnerPasswordReset"> | string
+    tokenHash?: StringFilter<"OwnerPasswordReset"> | string
+    expiresAt?: DateTimeFilter<"OwnerPasswordReset"> | Date | string
+    usedAt?: DateTimeNullableFilter<"OwnerPasswordReset"> | Date | string | null
+    createdAt?: DateTimeFilter<"OwnerPasswordReset"> | Date | string
+  }
+
   export type OwnerCreateWithoutSubscriptionInput = {
     id?: string
     email: string
@@ -54420,6 +55907,7 @@ export namespace Prisma {
     barLicenses?: BarLicenseCreateNestedManyWithoutOwnerInput
     promoRedemptions?: PromoRedemptionCreateNestedManyWithoutOwnerInput
     categoryRequests?: CategoryRequestCreateNestedManyWithoutOwnerInput
+    passwordResets?: OwnerPasswordResetCreateNestedManyWithoutOwnerInput
   }
 
   export type OwnerUncheckedCreateWithoutSubscriptionInput = {
@@ -54437,6 +55925,7 @@ export namespace Prisma {
     barLicenses?: BarLicenseUncheckedCreateNestedManyWithoutOwnerInput
     promoRedemptions?: PromoRedemptionUncheckedCreateNestedManyWithoutOwnerInput
     categoryRequests?: CategoryRequestUncheckedCreateNestedManyWithoutOwnerInput
+    passwordResets?: OwnerPasswordResetUncheckedCreateNestedManyWithoutOwnerInput
   }
 
   export type OwnerCreateOrConnectWithoutSubscriptionInput = {
@@ -54470,6 +55959,7 @@ export namespace Prisma {
     barLicenses?: BarLicenseUpdateManyWithoutOwnerNestedInput
     promoRedemptions?: PromoRedemptionUpdateManyWithoutOwnerNestedInput
     categoryRequests?: CategoryRequestUpdateManyWithoutOwnerNestedInput
+    passwordResets?: OwnerPasswordResetUpdateManyWithoutOwnerNestedInput
   }
 
   export type OwnerUncheckedUpdateWithoutSubscriptionInput = {
@@ -54487,6 +55977,7 @@ export namespace Prisma {
     barLicenses?: BarLicenseUncheckedUpdateManyWithoutOwnerNestedInput
     promoRedemptions?: PromoRedemptionUncheckedUpdateManyWithoutOwnerNestedInput
     categoryRequests?: CategoryRequestUncheckedUpdateManyWithoutOwnerNestedInput
+    passwordResets?: OwnerPasswordResetUncheckedUpdateManyWithoutOwnerNestedInput
   }
 
   export type OwnerCreateWithoutBarsInput = {
@@ -54504,6 +55995,7 @@ export namespace Prisma {
     barLicenses?: BarLicenseCreateNestedManyWithoutOwnerInput
     promoRedemptions?: PromoRedemptionCreateNestedManyWithoutOwnerInput
     categoryRequests?: CategoryRequestCreateNestedManyWithoutOwnerInput
+    passwordResets?: OwnerPasswordResetCreateNestedManyWithoutOwnerInput
   }
 
   export type OwnerUncheckedCreateWithoutBarsInput = {
@@ -54521,6 +56013,7 @@ export namespace Prisma {
     barLicenses?: BarLicenseUncheckedCreateNestedManyWithoutOwnerInput
     promoRedemptions?: PromoRedemptionUncheckedCreateNestedManyWithoutOwnerInput
     categoryRequests?: CategoryRequestUncheckedCreateNestedManyWithoutOwnerInput
+    passwordResets?: OwnerPasswordResetUncheckedCreateNestedManyWithoutOwnerInput
   }
 
   export type OwnerCreateOrConnectWithoutBarsInput = {
@@ -55148,6 +56641,7 @@ export namespace Prisma {
     barLicenses?: BarLicenseUpdateManyWithoutOwnerNestedInput
     promoRedemptions?: PromoRedemptionUpdateManyWithoutOwnerNestedInput
     categoryRequests?: CategoryRequestUpdateManyWithoutOwnerNestedInput
+    passwordResets?: OwnerPasswordResetUpdateManyWithoutOwnerNestedInput
   }
 
   export type OwnerUncheckedUpdateWithoutBarsInput = {
@@ -55165,6 +56659,7 @@ export namespace Prisma {
     barLicenses?: BarLicenseUncheckedUpdateManyWithoutOwnerNestedInput
     promoRedemptions?: PromoRedemptionUncheckedUpdateManyWithoutOwnerNestedInput
     categoryRequests?: CategoryRequestUncheckedUpdateManyWithoutOwnerNestedInput
+    passwordResets?: OwnerPasswordResetUncheckedUpdateManyWithoutOwnerNestedInput
   }
 
   export type OfferingUpsertWithWhereUniqueWithoutBarInput = {
@@ -56400,6 +57895,7 @@ export namespace Prisma {
     subscription?: SubscriptionCreateNestedOneWithoutOwnerInput
     barLicenses?: BarLicenseCreateNestedManyWithoutOwnerInput
     promoRedemptions?: PromoRedemptionCreateNestedManyWithoutOwnerInput
+    passwordResets?: OwnerPasswordResetCreateNestedManyWithoutOwnerInput
   }
 
   export type OwnerUncheckedCreateWithoutCategoryRequestsInput = {
@@ -56417,6 +57913,7 @@ export namespace Prisma {
     subscription?: SubscriptionUncheckedCreateNestedOneWithoutOwnerInput
     barLicenses?: BarLicenseUncheckedCreateNestedManyWithoutOwnerInput
     promoRedemptions?: PromoRedemptionUncheckedCreateNestedManyWithoutOwnerInput
+    passwordResets?: OwnerPasswordResetUncheckedCreateNestedManyWithoutOwnerInput
   }
 
   export type OwnerCreateOrConnectWithoutCategoryRequestsInput = {
@@ -56551,6 +58048,7 @@ export namespace Prisma {
     subscription?: SubscriptionUpdateOneWithoutOwnerNestedInput
     barLicenses?: BarLicenseUpdateManyWithoutOwnerNestedInput
     promoRedemptions?: PromoRedemptionUpdateManyWithoutOwnerNestedInput
+    passwordResets?: OwnerPasswordResetUpdateManyWithoutOwnerNestedInput
   }
 
   export type OwnerUncheckedUpdateWithoutCategoryRequestsInput = {
@@ -56568,6 +58066,95 @@ export namespace Prisma {
     subscription?: SubscriptionUncheckedUpdateOneWithoutOwnerNestedInput
     barLicenses?: BarLicenseUncheckedUpdateManyWithoutOwnerNestedInput
     promoRedemptions?: PromoRedemptionUncheckedUpdateManyWithoutOwnerNestedInput
+    passwordResets?: OwnerPasswordResetUncheckedUpdateManyWithoutOwnerNestedInput
+  }
+
+  export type OwnerCreateWithoutPasswordResetsInput = {
+    id?: string
+    email: string
+    name: string
+    password: string
+    phone?: string | null
+    emailVerified?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    allowFreeListings?: boolean
+    role?: $Enums.OwnerRole
+    bars?: BarCreateNestedManyWithoutOwnerInput
+    subscription?: SubscriptionCreateNestedOneWithoutOwnerInput
+    barLicenses?: BarLicenseCreateNestedManyWithoutOwnerInput
+    promoRedemptions?: PromoRedemptionCreateNestedManyWithoutOwnerInput
+    categoryRequests?: CategoryRequestCreateNestedManyWithoutOwnerInput
+  }
+
+  export type OwnerUncheckedCreateWithoutPasswordResetsInput = {
+    id?: string
+    email: string
+    name: string
+    password: string
+    phone?: string | null
+    emailVerified?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    allowFreeListings?: boolean
+    role?: $Enums.OwnerRole
+    bars?: BarUncheckedCreateNestedManyWithoutOwnerInput
+    subscription?: SubscriptionUncheckedCreateNestedOneWithoutOwnerInput
+    barLicenses?: BarLicenseUncheckedCreateNestedManyWithoutOwnerInput
+    promoRedemptions?: PromoRedemptionUncheckedCreateNestedManyWithoutOwnerInput
+    categoryRequests?: CategoryRequestUncheckedCreateNestedManyWithoutOwnerInput
+  }
+
+  export type OwnerCreateOrConnectWithoutPasswordResetsInput = {
+    where: OwnerWhereUniqueInput
+    create: XOR<OwnerCreateWithoutPasswordResetsInput, OwnerUncheckedCreateWithoutPasswordResetsInput>
+  }
+
+  export type OwnerUpsertWithoutPasswordResetsInput = {
+    update: XOR<OwnerUpdateWithoutPasswordResetsInput, OwnerUncheckedUpdateWithoutPasswordResetsInput>
+    create: XOR<OwnerCreateWithoutPasswordResetsInput, OwnerUncheckedCreateWithoutPasswordResetsInput>
+    where?: OwnerWhereInput
+  }
+
+  export type OwnerUpdateToOneWithWhereWithoutPasswordResetsInput = {
+    where?: OwnerWhereInput
+    data: XOR<OwnerUpdateWithoutPasswordResetsInput, OwnerUncheckedUpdateWithoutPasswordResetsInput>
+  }
+
+  export type OwnerUpdateWithoutPasswordResetsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    allowFreeListings?: BoolFieldUpdateOperationsInput | boolean
+    role?: EnumOwnerRoleFieldUpdateOperationsInput | $Enums.OwnerRole
+    bars?: BarUpdateManyWithoutOwnerNestedInput
+    subscription?: SubscriptionUpdateOneWithoutOwnerNestedInput
+    barLicenses?: BarLicenseUpdateManyWithoutOwnerNestedInput
+    promoRedemptions?: PromoRedemptionUpdateManyWithoutOwnerNestedInput
+    categoryRequests?: CategoryRequestUpdateManyWithoutOwnerNestedInput
+  }
+
+  export type OwnerUncheckedUpdateWithoutPasswordResetsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    allowFreeListings?: BoolFieldUpdateOperationsInput | boolean
+    role?: EnumOwnerRoleFieldUpdateOperationsInput | $Enums.OwnerRole
+    bars?: BarUncheckedUpdateManyWithoutOwnerNestedInput
+    subscription?: SubscriptionUncheckedUpdateOneWithoutOwnerNestedInput
+    barLicenses?: BarLicenseUncheckedUpdateManyWithoutOwnerNestedInput
+    promoRedemptions?: PromoRedemptionUncheckedUpdateManyWithoutOwnerNestedInput
+    categoryRequests?: CategoryRequestUncheckedUpdateManyWithoutOwnerNestedInput
   }
 
   export type PromoRedemptionCreateWithoutPromoCodeInput = {
@@ -56656,6 +58243,7 @@ export namespace Prisma {
     subscription?: SubscriptionCreateNestedOneWithoutOwnerInput
     barLicenses?: BarLicenseCreateNestedManyWithoutOwnerInput
     categoryRequests?: CategoryRequestCreateNestedManyWithoutOwnerInput
+    passwordResets?: OwnerPasswordResetCreateNestedManyWithoutOwnerInput
   }
 
   export type OwnerUncheckedCreateWithoutPromoRedemptionsInput = {
@@ -56673,6 +58261,7 @@ export namespace Prisma {
     subscription?: SubscriptionUncheckedCreateNestedOneWithoutOwnerInput
     barLicenses?: BarLicenseUncheckedCreateNestedManyWithoutOwnerInput
     categoryRequests?: CategoryRequestUncheckedCreateNestedManyWithoutOwnerInput
+    passwordResets?: OwnerPasswordResetUncheckedCreateNestedManyWithoutOwnerInput
   }
 
   export type OwnerCreateOrConnectWithoutPromoRedemptionsInput = {
@@ -56745,6 +58334,7 @@ export namespace Prisma {
     subscription?: SubscriptionUpdateOneWithoutOwnerNestedInput
     barLicenses?: BarLicenseUpdateManyWithoutOwnerNestedInput
     categoryRequests?: CategoryRequestUpdateManyWithoutOwnerNestedInput
+    passwordResets?: OwnerPasswordResetUpdateManyWithoutOwnerNestedInput
   }
 
   export type OwnerUncheckedUpdateWithoutPromoRedemptionsInput = {
@@ -56762,6 +58352,7 @@ export namespace Prisma {
     subscription?: SubscriptionUncheckedUpdateOneWithoutOwnerNestedInput
     barLicenses?: BarLicenseUncheckedUpdateManyWithoutOwnerNestedInput
     categoryRequests?: CategoryRequestUncheckedUpdateManyWithoutOwnerNestedInput
+    passwordResets?: OwnerPasswordResetUncheckedUpdateManyWithoutOwnerNestedInput
   }
 
   export type BarCreateWithoutAnalyticsInput = {
@@ -59640,6 +61231,7 @@ export namespace Prisma {
     subscription?: SubscriptionCreateNestedOneWithoutOwnerInput
     promoRedemptions?: PromoRedemptionCreateNestedManyWithoutOwnerInput
     categoryRequests?: CategoryRequestCreateNestedManyWithoutOwnerInput
+    passwordResets?: OwnerPasswordResetCreateNestedManyWithoutOwnerInput
   }
 
   export type OwnerUncheckedCreateWithoutBarLicensesInput = {
@@ -59657,6 +61249,7 @@ export namespace Prisma {
     subscription?: SubscriptionUncheckedCreateNestedOneWithoutOwnerInput
     promoRedemptions?: PromoRedemptionUncheckedCreateNestedManyWithoutOwnerInput
     categoryRequests?: CategoryRequestUncheckedCreateNestedManyWithoutOwnerInput
+    passwordResets?: OwnerPasswordResetUncheckedCreateNestedManyWithoutOwnerInput
   }
 
   export type OwnerCreateOrConnectWithoutBarLicensesInput = {
@@ -59791,6 +61384,7 @@ export namespace Prisma {
     subscription?: SubscriptionUpdateOneWithoutOwnerNestedInput
     promoRedemptions?: PromoRedemptionUpdateManyWithoutOwnerNestedInput
     categoryRequests?: CategoryRequestUpdateManyWithoutOwnerNestedInput
+    passwordResets?: OwnerPasswordResetUpdateManyWithoutOwnerNestedInput
   }
 
   export type OwnerUncheckedUpdateWithoutBarLicensesInput = {
@@ -59808,6 +61402,7 @@ export namespace Prisma {
     subscription?: SubscriptionUncheckedUpdateOneWithoutOwnerNestedInput
     promoRedemptions?: PromoRedemptionUncheckedUpdateManyWithoutOwnerNestedInput
     categoryRequests?: CategoryRequestUncheckedUpdateManyWithoutOwnerNestedInput
+    passwordResets?: OwnerPasswordResetUncheckedUpdateManyWithoutOwnerNestedInput
   }
 
   export type BarCreateWithoutVisitsInput = {
@@ -60992,6 +62587,14 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
+  export type OwnerPasswordResetCreateManyOwnerInput = {
+    id?: string
+    tokenHash: string
+    expiresAt: Date | string
+    usedAt?: Date | string | null
+    createdAt?: Date | string
+  }
+
   export type BarUpdateWithoutOwnerInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -61197,6 +62800,30 @@ export namespace Prisma {
     status?: EnumCategoryRequestStatusFieldUpdateOperationsInput | $Enums.CategoryRequestStatus
     reviewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     reviewedByEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OwnerPasswordResetUpdateWithoutOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tokenHash?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    usedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OwnerPasswordResetUncheckedUpdateWithoutOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tokenHash?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    usedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OwnerPasswordResetUncheckedUpdateManyWithoutOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tokenHash?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    usedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
