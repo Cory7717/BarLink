@@ -9,7 +9,7 @@ export default async function AdminOverviewPage() {
   let pendingApprovals = 0;
   try {
     const exists = await prisma.$queryRaw<{ name: string | null }[]>`
-      SELECT to_regclass('public."CategoryRequest"') as name
+      SELECT to_regclass('public."CategoryRequest"')::text as name
     `;
     if (exists?.[0]?.name) {
       pendingApprovals = await prisma.categoryRequest.count({ where: { status: "PENDING" } });
