@@ -6,7 +6,17 @@ export default async function AdminOverviewPage() {
     prisma.subscription.count({ where: { status: "ACTIVE" } }),
     prisma.bar.count(),
   ]);
-  const pendingApprovals = await prisma.categoryRequest.count({ where: { status: "PENDING" } });
+  let pendingApprovals = 0;
+  try {
+    const exists = await prisma.$queryRaw<{ name: string | null }[]>`
+      SELECT to_regclass('public."CategoryRequest"') as name
+    `;
+    if (exists?.[0]?.name) {
+      pendingApprovals = await prisma.categoryRequest.count({ where: { status: "PENDING" } });
+    }
+  } catch (error) {
+    console.warn("CategoryRequest check failed:", error);
+  }
 
   return (
     <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

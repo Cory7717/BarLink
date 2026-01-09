@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import Navigation from "@/components/Navigation";
 import { DAYS_OF_WEEK } from "@/lib/constants";
 import { DEFAULT_ACTIVITY_CATEGORIES } from "@/lib/activityCategories";
@@ -53,7 +53,7 @@ const fallbackCategories: EventCategory[] = DEFAULT_ACTIVITY_CATEGORIES.map((cat
   displayName: category.displayName,
 }));
 
-export default function ExplorePage() {
+function ExploreContent() {
   const [day, setDay] = useState<number>(getCurrentDayIndex());
   const [activity, setActivity] = useState<string>("trivia");
   const [keyword, setKeyword] = useState<string>("");
@@ -412,5 +412,15 @@ export default function ExplorePage() {
         </section>
       </main>
     </div>
+  );
+}
+
+export default function ExplorePage() {
+  return (
+    <Suspense
+      fallback={<div className="min-h-screen app-shell text-white flex items-center justify-center">Loading...</div>}
+    >
+      <ExploreContent />
+    </Suspense>
   );
 }
