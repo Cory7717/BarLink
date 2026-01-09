@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { requireAdmin } from "@/lib/admin";
+import { DEFAULT_ACTIVITY_CATEGORIES } from "@/lib/activityCategories";
 
 function normalizeName(value: string) {
   return value
@@ -17,6 +18,15 @@ function cleanLabel(value: string) {
 export async function GET() {
   try {
     await requireAdmin();
+    await prisma.activityCategory.createMany({
+      data: DEFAULT_ACTIVITY_CATEGORIES.map((category) => ({
+        name: category.name,
+        displayName: category.displayName,
+        sortOrder: category.sortOrder,
+        isActive: true,
+      })),
+      skipDuplicates: true,
+    });
     const categories = await prisma.activityCategory.findMany({
       orderBy: [{ sortOrder: "asc" }, { displayName: "asc" }],
     });

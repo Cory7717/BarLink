@@ -83,6 +83,9 @@ Sent from BarLink Contact Form
           port: portNum,
           secure: portNum === 465, // Use secure connection for port 465, use STARTTLS for 587
           requireTLS: portNum !== 465,
+          connectionTimeout: 10000,
+          greetingTimeout: 10000,
+          socketTimeout: 15000,
           auth: {
             user: SMTP_USER,
             pass: SMTP_PASS,

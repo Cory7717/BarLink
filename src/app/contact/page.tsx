@@ -97,7 +97,14 @@ export default function ContactPage() {
             {status === 'loading' ? 'Sending...' : 'Send message'}
           </button>
           <p className="text-xs text-slate-400">
-            Or email us directly at <a className="underline hover:text-cyan-200" href="mailto:coryarmer@gmail.com">coryarmer@gmail.com</a>.
+            Or email us directly at{" "}
+            <a
+              className="underline hover:text-cyan-200"
+              href="mailto:coryarmer@gmail.com?subject=BarPulse%20Support"
+            >
+              coryarmer@gmail.com
+            </a>
+            .
           </p>
         </form>
       </main>

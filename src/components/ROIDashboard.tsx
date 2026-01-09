@@ -126,11 +126,12 @@ export default function ROIDashboard({ barId }: { barId: string }) {
           {/* Views */}
           <div>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-slate-300">👁️ Profile Views</span>
+              <span className="text-sm text-slate-300">Profile Views</span>
               <span className="text-lg font-bold text-white">{metrics.totalViews.toLocaleString()}</span>
             </div>
-            <div className="h-12 rounded-lg bg-slate-800 overflow-hidden">
-              <div className={`h-full bg-linear-to-r from-blue-500 to-blue-600 flex items-center justify-center text-white text-sm font-semibold ${styles.wPct100}`}>
+            <div className="relative h-12 rounded-lg bg-slate-800 overflow-hidden">
+              <div className={`h-full min-w-[6px] bg-linear-to-r from-blue-500 to-blue-600 ${styles.wPct100}`} />
+              <div className="absolute inset-0 flex items-center justify-center text-white text-sm font-semibold">
                 100%
               </div>
             </div>
@@ -139,11 +140,14 @@ export default function ROIDashboard({ barId }: { barId: string }) {
           {/* Clicks */}
           <div>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-slate-300">🔗 Engaged (Clicks)</span>
+              <span className="text-sm text-slate-300">Engaged (Clicks)</span>
               <span className="text-lg font-bold text-white">{metrics.totalClicks.toLocaleString()}</span>
             </div>
-            <div className="h-12 rounded-lg bg-slate-800 overflow-hidden">
-              <div className={`h-full bg-linear-to-r from-purple-500 to-purple-600 flex items-center justify-center text-white text-sm font-semibold ${styles['wPct' + Math.max(0, Math.min(100, Math.round(metrics.clickThroughRate * 100)))]}`}>
+            <div className="relative h-12 rounded-lg bg-slate-800 overflow-hidden">
+              <div
+                className={`h-full min-w-[6px] bg-linear-to-r from-purple-500 to-purple-600 ${styles['wPct' + Math.max(0, Math.min(100, Math.round(metrics.clickThroughRate * 100)))]}`}
+              />
+              <div className="absolute inset-0 flex items-center justify-center text-white text-sm font-semibold">
                 {(metrics.clickThroughRate * 100).toFixed(1)}%
               </div>
             </div>
@@ -152,11 +156,14 @@ export default function ROIDashboard({ barId }: { barId: string }) {
           {/* Visits */}
           <div>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-slate-300">✅ Verified Visits</span>
+              <span className="text-sm text-slate-300">Verified Visits</span>
               <span className="text-lg font-bold text-emerald-400">{metrics.totalVisits.toLocaleString()}</span>
             </div>
-            <div className="h-12 rounded-lg bg-slate-800 overflow-hidden">
-              <div className={`h-full bg-linear-to-r from-emerald-500 to-emerald-600 flex items-center justify-center text-white text-sm font-semibold ${styles['wPct' + Math.max(0, Math.min(100, Math.round(metrics.overallConversionRate * 100)))]}`}>
+            <div className="relative h-12 rounded-lg bg-slate-800 overflow-hidden">
+              <div
+                className={`h-full min-w-[6px] bg-linear-to-r from-emerald-500 to-emerald-600 ${styles['wPct' + Math.max(0, Math.min(100, Math.round(metrics.overallConversionRate * 100)))]}`}
+              />
+              <div className="absolute inset-0 flex items-center justify-center text-white text-sm font-semibold">
                 {(metrics.overallConversionRate * 100).toFixed(1)}%
               </div>
             </div>
@@ -196,22 +203,22 @@ export default function ROIDashboard({ barId }: { barId: string }) {
         <h2 className="text-xl font-semibold text-white mb-4">Visit Sources</h2>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           <div className="rounded-lg border border-emerald-500/20 bg-linear-to-r from-emerald-500/5 to-transparent p-4">
-            <div className="text-2xl mb-2">📱</div>
+            <div className="text-xs mb-2 uppercase tracking-wide text-slate-400">QR</div>
             <h3 className="text-sm text-slate-300">QR Code Scans</h3>
             <p className="text-2xl font-bold text-emerald-200">{metrics.visitsBySource.qr_code}</p>
           </div>
           <div className="rounded-lg border border-blue-500/20 bg-linear-to-r from-blue-500/5 to-transparent p-4">
-            <div className="text-2xl mb-2">🎟️</div>
+            <div className="text-xs mb-2 uppercase tracking-wide text-slate-400">Code</div>
             <h3 className="text-sm text-slate-300">Promo Codes</h3>
             <p className="text-2xl font-bold text-blue-200">{metrics.visitsBySource.promo_code}</p>
           </div>
           <div className="rounded-lg border border-purple-500/20 bg-linear-to-r from-purple-500/5 to-transparent p-4">
-            <div className="text-2xl mb-2">✋</div>
+            <div className="text-xs mb-2 uppercase tracking-wide text-slate-400">Self</div>
             <h3 className="text-sm text-slate-300">Self Check-in</h3>
             <p className="text-2xl font-bold text-purple-200">{metrics.visitsBySource.manual}</p>
           </div>
           <div className="rounded-lg border border-amber-500/20 bg-linear-to-r from-amber-500/5 to-transparent p-4">
-            <div className="text-2xl mb-2">📍</div>
+            <div className="text-xs mb-2 uppercase tracking-wide text-slate-400">Geo</div>
             <h3 className="text-sm text-slate-300">Location</h3>
             <p className="text-2xl font-bold text-amber-200">{metrics.visitsBySource.location}</p>
           </div>
@@ -297,7 +304,7 @@ export default function ROIDashboard({ barId }: { barId: string }) {
           </div>
         </div>
         <p className="mt-3 text-xs text-slate-400">
-          💡 Adjust these values to see how they impact your ROI calculations. These are estimates for visualization.
+          Adjust these values to see how they impact your ROI calculations. These are estimates for visualization.
         </p>
       </div>
     </div>

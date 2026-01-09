@@ -74,6 +74,7 @@ model Owner {
   barLicenses      BarLicense[]
   promoRedemptions PromoRedemption[]
   role             OwnerRole         @default(OWNER)
+  categoryRequests CategoryRequest[]
 }
 
 enum OwnerRole {
@@ -159,6 +160,7 @@ model Bar {
   staticOfferings    StaticOffering[]
   drinkSpecials      DrinkSpecial[]
   foodOfferings      FoodOffering[]
+  categoryRequests   CategoryRequest[]
 
   @@index([cityNormalized])
   @@index([neighborhoodNormalized])
@@ -265,6 +267,32 @@ model ActivityCategory {
   sortOrder   Int      @default(0)
   isActive    Boolean  @default(true)
   createdAt   DateTime @default(now())
+}
+
+enum CategoryRequestStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model CategoryRequest {
+  id               String                @id @default(cuid())
+  barId            String
+  ownerId          String
+  requestedByEmail String
+  requestedByName  String?
+  category         String
+  status           CategoryRequestStatus @default(PENDING)
+  reviewedAt       DateTime?
+  reviewedByEmail  String?
+  createdAt        DateTime              @default(now())
+
+  bar   Bar   @relation(fields: [barId], references: [id], onDelete: Cascade)
+  owner Owner @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+
+  @@index([status])
+  @@index([barId])
+  @@index([ownerId])
 }
 
 model PromoCode {

@@ -3,8 +3,10 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Navigation from "@/components/Navigation";
 import { DAYS_OF_WEEK } from "@/lib/constants";
+import { DEFAULT_ACTIVITY_CATEGORIES } from "@/lib/activityCategories";
 import { getCurrentDayIndex } from "@/lib/utils";
 import dynamic from "next/dynamic";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 type MapProps = {
   latitude: number;
@@ -46,29 +48,15 @@ type EventCategory = {
   icon?: string | null;
 };
 
-const fallbackCategories: EventCategory[] = [
-  { name: "trivia", displayName: "Trivia Night" },
-  { name: "karaoke", displayName: "Karaoke" },
-  { name: "live-music", displayName: "Live Music" },
-  { name: "darts", displayName: "Darts Tournament" },
-  { name: "pool", displayName: "Billiards/Pool" },
-  { name: "poker", displayName: "Poker Night" },
-  { name: "dj", displayName: "DJ Night" },
-  { name: "open-mic", displayName: "Open Mic" },
-  { name: "comedy", displayName: "Comedy Night" },
-  { name: "watch-party", displayName: "Watch Party" },
-  { name: "happy-hour", displayName: "Happy Hour" },
-  { name: "food-special", displayName: "Food Special" },
-  { name: "drink-special", displayName: "Drink Special" },
-  { name: "themed-night", displayName: "Themed Night" },
-  { name: "paint-night", displayName: "Paint and Sip" },
-  { name: "bingo", displayName: "Bingo" },
-  { name: "other", displayName: "Other" },
-];
+const fallbackCategories: EventCategory[] = DEFAULT_ACTIVITY_CATEGORIES.map((category) => ({
+  name: category.name,
+  displayName: category.displayName,
+}));
 
 export default function ExplorePage() {
   const [day, setDay] = useState<number>(getCurrentDayIndex());
   const [activity, setActivity] = useState<string>("trivia");
+  const [keyword, setKeyword] = useState<string>("");
   const [showSpecial, setShowSpecial] = useState(false);
   const [happeningNow, setHappeningNow] = useState(false);
   const [city, setCity] = useState("Seattle");
@@ -78,6 +66,10 @@ export default function ExplorePage() {
   const [loading, setLoading] = useState(false);
   const [autoSearch, setAutoSearch] = useState(true);
   const [categories, setCategories] = useState<EventCategory[]>([]);
+  const [hasInitialized, setHasInitialized] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   const mapCenter = useMemo(
     () => userLocation || { latitude: 47.61, longitude: -122.33 },
@@ -99,6 +91,57 @@ export default function ExplorePage() {
       );
     }
   }, []);
+
+  useEffect(() => {
+    if (hasInitialized) return;
+    const params = new URLSearchParams(searchParams.toString());
+    const dayParam = params.get("day");
+    const activityParam = params.get("activity");
+    const keywordParam = params.get("q");
+    const cityParam = params.get("city");
+    const distanceParam = params.get("distance");
+    const specialParam = params.get("special");
+    const happeningParam = params.get("happeningNow");
+    const autoParam = params.get("auto");
+
+    if (dayParam) setDay(Number(dayParam));
+    if (activityParam) setActivity(activityParam);
+    if (keywordParam) setKeyword(keywordParam);
+    if (cityParam) setCity(cityParam);
+    if (distanceParam) setDistance(Number(distanceParam));
+    if (specialParam) setShowSpecial(specialParam === "true");
+    if (happeningParam) setHappeningNow(happeningParam === "true");
+    if (autoParam) setAutoSearch(autoParam === "true");
+
+    setHasInitialized(true);
+  }, [hasInitialized, searchParams]);
+
+  useEffect(() => {
+    if (!hasInitialized) return;
+    const params = new URLSearchParams();
+    params.set("day", String(day));
+    params.set("activity", activity);
+    if (keyword.trim()) params.set("q", keyword.trim());
+    if (city.trim()) params.set("city", city.trim());
+    if (distance !== null) params.set("distance", String(distance));
+    if (showSpecial) params.set("special", "true");
+    if (happeningNow) params.set("happeningNow", "true");
+    params.set("auto", autoSearch ? "true" : "false");
+
+    router.replace(`${pathname}?${params.toString()}`);
+  }, [
+    activity,
+    autoSearch,
+    city,
+    day,
+    distance,
+    happeningNow,
+    hasInitialized,
+    keyword,
+    pathname,
+    router,
+    showSpecial,
+  ]);
 
   useEffect(() => {
     let isMounted = true;
@@ -134,6 +177,7 @@ export default function ExplorePage() {
         special: String(showSpecial),
         happeningNow: String(happeningNow),
       });
+      if (keyword.trim()) params.append("q", keyword.trim());
       if (city) params.append("city", city);
       if (distance && userLocation) {
         params.append("distance", String(distance));
@@ -156,7 +200,7 @@ export default function ExplorePage() {
     } finally {
       setLoading(false);
     }
-  }, [activity, city, day, distance, happeningNow, showSpecial, userLocation]);
+  }, [activity, city, day, distance, happeningNow, keyword, showSpecial, userLocation]);
 
   useEffect(() => {
     if (autoSearch) {
@@ -186,7 +230,7 @@ export default function ExplorePage() {
         </header>
 
         <section className="mt-6 glass-panel rounded-3xl p-5 shadow-lg">
-          <div className="grid gap-3 md:grid-cols-5">
+          <div className="grid gap-3 md:grid-cols-6">
             <label className="flex flex-col text-sm text-slate-200">
               Day of week
               <select
@@ -223,6 +267,18 @@ export default function ExplorePage() {
                 className="mt-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder:text-slate-400 focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/30 transition-all"
                 placeholder="Seattle"
               />
+            </label>
+            <label className="flex flex-col text-sm text-slate-200">
+              Keyword (optional)
+              <input
+                value={keyword}
+                onChange={(e) => setKeyword(e.target.value)}
+                className="mt-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder:text-slate-400 focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/30 transition-all"
+                placeholder="Sweepstakes, darts, bingo..."
+              />
+              <span className="mt-2 text-xs text-slate-400">
+                Searches event titles, specials, and amenities.
+              </span>
             </label>
             <label className="flex flex-col text-sm text-slate-200">
               Distance {userLocation ? "(near you)" : ""}

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { logAnalyticsEvent } from '@/lib/analytics';
+import type { Prisma } from '@/generated/prisma';
 
 type OfferingLite = {
   customTitle: string | null;
@@ -22,30 +23,15 @@ type EventLite = {
   title: string;
 };
 
-type BarWithRelations = {
-  id: string;
-  name: string;
-  slug: string;
-  address: string;
-  city: string;
-  latitude: number;
-  longitude: number;
-  offerings: OfferingLite[];
-  events: EventLite[];
-  drinkSpecials: {
-    name: string;
-    startTime: string;
-    endTime: string;
-    daysOfWeek: number[];
-    active: boolean;
-  }[];
-  foodOfferings: {
-    name: string;
-    specialDays: number[];
-    isSpecial: boolean;
-    active: boolean;
-  }[];
-};
+type BarWithRelations = Prisma.BarGetPayload<{
+  include: {
+    offerings: true;
+    events: true;
+    drinkSpecials: true;
+    foodOfferings: true;
+    staticOfferings: { select: { name: true } };
+  };
+}>;
 
 function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
   const R = 3959; // Earth's radius in miles
@@ -88,6 +74,7 @@ export async function GET(req: Request) {
     const distance = searchParams.get('distance') ? Number(searchParams.get('distance')) : null;
     const userLatitude = searchParams.get('userLatitude') ? Number(searchParams.get('userLatitude')) : null;
     const userLongitude = searchParams.get('userLongitude') ? Number(searchParams.get('userLongitude')) : null;
+    const keyword = (searchParams.get('q') || '').trim().toLowerCase();
 
     if (!day || !activity) {
       return NextResponse.json({ error: 'Day and activity are required' }, { status: 400 });
@@ -187,34 +174,69 @@ export async function GET(req: Request) {
                 },
               }]
             : []),
+          ...(keyword
+            ? [
+                {
+                  offerings: {
+                    some: {
+                      isActive: true,
+                      dayOfWeek: dayInt,
+                      OR: [
+                        { customTitle: { contains: keyword, mode: "insensitive" } },
+                        { category: { contains: keyword, mode: "insensitive" } },
+                      ],
+                    },
+                  },
+                },
+                {
+                  events: {
+                    some: {
+                      isActive: true,
+                      OR: [
+                        { title: { contains: keyword, mode: "insensitive" } },
+                        { category: { contains: keyword, mode: "insensitive" } },
+                      ],
+                    },
+                  },
+                },
+                {
+                  staticOfferings: {
+                    some: {
+                      name: { contains: keyword, mode: "insensitive" },
+                    },
+                  },
+                },
+                {
+                  drinkSpecials: {
+                    some: {
+                      active: true,
+                      name: { contains: keyword, mode: "insensitive" },
+                      OR: [{ daysOfWeek: { has: dayInt } }, { daysOfWeek: { isEmpty: true } }],
+                    },
+                  },
+                },
+                {
+                  foodOfferings: {
+                    some: {
+                      active: true,
+                      name: { contains: keyword, mode: "insensitive" },
+                      OR: [{ specialDays: { has: dayInt } }, { specialDays: { isEmpty: true } }],
+                    },
+                  },
+                },
+              ]
+            : []),
         ],
       },
       include: {
-        offerings: {
-          where: {
-            isActive: true,
-            dayOfWeek: dayInt,
-          },
-        },
-        events: {
-          where: {
-            isActive: true,
-          },
-          take: 8,
-        },
-        drinkSpecials: {
-          where: {
-            active: true,
-          },
-        },
-        foodOfferings: {
-          where: {
-            active: true,
-          },
-        },
+        offerings: true,
+        events: true,
+        drinkSpecials: true,
+        foodOfferings: true,
+        staticOfferings: { select: { name: true } },
       },
       take: 50,
-    }) as BarWithRelations[];
+    });
 
     // Final fallback: return ALL published bars in the city (for new bars without offerings/events yet)
     if (bars.length === 0 && city && city.trim()) {
@@ -227,9 +249,10 @@ export async function GET(req: Request) {
           events: true,
           drinkSpecials: true,
           foodOfferings: true,
+          staticOfferings: { select: { name: true } },
         },
         take: 50,
-      }) as BarWithRelations[];
+      });
     }
 
     // Filter by distance if provided
@@ -296,12 +319,69 @@ export async function GET(req: Request) {
         food.isSpecial && (food.specialDays.length === 0 || food.specialDays.includes(dayInt))
       );
 
+      const matchedStatic = keyword
+        ? bar.staticOfferings.filter((item) => item.name.toLowerCase().includes(keyword))
+        : [];
+
+      const matchedKeywordOfferings = keyword
+        ? bar.offerings.filter((offering) => {
+            const title = offering.customTitle || "";
+            return (
+              offering.dayOfWeek === dayInt &&
+              (title.toLowerCase().includes(keyword) || offering.category.toLowerCase().includes(keyword))
+            );
+          })
+        : [];
+
+      const matchedKeywordEvents = keyword
+        ? bar.events.filter((event) => {
+            if (!event.title && !event.category) return false;
+            const titleMatch = (event.title || "").toLowerCase().includes(keyword);
+            const categoryMatch = (event.category || "").toLowerCase().includes(keyword);
+            return eventMatchesDay(event.startDate, dayInt) && (titleMatch || categoryMatch);
+          })
+        : [];
+
+      const matchedKeywordDrinks = keyword
+        ? bar.drinkSpecials.filter(
+            (special) =>
+              drinkSpecialMatchesDay(special.daysOfWeek, dayInt) &&
+              special.name.toLowerCase().includes(keyword)
+          )
+        : [];
+
+      const matchedKeywordFoods = keyword
+        ? bar.foodOfferings.filter(
+            (food) =>
+              (food.specialDays.length === 0 || food.specialDays.includes(dayInt)) &&
+              food.name.toLowerCase().includes(keyword)
+          )
+        : [];
+
       const todayOfferings = [
         ...matchedOfferings.map((o) => o.customTitle || categoryLabelMap.get(o.category) || o.category),
         ...(isDrinkSpecial || isFoodSpecial ? [] : matchedEvents.map((e) => e.title || e.category)),
         ...(isDrinkSpecial ? matchedDrinks.map((s) => s.name) : []),
         ...(isFoodSpecial ? matchedFoods.map((f) => f.name) : []),
+        ...(matchedStatic.length > 0 ? matchedStatic.map((s) => s.name) : []),
+        ...matchedKeywordOfferings.map((o) => o.customTitle || categoryLabelMap.get(o.category) || o.category),
+        ...matchedKeywordEvents.map((e) => e.title || e.category),
+        ...matchedKeywordDrinks.map((s) => s.name),
+        ...matchedKeywordFoods.map((f) => f.name),
       ].filter(Boolean) as string[];
+
+      if (keyword) {
+        const keywordMatches =
+          bar.name.toLowerCase().includes(keyword) ||
+          bar.address.toLowerCase().includes(keyword) ||
+          bar.city.toLowerCase().includes(keyword) ||
+          todayOfferings.some((item) => item.toLowerCase().includes(keyword)) ||
+          bar.staticOfferings.some((item) => item.name.toLowerCase().includes(keyword));
+
+        if (!keywordMatches) {
+          return null;
+        }
+      }
 
         if (todayOfferings.length === 0) {
           return null;

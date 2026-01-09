@@ -64,6 +64,11 @@ export type Favorite = $Result.DefaultSelection<Prisma.$FavoritePayload>
  */
 export type ActivityCategory = $Result.DefaultSelection<Prisma.$ActivityCategoryPayload>
 /**
+ * Model CategoryRequest
+ * 
+ */
+export type CategoryRequest = $Result.DefaultSelection<Prisma.$CategoryRequestPayload>
+/**
  * Model PromoCode
  * 
  */
@@ -218,6 +223,15 @@ export const Recurrence: {
 export type Recurrence = (typeof Recurrence)[keyof typeof Recurrence]
 
 
+export const CategoryRequestStatus: {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+};
+
+export type CategoryRequestStatus = (typeof CategoryRequestStatus)[keyof typeof CategoryRequestStatus]
+
+
 export const BadgeTier: {
   BRONZE: 'BRONZE',
   SILVER: 'SILVER',
@@ -261,6 +275,10 @@ export const SubscriptionStatus: typeof $Enums.SubscriptionStatus
 export type Recurrence = $Enums.Recurrence
 
 export const Recurrence: typeof $Enums.Recurrence
+
+export type CategoryRequestStatus = $Enums.CategoryRequestStatus
+
+export const CategoryRequestStatus: typeof $Enums.CategoryRequestStatus
 
 export type BadgeTier = $Enums.BadgeTier
 
@@ -486,6 +504,16 @@ export class PrismaClient<
     * ```
     */
   get activityCategory(): Prisma.ActivityCategoryDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.categoryRequest`: Exposes CRUD operations for the **CategoryRequest** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CategoryRequests
+    * const categoryRequests = await prisma.categoryRequest.findMany()
+    * ```
+    */
+  get categoryRequest(): Prisma.CategoryRequestDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.promoCode`: Exposes CRUD operations for the **PromoCode** model.
@@ -1140,6 +1168,7 @@ export namespace Prisma {
     Event: 'Event',
     Favorite: 'Favorite',
     ActivityCategory: 'ActivityCategory',
+    CategoryRequest: 'CategoryRequest',
     PromoCode: 'PromoCode',
     PromoRedemption: 'PromoRedemption',
     BarAnalytics: 'BarAnalytics',
@@ -1176,7 +1205,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "account" | "session" | "owner" | "subscription" | "bar" | "offering" | "event" | "favorite" | "activityCategory" | "promoCode" | "promoRedemption" | "barAnalytics" | "searchQuery" | "barClick" | "badge" | "barBadge" | "inventoryItem" | "inventoryImport" | "shiftUsage" | "shiftUsageItem" | "inventorySnapshot" | "inventorySnapshotItem" | "bottlePhoto" | "costingProfile" | "varianceAlert" | "barLicense" | "barVisit" | "staticOffering" | "drinkSpecial" | "foodOffering"
+      modelProps: "user" | "account" | "session" | "owner" | "subscription" | "bar" | "offering" | "event" | "favorite" | "activityCategory" | "categoryRequest" | "promoCode" | "promoRedemption" | "barAnalytics" | "searchQuery" | "barClick" | "badge" | "barBadge" | "inventoryItem" | "inventoryImport" | "shiftUsage" | "shiftUsageItem" | "inventorySnapshot" | "inventorySnapshotItem" | "bottlePhoto" | "costingProfile" | "varianceAlert" | "barLicense" | "barVisit" | "staticOffering" | "drinkSpecial" | "foodOffering"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1917,6 +1946,80 @@ export namespace Prisma {
           count: {
             args: Prisma.ActivityCategoryCountArgs<ExtArgs>
             result: $Utils.Optional<ActivityCategoryCountAggregateOutputType> | number
+          }
+        }
+      }
+      CategoryRequest: {
+        payload: Prisma.$CategoryRequestPayload<ExtArgs>
+        fields: Prisma.CategoryRequestFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CategoryRequestFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryRequestPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CategoryRequestFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryRequestPayload>
+          }
+          findFirst: {
+            args: Prisma.CategoryRequestFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryRequestPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CategoryRequestFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryRequestPayload>
+          }
+          findMany: {
+            args: Prisma.CategoryRequestFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryRequestPayload>[]
+          }
+          create: {
+            args: Prisma.CategoryRequestCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryRequestPayload>
+          }
+          createMany: {
+            args: Prisma.CategoryRequestCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CategoryRequestCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryRequestPayload>[]
+          }
+          delete: {
+            args: Prisma.CategoryRequestDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryRequestPayload>
+          }
+          update: {
+            args: Prisma.CategoryRequestUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryRequestPayload>
+          }
+          deleteMany: {
+            args: Prisma.CategoryRequestDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CategoryRequestUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CategoryRequestUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryRequestPayload>[]
+          }
+          upsert: {
+            args: Prisma.CategoryRequestUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryRequestPayload>
+          }
+          aggregate: {
+            args: Prisma.CategoryRequestAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCategoryRequest>
+          }
+          groupBy: {
+            args: Prisma.CategoryRequestGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CategoryRequestGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CategoryRequestCountArgs<ExtArgs>
+            result: $Utils.Optional<CategoryRequestCountAggregateOutputType> | number
           }
         }
       }
@@ -3592,6 +3695,7 @@ export namespace Prisma {
     event?: EventOmit
     favorite?: FavoriteOmit
     activityCategory?: ActivityCategoryOmit
+    categoryRequest?: CategoryRequestOmit
     promoCode?: PromoCodeOmit
     promoRedemption?: PromoRedemptionOmit
     barAnalytics?: BarAnalyticsOmit
@@ -3781,12 +3885,14 @@ export namespace Prisma {
     bars: number
     barLicenses: number
     promoRedemptions: number
+    categoryRequests: number
   }
 
   export type OwnerCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     bars?: boolean | OwnerCountOutputTypeCountBarsArgs
     barLicenses?: boolean | OwnerCountOutputTypeCountBarLicensesArgs
     promoRedemptions?: boolean | OwnerCountOutputTypeCountPromoRedemptionsArgs
+    categoryRequests?: boolean | OwnerCountOutputTypeCountCategoryRequestsArgs
   }
 
   // Custom InputTypes
@@ -3821,6 +3927,13 @@ export namespace Prisma {
     where?: PromoRedemptionWhereInput
   }
 
+  /**
+   * OwnerCountOutputType without action
+   */
+  export type OwnerCountOutputTypeCountCategoryRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CategoryRequestWhereInput
+  }
+
 
   /**
    * Count Type BarCountOutputType
@@ -3843,6 +3956,7 @@ export namespace Prisma {
     staticOfferings: number
     drinkSpecials: number
     foodOfferings: number
+    categoryRequests: number
   }
 
   export type BarCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3862,6 +3976,7 @@ export namespace Prisma {
     staticOfferings?: boolean | BarCountOutputTypeCountStaticOfferingsArgs
     drinkSpecials?: boolean | BarCountOutputTypeCountDrinkSpecialsArgs
     foodOfferings?: boolean | BarCountOutputTypeCountFoodOfferingsArgs
+    categoryRequests?: boolean | BarCountOutputTypeCountCategoryRequestsArgs
   }
 
   // Custom InputTypes
@@ -3985,6 +4100,13 @@ export namespace Prisma {
    */
   export type BarCountOutputTypeCountFoodOfferingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: FoodOfferingWhereInput
+  }
+
+  /**
+   * BarCountOutputType without action
+   */
+  export type BarCountOutputTypeCountCategoryRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CategoryRequestWhereInput
   }
 
 
@@ -7887,6 +8009,7 @@ export namespace Prisma {
     subscription?: boolean | Owner$subscriptionArgs<ExtArgs>
     barLicenses?: boolean | Owner$barLicensesArgs<ExtArgs>
     promoRedemptions?: boolean | Owner$promoRedemptionsArgs<ExtArgs>
+    categoryRequests?: boolean | Owner$categoryRequestsArgs<ExtArgs>
     _count?: boolean | OwnerCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["owner"]>
 
@@ -7935,6 +8058,7 @@ export namespace Prisma {
     subscription?: boolean | Owner$subscriptionArgs<ExtArgs>
     barLicenses?: boolean | Owner$barLicensesArgs<ExtArgs>
     promoRedemptions?: boolean | Owner$promoRedemptionsArgs<ExtArgs>
+    categoryRequests?: boolean | Owner$categoryRequestsArgs<ExtArgs>
     _count?: boolean | OwnerCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type OwnerIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -7947,6 +8071,7 @@ export namespace Prisma {
       subscription: Prisma.$SubscriptionPayload<ExtArgs> | null
       barLicenses: Prisma.$BarLicensePayload<ExtArgs>[]
       promoRedemptions: Prisma.$PromoRedemptionPayload<ExtArgs>[]
+      categoryRequests: Prisma.$CategoryRequestPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -8357,6 +8482,7 @@ export namespace Prisma {
     subscription<T extends Owner$subscriptionArgs<ExtArgs> = {}>(args?: Subset<T, Owner$subscriptionArgs<ExtArgs>>): Prisma__SubscriptionClient<$Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     barLicenses<T extends Owner$barLicensesArgs<ExtArgs> = {}>(args?: Subset<T, Owner$barLicensesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BarLicensePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     promoRedemptions<T extends Owner$promoRedemptionsArgs<ExtArgs> = {}>(args?: Subset<T, Owner$promoRedemptionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PromoRedemptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    categoryRequests<T extends Owner$categoryRequestsArgs<ExtArgs> = {}>(args?: Subset<T, Owner$categoryRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8872,6 +8998,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: PromoRedemptionScalarFieldEnum | PromoRedemptionScalarFieldEnum[]
+  }
+
+  /**
+   * Owner.categoryRequests
+   */
+  export type Owner$categoryRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryRequest
+     */
+    select?: CategoryRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategoryRequest
+     */
+    omit?: CategoryRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryRequestInclude<ExtArgs> | null
+    where?: CategoryRequestWhereInput
+    orderBy?: CategoryRequestOrderByWithRelationInput | CategoryRequestOrderByWithRelationInput[]
+    cursor?: CategoryRequestWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CategoryRequestScalarFieldEnum | CategoryRequestScalarFieldEnum[]
   }
 
   /**
@@ -10455,6 +10605,7 @@ export namespace Prisma {
     staticOfferings?: boolean | Bar$staticOfferingsArgs<ExtArgs>
     drinkSpecials?: boolean | Bar$drinkSpecialsArgs<ExtArgs>
     foodOfferings?: boolean | Bar$foodOfferingsArgs<ExtArgs>
+    categoryRequests?: boolean | Bar$categoryRequestsArgs<ExtArgs>
     _count?: boolean | BarCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["bar"]>
 
@@ -10566,6 +10717,7 @@ export namespace Prisma {
     staticOfferings?: boolean | Bar$staticOfferingsArgs<ExtArgs>
     drinkSpecials?: boolean | Bar$drinkSpecialsArgs<ExtArgs>
     foodOfferings?: boolean | Bar$foodOfferingsArgs<ExtArgs>
+    categoryRequests?: boolean | Bar$categoryRequestsArgs<ExtArgs>
     _count?: boolean | BarCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type BarIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -10595,6 +10747,7 @@ export namespace Prisma {
       staticOfferings: Prisma.$StaticOfferingPayload<ExtArgs>[]
       drinkSpecials: Prisma.$DrinkSpecialPayload<ExtArgs>[]
       foodOfferings: Prisma.$FoodOfferingPayload<ExtArgs>[]
+      categoryRequests: Prisma.$CategoryRequestPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -11034,6 +11187,7 @@ export namespace Prisma {
     staticOfferings<T extends Bar$staticOfferingsArgs<ExtArgs> = {}>(args?: Subset<T, Bar$staticOfferingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StaticOfferingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     drinkSpecials<T extends Bar$drinkSpecialsArgs<ExtArgs> = {}>(args?: Subset<T, Bar$drinkSpecialsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DrinkSpecialPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     foodOfferings<T extends Bar$foodOfferingsArgs<ExtArgs> = {}>(args?: Subset<T, Bar$foodOfferingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FoodOfferingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    categoryRequests<T extends Bar$categoryRequestsArgs<ExtArgs> = {}>(args?: Subset<T, Bar$categoryRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11866,6 +12020,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: FoodOfferingScalarFieldEnum | FoodOfferingScalarFieldEnum[]
+  }
+
+  /**
+   * Bar.categoryRequests
+   */
+  export type Bar$categoryRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryRequest
+     */
+    select?: CategoryRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategoryRequest
+     */
+    omit?: CategoryRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryRequestInclude<ExtArgs> | null
+    where?: CategoryRequestWhereInput
+    orderBy?: CategoryRequestOrderByWithRelationInput | CategoryRequestOrderByWithRelationInput[]
+    cursor?: CategoryRequestWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CategoryRequestScalarFieldEnum | CategoryRequestScalarFieldEnum[]
   }
 
   /**
@@ -16695,6 +16873,1137 @@ export namespace Prisma {
      * Omit specific fields from the ActivityCategory
      */
     omit?: ActivityCategoryOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CategoryRequest
+   */
+
+  export type AggregateCategoryRequest = {
+    _count: CategoryRequestCountAggregateOutputType | null
+    _min: CategoryRequestMinAggregateOutputType | null
+    _max: CategoryRequestMaxAggregateOutputType | null
+  }
+
+  export type CategoryRequestMinAggregateOutputType = {
+    id: string | null
+    barId: string | null
+    ownerId: string | null
+    requestedByEmail: string | null
+    requestedByName: string | null
+    category: string | null
+    status: $Enums.CategoryRequestStatus | null
+    reviewedAt: Date | null
+    reviewedByEmail: string | null
+    createdAt: Date | null
+  }
+
+  export type CategoryRequestMaxAggregateOutputType = {
+    id: string | null
+    barId: string | null
+    ownerId: string | null
+    requestedByEmail: string | null
+    requestedByName: string | null
+    category: string | null
+    status: $Enums.CategoryRequestStatus | null
+    reviewedAt: Date | null
+    reviewedByEmail: string | null
+    createdAt: Date | null
+  }
+
+  export type CategoryRequestCountAggregateOutputType = {
+    id: number
+    barId: number
+    ownerId: number
+    requestedByEmail: number
+    requestedByName: number
+    category: number
+    status: number
+    reviewedAt: number
+    reviewedByEmail: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type CategoryRequestMinAggregateInputType = {
+    id?: true
+    barId?: true
+    ownerId?: true
+    requestedByEmail?: true
+    requestedByName?: true
+    category?: true
+    status?: true
+    reviewedAt?: true
+    reviewedByEmail?: true
+    createdAt?: true
+  }
+
+  export type CategoryRequestMaxAggregateInputType = {
+    id?: true
+    barId?: true
+    ownerId?: true
+    requestedByEmail?: true
+    requestedByName?: true
+    category?: true
+    status?: true
+    reviewedAt?: true
+    reviewedByEmail?: true
+    createdAt?: true
+  }
+
+  export type CategoryRequestCountAggregateInputType = {
+    id?: true
+    barId?: true
+    ownerId?: true
+    requestedByEmail?: true
+    requestedByName?: true
+    category?: true
+    status?: true
+    reviewedAt?: true
+    reviewedByEmail?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type CategoryRequestAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CategoryRequest to aggregate.
+     */
+    where?: CategoryRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CategoryRequests to fetch.
+     */
+    orderBy?: CategoryRequestOrderByWithRelationInput | CategoryRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CategoryRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CategoryRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CategoryRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CategoryRequests
+    **/
+    _count?: true | CategoryRequestCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CategoryRequestMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CategoryRequestMaxAggregateInputType
+  }
+
+  export type GetCategoryRequestAggregateType<T extends CategoryRequestAggregateArgs> = {
+        [P in keyof T & keyof AggregateCategoryRequest]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCategoryRequest[P]>
+      : GetScalarType<T[P], AggregateCategoryRequest[P]>
+  }
+
+
+
+
+  export type CategoryRequestGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CategoryRequestWhereInput
+    orderBy?: CategoryRequestOrderByWithAggregationInput | CategoryRequestOrderByWithAggregationInput[]
+    by: CategoryRequestScalarFieldEnum[] | CategoryRequestScalarFieldEnum
+    having?: CategoryRequestScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CategoryRequestCountAggregateInputType | true
+    _min?: CategoryRequestMinAggregateInputType
+    _max?: CategoryRequestMaxAggregateInputType
+  }
+
+  export type CategoryRequestGroupByOutputType = {
+    id: string
+    barId: string
+    ownerId: string
+    requestedByEmail: string
+    requestedByName: string | null
+    category: string
+    status: $Enums.CategoryRequestStatus
+    reviewedAt: Date | null
+    reviewedByEmail: string | null
+    createdAt: Date
+    _count: CategoryRequestCountAggregateOutputType | null
+    _min: CategoryRequestMinAggregateOutputType | null
+    _max: CategoryRequestMaxAggregateOutputType | null
+  }
+
+  type GetCategoryRequestGroupByPayload<T extends CategoryRequestGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CategoryRequestGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CategoryRequestGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CategoryRequestGroupByOutputType[P]>
+            : GetScalarType<T[P], CategoryRequestGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CategoryRequestSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    barId?: boolean
+    ownerId?: boolean
+    requestedByEmail?: boolean
+    requestedByName?: boolean
+    category?: boolean
+    status?: boolean
+    reviewedAt?: boolean
+    reviewedByEmail?: boolean
+    createdAt?: boolean
+    bar?: boolean | BarDefaultArgs<ExtArgs>
+    owner?: boolean | OwnerDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["categoryRequest"]>
+
+  export type CategoryRequestSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    barId?: boolean
+    ownerId?: boolean
+    requestedByEmail?: boolean
+    requestedByName?: boolean
+    category?: boolean
+    status?: boolean
+    reviewedAt?: boolean
+    reviewedByEmail?: boolean
+    createdAt?: boolean
+    bar?: boolean | BarDefaultArgs<ExtArgs>
+    owner?: boolean | OwnerDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["categoryRequest"]>
+
+  export type CategoryRequestSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    barId?: boolean
+    ownerId?: boolean
+    requestedByEmail?: boolean
+    requestedByName?: boolean
+    category?: boolean
+    status?: boolean
+    reviewedAt?: boolean
+    reviewedByEmail?: boolean
+    createdAt?: boolean
+    bar?: boolean | BarDefaultArgs<ExtArgs>
+    owner?: boolean | OwnerDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["categoryRequest"]>
+
+  export type CategoryRequestSelectScalar = {
+    id?: boolean
+    barId?: boolean
+    ownerId?: boolean
+    requestedByEmail?: boolean
+    requestedByName?: boolean
+    category?: boolean
+    status?: boolean
+    reviewedAt?: boolean
+    reviewedByEmail?: boolean
+    createdAt?: boolean
+  }
+
+  export type CategoryRequestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "barId" | "ownerId" | "requestedByEmail" | "requestedByName" | "category" | "status" | "reviewedAt" | "reviewedByEmail" | "createdAt", ExtArgs["result"]["categoryRequest"]>
+  export type CategoryRequestInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bar?: boolean | BarDefaultArgs<ExtArgs>
+    owner?: boolean | OwnerDefaultArgs<ExtArgs>
+  }
+  export type CategoryRequestIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bar?: boolean | BarDefaultArgs<ExtArgs>
+    owner?: boolean | OwnerDefaultArgs<ExtArgs>
+  }
+  export type CategoryRequestIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bar?: boolean | BarDefaultArgs<ExtArgs>
+    owner?: boolean | OwnerDefaultArgs<ExtArgs>
+  }
+
+  export type $CategoryRequestPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CategoryRequest"
+    objects: {
+      bar: Prisma.$BarPayload<ExtArgs>
+      owner: Prisma.$OwnerPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      barId: string
+      ownerId: string
+      requestedByEmail: string
+      requestedByName: string | null
+      category: string
+      status: $Enums.CategoryRequestStatus
+      reviewedAt: Date | null
+      reviewedByEmail: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["categoryRequest"]>
+    composites: {}
+  }
+
+  type CategoryRequestGetPayload<S extends boolean | null | undefined | CategoryRequestDefaultArgs> = $Result.GetResult<Prisma.$CategoryRequestPayload, S>
+
+  type CategoryRequestCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CategoryRequestFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CategoryRequestCountAggregateInputType | true
+    }
+
+  export interface CategoryRequestDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CategoryRequest'], meta: { name: 'CategoryRequest' } }
+    /**
+     * Find zero or one CategoryRequest that matches the filter.
+     * @param {CategoryRequestFindUniqueArgs} args - Arguments to find a CategoryRequest
+     * @example
+     * // Get one CategoryRequest
+     * const categoryRequest = await prisma.categoryRequest.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CategoryRequestFindUniqueArgs>(args: SelectSubset<T, CategoryRequestFindUniqueArgs<ExtArgs>>): Prisma__CategoryRequestClient<$Result.GetResult<Prisma.$CategoryRequestPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CategoryRequest that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CategoryRequestFindUniqueOrThrowArgs} args - Arguments to find a CategoryRequest
+     * @example
+     * // Get one CategoryRequest
+     * const categoryRequest = await prisma.categoryRequest.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CategoryRequestFindUniqueOrThrowArgs>(args: SelectSubset<T, CategoryRequestFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CategoryRequestClient<$Result.GetResult<Prisma.$CategoryRequestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CategoryRequest that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryRequestFindFirstArgs} args - Arguments to find a CategoryRequest
+     * @example
+     * // Get one CategoryRequest
+     * const categoryRequest = await prisma.categoryRequest.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CategoryRequestFindFirstArgs>(args?: SelectSubset<T, CategoryRequestFindFirstArgs<ExtArgs>>): Prisma__CategoryRequestClient<$Result.GetResult<Prisma.$CategoryRequestPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CategoryRequest that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryRequestFindFirstOrThrowArgs} args - Arguments to find a CategoryRequest
+     * @example
+     * // Get one CategoryRequest
+     * const categoryRequest = await prisma.categoryRequest.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CategoryRequestFindFirstOrThrowArgs>(args?: SelectSubset<T, CategoryRequestFindFirstOrThrowArgs<ExtArgs>>): Prisma__CategoryRequestClient<$Result.GetResult<Prisma.$CategoryRequestPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CategoryRequests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryRequestFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CategoryRequests
+     * const categoryRequests = await prisma.categoryRequest.findMany()
+     * 
+     * // Get first 10 CategoryRequests
+     * const categoryRequests = await prisma.categoryRequest.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const categoryRequestWithIdOnly = await prisma.categoryRequest.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CategoryRequestFindManyArgs>(args?: SelectSubset<T, CategoryRequestFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CategoryRequest.
+     * @param {CategoryRequestCreateArgs} args - Arguments to create a CategoryRequest.
+     * @example
+     * // Create one CategoryRequest
+     * const CategoryRequest = await prisma.categoryRequest.create({
+     *   data: {
+     *     // ... data to create a CategoryRequest
+     *   }
+     * })
+     * 
+     */
+    create<T extends CategoryRequestCreateArgs>(args: SelectSubset<T, CategoryRequestCreateArgs<ExtArgs>>): Prisma__CategoryRequestClient<$Result.GetResult<Prisma.$CategoryRequestPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CategoryRequests.
+     * @param {CategoryRequestCreateManyArgs} args - Arguments to create many CategoryRequests.
+     * @example
+     * // Create many CategoryRequests
+     * const categoryRequest = await prisma.categoryRequest.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CategoryRequestCreateManyArgs>(args?: SelectSubset<T, CategoryRequestCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CategoryRequests and returns the data saved in the database.
+     * @param {CategoryRequestCreateManyAndReturnArgs} args - Arguments to create many CategoryRequests.
+     * @example
+     * // Create many CategoryRequests
+     * const categoryRequest = await prisma.categoryRequest.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CategoryRequests and only return the `id`
+     * const categoryRequestWithIdOnly = await prisma.categoryRequest.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CategoryRequestCreateManyAndReturnArgs>(args?: SelectSubset<T, CategoryRequestCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryRequestPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CategoryRequest.
+     * @param {CategoryRequestDeleteArgs} args - Arguments to delete one CategoryRequest.
+     * @example
+     * // Delete one CategoryRequest
+     * const CategoryRequest = await prisma.categoryRequest.delete({
+     *   where: {
+     *     // ... filter to delete one CategoryRequest
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CategoryRequestDeleteArgs>(args: SelectSubset<T, CategoryRequestDeleteArgs<ExtArgs>>): Prisma__CategoryRequestClient<$Result.GetResult<Prisma.$CategoryRequestPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CategoryRequest.
+     * @param {CategoryRequestUpdateArgs} args - Arguments to update one CategoryRequest.
+     * @example
+     * // Update one CategoryRequest
+     * const categoryRequest = await prisma.categoryRequest.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CategoryRequestUpdateArgs>(args: SelectSubset<T, CategoryRequestUpdateArgs<ExtArgs>>): Prisma__CategoryRequestClient<$Result.GetResult<Prisma.$CategoryRequestPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CategoryRequests.
+     * @param {CategoryRequestDeleteManyArgs} args - Arguments to filter CategoryRequests to delete.
+     * @example
+     * // Delete a few CategoryRequests
+     * const { count } = await prisma.categoryRequest.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CategoryRequestDeleteManyArgs>(args?: SelectSubset<T, CategoryRequestDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CategoryRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryRequestUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CategoryRequests
+     * const categoryRequest = await prisma.categoryRequest.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CategoryRequestUpdateManyArgs>(args: SelectSubset<T, CategoryRequestUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CategoryRequests and returns the data updated in the database.
+     * @param {CategoryRequestUpdateManyAndReturnArgs} args - Arguments to update many CategoryRequests.
+     * @example
+     * // Update many CategoryRequests
+     * const categoryRequest = await prisma.categoryRequest.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CategoryRequests and only return the `id`
+     * const categoryRequestWithIdOnly = await prisma.categoryRequest.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CategoryRequestUpdateManyAndReturnArgs>(args: SelectSubset<T, CategoryRequestUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryRequestPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CategoryRequest.
+     * @param {CategoryRequestUpsertArgs} args - Arguments to update or create a CategoryRequest.
+     * @example
+     * // Update or create a CategoryRequest
+     * const categoryRequest = await prisma.categoryRequest.upsert({
+     *   create: {
+     *     // ... data to create a CategoryRequest
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CategoryRequest we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CategoryRequestUpsertArgs>(args: SelectSubset<T, CategoryRequestUpsertArgs<ExtArgs>>): Prisma__CategoryRequestClient<$Result.GetResult<Prisma.$CategoryRequestPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CategoryRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryRequestCountArgs} args - Arguments to filter CategoryRequests to count.
+     * @example
+     * // Count the number of CategoryRequests
+     * const count = await prisma.categoryRequest.count({
+     *   where: {
+     *     // ... the filter for the CategoryRequests we want to count
+     *   }
+     * })
+    **/
+    count<T extends CategoryRequestCountArgs>(
+      args?: Subset<T, CategoryRequestCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CategoryRequestCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CategoryRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryRequestAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CategoryRequestAggregateArgs>(args: Subset<T, CategoryRequestAggregateArgs>): Prisma.PrismaPromise<GetCategoryRequestAggregateType<T>>
+
+    /**
+     * Group by CategoryRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryRequestGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CategoryRequestGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CategoryRequestGroupByArgs['orderBy'] }
+        : { orderBy?: CategoryRequestGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CategoryRequestGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCategoryRequestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CategoryRequest model
+   */
+  readonly fields: CategoryRequestFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CategoryRequest.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CategoryRequestClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    bar<T extends BarDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BarDefaultArgs<ExtArgs>>): Prisma__BarClient<$Result.GetResult<Prisma.$BarPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    owner<T extends OwnerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OwnerDefaultArgs<ExtArgs>>): Prisma__OwnerClient<$Result.GetResult<Prisma.$OwnerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CategoryRequest model
+   */
+  interface CategoryRequestFieldRefs {
+    readonly id: FieldRef<"CategoryRequest", 'String'>
+    readonly barId: FieldRef<"CategoryRequest", 'String'>
+    readonly ownerId: FieldRef<"CategoryRequest", 'String'>
+    readonly requestedByEmail: FieldRef<"CategoryRequest", 'String'>
+    readonly requestedByName: FieldRef<"CategoryRequest", 'String'>
+    readonly category: FieldRef<"CategoryRequest", 'String'>
+    readonly status: FieldRef<"CategoryRequest", 'CategoryRequestStatus'>
+    readonly reviewedAt: FieldRef<"CategoryRequest", 'DateTime'>
+    readonly reviewedByEmail: FieldRef<"CategoryRequest", 'String'>
+    readonly createdAt: FieldRef<"CategoryRequest", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CategoryRequest findUnique
+   */
+  export type CategoryRequestFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryRequest
+     */
+    select?: CategoryRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategoryRequest
+     */
+    omit?: CategoryRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which CategoryRequest to fetch.
+     */
+    where: CategoryRequestWhereUniqueInput
+  }
+
+  /**
+   * CategoryRequest findUniqueOrThrow
+   */
+  export type CategoryRequestFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryRequest
+     */
+    select?: CategoryRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategoryRequest
+     */
+    omit?: CategoryRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which CategoryRequest to fetch.
+     */
+    where: CategoryRequestWhereUniqueInput
+  }
+
+  /**
+   * CategoryRequest findFirst
+   */
+  export type CategoryRequestFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryRequest
+     */
+    select?: CategoryRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategoryRequest
+     */
+    omit?: CategoryRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which CategoryRequest to fetch.
+     */
+    where?: CategoryRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CategoryRequests to fetch.
+     */
+    orderBy?: CategoryRequestOrderByWithRelationInput | CategoryRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CategoryRequests.
+     */
+    cursor?: CategoryRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CategoryRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CategoryRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CategoryRequests.
+     */
+    distinct?: CategoryRequestScalarFieldEnum | CategoryRequestScalarFieldEnum[]
+  }
+
+  /**
+   * CategoryRequest findFirstOrThrow
+   */
+  export type CategoryRequestFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryRequest
+     */
+    select?: CategoryRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategoryRequest
+     */
+    omit?: CategoryRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which CategoryRequest to fetch.
+     */
+    where?: CategoryRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CategoryRequests to fetch.
+     */
+    orderBy?: CategoryRequestOrderByWithRelationInput | CategoryRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CategoryRequests.
+     */
+    cursor?: CategoryRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CategoryRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CategoryRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CategoryRequests.
+     */
+    distinct?: CategoryRequestScalarFieldEnum | CategoryRequestScalarFieldEnum[]
+  }
+
+  /**
+   * CategoryRequest findMany
+   */
+  export type CategoryRequestFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryRequest
+     */
+    select?: CategoryRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategoryRequest
+     */
+    omit?: CategoryRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which CategoryRequests to fetch.
+     */
+    where?: CategoryRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CategoryRequests to fetch.
+     */
+    orderBy?: CategoryRequestOrderByWithRelationInput | CategoryRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CategoryRequests.
+     */
+    cursor?: CategoryRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CategoryRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CategoryRequests.
+     */
+    skip?: number
+    distinct?: CategoryRequestScalarFieldEnum | CategoryRequestScalarFieldEnum[]
+  }
+
+  /**
+   * CategoryRequest create
+   */
+  export type CategoryRequestCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryRequest
+     */
+    select?: CategoryRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategoryRequest
+     */
+    omit?: CategoryRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryRequestInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CategoryRequest.
+     */
+    data: XOR<CategoryRequestCreateInput, CategoryRequestUncheckedCreateInput>
+  }
+
+  /**
+   * CategoryRequest createMany
+   */
+  export type CategoryRequestCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CategoryRequests.
+     */
+    data: CategoryRequestCreateManyInput | CategoryRequestCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CategoryRequest createManyAndReturn
+   */
+  export type CategoryRequestCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryRequest
+     */
+    select?: CategoryRequestSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategoryRequest
+     */
+    omit?: CategoryRequestOmit<ExtArgs> | null
+    /**
+     * The data used to create many CategoryRequests.
+     */
+    data: CategoryRequestCreateManyInput | CategoryRequestCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryRequestIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CategoryRequest update
+   */
+  export type CategoryRequestUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryRequest
+     */
+    select?: CategoryRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategoryRequest
+     */
+    omit?: CategoryRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryRequestInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CategoryRequest.
+     */
+    data: XOR<CategoryRequestUpdateInput, CategoryRequestUncheckedUpdateInput>
+    /**
+     * Choose, which CategoryRequest to update.
+     */
+    where: CategoryRequestWhereUniqueInput
+  }
+
+  /**
+   * CategoryRequest updateMany
+   */
+  export type CategoryRequestUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CategoryRequests.
+     */
+    data: XOR<CategoryRequestUpdateManyMutationInput, CategoryRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which CategoryRequests to update
+     */
+    where?: CategoryRequestWhereInput
+    /**
+     * Limit how many CategoryRequests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CategoryRequest updateManyAndReturn
+   */
+  export type CategoryRequestUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryRequest
+     */
+    select?: CategoryRequestSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategoryRequest
+     */
+    omit?: CategoryRequestOmit<ExtArgs> | null
+    /**
+     * The data used to update CategoryRequests.
+     */
+    data: XOR<CategoryRequestUpdateManyMutationInput, CategoryRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which CategoryRequests to update
+     */
+    where?: CategoryRequestWhereInput
+    /**
+     * Limit how many CategoryRequests to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryRequestIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CategoryRequest upsert
+   */
+  export type CategoryRequestUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryRequest
+     */
+    select?: CategoryRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategoryRequest
+     */
+    omit?: CategoryRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryRequestInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CategoryRequest to update in case it exists.
+     */
+    where: CategoryRequestWhereUniqueInput
+    /**
+     * In case the CategoryRequest found by the `where` argument doesn't exist, create a new CategoryRequest with this data.
+     */
+    create: XOR<CategoryRequestCreateInput, CategoryRequestUncheckedCreateInput>
+    /**
+     * In case the CategoryRequest was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CategoryRequestUpdateInput, CategoryRequestUncheckedUpdateInput>
+  }
+
+  /**
+   * CategoryRequest delete
+   */
+  export type CategoryRequestDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryRequest
+     */
+    select?: CategoryRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategoryRequest
+     */
+    omit?: CategoryRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryRequestInclude<ExtArgs> | null
+    /**
+     * Filter which CategoryRequest to delete.
+     */
+    where: CategoryRequestWhereUniqueInput
+  }
+
+  /**
+   * CategoryRequest deleteMany
+   */
+  export type CategoryRequestDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CategoryRequests to delete
+     */
+    where?: CategoryRequestWhereInput
+    /**
+     * Limit how many CategoryRequests to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CategoryRequest without action
+   */
+  export type CategoryRequestDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryRequest
+     */
+    select?: CategoryRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategoryRequest
+     */
+    omit?: CategoryRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryRequestInclude<ExtArgs> | null
   }
 
 
@@ -40867,6 +42176,22 @@ export namespace Prisma {
   export type ActivityCategoryScalarFieldEnum = (typeof ActivityCategoryScalarFieldEnum)[keyof typeof ActivityCategoryScalarFieldEnum]
 
 
+  export const CategoryRequestScalarFieldEnum: {
+    id: 'id',
+    barId: 'barId',
+    ownerId: 'ownerId',
+    requestedByEmail: 'requestedByEmail',
+    requestedByName: 'requestedByName',
+    category: 'category',
+    status: 'status',
+    reviewedAt: 'reviewedAt',
+    reviewedByEmail: 'reviewedByEmail',
+    createdAt: 'createdAt'
+  };
+
+  export type CategoryRequestScalarFieldEnum = (typeof CategoryRequestScalarFieldEnum)[keyof typeof CategoryRequestScalarFieldEnum]
+
+
   export const PromoCodeScalarFieldEnum: {
     id: 'id',
     code: 'code',
@@ -41371,6 +42696,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'CategoryRequestStatus'
+   */
+  export type EnumCategoryRequestStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CategoryRequestStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'CategoryRequestStatus[]'
+   */
+  export type ListEnumCategoryRequestStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CategoryRequestStatus[]'>
+    
+
+
+  /**
    * Reference to a field of type 'BadgeTier'
    */
   export type EnumBadgeTierFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BadgeTier'>
@@ -41650,6 +42989,7 @@ export namespace Prisma {
     subscription?: XOR<SubscriptionNullableScalarRelationFilter, SubscriptionWhereInput> | null
     barLicenses?: BarLicenseListRelationFilter
     promoRedemptions?: PromoRedemptionListRelationFilter
+    categoryRequests?: CategoryRequestListRelationFilter
   }
 
   export type OwnerOrderByWithRelationInput = {
@@ -41667,6 +43007,7 @@ export namespace Prisma {
     subscription?: SubscriptionOrderByWithRelationInput
     barLicenses?: BarLicenseOrderByRelationAggregateInput
     promoRedemptions?: PromoRedemptionOrderByRelationAggregateInput
+    categoryRequests?: CategoryRequestOrderByRelationAggregateInput
   }
 
   export type OwnerWhereUniqueInput = Prisma.AtLeast<{
@@ -41687,6 +43028,7 @@ export namespace Prisma {
     subscription?: XOR<SubscriptionNullableScalarRelationFilter, SubscriptionWhereInput> | null
     barLicenses?: BarLicenseListRelationFilter
     promoRedemptions?: PromoRedemptionListRelationFilter
+    categoryRequests?: CategoryRequestListRelationFilter
   }, "id" | "email">
 
   export type OwnerOrderByWithAggregationInput = {
@@ -41868,6 +43210,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingListRelationFilter
     drinkSpecials?: DrinkSpecialListRelationFilter
     foodOfferings?: FoodOfferingListRelationFilter
+    categoryRequests?: CategoryRequestListRelationFilter
   }
 
   export type BarOrderByWithRelationInput = {
@@ -41914,6 +43257,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingOrderByRelationAggregateInput
     drinkSpecials?: DrinkSpecialOrderByRelationAggregateInput
     foodOfferings?: FoodOfferingOrderByRelationAggregateInput
+    categoryRequests?: CategoryRequestOrderByRelationAggregateInput
   }
 
   export type BarWhereUniqueInput = Prisma.AtLeast<{
@@ -41963,6 +43307,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingListRelationFilter
     drinkSpecials?: DrinkSpecialListRelationFilter
     foodOfferings?: FoodOfferingListRelationFilter
+    categoryRequests?: CategoryRequestListRelationFilter
   }, "id" | "slug">
 
   export type BarOrderByWithAggregationInput = {
@@ -42456,6 +43801,89 @@ export namespace Prisma {
     sortOrder?: IntWithAggregatesFilter<"ActivityCategory"> | number
     isActive?: BoolWithAggregatesFilter<"ActivityCategory"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"ActivityCategory"> | Date | string
+  }
+
+  export type CategoryRequestWhereInput = {
+    AND?: CategoryRequestWhereInput | CategoryRequestWhereInput[]
+    OR?: CategoryRequestWhereInput[]
+    NOT?: CategoryRequestWhereInput | CategoryRequestWhereInput[]
+    id?: StringFilter<"CategoryRequest"> | string
+    barId?: StringFilter<"CategoryRequest"> | string
+    ownerId?: StringFilter<"CategoryRequest"> | string
+    requestedByEmail?: StringFilter<"CategoryRequest"> | string
+    requestedByName?: StringNullableFilter<"CategoryRequest"> | string | null
+    category?: StringFilter<"CategoryRequest"> | string
+    status?: EnumCategoryRequestStatusFilter<"CategoryRequest"> | $Enums.CategoryRequestStatus
+    reviewedAt?: DateTimeNullableFilter<"CategoryRequest"> | Date | string | null
+    reviewedByEmail?: StringNullableFilter<"CategoryRequest"> | string | null
+    createdAt?: DateTimeFilter<"CategoryRequest"> | Date | string
+    bar?: XOR<BarScalarRelationFilter, BarWhereInput>
+    owner?: XOR<OwnerScalarRelationFilter, OwnerWhereInput>
+  }
+
+  export type CategoryRequestOrderByWithRelationInput = {
+    id?: SortOrder
+    barId?: SortOrder
+    ownerId?: SortOrder
+    requestedByEmail?: SortOrder
+    requestedByName?: SortOrderInput | SortOrder
+    category?: SortOrder
+    status?: SortOrder
+    reviewedAt?: SortOrderInput | SortOrder
+    reviewedByEmail?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    bar?: BarOrderByWithRelationInput
+    owner?: OwnerOrderByWithRelationInput
+  }
+
+  export type CategoryRequestWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CategoryRequestWhereInput | CategoryRequestWhereInput[]
+    OR?: CategoryRequestWhereInput[]
+    NOT?: CategoryRequestWhereInput | CategoryRequestWhereInput[]
+    barId?: StringFilter<"CategoryRequest"> | string
+    ownerId?: StringFilter<"CategoryRequest"> | string
+    requestedByEmail?: StringFilter<"CategoryRequest"> | string
+    requestedByName?: StringNullableFilter<"CategoryRequest"> | string | null
+    category?: StringFilter<"CategoryRequest"> | string
+    status?: EnumCategoryRequestStatusFilter<"CategoryRequest"> | $Enums.CategoryRequestStatus
+    reviewedAt?: DateTimeNullableFilter<"CategoryRequest"> | Date | string | null
+    reviewedByEmail?: StringNullableFilter<"CategoryRequest"> | string | null
+    createdAt?: DateTimeFilter<"CategoryRequest"> | Date | string
+    bar?: XOR<BarScalarRelationFilter, BarWhereInput>
+    owner?: XOR<OwnerScalarRelationFilter, OwnerWhereInput>
+  }, "id">
+
+  export type CategoryRequestOrderByWithAggregationInput = {
+    id?: SortOrder
+    barId?: SortOrder
+    ownerId?: SortOrder
+    requestedByEmail?: SortOrder
+    requestedByName?: SortOrderInput | SortOrder
+    category?: SortOrder
+    status?: SortOrder
+    reviewedAt?: SortOrderInput | SortOrder
+    reviewedByEmail?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: CategoryRequestCountOrderByAggregateInput
+    _max?: CategoryRequestMaxOrderByAggregateInput
+    _min?: CategoryRequestMinOrderByAggregateInput
+  }
+
+  export type CategoryRequestScalarWhereWithAggregatesInput = {
+    AND?: CategoryRequestScalarWhereWithAggregatesInput | CategoryRequestScalarWhereWithAggregatesInput[]
+    OR?: CategoryRequestScalarWhereWithAggregatesInput[]
+    NOT?: CategoryRequestScalarWhereWithAggregatesInput | CategoryRequestScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CategoryRequest"> | string
+    barId?: StringWithAggregatesFilter<"CategoryRequest"> | string
+    ownerId?: StringWithAggregatesFilter<"CategoryRequest"> | string
+    requestedByEmail?: StringWithAggregatesFilter<"CategoryRequest"> | string
+    requestedByName?: StringNullableWithAggregatesFilter<"CategoryRequest"> | string | null
+    category?: StringWithAggregatesFilter<"CategoryRequest"> | string
+    status?: EnumCategoryRequestStatusWithAggregatesFilter<"CategoryRequest"> | $Enums.CategoryRequestStatus
+    reviewedAt?: DateTimeNullableWithAggregatesFilter<"CategoryRequest"> | Date | string | null
+    reviewedByEmail?: StringNullableWithAggregatesFilter<"CategoryRequest"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"CategoryRequest"> | Date | string
   }
 
   export type PromoCodeWhereInput = {
@@ -44295,6 +45723,7 @@ export namespace Prisma {
     subscription?: SubscriptionCreateNestedOneWithoutOwnerInput
     barLicenses?: BarLicenseCreateNestedManyWithoutOwnerInput
     promoRedemptions?: PromoRedemptionCreateNestedManyWithoutOwnerInput
+    categoryRequests?: CategoryRequestCreateNestedManyWithoutOwnerInput
   }
 
   export type OwnerUncheckedCreateInput = {
@@ -44312,6 +45741,7 @@ export namespace Prisma {
     subscription?: SubscriptionUncheckedCreateNestedOneWithoutOwnerInput
     barLicenses?: BarLicenseUncheckedCreateNestedManyWithoutOwnerInput
     promoRedemptions?: PromoRedemptionUncheckedCreateNestedManyWithoutOwnerInput
+    categoryRequests?: CategoryRequestUncheckedCreateNestedManyWithoutOwnerInput
   }
 
   export type OwnerUpdateInput = {
@@ -44329,6 +45759,7 @@ export namespace Prisma {
     subscription?: SubscriptionUpdateOneWithoutOwnerNestedInput
     barLicenses?: BarLicenseUpdateManyWithoutOwnerNestedInput
     promoRedemptions?: PromoRedemptionUpdateManyWithoutOwnerNestedInput
+    categoryRequests?: CategoryRequestUpdateManyWithoutOwnerNestedInput
   }
 
   export type OwnerUncheckedUpdateInput = {
@@ -44346,6 +45777,7 @@ export namespace Prisma {
     subscription?: SubscriptionUncheckedUpdateOneWithoutOwnerNestedInput
     barLicenses?: BarLicenseUncheckedUpdateManyWithoutOwnerNestedInput
     promoRedemptions?: PromoRedemptionUncheckedUpdateManyWithoutOwnerNestedInput
+    categoryRequests?: CategoryRequestUncheckedUpdateManyWithoutOwnerNestedInput
   }
 
   export type OwnerCreateManyInput = {
@@ -44548,6 +45980,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateInput = {
@@ -44593,6 +46026,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarUpdateInput = {
@@ -44638,6 +46072,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateInput = {
@@ -44683,6 +46118,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type BarCreateManyInput = {
@@ -45268,6 +46704,95 @@ export namespace Prisma {
     icon?: NullableStringFieldUpdateOperationsInput | string | null
     sortOrder?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CategoryRequestCreateInput = {
+    id?: string
+    requestedByEmail: string
+    requestedByName?: string | null
+    category: string
+    status?: $Enums.CategoryRequestStatus
+    reviewedAt?: Date | string | null
+    reviewedByEmail?: string | null
+    createdAt?: Date | string
+    bar: BarCreateNestedOneWithoutCategoryRequestsInput
+    owner: OwnerCreateNestedOneWithoutCategoryRequestsInput
+  }
+
+  export type CategoryRequestUncheckedCreateInput = {
+    id?: string
+    barId: string
+    ownerId: string
+    requestedByEmail: string
+    requestedByName?: string | null
+    category: string
+    status?: $Enums.CategoryRequestStatus
+    reviewedAt?: Date | string | null
+    reviewedByEmail?: string | null
+    createdAt?: Date | string
+  }
+
+  export type CategoryRequestUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    requestedByEmail?: StringFieldUpdateOperationsInput | string
+    requestedByName?: NullableStringFieldUpdateOperationsInput | string | null
+    category?: StringFieldUpdateOperationsInput | string
+    status?: EnumCategoryRequestStatusFieldUpdateOperationsInput | $Enums.CategoryRequestStatus
+    reviewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    reviewedByEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bar?: BarUpdateOneRequiredWithoutCategoryRequestsNestedInput
+    owner?: OwnerUpdateOneRequiredWithoutCategoryRequestsNestedInput
+  }
+
+  export type CategoryRequestUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    barId?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    requestedByEmail?: StringFieldUpdateOperationsInput | string
+    requestedByName?: NullableStringFieldUpdateOperationsInput | string | null
+    category?: StringFieldUpdateOperationsInput | string
+    status?: EnumCategoryRequestStatusFieldUpdateOperationsInput | $Enums.CategoryRequestStatus
+    reviewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    reviewedByEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CategoryRequestCreateManyInput = {
+    id?: string
+    barId: string
+    ownerId: string
+    requestedByEmail: string
+    requestedByName?: string | null
+    category: string
+    status?: $Enums.CategoryRequestStatus
+    reviewedAt?: Date | string | null
+    reviewedByEmail?: string | null
+    createdAt?: Date | string
+  }
+
+  export type CategoryRequestUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    requestedByEmail?: StringFieldUpdateOperationsInput | string
+    requestedByName?: NullableStringFieldUpdateOperationsInput | string | null
+    category?: StringFieldUpdateOperationsInput | string
+    status?: EnumCategoryRequestStatusFieldUpdateOperationsInput | $Enums.CategoryRequestStatus
+    reviewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    reviewedByEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CategoryRequestUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    barId?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    requestedByEmail?: StringFieldUpdateOperationsInput | string
+    requestedByName?: NullableStringFieldUpdateOperationsInput | string | null
+    category?: StringFieldUpdateOperationsInput | string
+    status?: EnumCategoryRequestStatusFieldUpdateOperationsInput | $Enums.CategoryRequestStatus
+    reviewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    reviewedByEmail?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -47297,6 +48822,12 @@ export namespace Prisma {
     none?: PromoRedemptionWhereInput
   }
 
+  export type CategoryRequestListRelationFilter = {
+    every?: CategoryRequestWhereInput
+    some?: CategoryRequestWhereInput
+    none?: CategoryRequestWhereInput
+  }
+
   export type BarOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -47306,6 +48837,10 @@ export namespace Prisma {
   }
 
   export type PromoRedemptionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CategoryRequestOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -48079,6 +49614,62 @@ export namespace Prisma {
 
   export type ActivityCategorySumOrderByAggregateInput = {
     sortOrder?: SortOrder
+  }
+
+  export type EnumCategoryRequestStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.CategoryRequestStatus | EnumCategoryRequestStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.CategoryRequestStatus[] | ListEnumCategoryRequestStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CategoryRequestStatus[] | ListEnumCategoryRequestStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumCategoryRequestStatusFilter<$PrismaModel> | $Enums.CategoryRequestStatus
+  }
+
+  export type CategoryRequestCountOrderByAggregateInput = {
+    id?: SortOrder
+    barId?: SortOrder
+    ownerId?: SortOrder
+    requestedByEmail?: SortOrder
+    requestedByName?: SortOrder
+    category?: SortOrder
+    status?: SortOrder
+    reviewedAt?: SortOrder
+    reviewedByEmail?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CategoryRequestMaxOrderByAggregateInput = {
+    id?: SortOrder
+    barId?: SortOrder
+    ownerId?: SortOrder
+    requestedByEmail?: SortOrder
+    requestedByName?: SortOrder
+    category?: SortOrder
+    status?: SortOrder
+    reviewedAt?: SortOrder
+    reviewedByEmail?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CategoryRequestMinOrderByAggregateInput = {
+    id?: SortOrder
+    barId?: SortOrder
+    ownerId?: SortOrder
+    requestedByEmail?: SortOrder
+    requestedByName?: SortOrder
+    category?: SortOrder
+    status?: SortOrder
+    reviewedAt?: SortOrder
+    reviewedByEmail?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type EnumCategoryRequestStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CategoryRequestStatus | EnumCategoryRequestStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.CategoryRequestStatus[] | ListEnumCategoryRequestStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CategoryRequestStatus[] | ListEnumCategoryRequestStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumCategoryRequestStatusWithAggregatesFilter<$PrismaModel> | $Enums.CategoryRequestStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumCategoryRequestStatusFilter<$PrismaModel>
+    _max?: NestedEnumCategoryRequestStatusFilter<$PrismaModel>
   }
 
   export type EnumSubscriptionPlanNullableFilter<$PrismaModel = never> = {
@@ -49487,6 +51078,13 @@ export namespace Prisma {
     connect?: PromoRedemptionWhereUniqueInput | PromoRedemptionWhereUniqueInput[]
   }
 
+  export type CategoryRequestCreateNestedManyWithoutOwnerInput = {
+    create?: XOR<CategoryRequestCreateWithoutOwnerInput, CategoryRequestUncheckedCreateWithoutOwnerInput> | CategoryRequestCreateWithoutOwnerInput[] | CategoryRequestUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: CategoryRequestCreateOrConnectWithoutOwnerInput | CategoryRequestCreateOrConnectWithoutOwnerInput[]
+    createMany?: CategoryRequestCreateManyOwnerInputEnvelope
+    connect?: CategoryRequestWhereUniqueInput | CategoryRequestWhereUniqueInput[]
+  }
+
   export type BarUncheckedCreateNestedManyWithoutOwnerInput = {
     create?: XOR<BarCreateWithoutOwnerInput, BarUncheckedCreateWithoutOwnerInput> | BarCreateWithoutOwnerInput[] | BarUncheckedCreateWithoutOwnerInput[]
     connectOrCreate?: BarCreateOrConnectWithoutOwnerInput | BarCreateOrConnectWithoutOwnerInput[]
@@ -49512,6 +51110,13 @@ export namespace Prisma {
     connectOrCreate?: PromoRedemptionCreateOrConnectWithoutOwnerInput | PromoRedemptionCreateOrConnectWithoutOwnerInput[]
     createMany?: PromoRedemptionCreateManyOwnerInputEnvelope
     connect?: PromoRedemptionWhereUniqueInput | PromoRedemptionWhereUniqueInput[]
+  }
+
+  export type CategoryRequestUncheckedCreateNestedManyWithoutOwnerInput = {
+    create?: XOR<CategoryRequestCreateWithoutOwnerInput, CategoryRequestUncheckedCreateWithoutOwnerInput> | CategoryRequestCreateWithoutOwnerInput[] | CategoryRequestUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: CategoryRequestCreateOrConnectWithoutOwnerInput | CategoryRequestCreateOrConnectWithoutOwnerInput[]
+    createMany?: CategoryRequestCreateManyOwnerInputEnvelope
+    connect?: CategoryRequestWhereUniqueInput | CategoryRequestWhereUniqueInput[]
   }
 
   export type BoolFieldUpdateOperationsInput = {
@@ -49574,6 +51179,20 @@ export namespace Prisma {
     deleteMany?: PromoRedemptionScalarWhereInput | PromoRedemptionScalarWhereInput[]
   }
 
+  export type CategoryRequestUpdateManyWithoutOwnerNestedInput = {
+    create?: XOR<CategoryRequestCreateWithoutOwnerInput, CategoryRequestUncheckedCreateWithoutOwnerInput> | CategoryRequestCreateWithoutOwnerInput[] | CategoryRequestUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: CategoryRequestCreateOrConnectWithoutOwnerInput | CategoryRequestCreateOrConnectWithoutOwnerInput[]
+    upsert?: CategoryRequestUpsertWithWhereUniqueWithoutOwnerInput | CategoryRequestUpsertWithWhereUniqueWithoutOwnerInput[]
+    createMany?: CategoryRequestCreateManyOwnerInputEnvelope
+    set?: CategoryRequestWhereUniqueInput | CategoryRequestWhereUniqueInput[]
+    disconnect?: CategoryRequestWhereUniqueInput | CategoryRequestWhereUniqueInput[]
+    delete?: CategoryRequestWhereUniqueInput | CategoryRequestWhereUniqueInput[]
+    connect?: CategoryRequestWhereUniqueInput | CategoryRequestWhereUniqueInput[]
+    update?: CategoryRequestUpdateWithWhereUniqueWithoutOwnerInput | CategoryRequestUpdateWithWhereUniqueWithoutOwnerInput[]
+    updateMany?: CategoryRequestUpdateManyWithWhereWithoutOwnerInput | CategoryRequestUpdateManyWithWhereWithoutOwnerInput[]
+    deleteMany?: CategoryRequestScalarWhereInput | CategoryRequestScalarWhereInput[]
+  }
+
   export type BarUncheckedUpdateManyWithoutOwnerNestedInput = {
     create?: XOR<BarCreateWithoutOwnerInput, BarUncheckedCreateWithoutOwnerInput> | BarCreateWithoutOwnerInput[] | BarUncheckedCreateWithoutOwnerInput[]
     connectOrCreate?: BarCreateOrConnectWithoutOwnerInput | BarCreateOrConnectWithoutOwnerInput[]
@@ -49624,6 +51243,20 @@ export namespace Prisma {
     update?: PromoRedemptionUpdateWithWhereUniqueWithoutOwnerInput | PromoRedemptionUpdateWithWhereUniqueWithoutOwnerInput[]
     updateMany?: PromoRedemptionUpdateManyWithWhereWithoutOwnerInput | PromoRedemptionUpdateManyWithWhereWithoutOwnerInput[]
     deleteMany?: PromoRedemptionScalarWhereInput | PromoRedemptionScalarWhereInput[]
+  }
+
+  export type CategoryRequestUncheckedUpdateManyWithoutOwnerNestedInput = {
+    create?: XOR<CategoryRequestCreateWithoutOwnerInput, CategoryRequestUncheckedCreateWithoutOwnerInput> | CategoryRequestCreateWithoutOwnerInput[] | CategoryRequestUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: CategoryRequestCreateOrConnectWithoutOwnerInput | CategoryRequestCreateOrConnectWithoutOwnerInput[]
+    upsert?: CategoryRequestUpsertWithWhereUniqueWithoutOwnerInput | CategoryRequestUpsertWithWhereUniqueWithoutOwnerInput[]
+    createMany?: CategoryRequestCreateManyOwnerInputEnvelope
+    set?: CategoryRequestWhereUniqueInput | CategoryRequestWhereUniqueInput[]
+    disconnect?: CategoryRequestWhereUniqueInput | CategoryRequestWhereUniqueInput[]
+    delete?: CategoryRequestWhereUniqueInput | CategoryRequestWhereUniqueInput[]
+    connect?: CategoryRequestWhereUniqueInput | CategoryRequestWhereUniqueInput[]
+    update?: CategoryRequestUpdateWithWhereUniqueWithoutOwnerInput | CategoryRequestUpdateWithWhereUniqueWithoutOwnerInput[]
+    updateMany?: CategoryRequestUpdateManyWithWhereWithoutOwnerInput | CategoryRequestUpdateManyWithWhereWithoutOwnerInput[]
+    deleteMany?: CategoryRequestScalarWhereInput | CategoryRequestScalarWhereInput[]
   }
 
   export type OwnerCreateNestedOneWithoutSubscriptionInput = {
@@ -49770,6 +51403,13 @@ export namespace Prisma {
     connect?: FoodOfferingWhereUniqueInput | FoodOfferingWhereUniqueInput[]
   }
 
+  export type CategoryRequestCreateNestedManyWithoutBarInput = {
+    create?: XOR<CategoryRequestCreateWithoutBarInput, CategoryRequestUncheckedCreateWithoutBarInput> | CategoryRequestCreateWithoutBarInput[] | CategoryRequestUncheckedCreateWithoutBarInput[]
+    connectOrCreate?: CategoryRequestCreateOrConnectWithoutBarInput | CategoryRequestCreateOrConnectWithoutBarInput[]
+    createMany?: CategoryRequestCreateManyBarInputEnvelope
+    connect?: CategoryRequestWhereUniqueInput | CategoryRequestWhereUniqueInput[]
+  }
+
   export type OfferingUncheckedCreateNestedManyWithoutBarInput = {
     create?: XOR<OfferingCreateWithoutBarInput, OfferingUncheckedCreateWithoutBarInput> | OfferingCreateWithoutBarInput[] | OfferingUncheckedCreateWithoutBarInput[]
     connectOrCreate?: OfferingCreateOrConnectWithoutBarInput | OfferingCreateOrConnectWithoutBarInput[]
@@ -49880,6 +51520,13 @@ export namespace Prisma {
     connectOrCreate?: FoodOfferingCreateOrConnectWithoutBarInput | FoodOfferingCreateOrConnectWithoutBarInput[]
     createMany?: FoodOfferingCreateManyBarInputEnvelope
     connect?: FoodOfferingWhereUniqueInput | FoodOfferingWhereUniqueInput[]
+  }
+
+  export type CategoryRequestUncheckedCreateNestedManyWithoutBarInput = {
+    create?: XOR<CategoryRequestCreateWithoutBarInput, CategoryRequestUncheckedCreateWithoutBarInput> | CategoryRequestCreateWithoutBarInput[] | CategoryRequestUncheckedCreateWithoutBarInput[]
+    connectOrCreate?: CategoryRequestCreateOrConnectWithoutBarInput | CategoryRequestCreateOrConnectWithoutBarInput[]
+    createMany?: CategoryRequestCreateManyBarInputEnvelope
+    connect?: CategoryRequestWhereUniqueInput | CategoryRequestWhereUniqueInput[]
   }
 
   export type FloatFieldUpdateOperationsInput = {
@@ -50135,6 +51782,20 @@ export namespace Prisma {
     deleteMany?: FoodOfferingScalarWhereInput | FoodOfferingScalarWhereInput[]
   }
 
+  export type CategoryRequestUpdateManyWithoutBarNestedInput = {
+    create?: XOR<CategoryRequestCreateWithoutBarInput, CategoryRequestUncheckedCreateWithoutBarInput> | CategoryRequestCreateWithoutBarInput[] | CategoryRequestUncheckedCreateWithoutBarInput[]
+    connectOrCreate?: CategoryRequestCreateOrConnectWithoutBarInput | CategoryRequestCreateOrConnectWithoutBarInput[]
+    upsert?: CategoryRequestUpsertWithWhereUniqueWithoutBarInput | CategoryRequestUpsertWithWhereUniqueWithoutBarInput[]
+    createMany?: CategoryRequestCreateManyBarInputEnvelope
+    set?: CategoryRequestWhereUniqueInput | CategoryRequestWhereUniqueInput[]
+    disconnect?: CategoryRequestWhereUniqueInput | CategoryRequestWhereUniqueInput[]
+    delete?: CategoryRequestWhereUniqueInput | CategoryRequestWhereUniqueInput[]
+    connect?: CategoryRequestWhereUniqueInput | CategoryRequestWhereUniqueInput[]
+    update?: CategoryRequestUpdateWithWhereUniqueWithoutBarInput | CategoryRequestUpdateWithWhereUniqueWithoutBarInput[]
+    updateMany?: CategoryRequestUpdateManyWithWhereWithoutBarInput | CategoryRequestUpdateManyWithWhereWithoutBarInput[]
+    deleteMany?: CategoryRequestScalarWhereInput | CategoryRequestScalarWhereInput[]
+  }
+
   export type OfferingUncheckedUpdateManyWithoutBarNestedInput = {
     create?: XOR<OfferingCreateWithoutBarInput, OfferingUncheckedCreateWithoutBarInput> | OfferingCreateWithoutBarInput[] | OfferingUncheckedCreateWithoutBarInput[]
     connectOrCreate?: OfferingCreateOrConnectWithoutBarInput | OfferingCreateOrConnectWithoutBarInput[]
@@ -50359,6 +52020,20 @@ export namespace Prisma {
     deleteMany?: FoodOfferingScalarWhereInput | FoodOfferingScalarWhereInput[]
   }
 
+  export type CategoryRequestUncheckedUpdateManyWithoutBarNestedInput = {
+    create?: XOR<CategoryRequestCreateWithoutBarInput, CategoryRequestUncheckedCreateWithoutBarInput> | CategoryRequestCreateWithoutBarInput[] | CategoryRequestUncheckedCreateWithoutBarInput[]
+    connectOrCreate?: CategoryRequestCreateOrConnectWithoutBarInput | CategoryRequestCreateOrConnectWithoutBarInput[]
+    upsert?: CategoryRequestUpsertWithWhereUniqueWithoutBarInput | CategoryRequestUpsertWithWhereUniqueWithoutBarInput[]
+    createMany?: CategoryRequestCreateManyBarInputEnvelope
+    set?: CategoryRequestWhereUniqueInput | CategoryRequestWhereUniqueInput[]
+    disconnect?: CategoryRequestWhereUniqueInput | CategoryRequestWhereUniqueInput[]
+    delete?: CategoryRequestWhereUniqueInput | CategoryRequestWhereUniqueInput[]
+    connect?: CategoryRequestWhereUniqueInput | CategoryRequestWhereUniqueInput[]
+    update?: CategoryRequestUpdateWithWhereUniqueWithoutBarInput | CategoryRequestUpdateWithWhereUniqueWithoutBarInput[]
+    updateMany?: CategoryRequestUpdateManyWithWhereWithoutBarInput | CategoryRequestUpdateManyWithWhereWithoutBarInput[]
+    deleteMany?: CategoryRequestScalarWhereInput | CategoryRequestScalarWhereInput[]
+  }
+
   export type OfferingCreatetagsInput = {
     set: string[]
   }
@@ -50447,6 +52122,38 @@ export namespace Prisma {
     upsert?: BarUpsertWithoutFavoritesInput
     connect?: BarWhereUniqueInput
     update?: XOR<XOR<BarUpdateToOneWithWhereWithoutFavoritesInput, BarUpdateWithoutFavoritesInput>, BarUncheckedUpdateWithoutFavoritesInput>
+  }
+
+  export type BarCreateNestedOneWithoutCategoryRequestsInput = {
+    create?: XOR<BarCreateWithoutCategoryRequestsInput, BarUncheckedCreateWithoutCategoryRequestsInput>
+    connectOrCreate?: BarCreateOrConnectWithoutCategoryRequestsInput
+    connect?: BarWhereUniqueInput
+  }
+
+  export type OwnerCreateNestedOneWithoutCategoryRequestsInput = {
+    create?: XOR<OwnerCreateWithoutCategoryRequestsInput, OwnerUncheckedCreateWithoutCategoryRequestsInput>
+    connectOrCreate?: OwnerCreateOrConnectWithoutCategoryRequestsInput
+    connect?: OwnerWhereUniqueInput
+  }
+
+  export type EnumCategoryRequestStatusFieldUpdateOperationsInput = {
+    set?: $Enums.CategoryRequestStatus
+  }
+
+  export type BarUpdateOneRequiredWithoutCategoryRequestsNestedInput = {
+    create?: XOR<BarCreateWithoutCategoryRequestsInput, BarUncheckedCreateWithoutCategoryRequestsInput>
+    connectOrCreate?: BarCreateOrConnectWithoutCategoryRequestsInput
+    upsert?: BarUpsertWithoutCategoryRequestsInput
+    connect?: BarWhereUniqueInput
+    update?: XOR<XOR<BarUpdateToOneWithWhereWithoutCategoryRequestsInput, BarUpdateWithoutCategoryRequestsInput>, BarUncheckedUpdateWithoutCategoryRequestsInput>
+  }
+
+  export type OwnerUpdateOneRequiredWithoutCategoryRequestsNestedInput = {
+    create?: XOR<OwnerCreateWithoutCategoryRequestsInput, OwnerUncheckedCreateWithoutCategoryRequestsInput>
+    connectOrCreate?: OwnerCreateOrConnectWithoutCategoryRequestsInput
+    upsert?: OwnerUpsertWithoutCategoryRequestsInput
+    connect?: OwnerWhereUniqueInput
+    update?: XOR<XOR<OwnerUpdateToOneWithWhereWithoutCategoryRequestsInput, OwnerUpdateWithoutCategoryRequestsInput>, OwnerUncheckedUpdateWithoutCategoryRequestsInput>
   }
 
   export type PromoRedemptionCreateNestedManyWithoutPromoCodeInput = {
@@ -51624,6 +53331,23 @@ export namespace Prisma {
     _max?: NestedEnumRecurrenceNullableFilter<$PrismaModel>
   }
 
+  export type NestedEnumCategoryRequestStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.CategoryRequestStatus | EnumCategoryRequestStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.CategoryRequestStatus[] | ListEnumCategoryRequestStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CategoryRequestStatus[] | ListEnumCategoryRequestStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumCategoryRequestStatusFilter<$PrismaModel> | $Enums.CategoryRequestStatus
+  }
+
+  export type NestedEnumCategoryRequestStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CategoryRequestStatus | EnumCategoryRequestStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.CategoryRequestStatus[] | ListEnumCategoryRequestStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CategoryRequestStatus[] | ListEnumCategoryRequestStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumCategoryRequestStatusWithAggregatesFilter<$PrismaModel> | $Enums.CategoryRequestStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumCategoryRequestStatusFilter<$PrismaModel>
+    _max?: NestedEnumCategoryRequestStatusFilter<$PrismaModel>
+  }
+
   export type NestedEnumSubscriptionPlanNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.SubscriptionPlan | EnumSubscriptionPlanFieldRefInput<$PrismaModel> | null
     in?: $Enums.SubscriptionPlan[] | ListEnumSubscriptionPlanFieldRefInput<$PrismaModel> | null
@@ -52315,6 +54039,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutOwnerInput = {
@@ -52359,6 +54084,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutOwnerInput = {
@@ -52461,6 +54187,40 @@ export namespace Prisma {
 
   export type PromoRedemptionCreateManyOwnerInputEnvelope = {
     data: PromoRedemptionCreateManyOwnerInput | PromoRedemptionCreateManyOwnerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CategoryRequestCreateWithoutOwnerInput = {
+    id?: string
+    requestedByEmail: string
+    requestedByName?: string | null
+    category: string
+    status?: $Enums.CategoryRequestStatus
+    reviewedAt?: Date | string | null
+    reviewedByEmail?: string | null
+    createdAt?: Date | string
+    bar: BarCreateNestedOneWithoutCategoryRequestsInput
+  }
+
+  export type CategoryRequestUncheckedCreateWithoutOwnerInput = {
+    id?: string
+    barId: string
+    requestedByEmail: string
+    requestedByName?: string | null
+    category: string
+    status?: $Enums.CategoryRequestStatus
+    reviewedAt?: Date | string | null
+    reviewedByEmail?: string | null
+    createdAt?: Date | string
+  }
+
+  export type CategoryRequestCreateOrConnectWithoutOwnerInput = {
+    where: CategoryRequestWhereUniqueInput
+    create: XOR<CategoryRequestCreateWithoutOwnerInput, CategoryRequestUncheckedCreateWithoutOwnerInput>
+  }
+
+  export type CategoryRequestCreateManyOwnerInputEnvelope = {
+    data: CategoryRequestCreateManyOwnerInput | CategoryRequestCreateManyOwnerInput[]
     skipDuplicates?: boolean
   }
 
@@ -52613,6 +54373,38 @@ export namespace Prisma {
     redeemedAt?: DateTimeFilter<"PromoRedemption"> | Date | string
   }
 
+  export type CategoryRequestUpsertWithWhereUniqueWithoutOwnerInput = {
+    where: CategoryRequestWhereUniqueInput
+    update: XOR<CategoryRequestUpdateWithoutOwnerInput, CategoryRequestUncheckedUpdateWithoutOwnerInput>
+    create: XOR<CategoryRequestCreateWithoutOwnerInput, CategoryRequestUncheckedCreateWithoutOwnerInput>
+  }
+
+  export type CategoryRequestUpdateWithWhereUniqueWithoutOwnerInput = {
+    where: CategoryRequestWhereUniqueInput
+    data: XOR<CategoryRequestUpdateWithoutOwnerInput, CategoryRequestUncheckedUpdateWithoutOwnerInput>
+  }
+
+  export type CategoryRequestUpdateManyWithWhereWithoutOwnerInput = {
+    where: CategoryRequestScalarWhereInput
+    data: XOR<CategoryRequestUpdateManyMutationInput, CategoryRequestUncheckedUpdateManyWithoutOwnerInput>
+  }
+
+  export type CategoryRequestScalarWhereInput = {
+    AND?: CategoryRequestScalarWhereInput | CategoryRequestScalarWhereInput[]
+    OR?: CategoryRequestScalarWhereInput[]
+    NOT?: CategoryRequestScalarWhereInput | CategoryRequestScalarWhereInput[]
+    id?: StringFilter<"CategoryRequest"> | string
+    barId?: StringFilter<"CategoryRequest"> | string
+    ownerId?: StringFilter<"CategoryRequest"> | string
+    requestedByEmail?: StringFilter<"CategoryRequest"> | string
+    requestedByName?: StringNullableFilter<"CategoryRequest"> | string | null
+    category?: StringFilter<"CategoryRequest"> | string
+    status?: EnumCategoryRequestStatusFilter<"CategoryRequest"> | $Enums.CategoryRequestStatus
+    reviewedAt?: DateTimeNullableFilter<"CategoryRequest"> | Date | string | null
+    reviewedByEmail?: StringNullableFilter<"CategoryRequest"> | string | null
+    createdAt?: DateTimeFilter<"CategoryRequest"> | Date | string
+  }
+
   export type OwnerCreateWithoutSubscriptionInput = {
     id?: string
     email: string
@@ -52627,6 +54419,7 @@ export namespace Prisma {
     bars?: BarCreateNestedManyWithoutOwnerInput
     barLicenses?: BarLicenseCreateNestedManyWithoutOwnerInput
     promoRedemptions?: PromoRedemptionCreateNestedManyWithoutOwnerInput
+    categoryRequests?: CategoryRequestCreateNestedManyWithoutOwnerInput
   }
 
   export type OwnerUncheckedCreateWithoutSubscriptionInput = {
@@ -52643,6 +54436,7 @@ export namespace Prisma {
     bars?: BarUncheckedCreateNestedManyWithoutOwnerInput
     barLicenses?: BarLicenseUncheckedCreateNestedManyWithoutOwnerInput
     promoRedemptions?: PromoRedemptionUncheckedCreateNestedManyWithoutOwnerInput
+    categoryRequests?: CategoryRequestUncheckedCreateNestedManyWithoutOwnerInput
   }
 
   export type OwnerCreateOrConnectWithoutSubscriptionInput = {
@@ -52675,6 +54469,7 @@ export namespace Prisma {
     bars?: BarUpdateManyWithoutOwnerNestedInput
     barLicenses?: BarLicenseUpdateManyWithoutOwnerNestedInput
     promoRedemptions?: PromoRedemptionUpdateManyWithoutOwnerNestedInput
+    categoryRequests?: CategoryRequestUpdateManyWithoutOwnerNestedInput
   }
 
   export type OwnerUncheckedUpdateWithoutSubscriptionInput = {
@@ -52691,6 +54486,7 @@ export namespace Prisma {
     bars?: BarUncheckedUpdateManyWithoutOwnerNestedInput
     barLicenses?: BarLicenseUncheckedUpdateManyWithoutOwnerNestedInput
     promoRedemptions?: PromoRedemptionUncheckedUpdateManyWithoutOwnerNestedInput
+    categoryRequests?: CategoryRequestUncheckedUpdateManyWithoutOwnerNestedInput
   }
 
   export type OwnerCreateWithoutBarsInput = {
@@ -52707,6 +54503,7 @@ export namespace Prisma {
     subscription?: SubscriptionCreateNestedOneWithoutOwnerInput
     barLicenses?: BarLicenseCreateNestedManyWithoutOwnerInput
     promoRedemptions?: PromoRedemptionCreateNestedManyWithoutOwnerInput
+    categoryRequests?: CategoryRequestCreateNestedManyWithoutOwnerInput
   }
 
   export type OwnerUncheckedCreateWithoutBarsInput = {
@@ -52723,6 +54520,7 @@ export namespace Prisma {
     subscription?: SubscriptionUncheckedCreateNestedOneWithoutOwnerInput
     barLicenses?: BarLicenseUncheckedCreateNestedManyWithoutOwnerInput
     promoRedemptions?: PromoRedemptionUncheckedCreateNestedManyWithoutOwnerInput
+    categoryRequests?: CategoryRequestUncheckedCreateNestedManyWithoutOwnerInput
   }
 
   export type OwnerCreateOrConnectWithoutBarsInput = {
@@ -53290,6 +55088,40 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type CategoryRequestCreateWithoutBarInput = {
+    id?: string
+    requestedByEmail: string
+    requestedByName?: string | null
+    category: string
+    status?: $Enums.CategoryRequestStatus
+    reviewedAt?: Date | string | null
+    reviewedByEmail?: string | null
+    createdAt?: Date | string
+    owner: OwnerCreateNestedOneWithoutCategoryRequestsInput
+  }
+
+  export type CategoryRequestUncheckedCreateWithoutBarInput = {
+    id?: string
+    ownerId: string
+    requestedByEmail: string
+    requestedByName?: string | null
+    category: string
+    status?: $Enums.CategoryRequestStatus
+    reviewedAt?: Date | string | null
+    reviewedByEmail?: string | null
+    createdAt?: Date | string
+  }
+
+  export type CategoryRequestCreateOrConnectWithoutBarInput = {
+    where: CategoryRequestWhereUniqueInput
+    create: XOR<CategoryRequestCreateWithoutBarInput, CategoryRequestUncheckedCreateWithoutBarInput>
+  }
+
+  export type CategoryRequestCreateManyBarInputEnvelope = {
+    data: CategoryRequestCreateManyBarInput | CategoryRequestCreateManyBarInput[]
+    skipDuplicates?: boolean
+  }
+
   export type OwnerUpsertWithoutBarsInput = {
     update: XOR<OwnerUpdateWithoutBarsInput, OwnerUncheckedUpdateWithoutBarsInput>
     create: XOR<OwnerCreateWithoutBarsInput, OwnerUncheckedCreateWithoutBarsInput>
@@ -53315,6 +55147,7 @@ export namespace Prisma {
     subscription?: SubscriptionUpdateOneWithoutOwnerNestedInput
     barLicenses?: BarLicenseUpdateManyWithoutOwnerNestedInput
     promoRedemptions?: PromoRedemptionUpdateManyWithoutOwnerNestedInput
+    categoryRequests?: CategoryRequestUpdateManyWithoutOwnerNestedInput
   }
 
   export type OwnerUncheckedUpdateWithoutBarsInput = {
@@ -53331,6 +55164,7 @@ export namespace Prisma {
     subscription?: SubscriptionUncheckedUpdateOneWithoutOwnerNestedInput
     barLicenses?: BarLicenseUncheckedUpdateManyWithoutOwnerNestedInput
     promoRedemptions?: PromoRedemptionUncheckedUpdateManyWithoutOwnerNestedInput
+    categoryRequests?: CategoryRequestUncheckedUpdateManyWithoutOwnerNestedInput
   }
 
   export type OfferingUpsertWithWhereUniqueWithoutBarInput = {
@@ -53768,6 +55602,22 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"FoodOffering"> | Date | string
   }
 
+  export type CategoryRequestUpsertWithWhereUniqueWithoutBarInput = {
+    where: CategoryRequestWhereUniqueInput
+    update: XOR<CategoryRequestUpdateWithoutBarInput, CategoryRequestUncheckedUpdateWithoutBarInput>
+    create: XOR<CategoryRequestCreateWithoutBarInput, CategoryRequestUncheckedCreateWithoutBarInput>
+  }
+
+  export type CategoryRequestUpdateWithWhereUniqueWithoutBarInput = {
+    where: CategoryRequestWhereUniqueInput
+    data: XOR<CategoryRequestUpdateWithoutBarInput, CategoryRequestUncheckedUpdateWithoutBarInput>
+  }
+
+  export type CategoryRequestUpdateManyWithWhereWithoutBarInput = {
+    where: CategoryRequestScalarWhereInput
+    data: XOR<CategoryRequestUpdateManyMutationInput, CategoryRequestUncheckedUpdateManyWithoutBarInput>
+  }
+
   export type BarCreateWithoutOfferingsInput = {
     id?: string
     name: string
@@ -53810,6 +55660,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutOfferingsInput = {
@@ -53854,6 +55705,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutOfferingsInput = {
@@ -53914,6 +55766,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutOfferingsInput = {
@@ -53958,6 +55811,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type BarCreateWithoutEventsInput = {
@@ -54002,6 +55856,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutEventsInput = {
@@ -54046,6 +55901,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutEventsInput = {
@@ -54106,6 +55962,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutEventsInput = {
@@ -54150,6 +56007,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type UserCreateWithoutFavoritesInput = {
@@ -54233,6 +56091,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutFavoritesInput = {
@@ -54277,6 +56136,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutFavoritesInput = {
@@ -54382,6 +56242,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutFavoritesInput = {
@@ -54426,6 +56287,287 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUncheckedUpdateManyWithoutBarNestedInput
+  }
+
+  export type BarCreateWithoutCategoryRequestsInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    address: string
+    city: string
+    cityNormalized: string
+    state: string
+    zipCode: string
+    neighborhood?: string | null
+    neighborhoodNormalized?: string | null
+    latitude: number
+    longitude: number
+    phone?: string | null
+    website?: string | null
+    logo?: string | null
+    photos?: BarCreatephotosInput | string[]
+    hours?: NullableJsonNullValueInput | InputJsonValue
+    isActive?: boolean
+    isPublished?: boolean
+    publishedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profileViews?: number
+    searchAppearances?: number
+    owner: OwnerCreateNestedOneWithoutBarsInput
+    offerings?: OfferingCreateNestedManyWithoutBarInput
+    events?: EventCreateNestedManyWithoutBarInput
+    favorites?: FavoriteCreateNestedManyWithoutBarInput
+    analytics?: BarAnalyticsCreateNestedManyWithoutBarInput
+    clicks?: BarClickCreateNestedManyWithoutBarInput
+    badges?: BarBadgeCreateNestedManyWithoutBarInput
+    barLicenses?: BarLicenseCreateNestedManyWithoutBarInput
+    shiftUsages?: ShiftUsageCreateNestedManyWithoutBarInput
+    inventoryItems?: InventoryItemCreateNestedManyWithoutBarInput
+    inventoryImports?: InventoryImportCreateNestedManyWithoutBarInput
+    inventorySnapshots?: InventorySnapshotCreateNestedManyWithoutBarInput
+    visits?: BarVisitCreateNestedManyWithoutBarInput
+    varianceAlerts?: VarianceAlertCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
+  }
+
+  export type BarUncheckedCreateWithoutCategoryRequestsInput = {
+    id?: string
+    ownerId: string
+    name: string
+    slug: string
+    description?: string | null
+    address: string
+    city: string
+    cityNormalized: string
+    state: string
+    zipCode: string
+    neighborhood?: string | null
+    neighborhoodNormalized?: string | null
+    latitude: number
+    longitude: number
+    phone?: string | null
+    website?: string | null
+    logo?: string | null
+    photos?: BarCreatephotosInput | string[]
+    hours?: NullableJsonNullValueInput | InputJsonValue
+    isActive?: boolean
+    isPublished?: boolean
+    publishedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profileViews?: number
+    searchAppearances?: number
+    offerings?: OfferingUncheckedCreateNestedManyWithoutBarInput
+    events?: EventUncheckedCreateNestedManyWithoutBarInput
+    favorites?: FavoriteUncheckedCreateNestedManyWithoutBarInput
+    analytics?: BarAnalyticsUncheckedCreateNestedManyWithoutBarInput
+    clicks?: BarClickUncheckedCreateNestedManyWithoutBarInput
+    badges?: BarBadgeUncheckedCreateNestedManyWithoutBarInput
+    barLicenses?: BarLicenseUncheckedCreateNestedManyWithoutBarInput
+    shiftUsages?: ShiftUsageUncheckedCreateNestedManyWithoutBarInput
+    inventoryItems?: InventoryItemUncheckedCreateNestedManyWithoutBarInput
+    inventoryImports?: InventoryImportUncheckedCreateNestedManyWithoutBarInput
+    inventorySnapshots?: InventorySnapshotUncheckedCreateNestedManyWithoutBarInput
+    visits?: BarVisitUncheckedCreateNestedManyWithoutBarInput
+    varianceAlerts?: VarianceAlertUncheckedCreateNestedManyWithoutBarInput
+    staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
+    drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
+    foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
+  }
+
+  export type BarCreateOrConnectWithoutCategoryRequestsInput = {
+    where: BarWhereUniqueInput
+    create: XOR<BarCreateWithoutCategoryRequestsInput, BarUncheckedCreateWithoutCategoryRequestsInput>
+  }
+
+  export type OwnerCreateWithoutCategoryRequestsInput = {
+    id?: string
+    email: string
+    name: string
+    password: string
+    phone?: string | null
+    emailVerified?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    allowFreeListings?: boolean
+    role?: $Enums.OwnerRole
+    bars?: BarCreateNestedManyWithoutOwnerInput
+    subscription?: SubscriptionCreateNestedOneWithoutOwnerInput
+    barLicenses?: BarLicenseCreateNestedManyWithoutOwnerInput
+    promoRedemptions?: PromoRedemptionCreateNestedManyWithoutOwnerInput
+  }
+
+  export type OwnerUncheckedCreateWithoutCategoryRequestsInput = {
+    id?: string
+    email: string
+    name: string
+    password: string
+    phone?: string | null
+    emailVerified?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    allowFreeListings?: boolean
+    role?: $Enums.OwnerRole
+    bars?: BarUncheckedCreateNestedManyWithoutOwnerInput
+    subscription?: SubscriptionUncheckedCreateNestedOneWithoutOwnerInput
+    barLicenses?: BarLicenseUncheckedCreateNestedManyWithoutOwnerInput
+    promoRedemptions?: PromoRedemptionUncheckedCreateNestedManyWithoutOwnerInput
+  }
+
+  export type OwnerCreateOrConnectWithoutCategoryRequestsInput = {
+    where: OwnerWhereUniqueInput
+    create: XOR<OwnerCreateWithoutCategoryRequestsInput, OwnerUncheckedCreateWithoutCategoryRequestsInput>
+  }
+
+  export type BarUpsertWithoutCategoryRequestsInput = {
+    update: XOR<BarUpdateWithoutCategoryRequestsInput, BarUncheckedUpdateWithoutCategoryRequestsInput>
+    create: XOR<BarCreateWithoutCategoryRequestsInput, BarUncheckedCreateWithoutCategoryRequestsInput>
+    where?: BarWhereInput
+  }
+
+  export type BarUpdateToOneWithWhereWithoutCategoryRequestsInput = {
+    where?: BarWhereInput
+    data: XOR<BarUpdateWithoutCategoryRequestsInput, BarUncheckedUpdateWithoutCategoryRequestsInput>
+  }
+
+  export type BarUpdateWithoutCategoryRequestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    cityNormalized?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    zipCode?: StringFieldUpdateOperationsInput | string
+    neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: FloatFieldUpdateOperationsInput | number
+    longitude?: FloatFieldUpdateOperationsInput | number
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    photos?: BarUpdatephotosInput | string[]
+    hours?: NullableJsonNullValueInput | InputJsonValue
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileViews?: IntFieldUpdateOperationsInput | number
+    searchAppearances?: IntFieldUpdateOperationsInput | number
+    owner?: OwnerUpdateOneRequiredWithoutBarsNestedInput
+    offerings?: OfferingUpdateManyWithoutBarNestedInput
+    events?: EventUpdateManyWithoutBarNestedInput
+    favorites?: FavoriteUpdateManyWithoutBarNestedInput
+    analytics?: BarAnalyticsUpdateManyWithoutBarNestedInput
+    clicks?: BarClickUpdateManyWithoutBarNestedInput
+    badges?: BarBadgeUpdateManyWithoutBarNestedInput
+    barLicenses?: BarLicenseUpdateManyWithoutBarNestedInput
+    shiftUsages?: ShiftUsageUpdateManyWithoutBarNestedInput
+    inventoryItems?: InventoryItemUpdateManyWithoutBarNestedInput
+    inventoryImports?: InventoryImportUpdateManyWithoutBarNestedInput
+    inventorySnapshots?: InventorySnapshotUpdateManyWithoutBarNestedInput
+    visits?: BarVisitUpdateManyWithoutBarNestedInput
+    varianceAlerts?: VarianceAlertUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
+  }
+
+  export type BarUncheckedUpdateWithoutCategoryRequestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    cityNormalized?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    zipCode?: StringFieldUpdateOperationsInput | string
+    neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: FloatFieldUpdateOperationsInput | number
+    longitude?: FloatFieldUpdateOperationsInput | number
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    photos?: BarUpdatephotosInput | string[]
+    hours?: NullableJsonNullValueInput | InputJsonValue
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profileViews?: IntFieldUpdateOperationsInput | number
+    searchAppearances?: IntFieldUpdateOperationsInput | number
+    offerings?: OfferingUncheckedUpdateManyWithoutBarNestedInput
+    events?: EventUncheckedUpdateManyWithoutBarNestedInput
+    favorites?: FavoriteUncheckedUpdateManyWithoutBarNestedInput
+    analytics?: BarAnalyticsUncheckedUpdateManyWithoutBarNestedInput
+    clicks?: BarClickUncheckedUpdateManyWithoutBarNestedInput
+    badges?: BarBadgeUncheckedUpdateManyWithoutBarNestedInput
+    barLicenses?: BarLicenseUncheckedUpdateManyWithoutBarNestedInput
+    shiftUsages?: ShiftUsageUncheckedUpdateManyWithoutBarNestedInput
+    inventoryItems?: InventoryItemUncheckedUpdateManyWithoutBarNestedInput
+    inventoryImports?: InventoryImportUncheckedUpdateManyWithoutBarNestedInput
+    inventorySnapshots?: InventorySnapshotUncheckedUpdateManyWithoutBarNestedInput
+    visits?: BarVisitUncheckedUpdateManyWithoutBarNestedInput
+    varianceAlerts?: VarianceAlertUncheckedUpdateManyWithoutBarNestedInput
+    staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
+    drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
+    foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
+  }
+
+  export type OwnerUpsertWithoutCategoryRequestsInput = {
+    update: XOR<OwnerUpdateWithoutCategoryRequestsInput, OwnerUncheckedUpdateWithoutCategoryRequestsInput>
+    create: XOR<OwnerCreateWithoutCategoryRequestsInput, OwnerUncheckedCreateWithoutCategoryRequestsInput>
+    where?: OwnerWhereInput
+  }
+
+  export type OwnerUpdateToOneWithWhereWithoutCategoryRequestsInput = {
+    where?: OwnerWhereInput
+    data: XOR<OwnerUpdateWithoutCategoryRequestsInput, OwnerUncheckedUpdateWithoutCategoryRequestsInput>
+  }
+
+  export type OwnerUpdateWithoutCategoryRequestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    allowFreeListings?: BoolFieldUpdateOperationsInput | boolean
+    role?: EnumOwnerRoleFieldUpdateOperationsInput | $Enums.OwnerRole
+    bars?: BarUpdateManyWithoutOwnerNestedInput
+    subscription?: SubscriptionUpdateOneWithoutOwnerNestedInput
+    barLicenses?: BarLicenseUpdateManyWithoutOwnerNestedInput
+    promoRedemptions?: PromoRedemptionUpdateManyWithoutOwnerNestedInput
+  }
+
+  export type OwnerUncheckedUpdateWithoutCategoryRequestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    allowFreeListings?: BoolFieldUpdateOperationsInput | boolean
+    role?: EnumOwnerRoleFieldUpdateOperationsInput | $Enums.OwnerRole
+    bars?: BarUncheckedUpdateManyWithoutOwnerNestedInput
+    subscription?: SubscriptionUncheckedUpdateOneWithoutOwnerNestedInput
+    barLicenses?: BarLicenseUncheckedUpdateManyWithoutOwnerNestedInput
+    promoRedemptions?: PromoRedemptionUncheckedUpdateManyWithoutOwnerNestedInput
   }
 
   export type PromoRedemptionCreateWithoutPromoCodeInput = {
@@ -54513,6 +56655,7 @@ export namespace Prisma {
     bars?: BarCreateNestedManyWithoutOwnerInput
     subscription?: SubscriptionCreateNestedOneWithoutOwnerInput
     barLicenses?: BarLicenseCreateNestedManyWithoutOwnerInput
+    categoryRequests?: CategoryRequestCreateNestedManyWithoutOwnerInput
   }
 
   export type OwnerUncheckedCreateWithoutPromoRedemptionsInput = {
@@ -54529,6 +56672,7 @@ export namespace Prisma {
     bars?: BarUncheckedCreateNestedManyWithoutOwnerInput
     subscription?: SubscriptionUncheckedCreateNestedOneWithoutOwnerInput
     barLicenses?: BarLicenseUncheckedCreateNestedManyWithoutOwnerInput
+    categoryRequests?: CategoryRequestUncheckedCreateNestedManyWithoutOwnerInput
   }
 
   export type OwnerCreateOrConnectWithoutPromoRedemptionsInput = {
@@ -54600,6 +56744,7 @@ export namespace Prisma {
     bars?: BarUpdateManyWithoutOwnerNestedInput
     subscription?: SubscriptionUpdateOneWithoutOwnerNestedInput
     barLicenses?: BarLicenseUpdateManyWithoutOwnerNestedInput
+    categoryRequests?: CategoryRequestUpdateManyWithoutOwnerNestedInput
   }
 
   export type OwnerUncheckedUpdateWithoutPromoRedemptionsInput = {
@@ -54616,6 +56761,7 @@ export namespace Prisma {
     bars?: BarUncheckedUpdateManyWithoutOwnerNestedInput
     subscription?: SubscriptionUncheckedUpdateOneWithoutOwnerNestedInput
     barLicenses?: BarLicenseUncheckedUpdateManyWithoutOwnerNestedInput
+    categoryRequests?: CategoryRequestUncheckedUpdateManyWithoutOwnerNestedInput
   }
 
   export type BarCreateWithoutAnalyticsInput = {
@@ -54660,6 +56806,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutAnalyticsInput = {
@@ -54704,6 +56851,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutAnalyticsInput = {
@@ -54764,6 +56912,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutAnalyticsInput = {
@@ -54808,6 +56957,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type BarCreateWithoutClicksInput = {
@@ -54852,6 +57002,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutClicksInput = {
@@ -54896,6 +57047,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutClicksInput = {
@@ -54956,6 +57108,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutClicksInput = {
@@ -55000,6 +57153,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type BarBadgeCreateWithoutBadgeInput = {
@@ -55086,6 +57240,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutBadgesInput = {
@@ -55130,6 +57285,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutBadgesInput = {
@@ -55227,6 +57383,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutBadgesInput = {
@@ -55271,6 +57428,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type BadgeUpsertWithoutBarBadgesInput = {
@@ -55358,6 +57516,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutInventoryItemsInput = {
@@ -55402,6 +57561,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutInventoryItemsInput = {
@@ -55580,6 +57740,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutInventoryItemsInput = {
@@ -55624,6 +57785,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type InventorySnapshotItemUpsertWithWhereUniqueWithoutInventoryItemInput = {
@@ -55768,6 +57930,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutInventoryImportsInput = {
@@ -55812,6 +57975,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutInventoryImportsInput = {
@@ -55911,6 +58075,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutInventoryImportsInput = {
@@ -55955,6 +58120,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type UserUpsertWithoutInventoryImportsInput = {
@@ -56044,6 +58210,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutShiftUsagesInput = {
@@ -56088,6 +58255,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutShiftUsagesInput = {
@@ -56211,6 +58379,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutShiftUsagesInput = {
@@ -56255,6 +58424,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type UserUpsertWithoutShiftUsagesInput = {
@@ -56492,6 +58662,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutInventorySnapshotsInput = {
@@ -56536,6 +58707,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutInventorySnapshotsInput = {
@@ -56661,6 +58833,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutInventorySnapshotsInput = {
@@ -56705,6 +58878,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type UserUpsertWithoutInventorySnapshotsInput = {
@@ -57122,6 +59296,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutVarianceAlertsInput = {
@@ -57166,6 +59341,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutVarianceAlertsInput = {
@@ -57263,6 +59439,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutVarianceAlertsInput = {
@@ -57307,6 +59484,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type InventoryItemUpsertWithoutVarianceAlertsInput = {
@@ -57394,6 +59572,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutBarLicensesInput = {
@@ -57438,6 +59617,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutBarLicensesInput = {
@@ -57459,6 +59639,7 @@ export namespace Prisma {
     bars?: BarCreateNestedManyWithoutOwnerInput
     subscription?: SubscriptionCreateNestedOneWithoutOwnerInput
     promoRedemptions?: PromoRedemptionCreateNestedManyWithoutOwnerInput
+    categoryRequests?: CategoryRequestCreateNestedManyWithoutOwnerInput
   }
 
   export type OwnerUncheckedCreateWithoutBarLicensesInput = {
@@ -57475,6 +59656,7 @@ export namespace Prisma {
     bars?: BarUncheckedCreateNestedManyWithoutOwnerInput
     subscription?: SubscriptionUncheckedCreateNestedOneWithoutOwnerInput
     promoRedemptions?: PromoRedemptionUncheckedCreateNestedManyWithoutOwnerInput
+    categoryRequests?: CategoryRequestUncheckedCreateNestedManyWithoutOwnerInput
   }
 
   export type OwnerCreateOrConnectWithoutBarLicensesInput = {
@@ -57535,6 +59717,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutBarLicensesInput = {
@@ -57579,6 +59762,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type OwnerUpsertWithoutBarLicensesInput = {
@@ -57606,6 +59790,7 @@ export namespace Prisma {
     bars?: BarUpdateManyWithoutOwnerNestedInput
     subscription?: SubscriptionUpdateOneWithoutOwnerNestedInput
     promoRedemptions?: PromoRedemptionUpdateManyWithoutOwnerNestedInput
+    categoryRequests?: CategoryRequestUpdateManyWithoutOwnerNestedInput
   }
 
   export type OwnerUncheckedUpdateWithoutBarLicensesInput = {
@@ -57622,6 +59807,7 @@ export namespace Prisma {
     bars?: BarUncheckedUpdateManyWithoutOwnerNestedInput
     subscription?: SubscriptionUncheckedUpdateOneWithoutOwnerNestedInput
     promoRedemptions?: PromoRedemptionUncheckedUpdateManyWithoutOwnerNestedInput
+    categoryRequests?: CategoryRequestUncheckedUpdateManyWithoutOwnerNestedInput
   }
 
   export type BarCreateWithoutVisitsInput = {
@@ -57666,6 +59852,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutVisitsInput = {
@@ -57710,6 +59897,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutVisitsInput = {
@@ -57809,6 +59997,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutVisitsInput = {
@@ -57853,6 +60042,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type UserUpsertWithoutVisitsInput = {
@@ -57942,6 +60132,7 @@ export namespace Prisma {
     varianceAlerts?: VarianceAlertCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutStaticOfferingsInput = {
@@ -57986,6 +60177,7 @@ export namespace Prisma {
     varianceAlerts?: VarianceAlertUncheckedCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutStaticOfferingsInput = {
@@ -58046,6 +60238,7 @@ export namespace Prisma {
     varianceAlerts?: VarianceAlertUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutStaticOfferingsInput = {
@@ -58090,6 +60283,7 @@ export namespace Prisma {
     varianceAlerts?: VarianceAlertUncheckedUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type BarCreateWithoutDrinkSpecialsInput = {
@@ -58134,6 +60328,7 @@ export namespace Prisma {
     varianceAlerts?: VarianceAlertCreateNestedManyWithoutBarInput
     staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutDrinkSpecialsInput = {
@@ -58178,6 +60373,7 @@ export namespace Prisma {
     varianceAlerts?: VarianceAlertUncheckedCreateNestedManyWithoutBarInput
     staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
     foodOfferings?: FoodOfferingUncheckedCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutDrinkSpecialsInput = {
@@ -58238,6 +60434,7 @@ export namespace Prisma {
     varianceAlerts?: VarianceAlertUpdateManyWithoutBarNestedInput
     staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutDrinkSpecialsInput = {
@@ -58282,6 +60479,7 @@ export namespace Prisma {
     varianceAlerts?: VarianceAlertUncheckedUpdateManyWithoutBarNestedInput
     staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type BarCreateWithoutFoodOfferingsInput = {
@@ -58326,6 +60524,7 @@ export namespace Prisma {
     varianceAlerts?: VarianceAlertCreateNestedManyWithoutBarInput
     staticOfferings?: StaticOfferingCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestCreateNestedManyWithoutBarInput
   }
 
   export type BarUncheckedCreateWithoutFoodOfferingsInput = {
@@ -58370,6 +60569,7 @@ export namespace Prisma {
     varianceAlerts?: VarianceAlertUncheckedCreateNestedManyWithoutBarInput
     staticOfferings?: StaticOfferingUncheckedCreateNestedManyWithoutBarInput
     drinkSpecials?: DrinkSpecialUncheckedCreateNestedManyWithoutBarInput
+    categoryRequests?: CategoryRequestUncheckedCreateNestedManyWithoutBarInput
   }
 
   export type BarCreateOrConnectWithoutFoodOfferingsInput = {
@@ -58430,6 +60630,7 @@ export namespace Prisma {
     varianceAlerts?: VarianceAlertUpdateManyWithoutBarNestedInput
     staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutFoodOfferingsInput = {
@@ -58474,6 +60675,7 @@ export namespace Prisma {
     varianceAlerts?: VarianceAlertUncheckedUpdateManyWithoutBarNestedInput
     staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type AccountCreateManyUserInput = {
@@ -58778,6 +60980,18 @@ export namespace Prisma {
     redeemedAt?: Date | string
   }
 
+  export type CategoryRequestCreateManyOwnerInput = {
+    id?: string
+    barId: string
+    requestedByEmail: string
+    requestedByName?: string | null
+    category: string
+    status?: $Enums.CategoryRequestStatus
+    reviewedAt?: Date | string | null
+    reviewedByEmail?: string | null
+    createdAt?: Date | string
+  }
+
   export type BarUpdateWithoutOwnerInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -58820,6 +61034,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateWithoutOwnerInput = {
@@ -58864,6 +61079,7 @@ export namespace Prisma {
     staticOfferings?: StaticOfferingUncheckedUpdateManyWithoutBarNestedInput
     drinkSpecials?: DrinkSpecialUncheckedUpdateManyWithoutBarNestedInput
     foodOfferings?: FoodOfferingUncheckedUpdateManyWithoutBarNestedInput
+    categoryRequests?: CategoryRequestUncheckedUpdateManyWithoutBarNestedInput
   }
 
   export type BarUncheckedUpdateManyWithoutOwnerInput = {
@@ -58946,6 +61162,42 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     promoCodeId?: StringFieldUpdateOperationsInput | string
     redeemedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CategoryRequestUpdateWithoutOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    requestedByEmail?: StringFieldUpdateOperationsInput | string
+    requestedByName?: NullableStringFieldUpdateOperationsInput | string | null
+    category?: StringFieldUpdateOperationsInput | string
+    status?: EnumCategoryRequestStatusFieldUpdateOperationsInput | $Enums.CategoryRequestStatus
+    reviewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    reviewedByEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bar?: BarUpdateOneRequiredWithoutCategoryRequestsNestedInput
+  }
+
+  export type CategoryRequestUncheckedUpdateWithoutOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    barId?: StringFieldUpdateOperationsInput | string
+    requestedByEmail?: StringFieldUpdateOperationsInput | string
+    requestedByName?: NullableStringFieldUpdateOperationsInput | string | null
+    category?: StringFieldUpdateOperationsInput | string
+    status?: EnumCategoryRequestStatusFieldUpdateOperationsInput | $Enums.CategoryRequestStatus
+    reviewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    reviewedByEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CategoryRequestUncheckedUpdateManyWithoutOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    barId?: StringFieldUpdateOperationsInput | string
+    requestedByEmail?: StringFieldUpdateOperationsInput | string
+    requestedByName?: NullableStringFieldUpdateOperationsInput | string | null
+    category?: StringFieldUpdateOperationsInput | string
+    status?: EnumCategoryRequestStatusFieldUpdateOperationsInput | $Enums.CategoryRequestStatus
+    reviewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    reviewedByEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type OfferingCreateManyBarInput = {
@@ -59140,6 +61392,18 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type CategoryRequestCreateManyBarInput = {
+    id?: string
+    ownerId: string
+    requestedByEmail: string
+    requestedByName?: string | null
+    category: string
+    status?: $Enums.CategoryRequestStatus
+    reviewedAt?: Date | string | null
+    reviewedByEmail?: string | null
+    createdAt?: Date | string
   }
 
   export type OfferingUpdateWithoutBarInput = {
@@ -59734,6 +61998,42 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CategoryRequestUpdateWithoutBarInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    requestedByEmail?: StringFieldUpdateOperationsInput | string
+    requestedByName?: NullableStringFieldUpdateOperationsInput | string | null
+    category?: StringFieldUpdateOperationsInput | string
+    status?: EnumCategoryRequestStatusFieldUpdateOperationsInput | $Enums.CategoryRequestStatus
+    reviewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    reviewedByEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    owner?: OwnerUpdateOneRequiredWithoutCategoryRequestsNestedInput
+  }
+
+  export type CategoryRequestUncheckedUpdateWithoutBarInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    requestedByEmail?: StringFieldUpdateOperationsInput | string
+    requestedByName?: NullableStringFieldUpdateOperationsInput | string | null
+    category?: StringFieldUpdateOperationsInput | string
+    status?: EnumCategoryRequestStatusFieldUpdateOperationsInput | $Enums.CategoryRequestStatus
+    reviewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    reviewedByEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CategoryRequestUncheckedUpdateManyWithoutBarInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    requestedByEmail?: StringFieldUpdateOperationsInput | string
+    requestedByName?: NullableStringFieldUpdateOperationsInput | string | null
+    category?: StringFieldUpdateOperationsInput | string
+    status?: EnumCategoryRequestStatusFieldUpdateOperationsInput | $Enums.CategoryRequestStatus
+    reviewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    reviewedByEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PromoRedemptionCreateManyPromoCodeInput = {

@@ -164,9 +164,9 @@ export default function AnalyticsDashboard({ barId }: { barId: string }) {
               <h3 className="text-sm font-semibold text-slate-300">{trend.dayName.slice(0, 3)}</h3>
               <p className="mt-3 text-2xl font-bold text-emerald-400">{trend.clicks}</p>
               <div className="mt-3 space-y-1 text-xs text-slate-400">
-                <p>🔍 <span className="text-blue-300">{trend.bySource.search}</span></p>
-                <p>📍 <span className="text-amber-300">{trend.bySource.map}</span></p>
-                <p>❤️ <span className="text-red-300">{trend.bySource.favorites}</span></p>
+                <p>Search <span className="text-blue-300">{trend.bySource.search}</span></p>
+                <p>Map <span className="text-amber-300">{trend.bySource.map}</span></p>
+                <p>Favorites <span className="text-red-300">{trend.bySource.favorites}</span></p>
               </div>
             </div>
           ))}
@@ -219,9 +219,9 @@ export default function AnalyticsDashboard({ barId }: { barId: string }) {
                       {dayName}, {date.toLocaleDateString()}
                     </p>
                     <div className="mt-1 flex gap-4 text-sm text-slate-400">
-                      <span className="flex items-center gap-1"><span className="text-blue-300">👁️ {day.profileViews}</span></span>
-                      <span className="flex items-center gap-1"><span className="text-emerald-300">🔗 {day.profileClicks}</span></span>
-                      <span className="flex items-center gap-1"><span className="text-purple-300">🔍 {day.searchAppears}</span></span>
+                      <span className="flex items-center gap-1"><span className="text-blue-300">Views {day.profileViews}</span></span>
+                      <span className="flex items-center gap-1"><span className="text-emerald-300">Clicks {day.profileClicks}</span></span>
+                      <span className="flex items-center gap-1"><span className="text-purple-300">Search {day.searchAppears}</span></span>
                     </div>
                   </div>
                   <div className="text-right">
@@ -237,11 +237,11 @@ export default function AnalyticsDashboard({ barId }: { barId: string }) {
 
       {/* Insights and recommendations */}
       <div className="rounded-2xl border border-emerald-500/40 bg-linear-to-br from-emerald-500/15 to-emerald-600/5 backdrop-blur-md p-6 shadow-lg">
-        <h2 className="text-lg font-semibold text-emerald-200">Insights & Recommendations</h2>
-        <ul className="mt-4 space-y-2 text-sm text-emerald-100/90">
+        <h2 className="text-lg font-semibold text-emerald-300">Insights & Recommendations</h2>
+        <ul className="mt-4 space-y-2 text-sm text-slate-200">
           {analytics.dayOfWeekTrends.some((d) => d.clicks === 0) && (
             <li>
-              📊 Consider promoting your bar on{" "}
+              Consider promoting your bar on{" "}
               {analytics.dayOfWeekTrends
                 .filter((d) => d.clicks === 0)
                 .map((d) => d.dayName)
@@ -251,20 +251,20 @@ export default function AnalyticsDashboard({ barId }: { barId: string }) {
           )}
           {analytics.topSearchQueries.length > 0 && (
             <li>
-              🎯 Users are searching for &quot;{analytics.topSearchQueries[0].query}&quot; the most. Make sure your offerings
+              Users are searching for &quot;{analytics.topSearchQueries[0].query}&quot; the most. Make sure your offerings
               highlight this.
             </li>
           )}
           {analytics.summary.bestDay && (
             <li>
-              🌟 {["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][
+              {["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][
                 analytics.summary.bestDay.dayOfWeek
               ]}{" "}
               is your best day! Consider scheduling special events on this day.
             </li>
           )}
           {analytics.summary.averageClicksPerDay < 1 && (
-            <li>💡 Engagement is low. Update your offerings and consider promoting your bar on social media.</li>
+            <li>Engagement is low. Update your offerings and consider promoting your bar on social media.</li>
           )}
         </ul>
       </div>

@@ -6,9 +6,10 @@ export default async function AdminOverviewPage() {
     prisma.subscription.count({ where: { status: "ACTIVE" } }),
     prisma.bar.count(),
   ]);
+  const pendingApprovals = await prisma.categoryRequest.count({ where: { status: "PENDING" } });
 
   return (
-    <section className="grid gap-4 sm:grid-cols-3">
+    <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       <div className="glass-panel rounded-2xl p-5">
         <div className="text-slate-300 text-sm">Owners</div>
         <div className="text-3xl font-semibold">{ownersCount}</div>
@@ -20,6 +21,13 @@ export default async function AdminOverviewPage() {
       <div className="glass-panel rounded-2xl p-5">
         <div className="text-slate-300 text-sm">Bars</div>
         <div className="text-3xl font-semibold">{barsCount}</div>
+      </div>
+      <div className="glass-panel rounded-2xl p-5">
+        <div className="text-slate-300 text-sm">Pending approvals</div>
+        <div className="text-3xl font-semibold">{pendingApprovals}</div>
+        <a className="text-xs text-cyan-200 hover:text-cyan-100 mt-2 inline-block" href="/admin/approvals">
+          Review requests
+        </a>
       </div>
     </section>
   );

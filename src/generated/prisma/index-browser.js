@@ -284,6 +284,19 @@ exports.Prisma.ActivityCategoryScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.CategoryRequestScalarFieldEnum = {
+  id: 'id',
+  barId: 'barId',
+  ownerId: 'ownerId',
+  requestedByEmail: 'requestedByEmail',
+  requestedByName: 'requestedByName',
+  category: 'category',
+  status: 'status',
+  reviewedAt: 'reviewedAt',
+  reviewedByEmail: 'reviewedByEmail',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.PromoCodeScalarFieldEnum = {
   id: 'id',
   code: 'code',
@@ -572,6 +585,12 @@ exports.Recurrence = exports.$Enums.Recurrence = {
   MONTHLY: 'MONTHLY'
 };
 
+exports.CategoryRequestStatus = exports.$Enums.CategoryRequestStatus = {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+};
+
 exports.BadgeTier = exports.$Enums.BadgeTier = {
   BRONZE: 'BRONZE',
   SILVER: 'SILVER',
@@ -600,6 +619,7 @@ exports.Prisma.ModelName = {
   Event: 'Event',
   Favorite: 'Favorite',
   ActivityCategory: 'ActivityCategory',
+  CategoryRequest: 'CategoryRequest',
   PromoCode: 'PromoCode',
   PromoRedemption: 'PromoRedemption',
   BarAnalytics: 'BarAnalytics',

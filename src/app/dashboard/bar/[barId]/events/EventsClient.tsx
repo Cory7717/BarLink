@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Navigation from "@/components/Navigation";
 import Link from "next/link";
 import { DAYS_OF_WEEK } from "@/lib/constants";
+import { DEFAULT_ACTIVITY_CATEGORIES } from "@/lib/activityCategories";
 
 type EventItem = {
   id: string;
@@ -32,15 +33,10 @@ type EventCategory = {
   icon?: string | null;
 };
 
-const FALLBACK_CATEGORIES: EventCategory[] = [
-  { name: "trivia", displayName: "Trivia" },
-  { name: "poker", displayName: "Poker" },
-  { name: "karaoke", displayName: "Karaoke" },
-  { name: "live-music", displayName: "Live Music" },
-  { name: "dj", displayName: "DJ Night" },
-  { name: "happy-hour", displayName: "Happy Hour" },
-  { name: "watch-party", displayName: "Sports Watch Party" },
-];
+const FALLBACK_CATEGORIES: EventCategory[] = DEFAULT_ACTIVITY_CATEGORIES.map((category) => ({
+  name: category.name,
+  displayName: category.displayName,
+}));
 
 function toSlug(value: string) {
   return value
@@ -103,6 +99,7 @@ export default function EventsClient({ bar }: EventsClientProps) {
   const [error, setError] = useState<string | null>(null);
   const [editing, setEditing] = useState<EventItem | null>(null);
   const [categories, setCategories] = useState<EventCategory[]>([]);
+  const [categoryStatus, setCategoryStatus] = useState<string | null>(null);
   const [form, setForm] = useState({
     title: "",
     description: "",
@@ -182,6 +179,7 @@ export default function EventsClient({ bar }: EventsClientProps) {
     setIsModalOpen(false);
     setEditing(null);
     setError(null);
+    setCategoryStatus(null);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -221,6 +219,7 @@ export default function EventsClient({ bar }: EventsClientProps) {
       } else {
         setEvents((prev) => [...prev, data]);
       }
+      setActiveDay(dayFromDate((data.startDate as string) || form.startDate));
       closeModal();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to save event");
@@ -240,6 +239,29 @@ export default function EventsClient({ bar }: EventsClientProps) {
       setError(err instanceof Error ? err.message : "Failed to delete");
     } finally {
       setSaving(false);
+    }
+  };
+
+  const requestCategory = async () => {
+    const candidate = form.customCategory || form.title;
+    if (!candidate.trim()) {
+      setCategoryStatus("Add a custom category name before requesting.");
+      return;
+    }
+    setCategoryStatus("Sending request...");
+    try {
+      const res = await fetch("/api/request-category", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ barId: bar.id, category: candidate.trim() }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to send request");
+      }
+      setCategoryStatus("Request sent to admin.");
+    } catch (err) {
+      setCategoryStatus(err instanceof Error ? err.message : "Failed to send request");
     }
   };
 
@@ -394,6 +416,16 @@ export default function EventsClient({ bar }: EventsClientProps) {
                       className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white"
                       placeholder="e.g., Poker Night"
                     />
+                    <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-slate-300">
+                      <button
+                        type="button"
+                        onClick={requestCategory}
+                        className="btn-secondary px-3 py-1 text-xs"
+                      >
+                        Request new category
+                      </button>
+                      {categoryStatus && <span>{categoryStatus}</span>}
+                    </div>
                   </div>
                 )}
               </div>
