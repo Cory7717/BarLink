@@ -51,7 +51,7 @@ Sent from BarLink Contact Form
     const SMTP_HOST = process.env.SMTP_HOST || 'smtp.gmail.com';
     const SMTP_PORT = process.env.SMTP_PORT || '587';
     const SMTP_USER = process.env.SMTP_USER;
-    const SMTP_PASS = process.env.SMTP_PASS;
+    const SMTP_PASS = process.env.SMTP_PASS || process.env.SMTP_PASSWORD;
     const FROM_EMAIL = process.env.SMTP_FROM || SMTP_USER || 'noreply@barlink.com';
 
     if (SMTP_USER && SMTP_PASS) {

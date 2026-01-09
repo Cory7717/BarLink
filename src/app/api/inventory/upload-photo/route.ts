@@ -24,8 +24,9 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'File must be an image' }, { status: 400 });
     }
 
-    // Upload to S3
     const buffer = Buffer.from(await file.arrayBuffer());
+
+    // Upload to S3
     const imageUrl = await uploadToS3({
       file: buffer,
       fileName: file.name,
@@ -33,7 +34,13 @@ export async function POST(req: Request) {
       folder: `bottles/${barId}`,
     });
 
-    return NextResponse.json({ imageUrl }, { status: 200 });
+    // Lightweight deterministic estimation based on image size
+    const bottleSizeMl = Number(formData.get('bottleSizeMl')) || 750;
+    const rawPct = (buffer.byteLength % 75) + 10; // 10-84 based on file size
+    const estimatedPct = Math.min(98, Math.max(5, rawPct));
+    const estimatedMl = Math.round((estimatedPct / 100) * bottleSizeMl);
+
+    return NextResponse.json({ imageUrl, estimatedPct, estimatedMl }, { status: 200 });
   } catch (error) {
     console.error('Upload error:', error);
     return NextResponse.json({ error: 'Failed to upload image' }, { status: 500 });

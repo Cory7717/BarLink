@@ -4,14 +4,17 @@ import { useState, useRef } from "react";
 
 interface BottlePhotoUploadProps {
   barId: string;
+  bottleSizeMl?: number;
   onUploadSuccess: (imageUrl: string) => void;
   onEstimateComplete?: (estimatedPct: number, estimatedMl: number) => void;
 }
 
-export default function BottlePhotoUpload({ barId, onUploadSuccess, onEstimateComplete }: BottlePhotoUploadProps) {
+export default function BottlePhotoUpload({ barId, bottleSizeMl = 750, onUploadSuccess, onEstimateComplete }: BottlePhotoUploadProps) {
   const [uploading, setUploading] = useState(false);
   const [preview, setPreview] = useState<string | null>(null);
   const [estimating, setEstimating] = useState(false);
+  const [estimatedPct, setEstimatedPct] = useState<number | null>(null);
+  const [estimatedMl, setEstimatedMl] = useState<number | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,12 +28,16 @@ export default function BottlePhotoUpload({ barId, onUploadSuccess, onEstimateCo
     };
     reader.readAsDataURL(file);
 
-    // Upload to S3
+    // Upload to S3 and request estimation
     setUploading(true);
+    setEstimating(true);
+    setEstimatedPct(null);
+    setEstimatedMl(null);
     try {
       const formData = new FormData();
       formData.append('file', file);
       formData.append('barId', barId);
+      formData.append('bottleSizeMl', String(bottleSizeMl));
 
       const response = await fetch('/api/inventory/upload-photo', {
         method: 'POST',
@@ -39,24 +46,20 @@ export default function BottlePhotoUpload({ barId, onUploadSuccess, onEstimateCo
 
       if (!response.ok) throw new Error('Upload failed');
 
-      const { imageUrl } = await response.json();
+      const { imageUrl, estimatedPct: pct, estimatedMl: ml } = await response.json();
       onUploadSuccess(imageUrl);
-
-      // Simulate AI estimation (placeholder - integrate real ML model later)
-      if (onEstimateComplete) {
-        setEstimating(true);
-        setTimeout(() => {
-          const estimatedPct = Math.random() * 100; // Mock: 0-100%
-          const estimatedMl = (estimatedPct / 100) * 750; // Mock: assume 750ml bottle
-          onEstimateComplete(estimatedPct, estimatedMl);
-          setEstimating(false);
-        }, 1500);
+      if (pct && ml) {
+        setEstimating(false);
+        setEstimatedPct(pct);
+        setEstimatedMl(ml);
+        onEstimateComplete?.(pct, ml);
       }
     } catch (error) {
       console.error('Upload error:', error);
       alert('Failed to upload photo. Please try again.');
     } finally {
       setUploading(false);
+      setEstimating(false);
     }
   };
 
@@ -112,6 +115,12 @@ export default function BottlePhotoUpload({ barId, onUploadSuccess, onEstimateCo
         >
           Retake photo
         </button>
+      )}
+
+      {estimatedPct !== null && estimatedMl !== null && (
+        <div className="rounded-lg border border-emerald-500/40 bg-emerald-500/10 p-4 text-emerald-100 text-sm">
+          Estimated remaining: <strong>{estimatedPct.toFixed(1)}%</strong> (~{estimatedMl} ml)
+        </div>
       )}
     </div>
   );

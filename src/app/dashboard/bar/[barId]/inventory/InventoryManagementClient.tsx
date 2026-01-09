@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import InventoryImport from "@/components/InventoryImport";
 import ShiftUsageRecorder from "@/components/ShiftUsageRecorder";
 import InventorySnapshot from "@/components/InventorySnapshot";
 import VarianceAlerts from "@/components/VarianceAlerts";
 import PDFExport from "@/components/PDFExport";
+import BottlePhotoUpload from "@/components/BottlePhotoUpload";
 
 interface InventoryItem {
   id: string;
@@ -25,8 +26,12 @@ interface InventoryManagementClientProps {
 
 export default function InventoryManagementClient({ barId, barSlug, initialItems }: InventoryManagementClientProps) {
   const [items, setItems] = useState(initialItems);
-  const [activeTab, setActiveTab] = useState<'items' | 'import' | 'shift' | 'snapshot' | 'alerts' | 'export'>('items');
+  const [activeTab, setActiveTab] = useState<'items' | 'import' | 'shift' | 'snapshot' | 'alerts' | 'export' | 'photo'>('items');
   const [refreshKey, setRefreshKey] = useState(0);
+  const [selectedItemId, setSelectedItemId] = useState(initialItems[0]?.id || '');
+  const [lastEstimate, setLastEstimate] = useState<{ pct: number; ml: number } | null>(null);
+
+  const selectedItem = useMemo(() => items.find((i) => i.id === selectedItemId), [items, selectedItemId]);
 
   const handleDataChange = () => {
     setRefreshKey(prev => prev + 1);
@@ -95,6 +100,47 @@ export default function InventoryManagementClient({ barId, barSlug, initialItems
       case 'alerts':
         return <VarianceAlerts barId={barId} key={refreshKey} />;
 
+      case 'photo':
+        return (
+          <div className="rounded-xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg space-y-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-xl font-semibold text-white">Photo Estimator</h2>
+                <p className="text-sm text-slate-400">Snap a bottle photo to estimate remaining volume.</p>
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label className="block text-sm text-slate-300">Select bottle</label>
+              <select
+                value={selectedItemId}
+                onChange={(e) => setSelectedItemId(e.target.value)}
+                className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-white"
+                aria-label="Select bottle for photo estimation"
+              >
+                {items.map((item) => (
+                  <option key={item.id} value={item.id}>
+                    {item.name} ({item.bottleSizeMl}ml)
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <BottlePhotoUpload
+              barId={barId}
+              bottleSizeMl={selectedItem?.bottleSizeMl || 750}
+              onUploadSuccess={() => {}}
+              onEstimateComplete={(pct, ml) => setLastEstimate({ pct, ml })}
+            />
+
+            {lastEstimate && (
+              <div className="rounded-lg border border-emerald-500/40 bg-emerald-500/10 p-4 text-emerald-100 text-sm">
+                Estimated remaining for {selectedItem?.name || 'bottle'}: <strong>{lastEstimate.pct.toFixed(1)}%</strong> (~{lastEstimate.ml} ml)
+              </div>
+            )}
+          </div>
+        );
+
       case 'export':
         return <PDFExport barId={barId} barSlug={barSlug} />;
 
@@ -146,6 +192,16 @@ export default function InventoryManagementClient({ barId, barSlug, initialItems
           }`}
         >
           📸 Snapshot
+        </button>
+        <button
+          onClick={() => setActiveTab('photo')}
+          className={`rounded-lg px-4 py-2 text-sm font-semibold transition-all whitespace-nowrap ${
+            activeTab === 'photo'
+              ? 'bg-linear-to-r from-pink-500 to-pink-600 text-white'
+              : 'border border-slate-700 bg-slate-800/40 text-white hover:bg-slate-700'
+          }`}
+        >
+          🤖 Photo Estimate
         </button>
         <button
           onClick={() => setActiveTab('alerts')}

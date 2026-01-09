@@ -61,7 +61,7 @@ export async function GET(req: Request) {
     }
 
     // Find bars with matching offerings
-    const bars = await prisma.bar.findMany({
+    let bars = await prisma.bar.findMany({
       where: {
         ...barFilter,
         OR: [
@@ -108,6 +108,21 @@ export async function GET(req: Request) {
       },
       take: 50,
     }) as BarWithRelations[];
+
+    // Fallback: if no matches, still return published bars (so new bars appear even without offerings/events)
+    if (bars.length === 0) {
+      bars = await prisma.bar.findMany({
+        where: {
+          ...barFilter,
+          ...(city ? { cityNormalized: city.toLowerCase().trim() } : {}),
+        },
+        include: {
+          offerings: true,
+          events: true,
+        },
+        take: 50,
+      }) as BarWithRelations[];
+    }
 
     // Increment search appearance count
     await prisma.bar.updateMany({
