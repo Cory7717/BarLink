@@ -36,7 +36,14 @@ export async function PATCH(
       },
     });
 
-    return NextResponse.json(event);
+    // Serialize dates to strings for JSON response
+    const serializedEvent = {
+      ...event,
+      startDate: event.startDate.toISOString(),
+      endDate: event.endDate ? event.endDate.toISOString() : null,
+    };
+
+    return NextResponse.json(serializedEvent);
   } catch (error) {
     console.error('Error updating event:', error);
     return NextResponse.json({ error: 'Failed to update event' }, { status: 500 });

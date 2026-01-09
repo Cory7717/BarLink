@@ -93,25 +93,31 @@ export default function ShiftUsageRecorder({ barId, onComplete }: ShiftUsageReco
   }
 
   return (
-    <div className="rounded-xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg">
+    <div className="rounded-xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-4 sm:p-6 shadow-lg">
       <h3 className="text-lg font-semibold text-white mb-4">Record Shift Usage</h3>
+      <p className="text-sm text-slate-400 mb-4">Enter bottles used during shift. Inventory will be automatically deducted.</p>
       
       <div className="space-y-3 max-h-96 overflow-y-auto mb-4">
         {items.map(item => (
-          <div key={item.id} className="flex items-center justify-between rounded-lg border border-slate-700/60 bg-slate-900/50 p-3">
+          <div key={item.id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 rounded-lg border border-slate-700/60 bg-slate-900/50 p-3">
             <div className="flex-1">
               <p className="text-sm font-semibold text-white">{item.name}</p>
               <p className="text-xs text-slate-400">{item.category} • {item.bottleSizeMl}ml</p>
             </div>
-            <input
-              type="number"
-              min="0"
-              step="0.5"
-              value={usage[item.id] || ''}
-              onChange={(e) => setUsage({ ...usage, [item.id]: parseFloat(e.target.value) || 0 })}
-              placeholder="0"
-              className="w-20 rounded-md border border-slate-600 bg-slate-800 px-3 py-2 text-sm text-white focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
-            />
+            <div className="flex items-center gap-2">
+              <label htmlFor={`usage-${item.id}`} className="text-xs text-slate-400 sm:hidden">Bottles used:</label>
+              <input
+                id={`usage-${item.id}`}
+                type="number"
+                inputMode="decimal"
+                min="0"
+                step="0.5"
+                value={usage[item.id] || ''}
+                onChange={(e) => setUsage({ ...usage, [item.id]: parseFloat(e.target.value) || 0 })}
+                placeholder="0"
+                className="w-24 sm:w-20 rounded-md border border-slate-600 bg-slate-800 px-3 py-3 sm:py-2 text-sm text-white focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 touch-manipulation"
+              />
+            </div>
           </div>
         ))}
       </div>

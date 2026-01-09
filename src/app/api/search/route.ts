@@ -33,6 +33,20 @@ type BarWithRelations = {
   events: EventLite[];
 };
 
+function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
+  const R = 3959; // Earth's radius in miles
+  const dLat = ((lat2 - lat1) * Math.PI) / 180;
+  const dLon = ((lon2 - lon1) * Math.PI) / 180;
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos((lat1 * Math.PI) / 180) *
+      Math.cos((lat2 * Math.PI) / 180) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return R * c;
+}
+
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
@@ -41,6 +55,9 @@ export async function GET(req: Request) {
     const city = searchParams.get('city');
     const special = searchParams.get('special') === 'true';
     const happeningNow = searchParams.get('happeningNow') === 'true';
+    const distance = searchParams.get('distance') ? Number(searchParams.get('distance')) : null;
+    const userLatitude = searchParams.get('userLatitude') ? Number(searchParams.get('userLatitude')) : null;
+    const userLongitude = searchParams.get('userLongitude') ? Number(searchParams.get('userLongitude')) : null;
 
     if (!day || !activity) {
       return NextResponse.json({ error: 'Day and activity are required' }, { status: 400 });
@@ -50,46 +67,33 @@ export async function GET(req: Request) {
     const now = new Date();
     const currentTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
 
-    // Build query filters
-    const barFilter: Record<string, unknown> = {
+    // Build query filters - must be published and active to appear in search
+    const baseBarFilter: Record<string, unknown> = {
       isPublished: true,
       isActive: true,
     };
 
-    if (city) {
-      barFilter.cityNormalized = city.toLowerCase().trim();
+    // Add city filter if provided
+    if (city && city.trim()) {
+      baseBarFilter.cityNormalized = city.toLowerCase().trim();
     }
 
-    // Find bars with matching offerings
+    // Find bars with matching offerings for specific activity + day
     let bars = await prisma.bar.findMany({
       where: {
-        ...barFilter,
-        OR: [
-          {
-            offerings: {
-              some: {
-                isActive: true,
-                dayOfWeek: dayInt,
-                category: activity,
-                ...(special ? { isSpecial: true } : {}),
-                ...(happeningNow ? {
-                  startTime: { lte: currentTime },
-                  endTime: { gte: currentTime },
-                } : {}),
-              },
-            },
+        ...baseBarFilter,
+        offerings: {
+          some: {
+            isActive: true,
+            dayOfWeek: dayInt,
+            category: activity,
+            ...(special ? { isSpecial: true } : {}),
+            ...(happeningNow ? {
+              startTime: { lte: currentTime },
+              endTime: { gte: currentTime },
+            } : {}),
           },
-          {
-            events: {
-              some: {
-                isActive: true,
-                category: activity,
-                startDate: { lte: now },
-                ...(special ? { isSpecial: true } : {}),
-              },
-            },
-          },
-        ],
+        },
       },
       include: {
         offerings: {
@@ -109,12 +113,39 @@ export async function GET(req: Request) {
       take: 50,
     }) as BarWithRelations[];
 
-    // Fallback: if no matches, still return published bars (so new bars appear even without offerings/events)
+    // Fallback: if no offering matches, try finding bars with events matching the activity
     if (bars.length === 0) {
       bars = await prisma.bar.findMany({
         where: {
-          ...barFilter,
-          ...(city ? { cityNormalized: city.toLowerCase().trim() } : {}),
+          ...baseBarFilter,
+          events: {
+            some: {
+              isActive: true,
+              category: activity,
+              startDate: { lte: now },
+              ...(special ? { isSpecial: true } : {}),
+            },
+          },
+        },
+        include: {
+          offerings: true,
+          events: {
+            where: {
+              isActive: true,
+              startDate: { lte: now },
+            },
+            take: 3,
+          },
+        },
+        take: 50,
+      }) as BarWithRelations[];
+    }
+
+    // Final fallback: return ALL published bars in the city (for new bars without offerings/events yet)
+    if (bars.length === 0 && city && city.trim()) {
+      bars = await prisma.bar.findMany({
+        where: {
+          ...baseBarFilter,
         },
         include: {
           offerings: true,
@@ -124,33 +155,57 @@ export async function GET(req: Request) {
       }) as BarWithRelations[];
     }
 
-    // Increment search appearance count
-    await prisma.bar.updateMany({
-      where: {
-        id: { in: bars.map((b: BarWithRelations) => b.id) },
-      },
-      data: {
-        searchAppearances: { increment: 1 },
-      },
-    });
-
-    // Log analytics for each bar that appeared in results
-    for (const bar of bars) {
-      logAnalyticsEvent(bar.id, "search_appear", "search", activity);
+    // Filter by distance if provided
+    if (distance && userLatitude !== null && userLongitude !== null) {
+      bars = bars.filter((bar) => {
+        const dist = calculateDistance(userLatitude, userLongitude, bar.latitude, bar.longitude);
+        return dist <= distance;
+      });
     }
 
-    const results = bars.map((bar: BarWithRelations) => ({
-      id: bar.id,
-      name: bar.name,
-      slug: bar.slug,
-      address: bar.address,
-      city: bar.city,
-      latitude: bar.latitude,
-      longitude: bar.longitude,
-      todayOfferings: bar.offerings.map((o) => o.customTitle || o.category),
-      hasSpecial: bar.offerings.some((o) => o.isSpecial) || bar.events.some((e) => e.isSpecial),
-      hasNew: bar.offerings.some((o) => o.isNew) || bar.events.some((e) => e.isNew),
-    }));
+    // Increment search appearance count
+    if (bars.length > 0) {
+      await prisma.bar.updateMany({
+        where: {
+          id: { in: bars.map((b: BarWithRelations) => b.id) },
+        },
+        data: {
+          searchAppearances: { increment: 1 },
+        },
+      });
+
+      // Log analytics for each bar that appeared in results
+      for (const bar of bars) {
+        logAnalyticsEvent(bar.id, "search_appear", "search", activity);
+      }
+    }
+
+    const results = bars.map((bar: BarWithRelations) => {
+      let distance_miles: number | undefined;
+      if (distance && userLatitude !== null && userLongitude !== null) {
+        distance_miles = calculateDistance(userLatitude, userLongitude, bar.latitude, bar.longitude);
+      }
+
+      return {
+        id: bar.id,
+        name: bar.name,
+        slug: bar.slug,
+        address: bar.address,
+        city: bar.city,
+        latitude: bar.latitude,
+        longitude: bar.longitude,
+        todayOfferings: bar.offerings.map((o) => o.customTitle || o.category),
+        hasSpecial: bar.offerings.some((o) => o.isSpecial) || bar.events.some((e) => e.isSpecial),
+        hasNew: bar.offerings.some((o) => o.isNew) || bar.events.some((e) => e.isNew),
+        ...(distance_miles !== undefined && { distance: distance_miles }),
+      };
+    }).sort((a, b) => {
+      // Sort by distance if provided
+      if (a.distance !== undefined && b.distance !== undefined) {
+        return a.distance - b.distance;
+      }
+      return 0;
+    });
 
     return NextResponse.json({ bars: results });
   } catch (error) {

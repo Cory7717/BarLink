@@ -71,6 +71,7 @@ export default function BottlePhotoUpload({ barId, bottleSizeMl = 750, onUploadS
         ref={fileInputRef}
         type="file"
         accept="image/*"
+        {...(typeof window !== 'undefined' && /Android|webOS|iPhone|iPad|iPod/.test(navigator.userAgent) ? { capture: 'environment' } : {})}
         onChange={handleFileSelect}
         className="hidden"
       />
@@ -90,15 +91,15 @@ export default function BottlePhotoUpload({ barId, bottleSizeMl = 750, onUploadS
           type="button"
           onClick={() => fileInputRef.current?.click()}
           disabled={uploading}
-          className="w-full rounded-lg border-2 border-dashed border-slate-600 bg-slate-800/40 px-4 py-6 text-center hover:border-emerald-500 hover:bg-slate-800/60 transition-all disabled:opacity-50"
+          className="w-full rounded-lg border-2 border-dashed border-slate-600 bg-slate-800/40 px-4 py-8 sm:py-6 text-center hover:border-emerald-500 hover:bg-slate-800/60 transition-all disabled:opacity-50 touch-manipulation active:scale-95"
         >
           {uploading ? (
             <span className="text-slate-300">Uploading...</span>
           ) : (
             <div className="space-y-2">
-              <div className="text-3xl">📸</div>
-              <p className="text-sm font-semibold text-white">Take photo of bottle</p>
-              <p className="text-xs text-slate-400">AI will estimate fill level</p>
+              <div className="text-4xl sm:text-3xl">📸</div>
+              <p className="text-base sm:text-sm font-semibold text-white">Take photo of bottle</p>
+              <p className="text-sm sm:text-xs text-slate-400">AI will estimate fill level</p>
             </div>
           )}
         </button>

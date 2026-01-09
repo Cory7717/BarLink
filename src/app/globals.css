@@ -262,6 +262,16 @@ body {
   background: #94a3b8;
 }
 
+/* Hide scrollbar utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  /* scrollbar-width: none; */ /* Only works in Firefox, not widely supported */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Animations */
 @keyframes fadeIn {
   from {

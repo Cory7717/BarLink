@@ -38,10 +38,29 @@ export default function ExplorePage() {
   const [showSpecial, setShowSpecial] = useState(false);
   const [happeningNow, setHappeningNow] = useState(false);
   const [city, setCity] = useState("Seattle");
+  const [distance, setDistance] = useState<number | null>(null);
+  const [userLocation, setUserLocation] = useState<{ latitude: number; longitude: number } | null>(null);
   const [bars, setBars] = useState<BarResult[]>([]);
   const [loading, setLoading] = useState(false);
 
-  const mapCenter = useMemo(() => ({ latitude: 47.61, longitude: -122.33 }), []);
+  const mapCenter = useMemo(() => userLocation || { latitude: 47.61, longitude: -122.33 }, [userLocation]);
+
+  // Get user's location on mount
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setUserLocation({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          });
+        },
+        (error) => {
+          console.log('Geolocation permission denied or unavailable');
+        }
+      );
+    }
+  }, []);
 
   // Fetch bars from API
   useEffect(() => {
@@ -55,6 +74,11 @@ export default function ExplorePage() {
           happeningNow: String(happeningNow),
         });
         if (city) params.append('city', city);
+        if (distance && userLocation) {
+          params.append('distance', String(distance));
+          params.append('userLatitude', String(userLocation.latitude));
+          params.append('userLongitude', String(userLocation.longitude));
+        }
 
         const res = await fetch(`/api/search?${params}`);
         const data = await res.json();
@@ -73,7 +97,7 @@ export default function ExplorePage() {
     };
 
     fetchBars();
-  }, [day, activity, showSpecial, happeningNow, city]);
+  }, [day, activity, showSpecial, happeningNow, city, distance, userLocation]);
 
   return (
     <div className="min-h-screen bg-linear-to-br from-slate-950 via-purple-900/20 to-slate-950 text-white">
@@ -88,7 +112,7 @@ export default function ExplorePage() {
         </header>
 
         <section className="mt-6 grid gap-4 rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-4 shadow-lg">
-          <div className="grid gap-3 md:grid-cols-4">
+          <div className="grid gap-3 md:grid-cols-5">
             <label className="flex flex-col text-sm text-slate-200">
               Day of week
               <select
@@ -125,6 +149,21 @@ export default function ExplorePage() {
                 className="mt-2 rounded-lg border border-slate-600/50 bg-slate-800/50 backdrop-blur-sm px-3 py-2 text-white placeholder:text-slate-400 focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all"
                 placeholder="Seattle"
               />
+            </label>
+            <label className="flex flex-col text-sm text-slate-200">
+              Distance {userLocation ? '📍' : ''}
+              <select
+                value={distance || ''}
+                onChange={(e) => setDistance(e.target.value ? Number(e.target.value) : null)}
+                className="mt-2 rounded-lg border border-slate-600/50 bg-slate-800/50 backdrop-blur-sm px-3 py-2 text-white focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all"
+                disabled={!userLocation}
+                title={userLocation ? 'Filter by distance from your location' : 'Enable location services to use distance filter'}
+              >
+                <option value="">All distances</option>
+                <option value="5">Within 5 miles</option>
+                <option value="10">Within 10 miles</option>
+                <option value="25">Within 25 miles</option>
+              </select>
             </label>
             <div className="flex flex-col justify-end gap-2 text-sm text-slate-200">
               <label className="inline-flex items-center gap-2">

@@ -102,7 +102,7 @@ export default function InventoryManagementClient({ barId, barSlug, initialItems
 
       case 'photo':
         return (
-          <div className="rounded-xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-6 shadow-lg space-y-4">
+          <div className="rounded-xl border border-slate-700/50 bg-linear-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md p-4 sm:p-6 shadow-lg space-y-4">
             <div className="flex items-center justify-between">
               <div>
                 <h2 className="text-xl font-semibold text-white">Photo Estimator</h2>
@@ -152,10 +152,10 @@ export default function InventoryManagementClient({ barId, barSlug, initialItems
   return (
     <div className="space-y-6">
       {/* Tab Navigation */}
-      <div className="flex gap-2 overflow-x-auto pb-2">
+      <div className="flex gap-2 overflow-x-auto pb-2 -mx-4 px-4 scrollbar-hide">
         <button
           onClick={() => setActiveTab('items')}
-          className={`rounded-lg px-4 py-2 text-sm font-semibold transition-all whitespace-nowrap ${
+          className={`rounded-lg px-4 py-3 text-sm font-semibold transition-all whitespace-nowrap touch-manipulation ${
             activeTab === 'items'
               ? 'bg-linear-to-r from-emerald-500 to-emerald-600 text-slate-950'
               : 'border border-slate-700 bg-slate-800/40 text-white hover:bg-slate-700'
@@ -165,7 +165,7 @@ export default function InventoryManagementClient({ barId, barSlug, initialItems
         </button>
         <button
           onClick={() => setActiveTab('import')}
-          className={`rounded-lg px-4 py-2 text-sm font-semibold transition-all whitespace-nowrap ${
+          className={`rounded-lg px-4 py-3 text-sm font-semibold transition-all whitespace-nowrap touch-manipulation ${
             activeTab === 'import'
               ? 'bg-linear-to-r from-cyan-500 to-cyan-600 text-slate-950'
               : 'border border-slate-700 bg-slate-800/40 text-white hover:bg-slate-700'
@@ -175,7 +175,7 @@ export default function InventoryManagementClient({ barId, barSlug, initialItems
         </button>
         <button
           onClick={() => setActiveTab('shift')}
-          className={`rounded-lg px-4 py-2 text-sm font-semibold transition-all whitespace-nowrap ${
+          className={`rounded-lg px-4 py-3 text-sm font-semibold transition-all whitespace-nowrap touch-manipulation ${
             activeTab === 'shift'
               ? 'bg-linear-to-r from-amber-500 to-amber-600 text-slate-950'
               : 'border border-slate-700 bg-slate-800/40 text-white hover:bg-slate-700'
@@ -185,7 +185,7 @@ export default function InventoryManagementClient({ barId, barSlug, initialItems
         </button>
         <button
           onClick={() => setActiveTab('snapshot')}
-          className={`rounded-lg px-4 py-2 text-sm font-semibold transition-all whitespace-nowrap ${
+          className={`rounded-lg px-4 py-3 text-sm font-semibold transition-all whitespace-nowrap touch-manipulation ${
             activeTab === 'snapshot'
               ? 'bg-linear-to-r from-purple-500 to-purple-600 text-white'
               : 'border border-slate-700 bg-slate-800/40 text-white hover:bg-slate-700'
@@ -195,7 +195,7 @@ export default function InventoryManagementClient({ barId, barSlug, initialItems
         </button>
         <button
           onClick={() => setActiveTab('photo')}
-          className={`rounded-lg px-4 py-2 text-sm font-semibold transition-all whitespace-nowrap ${
+          className={`rounded-lg px-4 py-3 text-sm font-semibold transition-all whitespace-nowrap touch-manipulation ${
             activeTab === 'photo'
               ? 'bg-linear-to-r from-pink-500 to-pink-600 text-white'
               : 'border border-slate-700 bg-slate-800/40 text-white hover:bg-slate-700'
@@ -205,7 +205,7 @@ export default function InventoryManagementClient({ barId, barSlug, initialItems
         </button>
         <button
           onClick={() => setActiveTab('alerts')}
-          className={`rounded-lg px-4 py-2 text-sm font-semibold transition-all whitespace-nowrap ${
+          className={`rounded-lg px-4 py-3 text-sm font-semibold transition-all whitespace-nowrap touch-manipulation ${
             activeTab === 'alerts'
               ? 'bg-linear-to-r from-red-500 to-red-600 text-white'
               : 'border border-slate-700 bg-slate-800/40 text-white hover:bg-slate-700'
@@ -215,7 +215,7 @@ export default function InventoryManagementClient({ barId, barSlug, initialItems
         </button>
         <button
           onClick={() => setActiveTab('export')}
-          className={`rounded-lg px-4 py-2 text-sm font-semibold transition-all whitespace-nowrap ${
+          className={`rounded-lg px-4 py-3 text-sm font-semibold transition-all whitespace-nowrap touch-manipulation ${
             activeTab === 'export'
               ? 'bg-linear-to-r from-blue-500 to-blue-600 text-white'
               : 'border border-slate-700 bg-slate-800/40 text-white hover:bg-slate-700'

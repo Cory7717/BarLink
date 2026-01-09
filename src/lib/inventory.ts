@@ -110,6 +110,18 @@ export async function recordShiftUsage(input: z.input<typeof shiftUsageSchema>) 
       include: { items: true },
     });
 
+    // Automatically deduct from PAR inventory
+    for (const item of data.items) {
+      await tx.inventoryItem.update({
+        where: { id: item.inventoryItemId },
+        data: {
+          startingQtyBottles: {
+            decrement: item.quantityUsed,
+          },
+        },
+      });
+    }
+
     return shift;
   });
 }

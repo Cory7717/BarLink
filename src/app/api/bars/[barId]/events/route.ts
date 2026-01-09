@@ -70,7 +70,14 @@ export async function POST(
       },
     });
 
-    return NextResponse.json(event, { status: 201 });
+    // Serialize dates to strings for JSON response
+    const serializedEvent = {
+      ...event,
+      startDate: event.startDate.toISOString(),
+      endDate: event.endDate ? event.endDate.toISOString() : null,
+    };
+
+    return NextResponse.json(serializedEvent, { status: 201 });
   } catch (error) {
     console.error('Error creating event:', error);
     return NextResponse.json({ error: 'Failed to create event' }, { status: 500 });
