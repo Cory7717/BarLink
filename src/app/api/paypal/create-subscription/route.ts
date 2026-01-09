@@ -23,7 +23,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Missing ownerId or planKey' }, { status: 400 });
     }
 
-    const planId = getPlanIdFromKey(planKey);
+    const planId = getPlanIdFromKey(planKey).trim();
     const planEnum = planKeyToEnum(planKey);
     if (!planId || !planEnum) {
       return NextResponse.json({ error: 'Invalid plan configuration' }, { status: 400 });

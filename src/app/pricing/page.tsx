@@ -7,6 +7,7 @@ import Navigation from "@/components/Navigation";
 import { formatCurrency } from "@/lib/utils";
 import { SUBSCRIPTION_PLANS } from "@/lib/constants";
 import Link from "next/link";
+import BetaModal from "@/components/BetaModal";
 
 export default function PricingPage() {
   const plans = SUBSCRIPTION_PLANS;
@@ -18,7 +19,7 @@ export default function PricingPage() {
     setIsLoading(true);
 
     if (status === "authenticated" && session?.user?.email) {
-      router.push(`/onboarding?plan=${planId}`);
+      router.push(`/dashboard/subscription?plan=${planId}`);
     } else {
       router.push(`/auth/signup?plan=${planId}`);
     }
@@ -27,6 +28,7 @@ export default function PricingPage() {
   return (
     <div className="min-h-screen app-shell text-white">
       <Navigation />
+      <BetaModal />
       <main className="mx-auto max-w-5xl px-4 pb-20 pt-12">
         <header className="space-y-3 text-center">
           <p className="text-sm text-cyan-200">Owners</p>

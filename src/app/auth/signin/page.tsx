@@ -12,6 +12,7 @@ export default function SignInPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -70,13 +71,22 @@ export default function SignInPage() {
 
           <label className="block text-sm text-slate-100">
             Password
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder:text-slate-400 focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/30 transition-all"
-              required
-            />
+            <div className="mt-2 flex gap-2">
+              <input
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder:text-slate-400 focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/30 transition-all"
+                required
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword((prev) => !prev)}
+                className="btn-secondary px-3 text-xs"
+              >
+                {showPassword ? "Hide" : "Show"}
+              </button>
+            </div>
           </label>
 
           <button
@@ -86,6 +96,12 @@ export default function SignInPage() {
           >
             {loading ? "Signing in..." : "Sign in"}
           </button>
+
+          <div className="text-center">
+            <Link href="/auth/forgot" className="text-xs text-cyan-200 hover:text-cyan-100 transition-colors">
+              Forgot password?
+            </Link>
+          </div>
 
           <div className="relative">
             <div className="absolute inset-0 flex items-center">

@@ -22,6 +22,8 @@ export default function AdminSupportPage() {
   const [owners, setOwners] = useState<OwnerResult[]>([]);
   const [users, setUsers] = useState<UserResult[]>([]);
   const [loading, setLoading] = useState(false);
+  const [resetStatus, setResetStatus] = useState<Record<string, string>>({});
+  const [resettingId, setResettingId] = useState<string | null>(null);
 
   useEffect(() => {
     const handler = setTimeout(async () => {
@@ -45,6 +47,30 @@ export default function AdminSupportPage() {
 
     return () => clearTimeout(handler);
   }, [query]);
+
+  const sendResetLink = async (ownerId: string) => {
+    setResettingId(ownerId);
+    setResetStatus((prev) => ({ ...prev, [ownerId]: "" }));
+    try {
+      const res = await fetch("/api/admin/password-reset", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ownerId }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to send reset link");
+      }
+      setResetStatus((prev) => ({ ...prev, [ownerId]: "Reset link sent." }));
+    } catch (err) {
+      setResetStatus((prev) => ({
+        ...prev,
+        [ownerId]: err instanceof Error ? err.message : "Failed to send reset link",
+      }));
+    } finally {
+      setResettingId(null);
+    }
+  };
 
   return (
     <section className="space-y-6">
@@ -97,10 +123,21 @@ export default function AdminSupportPage() {
                     <a className="btn-primary px-3 py-1.5 text-xs" href={`/admin/support/owner/${owner.id}`}>
                       Open profile
                     </a>
+                    <button
+                      type="button"
+                      className="btn-secondary px-3 py-1.5 text-xs"
+                      onClick={() => sendResetLink(owner.id)}
+                      disabled={resettingId === owner.id}
+                    >
+                      {resettingId === owner.id ? "Sending..." : "Send reset link"}
+                    </button>
                     <a className="btn-secondary px-3 py-1.5 text-xs" href={`mailto:${owner.email}`}>
                       Email owner
                     </a>
                   </div>
+                  {resetStatus[owner.id] && (
+                    <p className="mt-2 text-xs text-slate-300">{resetStatus[owner.id]}</p>
+                  )}
                 </div>
               ))}
             </div>

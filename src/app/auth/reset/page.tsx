@@ -1,56 +1,56 @@
 "use client";
 
 import { useState, Suspense } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import Navigation from "@/components/Navigation";
-import Link from "next/link";
 
-function SignUpForm() {
+function ResetForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const planFromUrl = searchParams.get("plan") || "monthly";
+  const token = searchParams.get("token") || "";
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [phone, setPhone] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
-    setLoading(true);
+    setMessage("");
 
-    if (password !== confirmPassword) {
-      setError("Passwords do not match");
-      setLoading(false);
+    if (!token) {
+      setStatus("error");
+      setMessage("Reset token is missing.");
       return;
     }
 
+    if (password !== confirmPassword) {
+      setStatus("error");
+      setMessage("Passwords do not match.");
+      return;
+    }
+
+    setStatus("loading");
     try {
-      const res = await fetch("/api/auth/owner/signup", {
+      const res = await fetch("/api/auth/owner/reset", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password, phone }),
+        body: JSON.stringify({ token, password }),
       });
-
       const data = await res.json();
-
       if (!res.ok) {
-        setError(data.error || "Signup failed");
-        setLoading(false);
+        setStatus("error");
+        setMessage(data.error || "Reset failed.");
         return;
       }
-
-      // Redirect to onboarding with owner ID and selected plan
-      router.push(`/onboarding?ownerId=${data.ownerId}&plan=${planFromUrl}`);
+      setStatus("success");
+      setMessage("Password reset successful. Redirecting to sign in...");
+      setTimeout(() => router.push("/auth/signin"), 1200);
     } catch {
-      setError("Failed to create account. Please try again.");
-      setLoading(false);
+      setStatus("error");
+      setMessage("Reset failed.");
     }
   };
 
@@ -59,51 +59,25 @@ function SignUpForm() {
       <Navigation />
       <main className="mx-auto max-w-md px-4 pb-16 pt-12">
         <header className="space-y-2 text-center">
-          <h1 className="text-3xl font-semibold text-gradient">Create owner account</h1>
-          <p className="text-sm text-slate-200">Get started with BarPulse</p>
+          <h1 className="text-3xl font-semibold text-gradient">Set a new password</h1>
+          <p className="text-sm text-slate-200">Choose a new password for your owner account.</p>
         </header>
 
         <form onSubmit={handleSubmit} className="mt-8 space-y-4 glass-panel rounded-3xl p-6 shadow-lg">
-          {error && (
-            <div className="rounded-lg bg-red-500/10 border border-red-500/30 px-4 py-3 text-sm text-red-100">
-              {error}
+          {message && (
+            <div
+              className={`rounded-lg border px-4 py-3 text-sm ${
+                status === "error"
+                  ? "border-red-500/30 bg-red-500/10 text-red-100"
+                  : "border-emerald-500/30 bg-emerald-500/10 text-emerald-100"
+              }`}
+            >
+              {message}
             </div>
           )}
 
           <label className="block text-sm text-slate-100">
-            Full name
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder:text-slate-400 focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/30 transition-all"
-              required
-            />
-          </label>
-
-          <label className="block text-sm text-slate-100">
-            Email
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder:text-slate-400 focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/30 transition-all"
-              required
-            />
-          </label>
-
-          <label className="block text-sm text-slate-100">
-            Phone (optional)
-            <input
-              type="tel"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder:text-slate-400 focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/30 transition-all"
-            />
-          </label>
-
-          <label className="block text-sm text-slate-100">
-            Password
+            New password
             <div className="mt-2 flex gap-2">
               <input
                 type={showPassword ? "text" : "password"}
@@ -146,28 +120,21 @@ function SignUpForm() {
 
           <button
             type="submit"
-            disabled={loading}
+            disabled={status === "loading"}
             className="w-full btn-primary px-4 py-3 text-sm disabled:opacity-50"
           >
-            {loading ? "Creating account..." : "Create account"}
+            {status === "loading" ? "Resetting..." : "Reset password"}
           </button>
-
-          <p className="text-center text-sm text-slate-300">
-            Already have an account?{" "}
-            <Link href="/auth/signin" className="text-cyan-200 hover:text-cyan-100 transition-colors">
-              Sign in
-            </Link>
-          </p>
         </form>
       </main>
     </div>
   );
 }
 
-export default function SignUpPage() {
+export default function ResetPasswordPage() {
   return (
     <Suspense fallback={<div className="min-h-screen app-shell text-white flex items-center justify-center">Loading...</div>}>
-      <SignUpForm />
+      <ResetForm />
     </Suspense>
   );
 }

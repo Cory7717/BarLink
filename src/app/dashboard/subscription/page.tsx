@@ -16,7 +16,7 @@ function SubscriptionContent() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [ownerData, setOwnerData] = useState<{ ownerId: string; owner: { id: string; email: string; name: string } } | null>(null);
-  const [hasBar, setHasBar] = useState(false);
+  const [hasBar, setHasBar] = useState<boolean | null>(null);
 
   useEffect(() => {
     if (status === "unauthenticated") {
@@ -33,12 +33,19 @@ function SubscriptionContent() {
         if (res.ok && data.ownerId) {
           setOwnerData(data);
 
-          const barRes = await fetch(`/api/bars?ownerId=${data.ownerId}`);
+          const barRes = await fetch(`/api/bars?ownerId=${data.ownerId}`, { cache: "no-store" });
           const barData = await barRes.json();
-          setHasBar(barData.bars && barData.bars.length > 0);
+          if (barRes.ok) {
+            setHasBar(barData.bars && barData.bars.length > 0);
+          } else {
+            setHasBar(null);
+            setError(barData.error || "Could not verify bar profile");
+          }
         }
       } catch (err) {
         console.error("Failed to fetch owner data:", err);
+        setHasBar(null);
+        setError("Could not verify bar profile");
       }
     };
 
@@ -60,7 +67,13 @@ function SubscriptionContent() {
         return;
       }
 
-      if (!hasBar) {
+      if (hasBar === null) {
+        setError("Still loading bar profile. Please try again in a moment.");
+        setLoading(false);
+        return;
+      }
+
+      if (hasBar === false) {
         router.push(`/onboarding?plan=${planKey}`);
         return;
       }

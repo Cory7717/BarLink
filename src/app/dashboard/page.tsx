@@ -138,17 +138,7 @@ export default async function DashboardPage() {
                           {b.city}, {b.state}
                         </p>
                       </div>
-                      <span
-                        className={`text-xs font-semibold rounded-full px-3 py-1 ${
-                          license?.status === "ACTIVE"
-                            ? "bg-emerald-500/20 text-emerald-100"
-                            : license?.status === "PAST_DUE"
-                            ? "bg-amber-500/20 text-amber-100"
-                            : "bg-slate-600/40 text-slate-200"
-                        }`}
-                      >
-                        {license?.status ?? "UNLICENSED"}
-                      </span>
+                    <span className="text-xs text-slate-400">License info hidden</span>
                     </div>
                     <div className="mt-3 flex items-center gap-3 text-xs text-slate-300">
                       <span>{b.offerings.length} offerings</span>

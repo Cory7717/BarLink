@@ -75,6 +75,7 @@ model Owner {
   promoRedemptions  PromoRedemption[]
   role              OwnerRole      @default(OWNER)
   categoryRequests  CategoryRequest[]
+  passwordResets    OwnerPasswordReset[]
 }
 
 enum OwnerRole {
@@ -287,6 +288,20 @@ model CategoryRequest {
   @@index([status])
   @@index([barId])
   @@index([ownerId])
+}
+
+model OwnerPasswordReset {
+  id        String   @id @default(cuid())
+  ownerId   String
+  tokenHash String   @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime @default(now())
+
+  owner     Owner    @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+
+  @@index([ownerId])
+  @@index([expiresAt])
 }
 
 model PromoCode {
