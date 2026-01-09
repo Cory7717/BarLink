@@ -2,6 +2,19 @@ import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { getPlanIdFromKey } from '@/lib/paypal';
 
+function planKeyToEnum(planKey: string) {
+  switch (planKey) {
+    case 'monthly':
+      return 'MONTHLY';
+    case 'sixmonth':
+      return 'SIX_MONTH';
+    case 'yearly':
+      return 'YEARLY';
+    default:
+      return null;
+  }
+}
+
 export async function POST(req: Request) {
   try {
     const { ownerId, planKey } = await req.json();
@@ -11,12 +24,25 @@ export async function POST(req: Request) {
     }
 
     const planId = getPlanIdFromKey(planKey);
-    const returnUrl = `${process.env.NEXTAUTH_URL}/dashboard/subscription/success`;
-    const cancelUrl = `${process.env.NEXTAUTH_URL}/pricing`;
+    const planEnum = planKeyToEnum(planKey);
+    if (!planId || !planEnum) {
+      return NextResponse.json({ error: 'Invalid plan configuration' }, { status: 400 });
+    }
+
+    const baseUrl = process.env.NEXTAUTH_URL || process.env.RENDER_EXTERNAL_URL || '';
+    if (!baseUrl) {
+      return NextResponse.json({ error: 'Missing base URL configuration' }, { status: 500 });
+    }
+    const returnUrl = `${baseUrl}/dashboard/subscription/success`;
+    const cancelUrl = `${baseUrl}/pricing`;
     const taxes = { percentage: '8.25', inclusive: false };
+    const paypalBase =
+      process.env.PAYPAL_ENV === 'live'
+        ? 'https://api-m.paypal.com'
+        : 'https://api-m.sandbox.paypal.com';
 
     // Create PayPal subscription
-    const response = await fetch('https://api-m.sandbox.paypal.com/v1/billing/subscriptions', {
+    const response = await fetch(`${paypalBase}/v1/billing/subscriptions`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -46,12 +72,12 @@ export async function POST(req: Request) {
       where: { ownerId },
       create: {
         ownerId,
-        plan: planKey.toUpperCase().replace('MONTH', '_MONTH'),
+        plan: planEnum,
         status: 'INCOMPLETE',
         paypalSubscriptionId: subscription.id,
       },
       update: {
-        plan: planKey.toUpperCase().replace('MONTH', '_MONTH'),
+        plan: planEnum,
         status: 'INCOMPLETE',
         paypalSubscriptionId: subscription.id,
       },

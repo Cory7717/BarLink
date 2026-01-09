@@ -24,6 +24,8 @@ export async function GET(req: NextRequest) {
         },
         offerings: true,
         events: true,
+        drinkSpecials: true,
+        foodOfferings: true,
         barLicenses: true,
       },
     });
@@ -65,20 +67,33 @@ export async function GET(req: NextRequest) {
     }
 
     const activeOfferings = bar.offerings.filter((o) => o.isActive);
-    if (activeOfferings.length === 0) {
-      issues.push("WARN: No active offerings - add at least one to appear in search");
-    } else {
+    const activeEvents = bar.events.filter((e) => e.isActive);
+    const activeDrinkSpecials = bar.drinkSpecials.filter((d) => d.active);
+    const activeFoodOfferings = bar.foodOfferings.filter((f) => f.active);
+
+    if (activeOfferings.length === 0 && activeEvents.length === 0 && activeDrinkSpecials.length === 0 && activeFoodOfferings.length === 0) {
+      issues.push("WARN: No active offerings or events - add at least one to appear in search");
+    }
+
+    if (activeOfferings.length > 0) {
       issues.push(`OK: ${activeOfferings.length} active offering(s)`);
       activeOfferings.forEach((o) => {
         issues.push(`   - ${o.customTitle || o.category} (day ${o.dayOfWeek})`);
       });
     }
 
-    const activeEvents = bar.events.filter((e) => e.isActive);
-    if (activeEvents.length === 0) {
-      issues.push("INFO: No active events (optional, but helps with search)");
-    } else {
+    if (activeEvents.length > 0) {
       issues.push(`OK: ${activeEvents.length} active event(s)`);
+    } else {
+      issues.push("INFO: No active events (optional, but helps with search)");
+    }
+
+    if (activeDrinkSpecials.length > 0) {
+      issues.push(`OK: ${activeDrinkSpecials.length} active drink special(s)`);
+    }
+
+    if (activeFoodOfferings.length > 0) {
+      issues.push(`OK: ${activeFoodOfferings.length} active food offering(s)`);
     }
 
     const canAppearInSearch =
@@ -86,7 +101,7 @@ export async function GET(req: NextRequest) {
       bar.isActive &&
       (bar.owner.subscription?.status === "ACTIVE" || bar.owner.allowFreeListings) &&
       bar.cityNormalized &&
-      activeOfferings.length > 0;
+      (activeOfferings.length > 0 || activeEvents.length > 0 || activeDrinkSpecials.length > 0 || activeFoodOfferings.length > 0);
 
     return NextResponse.json({
       barId: bar.id,
@@ -101,6 +116,8 @@ export async function GET(req: NextRequest) {
         cityNormalized: bar.cityNormalized,
         activeOfferingCount: activeOfferings.length,
         activeEventCount: activeEvents.length,
+        activeDrinkSpecialCount: activeDrinkSpecials.length,
+        activeFoodOfferingCount: activeFoodOfferings.length,
         latitude: bar.latitude,
         longitude: bar.longitude,
         searchAppearances: bar.searchAppearances,
