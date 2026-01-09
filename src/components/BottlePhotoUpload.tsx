@@ -15,7 +15,10 @@ export default function BottlePhotoUpload({ barId, bottleSizeMl = 750, onUploadS
   const [estimating, setEstimating] = useState(false);
   const [estimatedPct, setEstimatedPct] = useState<number | null>(null);
   const [estimatedMl, setEstimatedMl] = useState<number | null>(null);
+  const [useCameraMode, setUseCameraMode] = useState(true);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const isMobile = typeof window !== 'undefined' && /Android|webOS|iPhone|iPad|iPod/.test(navigator.userAgent);
 
   const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -63,15 +66,21 @@ export default function BottlePhotoUpload({ barId, bottleSizeMl = 750, onUploadS
     }
   };
 
+  const openCamera = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
   return (
     <div className="space-y-3">
-      <label htmlFor="bottle-photo-input" className="sr-only">Upload bottle photo</label>
+      <label htmlFor="bottle-photo-input" className="sr-only">Take or upload bottle photo</label>
       <input
         id="bottle-photo-input"
         ref={fileInputRef}
         type="file"
         accept="image/*"
-        {...(typeof window !== 'undefined' && /Android|webOS|iPhone|iPad|iPod/.test(navigator.userAgent) ? { capture: 'environment' } : {})}
+        capture={useCameraMode && isMobile ? "environment" : undefined}
         onChange={handleFileSelect}
         className="hidden"
       />
@@ -89,7 +98,7 @@ export default function BottlePhotoUpload({ barId, bottleSizeMl = 750, onUploadS
       ) : (
         <button
           type="button"
-          onClick={() => fileInputRef.current?.click()}
+          onClick={openCamera}
           disabled={uploading}
           className="w-full rounded-lg border-2 border-dashed border-slate-600 bg-slate-800/40 px-4 py-8 sm:py-6 text-center hover:border-emerald-500 hover:bg-slate-800/60 transition-all disabled:opacity-50 touch-manipulation active:scale-95"
         >
@@ -97,8 +106,10 @@ export default function BottlePhotoUpload({ barId, bottleSizeMl = 750, onUploadS
             <span className="text-slate-300">Uploading...</span>
           ) : (
             <div className="space-y-2">
-              <div className="text-4xl sm:text-3xl">📸</div>
-              <p className="text-base sm:text-sm font-semibold text-white">Take photo of bottle</p>
+              <div className="text-4xl sm:text-3xl">{useCameraMode && isMobile ? '📷' : '📸'}</div>
+              <p className="text-base sm:text-sm font-semibold text-white">
+                {useCameraMode && isMobile ? 'Take photo with camera' : 'Take or upload photo'}
+              </p>
               <p className="text-sm sm:text-xs text-slate-400">AI will estimate fill level</p>
             </div>
           )}
@@ -110,11 +121,21 @@ export default function BottlePhotoUpload({ barId, bottleSizeMl = 750, onUploadS
           type="button"
           onClick={() => {
             setPreview(null);
-            fileInputRef.current?.click();
+            openCamera();
           }}
           className="w-full rounded-lg bg-slate-700 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-600"
         >
-          Retake photo
+          {useCameraMode && isMobile ? 'Retake photo' : 'Retake or upload'}
+        </button>
+      )}
+
+      {isMobile && !preview && (
+        <button
+          type="button"
+          onClick={() => setUseCameraMode(!useCameraMode)}
+          className="w-full rounded-lg bg-slate-800/50 px-4 py-2 text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-700/50 transition-all"
+        >
+          {useCameraMode ? 'Or upload from gallery' : 'Or take with camera'}
         </button>
       )}
 
@@ -126,3 +147,4 @@ export default function BottlePhotoUpload({ barId, bottleSizeMl = 750, onUploadS
     </div>
   );
 }
+

@@ -42,6 +42,7 @@ export default function ExplorePage() {
   const [userLocation, setUserLocation] = useState<{ latitude: number; longitude: number } | null>(null);
   const [bars, setBars] = useState<BarResult[]>([]);
   const [loading, setLoading] = useState(false);
+  const [autoSearch, setAutoSearch] = useState(true);
 
   const mapCenter = useMemo(() => userLocation || { latitude: 47.61, longitude: -122.33 }, [userLocation]);
 
@@ -63,40 +64,44 @@ export default function ExplorePage() {
   }, []);
 
   // Fetch bars from API
-  useEffect(() => {
-    const fetchBars = async () => {
-      setLoading(true);
-      try {
-        const params = new URLSearchParams({
-          day: String(day),
-          activity,
-          special: String(showSpecial),
-          happeningNow: String(happeningNow),
-        });
-        if (city) params.append('city', city);
-        if (distance && userLocation) {
-          params.append('distance', String(distance));
-          params.append('userLatitude', String(userLocation.latitude));
-          params.append('userLongitude', String(userLocation.longitude));
-        }
-
-        const res = await fetch(`/api/search?${params}`);
-        const data = await res.json();
-        
-        if (res.ok) {
-          setBars(data.bars || []);
-        } else {
-          setBars([]);
-        }
-      } catch (error) {
-        console.error('Search error:', error);
-        setBars([]);
-      } finally {
-        setLoading(false);
+  const performSearch = async () => {
+    setLoading(true);
+    try {
+      const params = new URLSearchParams({
+        day: String(day),
+        activity,
+        special: String(showSpecial),
+        happeningNow: String(happeningNow),
+      });
+      if (city) params.append('city', city);
+      if (distance && userLocation) {
+        params.append('distance', String(distance));
+        params.append('userLatitude', String(userLocation.latitude));
+        params.append('userLongitude', String(userLocation.longitude));
       }
-    };
 
-    fetchBars();
+      const res = await fetch(`/api/search?${params}`);
+      const data = await res.json();
+      
+      if (res.ok) {
+        setBars(data.bars || []);
+      } else {
+        console.error('Search error:', data.error);
+        setBars([]);
+      }
+    } catch (error) {
+      console.error('Search error:', error);
+      setBars([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Auto-search on filter change if enabled
+  useEffect(() => {
+    if (autoSearch) {
+      performSearch();
+    }
   }, [day, activity, showSpecial, happeningNow, city, distance, userLocation]);
 
   return (
@@ -184,6 +189,16 @@ export default function ExplorePage() {
                 />
                 Special / new only
               </label>
+              {!autoSearch && (
+                <button
+                  type="button"
+                  onClick={performSearch}
+                  disabled={loading}
+                  className="mt-2 rounded-lg bg-emerald-600 px-3 py-2 text-xs font-semibold text-white hover:bg-emerald-500 transition-all disabled:opacity-50"
+                >
+                  {loading ? 'Searching...' : 'Search'}
+                </button>
+              )}
             </div>
           </div>
         </section>
