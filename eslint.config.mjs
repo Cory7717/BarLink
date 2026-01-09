@@ -21,8 +21,17 @@ const eslintConfig = defineConfig([
       // Allow inline styles for dynamic width/height calculations
       "@next/next/no-img-element": "warn",
       "@next/next/no-inline-styles": "off",
+      // Disable Tailwind's canonical class suggestions (allows custom bg-linear-to-* utilities)
+      "@tailwindcss/no-custom-classname": "off",
+      "tailwindcss/classnames-order": "warn",
+      "tailwindcss/enforces-negative-arbitrary-values": "warn",
+      "tailwindcss/enforces-sorting": "warn",
+      "tailwindcss/migration-from-tailwind-2": "warn",
+      "tailwindcss/no-contradicting-classname": "error",
+      "tailwindcss/no-custom-classname": "off",
     },
   },
 ]);
 
 export default eslintConfig;
+

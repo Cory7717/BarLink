@@ -53,14 +53,24 @@ export async function POST(
       return NextResponse.json({ error: 'Title, start date, and start time are required' }, { status: 400 });
     }
 
+    const parsedStartDate = new Date(startDate);
+    if (Number.isNaN(parsedStartDate.getTime())) {
+      return NextResponse.json({ error: 'Invalid start date' }, { status: 400 });
+    }
+
+    const parsedEndDate = endDate ? new Date(endDate) : null;
+    if (endDate && parsedEndDate && Number.isNaN(parsedEndDate.getTime())) {
+      return NextResponse.json({ error: 'Invalid end date' }, { status: 400 });
+    }
+
     const event = await prisma.event.create({
       data: {
         barId,
         title,
         description: description || null,
         category: category || title,
-        startDate: new Date(startDate),
-        endDate: endDate ? new Date(endDate) : null,
+        startDate: parsedStartDate,
+        endDate: parsedEndDate,
         startTime,
         endTime: endTime || null,
         isActive: isActive ?? true,

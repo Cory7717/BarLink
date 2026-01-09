@@ -21,14 +21,26 @@ export async function PATCH(
     const body = await req.json();
     const { title, description, category, startDate, endDate, startTime, endTime, isSpecial, isActive } = body;
 
+    const parsedStartDate =
+      startDate !== undefined ? new Date(startDate) : undefined;
+    if (parsedStartDate && Number.isNaN(parsedStartDate.getTime())) {
+      return NextResponse.json({ error: 'Invalid start date' }, { status: 400 });
+    }
+
+    const parsedEndDate =
+      endDate !== undefined ? (endDate ? new Date(endDate) : null) : undefined;
+    if (parsedEndDate instanceof Date && Number.isNaN(parsedEndDate.getTime())) {
+      return NextResponse.json({ error: 'Invalid end date' }, { status: 400 });
+    }
+
     const event = await prisma.event.update({
       where: { id, barId },
       data: {
         ...(title !== undefined && { title }),
         ...(description !== undefined && { description }),
         ...(category !== undefined && { category }),
-        ...(startDate !== undefined && { startDate: new Date(startDate) }),
-        ...(endDate !== undefined && { endDate: endDate ? new Date(endDate) : null }),
+        ...(parsedStartDate !== undefined && { startDate: parsedStartDate }),
+        ...(parsedEndDate !== undefined && { endDate: parsedEndDate }),
         ...(startTime !== undefined && { startTime }),
         ...(endTime !== undefined && { endTime }),
         ...(isSpecial !== undefined && { isSpecial }),
