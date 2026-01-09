@@ -75,6 +75,7 @@ export async function GET(req: Request) {
     const userLatitude = searchParams.get('userLatitude') ? Number(searchParams.get('userLatitude')) : null;
     const userLongitude = searchParams.get('userLongitude') ? Number(searchParams.get('userLongitude')) : null;
     const keyword = (searchParams.get('q') || '').trim().toLowerCase();
+    const queryMode: Prisma.QueryMode = "insensitive";
 
     if (!day || !activity) {
       return NextResponse.json({ error: 'Day and activity are required' }, { status: 400 });
@@ -182,8 +183,8 @@ export async function GET(req: Request) {
                       isActive: true,
                       dayOfWeek: dayInt,
                       OR: [
-                        { customTitle: { contains: keyword, mode: "insensitive" } },
-                        { category: { contains: keyword, mode: "insensitive" } },
+                        { customTitle: { contains: keyword, mode: queryMode } },
+                        { category: { contains: keyword, mode: queryMode } },
                       ],
                     },
                   },
@@ -193,8 +194,8 @@ export async function GET(req: Request) {
                     some: {
                       isActive: true,
                       OR: [
-                        { title: { contains: keyword, mode: "insensitive" } },
-                        { category: { contains: keyword, mode: "insensitive" } },
+                        { title: { contains: keyword, mode: queryMode } },
+                        { category: { contains: keyword, mode: queryMode } },
                       ],
                     },
                   },
@@ -202,7 +203,7 @@ export async function GET(req: Request) {
                 {
                   staticOfferings: {
                     some: {
-                      name: { contains: keyword, mode: "insensitive" },
+                      name: { contains: keyword, mode: queryMode },
                     },
                   },
                 },
@@ -210,7 +211,7 @@ export async function GET(req: Request) {
                   drinkSpecials: {
                     some: {
                       active: true,
-                      name: { contains: keyword, mode: "insensitive" },
+                      name: { contains: keyword, mode: queryMode },
                       OR: [{ daysOfWeek: { has: dayInt } }, { daysOfWeek: { isEmpty: true } }],
                     },
                   },
@@ -219,7 +220,7 @@ export async function GET(req: Request) {
                   foodOfferings: {
                     some: {
                       active: true,
-                      name: { contains: keyword, mode: "insensitive" },
+                      name: { contains: keyword, mode: queryMode },
                       OR: [{ specialDays: { has: dayInt } }, { specialDays: { isEmpty: true } }],
                     },
                   },
