@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
-import { uploadToS3 } from '@/lib/s3';
 
 export async function POST(req: Request) {
   try {
@@ -26,21 +25,13 @@ export async function POST(req: Request) {
 
     const buffer = Buffer.from(await file.arrayBuffer());
 
-    // Upload to S3
-    const imageUrl = await uploadToS3({
-      file: buffer,
-      fileName: file.name,
-      contentType: file.type,
-      folder: `bottles/${barId}`,
-    });
-
     // Lightweight deterministic estimation based on image size
     const bottleSizeMl = Number(formData.get('bottleSizeMl')) || 750;
     const rawPct = (buffer.byteLength % 75) + 10; // 10-84 based on file size
     const estimatedPct = Math.min(98, Math.max(5, rawPct));
     const estimatedMl = Math.round((estimatedPct / 100) * bottleSizeMl);
 
-    return NextResponse.json({ imageUrl, estimatedPct, estimatedMl }, { status: 200 });
+    return NextResponse.json({ imageUrl: "", estimatedPct, estimatedMl }, { status: 200 });
   } catch (error) {
     console.error('Upload error:', error);
     return NextResponse.json({ error: 'Failed to upload image' }, { status: 500 });

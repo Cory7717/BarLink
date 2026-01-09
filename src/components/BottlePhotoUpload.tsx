@@ -50,7 +50,7 @@ export default function BottlePhotoUpload({ barId, bottleSizeMl = 750, onUploadS
       if (!response.ok) throw new Error('Upload failed');
 
       const { imageUrl, estimatedPct: pct, estimatedMl: ml } = await response.json();
-      onUploadSuccess(imageUrl);
+      onUploadSuccess(typeof imageUrl === "string" ? imageUrl : "");
       if (pct && ml) {
         setEstimating(false);
         setEstimatedPct(pct);

@@ -25,9 +25,9 @@ export function paypalClient() {
 }
 
 export const PAYPAL_PLAN_IDS = {
-  MONTHLY: process.env.PAYPAL_PLAN_MONTHLY_ID ?? '',
-  SIX_MONTH: process.env.PAYPAL_PLAN_SIXMONTH_ID ?? '',
-  YEARLY: process.env.PAYPAL_PLAN_YEARLY_ID ?? '',
+  MONTHLY: (process.env.PAYPAL_PLAN_MONTHLY_ID ?? '').trim(),
+  SIX_MONTH: (process.env.PAYPAL_PLAN_SIXMONTH_ID ?? '').trim(),
+  YEARLY: (process.env.PAYPAL_PLAN_YEARLY_ID ?? '').trim(),
 } as const;
 
 export function getPlanIdFromKey(planKey: string): string {

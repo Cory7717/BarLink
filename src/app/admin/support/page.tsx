@@ -93,6 +93,14 @@ export default function AdminSupportPage() {
                       ))}
                     </div>
                   )}
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    <a className="btn-primary px-3 py-1.5 text-xs" href={`/admin/support/owner/${owner.id}`}>
+                      Open profile
+                    </a>
+                    <a className="btn-secondary px-3 py-1.5 text-xs" href={`mailto:${owner.email}`}>
+                      Email owner
+                    </a>
+                  </div>
                 </div>
               ))}
             </div>
@@ -110,6 +118,14 @@ export default function AdminSupportPage() {
                   <p className="text-sm font-semibold text-white">{user.name || "Unnamed user"}</p>
                   <p className="text-xs text-slate-300">{user.email}</p>
                   <p className="text-xs text-slate-400 mt-2">User ID: {user.id}</p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    <a className="btn-primary px-3 py-1.5 text-xs" href={`/admin/support/user/${user.id}`}>
+                      Open profile
+                    </a>
+                    <a className="btn-secondary px-3 py-1.5 text-xs" href={`mailto:${user.email}`}>
+                      Email user
+                    </a>
+                  </div>
                 </div>
               ))}
             </div>

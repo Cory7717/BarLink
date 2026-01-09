@@ -81,7 +81,35 @@ export default function InventorySnapshot({ barId, onComplete }: InventorySnapsh
         inventoryItemId: itemId,
         estimatedPct,
         estimatedMl,
-        quantityOnHand: estimatedMl / (prev[itemId]?.inventoryItemId ? items.find(i => i.id === itemId)?.bottleSizeMl || 750 : 750),
+      },
+    }));
+  };
+
+  const updateEstimate = (itemId: string, pct: number) => {
+    const bottleSize = items.find(i => i.id === itemId)?.bottleSizeMl || 750;
+    const ml = Math.round((pct / 100) * bottleSize);
+    setSnapshotData(prev => ({
+      ...prev,
+      [itemId]: {
+        ...prev[itemId],
+        inventoryItemId: itemId,
+        estimatedPct: pct,
+        estimatedMl: ml,
+      },
+    }));
+  };
+
+  const applyEstimate = (itemId: string) => {
+    const bottleSize = items.find(i => i.id === itemId)?.bottleSizeMl || 750;
+    const estimate = snapshotData[itemId];
+    if (!estimate?.estimatedMl) return;
+    const qty = estimate.estimatedMl / bottleSize;
+    setSnapshotData(prev => ({
+      ...prev,
+      [itemId]: {
+        ...prev[itemId],
+        inventoryItemId: itemId,
+        quantityOnHand: Number(qty.toFixed(2)),
       },
     }));
   };
@@ -177,12 +205,32 @@ export default function InventorySnapshot({ barId, onComplete }: InventorySnapsh
                   className="w-full rounded-md border border-slate-600 bg-slate-800 px-3 py-2 text-sm text-white focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
                 />
               </label>
-              {snapshotData[item.id]?.estimatedPct && (
-                <div className="text-xs text-emerald-300">
-                  AI: {snapshotData[item.id].estimatedPct?.toFixed(1)}% full
-                </div>
-              )}
             </div>
+
+            {snapshotData[item.id]?.estimatedPct !== undefined && (
+              <div className="mt-3 rounded-lg border border-emerald-500/30 bg-emerald-500/10 p-3 text-xs text-emerald-100">
+                <div className="flex items-center justify-between">
+                  <span>Estimated fill: {snapshotData[item.id]?.estimatedPct?.toFixed(0)}%</span>
+                  <span>~{snapshotData[item.id]?.estimatedMl} ml</span>
+                </div>
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  step="1"
+                  value={snapshotData[item.id]?.estimatedPct || 0}
+                  onChange={(e) => updateEstimate(item.id, Number(e.target.value))}
+                  className="mt-2 w-full accent-emerald-400"
+                />
+                <button
+                  type="button"
+                  onClick={() => applyEstimate(item.id)}
+                  className="mt-2 btn-secondary px-3 py-1 text-xs"
+                >
+                  Use estimate
+                </button>
+              </div>
+            )}
           </div>
         ))}
       </div>
