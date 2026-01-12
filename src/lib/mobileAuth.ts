@@ -47,10 +47,12 @@ export async function verifyMobileRequest(request: Request): Promise<MobileJwt |
     return null;
   }
 
+  const exp = typeof decoded.exp === "number" ? decoded.exp : undefined;
+
   return {
     sub: decoded.sub as string,
     email: decoded.email as string,
     role: (decoded as MobileJwt).role ?? "owner",
-    exp: decoded.exp,
+    exp,
   };
 }
