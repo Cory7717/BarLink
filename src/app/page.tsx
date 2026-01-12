@@ -54,14 +54,33 @@ export default function Home() {
               Owners stay visible with weekly updates. Patrons filter by day, activity, and
               special events, then see matching bars on an interactive map.
             </p>
-            <div className="flex flex-col gap-3 sm:flex-row pt-4">
-              <Link href="/auth/signup" className="btn-primary px-6 py-3 text-sm sm:text-base">
-                List your bar
-              </Link>
-              <Link href="/explore" className="btn-secondary px-6 py-3 text-sm sm:text-base">
-                Explore bars
-              </Link>
-            </div>
+          <div className="flex flex-col gap-3 sm:flex-row pt-4">
+            <Link href="/auth/signup" className="btn-primary px-6 py-3 text-sm sm:text-base">
+              List your bar
+            </Link>
+            <Link href="/explore" className="btn-secondary px-6 py-3 text-sm sm:text-base">
+              Explore bars
+            </Link>
+          </div>
+          <div className="mt-4 flex flex-wrap gap-3">
+            {[
+              { label: "iOS (Coming Soon)", sub: "TestFlight launch planned", badge: "iOS" },
+              { label: "Android (Coming Soon)", sub: "Play Store launch planned", badge: "Android" },
+            ].map((item) => (
+              <div
+                key={item.label}
+                className="group relative flex min-w-[220px] items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-left shadow-sm pointer-events-none opacity-70"
+              >
+                <div>
+                  <p className="text-sm font-semibold text-white">{item.label}</p>
+                  <p className="text-xs text-slate-300">{item.sub}</p>
+                </div>
+                <span className="rounded-full bg-slate-700 px-3 py-1 text-[11px] font-semibold text-slate-100 uppercase">
+                  Coming Soon
+                </span>
+              </div>
+            ))}
+          </div>
             <div className="grid gap-3 sm:grid-cols-3 pt-4">
               {steps.map((step, idx) => (
                 <div

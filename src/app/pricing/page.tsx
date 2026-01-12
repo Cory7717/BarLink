@@ -36,6 +36,25 @@ export default function PricingPage() {
           <p className="text-slate-200">
             Publish your bar, keep offerings fresh, and appear in patron searches.
           </p>
+          <div className="mt-4 flex flex-wrap justify-center gap-3">
+            {[
+              { label: "iOS app", sub: "Coming soon", pill: "iOS" },
+              { label: "Android app", sub: "Coming soon", pill: "Android" },
+            ].map((item) => (
+              <div
+                key={item.label}
+                className="flex min-w-[220px] items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-left opacity-70 pointer-events-none"
+              >
+                <div>
+                  <p className="text-sm font-semibold text-white">{item.label}</p>
+                  <p className="text-xs text-slate-300">{item.sub}</p>
+                </div>
+                <span className="rounded-full bg-slate-700 px-3 py-1 text-[11px] font-semibold text-slate-100 uppercase">
+                  Coming Soon
+                </span>
+              </div>
+            ))}
+          </div>
         </header>
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">
