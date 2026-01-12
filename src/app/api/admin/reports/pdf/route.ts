@@ -94,7 +94,7 @@ export async function GET(req: Request) {
   doc.setFontSize(10);
   doc.text(`Range: ${rangeLabel}`, 14, 22);
 
-  autoTable(doc, {
+  const summary = autoTable(doc, {
     startY: 28,
     head: [["Metric", "Value"]],
     body: [
@@ -107,8 +107,8 @@ export async function GET(req: Request) {
     headStyles: { fillColor: [12, 74, 110] },
   });
 
-  autoTable(doc, {
-    startY: doc.lastAutoTable.finalY + 8,
+  const cityTable = autoTable(doc, {
+    startY: summary.lastAutoTable.finalY + 8,
     head: [["City activity (check-ins)", "Count"]],
     body: cityRows.length ? cityRows.map(([city, count]) => [city, count.toString()]) : [["No activity", "-"]],
     styles: { fontSize: 9 },
@@ -116,7 +116,7 @@ export async function GET(req: Request) {
   });
 
   autoTable(doc, {
-    startY: doc.lastAutoTable.finalY + 8,
+    startY: cityTable.lastAutoTable.finalY + 8,
     head: [["Canceled subscriptions", "", "", ""]],
     body: [],
     styles: { fontSize: 9 },
@@ -124,7 +124,7 @@ export async function GET(req: Request) {
   });
 
   autoTable(doc, {
-    startY: doc.lastAutoTable.finalY + 2,
+    startY: (cityTable.lastAutoTable.finalY + 8) + 2,
     head: [["Owner", "Plan", "Canceled At", "Status"]],
     body: canceledSubs.length
       ? canceledSubs.map((sub) => [
