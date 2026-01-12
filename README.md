@@ -56,6 +56,14 @@ npm run dev
 
 Visit http://localhost:3000
 
+### 5. Mobile App (Expo)
+```
+cd mobile
+npm install
+npm start
+```
+Set `EXPO_PUBLIC_API_URL` in your `.env` to point at the running Next.js server (default: http://localhost:3000). The mobile app shares the same API, Prisma database, and auth/PayPal setup.
+
 ## Project Structure
 
 ```

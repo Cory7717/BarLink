@@ -1,7 +1,9 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+node_modules/
+**/node_modules/
+
 /.pnp
 .pnp.*
 .yarn/*
@@ -23,6 +25,14 @@
 # misc
 .DS_Store
 *.pem
+
+# Expo / React Native
+.expo/
+.expo-shared/
+**/.expo/
+**/.expo-shared/
+android/build/
+ios/Pods/
 
 # debug
 npm-debug.log*
