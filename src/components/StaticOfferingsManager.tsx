@@ -11,7 +11,8 @@ interface StaticOffering {
   position: number;
 }
 
-const ICONS = ['🎮', '🎯', '🎲', '🎰', '🎭', '🎪', '🏆', '🎊', '🎈', '🎉'];
+const ICONS = ['dYZr', 'dYZ_', 'dYZý', 'dYZø', 'dYZ-', 'dYZ¦', 'dY?+', 'dYZS', 'dYZ^', 'dYZ%'];
+const FALLBACK_ICON = '•';
 
 export default function StaticOfferingsManager({ barId }: { barId: string }) {
   const [offerings, setOfferings] = useState<StaticOffering[]>([]);
@@ -23,7 +24,7 @@ export default function StaticOfferingsManager({ barId }: { barId: string }) {
     position: number;
   }>({
     name: '',
-    icon: '🎮',
+    icon: '',
     description: '',
     position: 0
   });
@@ -61,13 +62,16 @@ export default function StaticOfferingsManager({ barId }: { barId: string }) {
       const res = await fetch(`/api/bars/${barId}/static-offerings`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newOffering)
+        body: JSON.stringify({
+          ...newOffering,
+          icon: newOffering.icon || undefined,
+        })
       });
 
       if (res.ok) {
         const created = await res.json();
         setOfferings([...offerings, created]);
-        setNewOffering({ name: '', icon: '🎮', description: '', position: 0 });
+        setNewOffering({ name: '', icon: '', description: '', position: 0 });
       } else {
         const error = await res.json();
         alert(error.error || 'Failed to create offering');
@@ -117,7 +121,7 @@ export default function StaticOfferingsManager({ barId }: { barId: string }) {
             offerings.map(offering => (
               <div key={offering.id} className="flex items-center justify-between bg-white p-3 rounded border">
                 <div className="flex items-center gap-3">
-                  <span className="text-2xl">{offering.icon}</span>
+                  <span className="text-2xl">{offering.icon || FALLBACK_ICON}</span>
                   <div>
                     <p className="font-medium">{offering.name}</p>
                     {offering.description && <p className="text-sm text-gray-600">{offering.description}</p>}
@@ -152,7 +156,7 @@ export default function StaticOfferingsManager({ barId }: { barId: string }) {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">Icon</label>
+              <label className="block text-sm font-medium mb-1">Icon (optional)</label>
               <div className="grid grid-cols-5 gap-2">
                 {ICONS.map(icon => (
                   <button
@@ -166,6 +170,7 @@ export default function StaticOfferingsManager({ barId }: { barId: string }) {
                   </button>
                 ))}
               </div>
+              <p className="text-xs text-gray-500 mt-1">Leave blank to use a default dot.</p>
             </div>
 
             <div>

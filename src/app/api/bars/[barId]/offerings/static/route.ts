@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 
+const FALLBACK_ICON = '•';
+
 export async function GET(
   req: NextRequest,
   { params }: { params: Promise<{ barId: string }> }
@@ -62,9 +64,9 @@ export async function POST(
     const body = await req.json();
     const { name, icon, description, position } = body;
 
-    if (!name || !icon) {
+    if (!name) {
       return NextResponse.json(
-        { error: 'Name and icon are required' },
+        { error: 'Name is required' },
         { status: 400 }
       );
     }
@@ -82,7 +84,7 @@ export async function POST(
       data: {
         barId,
         name,
-        icon,
+        icon: icon || FALLBACK_ICON,
         description: description || null,
         position: position ?? count,
       },

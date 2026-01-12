@@ -3,6 +3,8 @@ import { prisma } from '@/lib/prisma';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 
+const FALLBACK_ICON = '•';
+
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ barId: string }> }
@@ -79,7 +81,7 @@ export async function POST(
       data: {
         barId,
         name,
-        icon: icon || '🎮',
+        icon: icon || FALLBACK_ICON,
         description: description || '',
         position
       }
@@ -129,7 +131,7 @@ export async function PUT(
       where: { id },
       data: {
         name,
-        icon,
+        icon: icon ?? FALLBACK_ICON,
         description,
         position
       }

@@ -22,7 +22,6 @@ export default async function BarManagementPage({
       owner: true,
       offerings: true,
       events: true,
-      barLicenses: true,
       inventoryItems: true,
     },
   });
@@ -35,7 +34,6 @@ export default async function BarManagementPage({
     redirect("/dashboard");
   }
 
-  const license = bar.barLicenses?.[0];
   const stats = {
     offerings: bar.offerings.length,
     events: bar.events.length,
@@ -56,28 +54,6 @@ export default async function BarManagementPage({
           <Link href="/dashboard" className="btn-secondary px-4 py-2 text-sm">
             Back to dashboard
           </Link>
-        </div>
-
-        <div className="glass-panel rounded-3xl p-6 shadow-lg mb-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <h2 className="text-lg font-semibold text-white">License status</h2>
-              <p className="text-sm text-slate-300 mt-1">
-                {license ? `Updated: ${new Date(license.updatedAt).toLocaleDateString()}` : "No license on file"}
-              </p>
-            </div>
-            <span
-              className={`text-sm font-semibold rounded-full px-4 py-2 ${
-                license?.status === "ACTIVE"
-                  ? "bg-emerald-500/20 text-emerald-100"
-                  : license?.status === "PAST_DUE"
-                  ? "bg-amber-500/20 text-amber-100"
-                  : "bg-slate-600/40 text-slate-200"
-              }`}
-            >
-              {license?.status ?? "UNLICENSED"}
-            </span>
-          </div>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-3 mb-6">
