@@ -116,6 +116,6 @@ export const checkInRequestSchema = z.object({
   barId: z.string(),
   qrData: z.string().optional(),
   source: z.string().optional(),
-  metadata: z.record(z.unknown()).optional(),
+  metadata: z.record(z.string(), z.unknown()).optional(),
 });
 export type CheckInRequest = z.infer<typeof checkInRequestSchema>;
