@@ -94,7 +94,7 @@ export async function GET(req: Request) {
   doc.setFontSize(10);
   doc.text(`Range: ${rangeLabel}`, 14, 22);
 
-  const summary = autoTable(doc, {
+  autoTable(doc, {
     startY: 28,
     head: [["Metric", "Value"]],
     body: [
@@ -107,24 +107,30 @@ export async function GET(req: Request) {
     headStyles: { fillColor: [12, 74, 110] },
   });
 
-  const cityTable = autoTable(doc, {
-    startY: summary.lastAutoTable.finalY + 8,
+  const summaryEnd = (doc as any).lastAutoTable?.finalY || 28;
+
+  autoTable(doc, {
+    startY: summaryEnd + 8,
     head: [["City activity (check-ins)", "Count"]],
     body: cityRows.length ? cityRows.map(([city, count]) => [city, count.toString()]) : [["No activity", "-"]],
     styles: { fontSize: 9 },
     headStyles: { fillColor: [30, 64, 175] },
   });
 
+  const cityEnd = (doc as any).lastAutoTable?.finalY || summaryEnd + 8;
+
   autoTable(doc, {
-    startY: cityTable.lastAutoTable.finalY + 8,
+    startY: cityEnd + 8,
     head: [["Canceled subscriptions", "", "", ""]],
     body: [],
     styles: { fontSize: 9 },
     headStyles: { fillColor: [124, 45, 18] },
   });
 
+  const cancelHeaderEnd = (doc as any).lastAutoTable?.finalY || cityEnd + 8;
+
   autoTable(doc, {
-    startY: (cityTable.lastAutoTable.finalY + 8) + 2,
+    startY: cancelHeaderEnd + 2,
     head: [["Owner", "Plan", "Canceled At", "Status"]],
     body: canceledSubs.length
       ? canceledSubs.map((sub) => [
