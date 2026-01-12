@@ -1,7 +1,7 @@
 const apiUrl = process.env.EXPO_PUBLIC_API_URL || "http://localhost:3000";
 const easProjectId = process.env.EXPO_EAS_PROJECT_ID || "replace-with-eas-project-id";
 
-export default ({ config }) => ({
+const config = ({ config }) => ({
   ...config,
   name: "BarLink",
   slug: "barlink",
@@ -35,3 +35,5 @@ export default ({ config }) => ({
     apiUrl,
   },
 });
+
+export default config;

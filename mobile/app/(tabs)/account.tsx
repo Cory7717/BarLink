@@ -21,8 +21,9 @@ export default function AccountScreen() {
     try {
       setError(null);
       await login(email, password);
-    } catch (err: any) {
-      setError(err?.message || "Login failed");
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Login failed";
+      setError(message);
     }
   };
 

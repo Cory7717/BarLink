@@ -24,7 +24,6 @@ export default async function DashboardPage() {
         include: {
           offerings: true,
           events: true,
-          barLicenses: true,
         },
       },
     },
@@ -137,19 +136,17 @@ export default async function DashboardPage() {
               </Link>
             </div>
             <div className="mt-4 grid gap-4 md:grid-cols-2">
-              {bars.map((b) => {
-                const license = b.barLicenses?.[0];
-                return (
-                  <div key={b.id} className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <h3 className="text-lg font-semibold text-white">{b.name}</h3>
-                        <p className="text-xs text-slate-300">
-                          {b.city}, {b.state}
-                        </p>
-                      </div>
-                    <span className="text-xs text-slate-400">License info hidden</span>
+              {bars.map((b) => (
+                <div key={b.id} className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 className="text-lg font-semibold text-white">{b.name}</h3>
+                      <p className="text-xs text-slate-300">
+                        {b.city}, {b.state}
+                      </p>
                     </div>
+                    <span className="text-xs text-slate-400">License info hidden</span>
+                  </div>
                     <div className="mt-3 flex items-center gap-3 text-xs text-slate-300">
                       <span>{b.offerings.length} offerings</span>
                       <span>•</span>
@@ -165,9 +162,8 @@ export default async function DashboardPage() {
                         Inventory
                       </Link>
                     </div>
-                  </div>
-                );
-              })}
+                </div>
+              ))}
             </div>
           </section>
         )}
