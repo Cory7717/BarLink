@@ -104,14 +104,24 @@ export default async function DashboardPage() {
                 {new Date(owner.subscription.currentPeriodEnd).toLocaleDateString()}
               </p>
             )}
-            <a
-              href="https://www.paypal.com/myaccount/autopay"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-3 inline-flex text-sm font-semibold text-cyan-200 hover:text-cyan-100"
-            >
-              Manage billing on PayPal
-            </a>
+            <div className="mt-3 flex flex-wrap gap-3 items-center">
+              <a
+                href="https://www.paypal.com/myaccount/autopay"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex text-sm font-semibold text-cyan-200 hover:text-cyan-100"
+              >
+                Manage billing on PayPal
+              </a>
+              <form action="/api/subscriptions/cancel" method="post">
+                <button
+                  type="submit"
+                  className="btn-secondary px-3 py-1.5 text-xs"
+                >
+                  Cancel subscription
+                </button>
+              </form>
+            </div>
           </section>
         )}
 
