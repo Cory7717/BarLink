@@ -128,7 +128,7 @@ function ExploreContent() {
     if (happeningNow) params.set("happeningNow", "true");
     params.set("auto", autoSearch ? "true" : "false");
 
-    router.replace(`${pathname}?${params.toString()}`);
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   }, [
     activity,
     autoSearch,
