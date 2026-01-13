@@ -127,6 +127,7 @@ model Bar {
   cityNormalized     String
   state              String
   zipCode            String
+  barType            String?   @default("Unclassified")
   neighborhood       String?
   neighborhoodNormalized String?
   latitude           Float
@@ -168,6 +169,7 @@ model Bar {
   @@index([latitude, longitude])
   @@index([isActive])
   @@index([isPublished])
+  @@index([barType])
 }
 
 model Offering {

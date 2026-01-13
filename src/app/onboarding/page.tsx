@@ -4,8 +4,7 @@ import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Navigation from "@/components/Navigation";
-import { SUBSCRIPTION_PLANS } from "@/lib/constants";
-import { US_STATES } from "@/lib/constants";
+import { SUBSCRIPTION_PLANS, US_STATES, BAR_TYPES } from "@/lib/constants";
 
 function OnboardingContent() {
   const router = useRouter();
@@ -31,6 +30,7 @@ function OnboardingContent() {
   const [phone, setPhone] = useState("");
   const [website, setWebsite] = useState("");
   const [description, setDescription] = useState("");
+  const [barType, setBarType] = useState("Unclassified");
 
   useEffect(() => {
     // If new user signup flow, need ownerId
@@ -79,6 +79,7 @@ function OnboardingContent() {
           phone,
           website,
           description,
+          barType,
         }),
       });
 
@@ -168,6 +169,21 @@ function OnboardingContent() {
                 className="mt-2 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-white"
                 required
               />
+            </label>
+
+            <label className="block text-sm text-slate-200">
+              Bar type
+              <select
+                value={barType}
+                onChange={(e) => setBarType(e.target.value)}
+                className="mt-2 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-white"
+              >
+                {BAR_TYPES.map((t) => (
+                  <option key={t} value={t}>
+                    {t}
+                  </option>
+                ))}
+              </select>
             </label>
 
             <label className="block text-sm text-slate-200">

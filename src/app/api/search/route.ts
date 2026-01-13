@@ -3,26 +3,6 @@ import { prisma } from '@/lib/prisma';
 import { logAnalyticsEvent } from '@/lib/analytics';
 import type { Prisma } from '@/generated/prisma';
 
-type OfferingLite = {
-  customTitle: string | null;
-  category: string;
-  isSpecial: boolean;
-  isNew: boolean;
-  dayOfWeek: number;
-  isActive: boolean;
-  startTime?: string | null;
-  endTime?: string | null;
-};
-
-type EventLite = {
-  category: string | null;
-  isSpecial: boolean;
-  isNew: boolean;
-  isActive: boolean;
-  startDate: Date;
-  title: string;
-};
-
 type BarWithRelations = Prisma.BarGetPayload<{
   include: {
     offerings: true;
@@ -372,10 +352,11 @@ export async function GET(req: Request) {
       ].filter(Boolean) as string[];
 
       if (keyword) {
-        const keywordMatches =
+      const keywordMatches =
           bar.name.toLowerCase().includes(keyword) ||
           bar.address.toLowerCase().includes(keyword) ||
           bar.city.toLowerCase().includes(keyword) ||
+          (bar.barType ? bar.barType.toLowerCase().includes(keyword) : false) ||
           todayOfferings.some((item) => item.toLowerCase().includes(keyword)) ||
           bar.staticOfferings.some((item) => item.name.toLowerCase().includes(keyword));
 
@@ -397,6 +378,7 @@ export async function GET(req: Request) {
           latitude: bar.latitude,
           longitude: bar.longitude,
           todayOfferings,
+          barType: bar.barType,
           hasSpecial: bar.offerings.some((o) => o.isSpecial) || bar.events.some((e) => e.isSpecial),
           hasNew: bar.offerings.some((o) => o.isNew) || bar.events.some((e) => e.isNew),
           ...(distance_miles !== undefined && { distance: distance_miles }),

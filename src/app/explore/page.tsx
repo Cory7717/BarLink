@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
+import { Suspense, useCallback, useEffect, useState } from "react";
 import Navigation from "@/components/Navigation";
 import { DAYS_OF_WEEK } from "@/lib/constants";
 import { DEFAULT_ACTIVITY_CATEGORIES } from "@/lib/activityCategories";
@@ -40,6 +40,7 @@ type BarResult = {
   nextUp?: string;
   hasNew?: boolean;
   hasSpecial?: boolean;
+  barType?: string | null;
 };
 
 type EventCategory = {
@@ -286,7 +287,7 @@ function ExploreContent() {
                 placeholder="Sweepstakes, darts, bingo..."
               />
               <span className="mt-2 text-xs text-slate-400">
-                Searches event titles, specials, and amenities.
+                Searches event titles, specials, amenities, and bar type (e.g., Dive Bar, Sports Bar, Cocktail).
               </span>
             </label>
             <label className="flex flex-col text-sm text-slate-200">
@@ -384,6 +385,9 @@ function ExploreContent() {
                       <p className="text-sm text-slate-200">
                         {bar.address}, {bar.city}
                       </p>
+                      {bar.barType && (
+                        <p className="text-xs text-cyan-200">{bar.barType}</p>
+                      )}
                       {bar.distance !== undefined && (
                         <p className="text-xs text-slate-300">{bar.distance.toFixed(1)} mi away</p>
                       )}

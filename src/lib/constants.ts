@@ -129,3 +129,19 @@ export const US_STATES = [
   { value: 'WI', label: 'Wisconsin' },
   { value: 'WY', label: 'Wyoming' },
 ];
+
+export const BAR_TYPES = [
+  "Unclassified",
+  "Dive Bar",
+  "Sports Bar",
+  "Cocktail Bar",
+  "Wine Bar",
+  "Brewery",
+  "Live Music Venue",
+  "Honky Tonk",
+  "Dance/Club",
+  "Rooftop",
+  "Neighborhood Bar",
+  "LGBTQ+",
+  "Hotel Bar",
+];

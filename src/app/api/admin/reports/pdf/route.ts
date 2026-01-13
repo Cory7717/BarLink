@@ -86,7 +86,8 @@ export async function GET(req: Request) {
 
   const cityRows = Object.entries(cityActivity).sort((a, b) => b[1] - a[1]);
 
-  const doc = new jsPDF();
+  type DocWithAutoTable = jsPDF & { lastAutoTable?: { finalY: number } };
+  const doc: DocWithAutoTable = new jsPDF() as DocWithAutoTable;
   const rangeLabel = `${start.toISOString().slice(0, 10)} to ${end.toISOString().slice(0, 10)}`;
 
   doc.setFontSize(14);
@@ -107,7 +108,7 @@ export async function GET(req: Request) {
     headStyles: { fillColor: [12, 74, 110] },
   });
 
-  const summaryEnd = (doc as any).lastAutoTable?.finalY || 28;
+  const summaryEnd = doc.lastAutoTable?.finalY || 28;
 
   autoTable(doc, {
     startY: summaryEnd + 8,
@@ -117,7 +118,7 @@ export async function GET(req: Request) {
     headStyles: { fillColor: [30, 64, 175] },
   });
 
-  const cityEnd = (doc as any).lastAutoTable?.finalY || summaryEnd + 8;
+  const cityEnd = doc.lastAutoTable?.finalY || summaryEnd + 8;
 
   autoTable(doc, {
     startY: cityEnd + 8,
@@ -127,7 +128,7 @@ export async function GET(req: Request) {
     headStyles: { fillColor: [124, 45, 18] },
   });
 
-  const cancelHeaderEnd = (doc as any).lastAutoTable?.finalY || cityEnd + 8;
+  const cancelHeaderEnd = doc.lastAutoTable?.finalY || cityEnd + 8;
 
   autoTable(doc, {
     startY: cancelHeaderEnd + 2,
