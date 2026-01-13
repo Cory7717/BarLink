@@ -20,7 +20,7 @@ export default function Navigation() {
               href="/" 
               className="text-2xl font-semibold tracking-tight text-gradient"
             >
-              BarPulse
+              BarLink
             </Link>
             
             {/* Navigation Links */}

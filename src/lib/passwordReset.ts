@@ -56,10 +56,10 @@ export async function createOwnerPasswordReset(ownerId: string, email: string) {
   });
 
   const resetUrl = `${baseUrl}/auth/reset?token=${rawToken}`;
-  const subject = "Reset your BarPulse password";
-  const text = `We received a request to reset your BarPulse password.\n\nReset link: ${resetUrl}\n\nIf you did not request this, you can ignore this email.`;
+  const subject = "Reset your BarLink password";
+  const text = `We received a request to reset your BarLink password.\n\nReset link: ${resetUrl}\n\nIf you did not request this, you can ignore this email.`;
   const html = `
-    <p>We received a request to reset your BarPulse password.</p>
+    <p>We received a request to reset your BarLink password.</p>
     <p><a href="${resetUrl}">Reset your password</a></p>
     <p>If you did not request this, you can ignore this email.</p>
   `;

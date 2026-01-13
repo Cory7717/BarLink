@@ -32,7 +32,7 @@ export default function PricingPage() {
       <main className="mx-auto max-w-5xl px-4 pb-20 pt-12">
         <header className="space-y-3 text-center">
           <p className="text-sm text-cyan-200">Owners</p>
-          <h1 className="text-4xl sm:text-5xl font-semibold text-gradient">Stay visible with BarPulse</h1>
+          <h1 className="text-4xl sm:text-5xl font-semibold text-gradient">Stay visible with BarLink</h1>
           <p className="text-slate-200">
             Publish your bar, keep offerings fresh, and appear in patron searches.
           </p>

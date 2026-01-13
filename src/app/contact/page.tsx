@@ -48,7 +48,7 @@ export default function ContactPage() {
       <main className="mx-auto max-w-3xl px-4 pb-16 pt-10 space-y-6">
         <header>
           <p className="text-sm text-cyan-200">Support</p>
-          <h1 className="text-3xl font-semibold text-gradient">Contact BarPulse</h1>
+          <h1 className="text-3xl font-semibold text-gradient">Contact BarLink</h1>
           <p className="text-slate-200">Questions, issues, or feedback? We usually reply within one business day.</p>
         </header>
 
@@ -100,7 +100,7 @@ export default function ContactPage() {
             Or email us directly at{" "}
             <a
               className="underline hover:text-cyan-200"
-              href="mailto:coryarmer@gmail.com?subject=BarPulse%20Support"
+              href="mailto:coryarmer@gmail.com?subject=BarLink%20Support"
             >
               coryarmer@gmail.com
             </a>

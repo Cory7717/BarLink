@@ -28,7 +28,7 @@ export default function BarQRCode({ barId }: { barId: string }) {
   const handleDownload = () => {
     const link = document.createElement("a");
     link.href = qrCode;
-    link.download = `barpulse-qr-code-${barId}.png`;
+    link.download = `BarLink-qr-code-${barId}.png`;
     link.click();
   };
 
@@ -38,7 +38,7 @@ export default function BarQRCode({ barId }: { barId: string }) {
       printWindow.document.write(`
         <html>
           <head>
-            <title>BarPulse Check-In QR Code</title>
+            <title>BarLink Check-In QR Code</title>
             <style>
               body {
                 display: flex;
@@ -83,7 +83,7 @@ export default function BarQRCode({ barId }: { barId: string }) {
                   <li>Tap the notification to check in</li>
                 </ol>
                 <p style="margin-top: 2rem; font-size: 0.9em; color: #666;">
-                  Powered by <strong>BarPulse</strong>
+                  Powered by <strong>BarLink</strong>
                 </p>
               </div>
             </div>

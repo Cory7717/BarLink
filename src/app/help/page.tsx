@@ -21,12 +21,12 @@ const helpSections: Section[] = [
     icon: "🚀",
     content: [
       {
-        question: "What is BarPulse and how does it help my bar?",
+        question: "What is BarLink and how does it help my bar?",
         answer:
-          "BarPulse is a bar discovery platform that connects bar owners with customers actively looking for bars in their area. Bar owners can list their offerings (happy hour, trivia, karaoke, live music) and event schedules. Customers search for these specific offerings by day and time. This helps you attract more foot traffic by making it easy for people to find exactly what they're looking for at your bar.",
+          "BarLink is a bar discovery platform that connects bar owners with customers actively looking for bars in their area. Bar owners can list their offerings (happy hour, trivia, karaoke, live music) and event schedules. Customers search for these specific offerings by day and time. This helps you attract more foot traffic by making it easy for people to find exactly what they're looking for at your bar.",
       },
       {
-        question: "How do I get started with BarPulse?",
+        question: "How do I get started with BarLink?",
         answer:
           "1. Sign up for an account at barlink.com/auth/signup. 2. Add your first bar location with basic info (name, address, city, state). 3. Subscribe to a plan (monthly or annual). 4. Set up your offerings (happy hour times, events like trivia/karaoke). 5. Start receiving customer visits tracked on your dashboard!",
       },
@@ -38,7 +38,7 @@ const helpSections: Section[] = [
       {
         question: "How do I add multiple locations?",
         answer:
-          "From your Dashboard, click 'Add location'. Each location requires its own BarPulse license ($29/month per location). Each bar can have independent offerings, events, and analytics. Multi-location managers can track all bars from one account.",
+          "From your Dashboard, click 'Add location'. Each location requires its own BarLink license ($29/month per location). Each bar can have independent offerings, events, and analytics. Multi-location managers can track all bars from one account.",
       },
     ],
   },
@@ -55,7 +55,7 @@ const helpSections: Section[] = [
       {
         question: "How is activity tracked by day of week?",
         answer:
-          "BarPulse tracks which days of the week are busiest for your bar. It breaks down traffic by source: Search (customers searching for specific offerings), Map (location-based discovery), Favorites (customers who saved your bar), Direct (customers visiting directly). This helps you identify patterns and schedule events strategically.",
+          "BarLink tracks which days of the week are busiest for your bar. It breaks down traffic by source: Search (customers searching for specific offerings), Map (location-based discovery), Favorites (customers who saved your bar), Direct (customers visiting directly). This helps you identify patterns and schedule events strategically.",
       },
       {
         question: "What are 'Top Search Queries'?",
@@ -65,7 +65,7 @@ const helpSections: Section[] = [
       {
         question: "How do I use insights and recommendations?",
         answer:
-          "BarPulse automatically generates personalized recommendations based on your analytics. It suggests days to promote when engagement is low, highlights your best performing day for scheduling special events, and recommends which offerings to emphasize based on search trends.",
+          "BarLink automatically generates personalized recommendations based on your analytics. It suggests days to promote when engagement is low, highlights your best performing day for scheduling special events, and recommends which offerings to emphasize based on search trends.",
       },
       {
         question: "Can I change the timeframe for analytics?",
@@ -129,12 +129,12 @@ const helpSections: Section[] = [
       {
         question: "What's a physical inventory snapshot?",
         answer:
-          "A snapshot is a physical count of bottles at a specific time (end of week/month). Go to 'Inventory Snapshots' and enter actual bottle counts. BarPulse compares this to expected inventory based on usage records to identify variance and help prevent shrinkage.",
+          "A snapshot is a physical count of bottles at a specific time (end of week/month). Go to 'Inventory Snapshots' and enter actual bottle counts. BarLink compares this to expected inventory based on usage records to identify variance and help prevent shrinkage.",
       },
       {
         question: "How does variance tracking help?",
         answer:
-          "If expected usage (based on recorded shifts) doesn't match actual inventory counts, BarPulse alerts you. Large variances could indicate over-pouring, waste, spillage, or theft. Use this data to train staff, adjust portions, or investigate discrepancies.",
+          "If expected usage (based on recorded shifts) doesn't match actual inventory counts, BarLink alerts you. Large variances could indicate over-pouring, waste, spillage, or theft. Use this data to train staff, adjust portions, or investigate discrepancies.",
       },
     ],
   },
@@ -144,7 +144,7 @@ const helpSections: Section[] = [
     icon: "💳",
     content: [
       {
-        question: "How much does BarPulse cost?",
+        question: "How much does BarLink cost?",
         answer:
           "Starter: Free forever (1 bar, basic analytics). Premium: $29/month per bar location. Billed through PayPal. Cancel anytime. First month free for new Premium subscribers.",
       },
@@ -225,7 +225,7 @@ const helpSections: Section[] = [
       {
         question: "How do I maximize customer discovery?",
         answer:
-          "1) Add multiple offerings across different times (weekday happy hour, weekend events). 2) Keep offerings updated - remove past items, add seasonal specials. 3) Use specific keywords (e.g., 'Wing Wednesdays' instead of just 'specials'). 4) Check Top Search Queries and emphasize those offerings. 5) Promote via social media and link to your BarPulse profile.",
+          "1) Add multiple offerings across different times (weekday happy hour, weekend events). 2) Keep offerings updated - remove past items, add seasonal specials. 3) Use specific keywords (e.g., 'Wing Wednesdays' instead of just 'specials'). 4) Check Top Search Queries and emphasize those offerings. 5) Promote via social media and link to your BarLink profile.",
       },
       {
         question: "What offerings should I prioritize?",
@@ -250,7 +250,7 @@ const helpSections: Section[] = [
       {
         question: "Should I offer online reservations or ordering?",
         answer:
-          "BarPulse is discovery-focused (customers find your bar and its offerings). For reservations/ordering, integrate with platforms like OpenTable or Toast. BarPulse helps get people in the door; other tools help with booking and orders.",
+          "BarLink is discovery-focused (customers find your bar and its offerings). For reservations/ordering, integrate with platforms like OpenTable or Toast. BarLink helps get people in the door; other tools help with booking and orders.",
       },
     ],
   },
@@ -277,7 +277,7 @@ export default function HelpPage() {
             Help & Support
           </h1>
           <p className="text-slate-300">
-            Everything you need to know about using BarPulse to grow your bar business.
+            Everything you need to know about using BarLink to grow your bar business.
           </p>
         </div>
 

@@ -119,7 +119,7 @@ export const BADGE_DEFINITIONS_CLIENT: Record<string, BadgeDefinitionClient> = {
   founding_member: {
     key: 'founding_member',
     name: 'Founding Member',
-    description: 'One of the first bars on BarPulse',
+    description: 'One of the first bars on BarLink',
     icon: '🏛️',
     tier: 'BRONZE',
     category: 'FOUNDING',

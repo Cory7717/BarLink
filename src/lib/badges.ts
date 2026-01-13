@@ -73,7 +73,7 @@ export const BADGE_DEFINITIONS: BadgeDefinition[] = [
   {
     key: 'founding_member',
     name: 'Founding Member',
-    description: 'One of the first 100 bars on BarPulse',
+    description: 'One of the first 100 bars on BarLink',
     icon: '🌟',
     tier: 'PLATINUM',
     category: 'FOUNDING',
@@ -103,7 +103,7 @@ export const BADGE_DEFINITIONS: BadgeDefinition[] = [
   {
     key: 'one_year_anniversary',
     name: '1 Year Anniversary',
-    description: 'Active on BarPulse for 1 year',
+    description: 'Active on BarLink for 1 year',
     icon: '🎂',
     tier: 'SILVER',
     category: 'FOUNDING',

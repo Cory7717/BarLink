@@ -36,7 +36,7 @@ export async function POST(req: Request) {
     });
 
     const TO_EMAIL = "coryarmer@gmail.com";
-    const subject = `BarPulse Category Request: ${category}`;
+    const subject = `BarLink Category Request: ${category}`;
     const text = `
 Requested by: ${bar.owner.name} (${bar.owner.email})
 Bar: ${bar.name} (${bar.city}, ${bar.state})
@@ -88,7 +88,7 @@ Request ID: ${request.id}
       });
 
       await transporter.sendMail({
-        from: `"BarPulse Category Request" <${FROM_EMAIL}>`,
+        from: `"BarLink Category Request" <${FROM_EMAIL}>`,
         to: TO_EMAIL,
         replyTo: bar.owner.email,
         subject,

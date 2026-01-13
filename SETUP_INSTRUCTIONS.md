@@ -1,7 +1,7 @@
-# BarPulse Setup Instructions
+# BarLink Setup Instructions
 
 ## Overview
-BarPulse is a real-time bar discovery platform with owner subscriptions (PayPal), map search (Mapbox), media storage (AWS S3), and auth (NextAuth + Google OAuth).
+BarLink is a real-time bar discovery platform with owner subscriptions (PayPal), map search (Mapbox), media storage (AWS S3), and auth (NextAuth + Google OAuth).
 
 ## Prerequisites
 - Node.js 18+
@@ -42,7 +42,7 @@ Create a `.env` file (or configure Render environment variables):
 
 ```bash
 # Database (Neon)
-DATABASE_URL="postgresql://user:password@your-neon-host.neon.tech:5432/barpulse?sslmode=require"
+DATABASE_URL="postgresql://user:password@your-neon-host.neon.tech:5432/BarLink?sslmode=require"
 
 # NextAuth
 NEXTAUTH_URL="https://your-render-url.onrender.com"
@@ -70,18 +70,18 @@ NEXT_PUBLIC_MAPBOX_TOKEN="pk.your-mapbox-token"
 AWS_REGION="us-east-1"
 AWS_ACCESS_KEY_ID="your-access-key"
 AWS_SECRET_ACCESS_KEY="your-secret-key"
-AWS_S3_BUCKET="barpulse-media"
-AWS_S3_PUBLIC_BASE_URL="https://barpulse-media.s3.amazonaws.com"
+AWS_S3_BUCKET="BarLink-media"
+AWS_S3_PUBLIC_BASE_URL="https://BarLink-media.s3.amazonaws.com"
 
 # Email (choose SendGrid OR SMTP)
 SENDGRID_API_KEY="SG.xxx"
-EMAIL_FROM="BarPulse <no-reply@barpulse.com>"
+EMAIL_FROM="BarLink <no-reply@BarLink.com>"
 # OR SMTP:
 # SMTP_HOST="smtp.gmail.com"
 # SMTP_PORT="587"
 # SMTP_USER="your-email@gmail.com"
 # SMTP_PASSWORD="your-app-password"
-# SMTP_FROM="BarPulse <no-reply@barpulse.com>"
+# SMTP_FROM="BarLink <no-reply@BarLink.com>"
 
 # Feature flags
 NEW_FLAG_DAYS=7

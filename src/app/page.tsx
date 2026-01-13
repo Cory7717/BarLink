@@ -130,7 +130,7 @@ export default function Home() {
         <section className="mt-20 glass-panel rounded-3xl p-8 shadow-xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-semibold text-gradient drop-shadow-lg mb-3">
-              Why owners love BarPulse
+              Why owners love BarLink
             </h2>
             <p className="text-slate-100 max-w-2xl mx-auto drop-shadow-md">
               Get discovered by the right patrons at the right time, and watch engagement soar.

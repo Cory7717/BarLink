@@ -8,7 +8,7 @@ export default function PrivacyPage() {
         <h1 className="text-3xl font-semibold text-gradient">Privacy Policy</h1>
         <p className="text-sm text-slate-300">Updated Jan 2026</p>
         <div className="glass-panel rounded-3xl p-6 space-y-3 text-slate-200 text-sm leading-relaxed">
-          <p>We collect account info, bar profile data, and usage analytics to operate BarPulse. We do not sell personal data.</p>
+          <p>We collect account info, bar profile data, and usage analytics to operate BarLink. We do not sell personal data.</p>
           <p>We store payment details via Stripe; we never store full card numbers. Media uploads are stored on AWS S3.</p>
           <p>You may request deletion of your account data by contacting coryarmer@gmail.com.</p>
         </div>

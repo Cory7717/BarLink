@@ -2,7 +2,7 @@
 
 ## Overview
 
-This comprehensive system allows bar owners to verify when patrons who discovered their bar through BarPulse actually visit in person. This provides concrete ROI metrics and helps owners understand the true value of their subscription.
+This comprehensive system allows bar owners to verify when patrons who discovered their bar through BarLink actually visit in person. This provides concrete ROI metrics and helps owners understand the true value of their subscription.
 
 ## Key Features
 
@@ -136,13 +136,13 @@ Calculates comprehensive ROI metrics
 ## Implementation Benefits
 
 ### For Bar Owners
-1. **Concrete ROI Data**: See exactly how many patrons came from BarPulse
+1. **Concrete ROI Data**: See exactly how many patrons came from BarLink
 2. **Justify Subscription Cost**: $29/month generating 50 visits × $25 avg = $1,250 revenue = 4,210% ROI
 3. **Optimize Marketing**: See which days/times convert best
 4. **Track Trends**: Monitor growth over time
 5. **Identify Loyal Customers**: Track repeat visitors
 
-### For BarPulse Platform
+### For BarLink Platform
 1. **Increased Owner Retention**: Clear value demonstration
 2. **Higher Engagement**: Owners actively promote QR codes
 3. **Network Effects**: More check-ins = better data = more valuable platform
@@ -160,7 +160,7 @@ Calculates comprehensive ROI metrics
 ### Best Practices
 - **Placement**: Near entrance, on bar top, on tables
 - **Incentivize**: Offer 5-10% discount for check-ins
-- **Promote**: "Check in on BarPulse for a free appetizer!"
+- **Promote**: "Check in on BarLink for a free appetizer!"
 - **Staff Training**: Teach staff to encourage check-ins
 - **Multiple Locations**: Print several copies
 
@@ -244,11 +244,11 @@ Calculates comprehensive ROI metrics
 
 ## Conclusion
 
-This visit verification and ROI tracking system transforms BarPulse from a discovery platform into a comprehensive business intelligence tool for bar owners. By providing concrete, actionable data on patron visits and revenue impact, it:
+This visit verification and ROI tracking system transforms BarLink from a discovery platform into a comprehensive business intelligence tool for bar owners. By providing concrete, actionable data on patron visits and revenue impact, it:
 
 1. Justifies the subscription cost
 2. Helps owners make better business decisions
-3. Creates a competitive moat for BarPulse
+3. Creates a competitive moat for BarLink
 4. Drives higher engagement from both owners and patrons
 5. Sets the foundation for future monetization opportunities
 

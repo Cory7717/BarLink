@@ -17,10 +17,10 @@ const bodyFont = Manrope({
 })
 
 export const metadata: Metadata = {
-  title: 'BarPulse | Real-time bar discovery by day & activity',
-  description: 'BarPulse helps patrons find bars and live offerings by day, activity, and what is happening right now - powered by owner updates and subscriptions.',
+  title: 'BarLink | Real-time bar discovery by day & activity',
+  description: 'BarLink helps patrons find bars and live offerings by day, activity, and what is happening right now - powered by owner updates and subscriptions.',
   keywords: 'bars, nightlife, happy hour, trivia, karaoke, live music, map search, bar discovery',
-  metadataBase: new URL('https://barpulse.com'),
+  metadataBase: new URL('https://BarLink.com'),
 }
 
 export const viewport = {
