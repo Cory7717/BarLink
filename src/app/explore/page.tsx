@@ -62,6 +62,10 @@ function ExploreContent() {
   const [city, setCity] = useState("Seattle");
   const [distance, setDistance] = useState<number | null>(null);
   const [userLocation, setUserLocation] = useState<{ latitude: number; longitude: number } | null>(null);
+  const [mapCenter, setMapCenter] = useState<{ latitude: number; longitude: number }>({
+    latitude: 47.61,
+    longitude: -122.33,
+  });
   const [bars, setBars] = useState<BarResult[]>([]);
   const [loading, setLoading] = useState(false);
   const [autoSearch, setAutoSearch] = useState(true);
@@ -71,16 +75,15 @@ function ExploreContent() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const mapCenter = useMemo(
-    () => userLocation || { latitude: 47.61, longitude: -122.33 },
-    [userLocation]
-  );
-
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           setUserLocation({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          });
+          setMapCenter({
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
           });
@@ -190,6 +193,12 @@ function ExploreContent() {
 
       if (res.ok) {
         setBars(data.bars || []);
+        const first = (data.bars || [])[0];
+        if (userLocation) {
+          setMapCenter(userLocation);
+        } else if (first) {
+          setMapCenter({ latitude: first.latitude, longitude: first.longitude });
+        }
       } else {
         console.error("Search error:", data.error);
         setBars([]);
