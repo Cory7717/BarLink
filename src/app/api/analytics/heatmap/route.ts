@@ -18,10 +18,12 @@ export async function GET(req: Request) {
         createdAt: { gte: sinceDate },
         ...(city ? { city } : {}),
       },
-      take: 50,
+      // Cannot order by _count on this Prisma version; sort after fetch
     });
 
-    return NextResponse.json({ data });
+    const sorted = [...data].sort((a, b) => (b._count._all || 0) - (a._count._all || 0)).slice(0, 50);
+
+    return NextResponse.json({ data: sorted });
   } catch (error) {
     console.error("Heatmap error", error);
     return NextResponse.json({ error: "Unauthorized or failed" }, { status: 401 });
