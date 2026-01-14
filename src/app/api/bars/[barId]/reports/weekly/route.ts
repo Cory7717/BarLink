@@ -8,13 +8,12 @@ export async function GET(_: Request, { params }: { params: Promise<{ barId: str
     await requireBarAccess(barId);
     const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
 
-    const searches = await prisma.patronSearchEvent.groupBy({
+    const searchesRaw = await prisma.patronSearchEvent.groupBy({
       by: ["category"],
       _count: { _all: true },
       where: { createdAt: { gte: since }, barId },
-      orderBy: { _count: { _all: "desc" } },
-      take: 10,
     });
+    const searches = [...searchesRaw].sort((a, b) => (b._count._all || 0) - (a._count._all || 0)).slice(0, 10);
 
     const actions = await prisma.barAction.groupBy({
       by: ["action"],
