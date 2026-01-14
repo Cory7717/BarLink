@@ -12,7 +12,7 @@ export async function GET(request: Request) {
 
     const bars = await prisma.bar.findMany({
       where: { ownerId },
-      select: { id: true, name: true, address: true, city: true, state: true },
+      select: { id: true, name: true, address: true, city: true, state: true, barType: true },
     });
 
     return NextResponse.json({ bars });

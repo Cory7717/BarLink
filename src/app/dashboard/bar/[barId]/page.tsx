@@ -4,6 +4,8 @@ import { prisma } from "@/lib/prisma";
 import Navigation from "@/components/Navigation";
 import Link from "next/link";
 import CheckInRewardForm from "@/components/CheckInRewardForm";
+import BarDetailsForm from "@/components/BarDetailsForm";
+import { BAR_TYPES } from "@/lib/constants";
 
 export default async function BarManagementPage({
   params,
@@ -84,6 +86,25 @@ export default async function BarManagementPage({
         </div>
 
         <div className="glass-panel rounded-3xl p-6 shadow-lg">
+          <h2 className="text-xl font-semibold text-white mb-3">Bar details</h2>
+          <BarDetailsForm
+            barId={bar.id}
+            initial={{
+              name: bar.name,
+              address: bar.address,
+              city: bar.city,
+              state: bar.state,
+              zipCode: bar.zipCode,
+              phone: bar.phone || "",
+              website: bar.website || "",
+              description: bar.description || "",
+              barType: bar.barType || "Unclassified",
+            }}
+            barTypes={BAR_TYPES}
+          />
+        </div>
+
+        <div className="glass-panel rounded-3xl p-6 shadow-lg mt-6">
           <h2 className="text-2xl font-semibold text-white mb-6">Management</h2>
 
           <div className="grid gap-4 md:grid-cols-2">
