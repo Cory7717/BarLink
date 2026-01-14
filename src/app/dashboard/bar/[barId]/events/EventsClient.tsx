@@ -72,14 +72,17 @@ function resolveCategoryLabel(value: string | null | undefined, options: EventCa
   return match?.displayName || value;
 }
 
-function dayFromDate(dateStr: string) {
-  const d = new Date(`${dateStr}T12:00:00`);
-  return d.getDay();
+function dayFromDate(dateStr: string | null | undefined) {
+  if (!dateStr) return -1;
+  const isDateOnly = /^\d{4}-\d{2}-\d{2}$/.test(dateStr);
+  const d = isDateOnly ? new Date(`${dateStr}T12:00:00`) : new Date(dateStr);
+  return Number.isNaN(d.getTime()) ? -1 : d.getDay();
 }
 
 function formatLocalDate(dateStr: string) {
-  const d = new Date(`${dateStr}T12:00:00`);
-  return d.toLocaleDateString();
+  const isDateOnly = /^\d{4}-\d{2}-\d{2}$/.test(dateStr);
+  const d = isDateOnly ? new Date(`${dateStr}T12:00:00`) : new Date(dateStr);
+  return Number.isNaN(d.getTime()) ? dateStr : d.toLocaleDateString();
 }
 
 function nextDateForDay(targetDay: number) {
@@ -219,7 +222,8 @@ export default function EventsClient({ bar }: EventsClientProps) {
       } else {
         setEvents((prev) => [...prev, data]);
       }
-      setActiveDay(dayFromDate((data.startDate as string) || form.startDate));
+      const computedDay = dayFromDate((data.startDate as string) || form.startDate);
+      setActiveDay(computedDay >= 0 ? computedDay : new Date().getDay());
       closeModal();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to save event");

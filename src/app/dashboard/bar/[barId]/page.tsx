@@ -21,7 +21,19 @@ export default async function BarManagementPage({
 
   const bar = await prisma.bar.findUnique({
     where: { id: barId },
-    include: {
+    select: {
+      id: true,
+      name: true,
+      address: true,
+      city: true,
+      state: true,
+      zipCode: true,
+      phone: true,
+      website: true,
+      description: true,
+      barType: true,
+      subscriptionTier: true,
+      inventoryAddOnEnabled: true,
       owner: true,
       offerings: true,
       events: true,
@@ -139,13 +151,18 @@ export default async function BarManagementPage({
                 <h3 className="text-lg font-semibold text-white">Liquor inventory</h3>
                 <span className="text-2xl font-semibold text-white">{stats.items}</span>
               </div>
-              <p className="text-sm text-slate-300 mb-4">
-                Track bottles, manage stock levels, upload photos, and generate variance reports.
-              </p>
+            <p className="text-sm text-slate-300 mb-4">
+              Track bottles, manage stock levels, upload photos, and generate variance reports.
+            </p>
+            <div className="flex flex-wrap gap-2">
               <Link href={`/dashboard/bar/${bar.id}/inventory`} className="btn-primary px-4 py-2 text-sm">
                 Edit inventory
               </Link>
+              <Link href={`/dashboard/bar/${bar.id}/inventory/create`} className="btn-secondary px-4 py-2 text-sm">
+                Create inventory
+              </Link>
             </div>
+          </div>
 
             <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
               <div className="flex items-center justify-between mb-3">
@@ -163,13 +180,18 @@ export default async function BarManagementPage({
               <div className="flex items-center justify-between mb-3">
                 <h3 className="text-lg font-semibold text-white">Analytics and ROI</h3>
               </div>
-              <p className="text-sm text-slate-300 mb-4">
-                View visitor analytics, conversion rates, peak hours, and ROI metrics.
-              </p>
+            <p className="text-sm text-slate-300 mb-4">
+              View visitor analytics, conversion rates, peak hours, and ROI metrics. Upgrade to Pro/Premium for full charts and exports.
+            </p>
+            <div className="flex flex-wrap gap-2">
               <Link href={`/dashboard/bar/${bar.id}/analytics`} className="btn-primary px-4 py-2 text-sm">
                 View analytics
               </Link>
+              <Link href={`/dashboard/subscription?feature=analytics`} className="btn-secondary px-4 py-2 text-sm">
+                Upgrade for full analytics
+              </Link>
             </div>
+          </div>
 
             <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
               <div className="flex items-center justify-between mb-3">
