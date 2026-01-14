@@ -12,9 +12,9 @@ const sections: Section[] = [
     title: "Getting Started",
     icon: "🚀",
     content: [
-      { question: "What is BarLink?", answer: "BarLink helps patrons find bars by day, activity, and offers. Owners publish offerings/events and appear in searches and on the live map." },
-      { question: "How do I set up my bar?", answer: "Sign up, add your bar details, pick a plan, then add offerings (happy hour, trivia, karaoke) and events. Keep them current for visibility." },
-      { question: "Multiple locations?", answer: "Add each location from the dashboard. Each bar has its own offerings/events and analytics." },
+      { question: "New bar setup", answer: "Create an owner/manager account, add your bar details (name, address, phone, hours), then publish at least one offering or event so patrons can find you." },
+      { question: "Multiple locations", answer: "Add each location separately from the dashboard. Each has its own offerings, events, and analytics." },
+      { question: "Keep visibility high", answer: "Publish recurring offerings (happy hour, trivia, karaoke) and keep times accurate. Fresh events surface better in search and on the map." },
     ],
   },
   {
@@ -22,19 +22,19 @@ const sections: Section[] = [
     title: "Dashboard & Analytics",
     icon: "📊",
     content: [
-      { question: "What metrics do I see?", answer: "Search appearances, profile views, directions clicks, and top search queries by day/time." },
-      { question: "Top searches?", answer: "Shows categories/keywords patrons use to find you. Use it to decide which offerings/events to run." },
-      { question: "Slow days?", answer: "Use the heatmap to find weak days and schedule specials or events there." },
+      { question: "What you see", answer: "Search appearances, profile views, directions clicks, website taps, and top search terms by day/time." },
+      { question: "Use the data", answer: "Fill slow days the heatmap exposes. Match events and specials to the top searched categories near you." },
+      { question: "If numbers look low", answer: "Confirm your bar is published, has current offerings/events, and that your location is correct. Give new bars a little time to gather data." },
     ],
   },
   {
     id: "offerings",
     title: "Offerings & Events",
-    icon: "🎟️",
+    icon: "🍹",
     content: [
-      { question: "Offerings vs Events?", answer: "Offerings are recurring (happy hour, trivia). Events are one-time or dated specials. Both surface in search." },
-      { question: "What performs best?", answer: "Happy Hour, Trivia, Karaoke, Live Music, Food/Drink specials. Use clear titles and times." },
-      { question: "Keep it updated", answer: "Remove past items, add seasonal specials, and set correct times/days for best visibility." },
+      { question: "Offerings vs. events", answer: "Offerings are recurring (e.g., happy hour). Events are dated/one-time. Both show in search and on the map." },
+      { question: "Best practices", answer: "Use clear titles (e.g., “Wing Wednesday”), include start/end times, and add a short description. Remove past items to keep your list clean." },
+      { question: "Boosts (Premium)", answer: "Premium bars can boost events for extra visibility during chosen windows and see impressions/clicks in the dashboard." },
     ],
   },
   {
@@ -42,9 +42,9 @@ const sections: Section[] = [
     title: "Inventory & Operations",
     icon: "📦",
     content: [
-      { question: "Inventory basics", answer: "Manage products, record counts, and track low-stock items. Inventory add-on required." },
-      { question: "Check-in perk", answer: "Offer a perk (e.g., 10% off) for QR check-ins to drive engagement." },
-      { question: "Low-stock alerts", answer: "Set par and reorder thresholds on products to generate reorder lists." },
+      { question: "Inventory add-on", answer: "Enable the Inventory add-on to manage products, record counts, and generate low-stock and reorder lists." },
+      { question: "Counting options", answer: "Manual counts for any item, quick packaged counts, and a photo-based liquor scan (AI-ready stub) where you confirm detected bottles." },
+      { question: "Reorder signals", answer: "Set par and reorder thresholds on bar products to get an automatic low-stock list and exports." },
     ],
   },
   {
@@ -52,9 +52,9 @@ const sections: Section[] = [
     title: "Subscription & Billing",
     icon: "💳",
     content: [
-      { question: "Plans", answer: "Free: basic visibility. Pro/Premium: advanced analytics, boosts, and more. Inventory add-on is separate." },
-      { question: "Billing", answer: "Manage via PayPal. Update payment methods or cancel anytime." },
-      { question: "If payment fails", answer: "Bar may be unpublished until resolved. Update billing in PayPal or switch plans." },
+      { question: "Plans", answer: "Free covers basic visibility. Pro/Premium unlock analytics, boosts, and advanced features. Inventory is a separate add-on." },
+      { question: "Billing & upgrades", answer: "Manage subscriptions via PayPal. You can upgrade, downgrade, or cancel in PayPal at any time." },
+      { question: "Trials and pauses", answer: "If a payment fails, the bar may be unpublished until resolved. Trials auto-convert unless cancelled in PayPal." },
     ],
   },
   {
@@ -62,9 +62,9 @@ const sections: Section[] = [
     title: "Troubleshooting & Common Issues",
     icon: "🛠️",
     content: [
-      { question: "Bar not in search", answer: "Check subscription status, ensure offerings/events exist and are current, and confirm location data." },
-      { question: "Analytics empty", answer: "New bar? Give it time. Ensure offerings exist and subscription is active. Check date range." },
-      { question: "Need help?", answer: "Email coryarmer@gmail.com with your bar name, issue, and screenshots if possible." },
+      { question: "Bar not in search", answer: "Ensure location is correct, the bar is published, and you have at least one current offering or event. Check subscription status." },
+      { question: "Editing bar info", answer: "Owners/managers can edit address, phone, and details in the bar settings. Super Admin can also update or remove bars if needed." },
+      { question: "Need help?", answer: "Use the Contact form or email coryarmer@gmail.com with your bar name, issue, and screenshots if possible." },
     ],
   },
   {
@@ -72,54 +72,114 @@ const sections: Section[] = [
     title: "Best Practices & Tips",
     icon: "⭐",
     content: [
-      { question: "Drive discovery", answer: "Use specific titles (e.g., Wing Wednesday), add multiple time slots, and align with top searches." },
-      { question: "Event timing", answer: "Fill slower days; mid-week events can lift traffic. Promote best-performing categories from analytics." },
-      { question: "Promote check-ins", answer: "Display QR codes and offer a perk to encourage patrons to check in." },
+      { question: "Drive discovery", answer: "Publish clear, specific titles (e.g., “Karaoke Thursdays 8–11 PM”). Match to popular search terms in your area." },
+      { question: "Event timing", answer: "Use analytics to fill slower days. Mid-week specials often lift traffic and repeat visits." },
+      { question: "Promote check-ins", answer: "Display your QR code and offer a perk (e.g., 10% off) to encourage patrons to check in and follow your bar." },
     ],
   },
 ];
 
 export default function HelpPage() {
-  const [activeId, setActiveId] = useState<string>(sections[0].id);
-  const active = sections.find((s) => s.id === activeId) || sections[0];
+  const [openId, setOpenId] = useState<string | null>(sections[0]?.id ?? null);
+  const [modalId, setModalId] = useState<string | null>(null);
+
+  const activeModal = sections.find((s) => s.id === modalId) || null;
 
   return (
     <div className="min-h-screen app-shell text-white">
       <Navigation />
       <main className="mx-auto max-w-6xl px-4 pb-16 pt-10">
-        <h1 className="text-3xl font-semibold mb-3">Everything you need to know about using BarLink to grow your bar business.</h1>
-        <p className="text-slate-300 mb-6">Tap a card to view answers.</p>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <h1 className="text-3xl font-semibold mb-2">Everything you need to know about using BarLink to grow your bar business.</h1>
+        <p className="text-slate-300 mb-6 text-sm">Tap a card to expand. Answers stay open for quick reference.</p>
+
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {sections.map((section) => {
-            const isActive = section.id === activeId;
+            const isOpen = section.id === openId;
             return (
-              <button
+              <div
                 key={section.id}
-                onClick={() => setActiveId(section.id)}
-                className={`text-left rounded-2xl border px-4 py-3 transition-all ${
-                  isActive
+                className={`rounded-2xl border px-4 py-3 transition-all ${
+                  isOpen
                     ? "border-cyan-300 bg-white/10 shadow-cyan-300/30 shadow-lg"
                     : "border-white/10 bg-white/5 hover:border-cyan-200/50 hover:bg-white/10"
                 }`}
               >
-                <div className="text-2xl">{section.icon}</div>
-                <div className="mt-2 text-base font-semibold text-white">{section.title}</div>
-              </button>
+                <button
+                  type="button"
+                  aria-expanded={isOpen}
+                  aria-controls={`${section.id}-content`}
+                  onClick={() => setOpenId(isOpen ? null : section.id)}
+                  className="w-full text-left"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">{section.icon}</span>
+                    <div>
+                      <div className="text-base font-semibold text-white">{section.title}</div>
+                      <div className="text-xs text-slate-300">{isOpen ? "Hide answers" : "Tap to view answers"}</div>
+                    </div>
+                  </div>
+                </button>
+                {isOpen && (
+                  <div id={`${section.id}-content`} className="mt-3 space-y-3 text-sm">
+                    <div className="flex flex-wrap gap-2">
+                      <button
+                        type="button"
+                        onClick={() => setModalId(section.id)}
+                        className="rounded-full border border-cyan-300/60 px-3 py-1 text-xs font-semibold text-cyan-100 hover:bg-cyan-300/10"
+                      >
+                        Open detailed guide
+                      </button>
+                    </div>
+                    {section.content.slice(0, 2).map((item) => (
+                      <div key={item.question} className="rounded-2xl border border-white/10 bg-white/5 p-3">
+                        <div className="font-semibold text-white">{item.question}</div>
+                        <div className="text-slate-200 mt-1 leading-relaxed">{item.answer}</div>
+                      </div>
+                    ))}
+                    {section.content.length > 2 && (
+                      <div className="text-xs text-slate-300">
+                        More answers available in the detailed guide.
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
             );
           })}
         </div>
 
-        <div className="mt-8 glass-panel rounded-3xl p-6 shadow-lg">
-          <h2 className="text-xl font-semibold text-white mb-3">{active.title}</h2>
-          <div className="space-y-4">
-            {active.content.map((item) => (
-              <div key={item.question} className="rounded-2xl border border-white/10 bg-white/5 p-3">
-                <div className="text-sm font-semibold text-white">{item.question}</div>
-                <div className="text-sm text-slate-200 mt-1">{item.answer}</div>
+        {activeModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4 py-6">
+            <div className="max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-3xl border border-white/15 bg-slate-900/95 p-6 shadow-2xl">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <div className="flex items-center gap-2 text-lg font-semibold text-white">
+                    <span className="text-2xl">{activeModal.icon}</span>
+                    <span>{activeModal.title}</span>
+                  </div>
+                  <p className="text-slate-300 text-sm mt-1">
+                    Detailed guidance for {activeModal.title}. Use this to get set up or troubleshoot quickly.
+                  </p>
+                </div>
+                <button
+                  onClick={() => setModalId(null)}
+                  className="rounded-full border border-white/20 px-3 py-1 text-sm text-slate-200 hover:bg-white/10"
+                  aria-label="Close help details"
+                >
+                  Close
+                </button>
               </div>
-            ))}
+              <div className="mt-4 space-y-3">
+                {activeModal.content.map((item) => (
+                  <div key={item.question} className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                    <div className="font-semibold text-white">{item.question}</div>
+                    <div className="text-slate-200 mt-1 leading-relaxed">{item.answer}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
+        )}
       </main>
     </div>
   );
