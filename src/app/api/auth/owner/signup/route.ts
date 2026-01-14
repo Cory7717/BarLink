@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import bcrypt from 'bcryptjs';
+import { notifyAdminSignup } from '@/lib/adminNotifications';
 
 export async function POST(req: Request) {
   try {
@@ -28,6 +29,11 @@ export async function POST(req: Request) {
         phone: phone || null,
       },
     });
+
+    // Notify admin (email/webhook) if configured
+    notifyAdminSignup({ name, email }).catch((err) =>
+      console.warn("Admin signup notification failed:", err)
+    );
 
     return NextResponse.json({ ownerId: owner.id, email: owner.email });
   } catch (error) {

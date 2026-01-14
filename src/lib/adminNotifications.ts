@@ -52,3 +52,51 @@ export async function notifyOwnerEmail(ownerId: string, subject: string, body: s
     html,
   });
 }
+
+// Admin signup alert (email or webhook)
+export async function notifyAdminSignup(payload: { name: string; email: string }) {
+  const webhook = process.env.ADMIN_SIGNUP_WEBHOOK;
+  const adminEmail = process.env.ADMIN_SIGNUP_ALERT_EMAIL;
+
+  if (!webhook && !adminEmail) {
+    return;
+  }
+
+  if (webhook) {
+    try {
+      await fetch(webhook, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          text: `New owner signup: ${payload.name} (${payload.email})`,
+          email: payload.email,
+          name: payload.name,
+          source: "barlink",
+        }),
+      });
+    } catch (err) {
+      console.warn("Signup webhook failed", err);
+    }
+  }
+
+  if (adminEmail) {
+    const emailConfig = getEmailConfig();
+    if (!emailConfig) {
+      console.warn("Admin signup email not sent: SMTP config missing");
+      return;
+    }
+    const nodemailer = await import("nodemailer");
+    const transporter = nodemailer.default.createTransport({
+      host: emailConfig.smtpHost,
+      port: emailConfig.smtpPort,
+      secure: emailConfig.smtpPort === 465,
+      auth: { user: emailConfig.smtpUser, pass: emailConfig.smtpPass },
+    });
+    await transporter.sendMail({
+      from: emailConfig.fromEmail,
+      to: adminEmail,
+      subject: "New BarLink owner signup",
+      text: `New owner signup:\nName: ${payload.name}\nEmail: ${payload.email}\n`,
+    });
+  }
+}
