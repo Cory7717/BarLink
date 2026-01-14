@@ -34,6 +34,7 @@ export default async function BarManagementPage({
       barType: true,
       subscriptionTier: true,
       inventoryAddOnEnabled: true,
+      checkInReward: true,
       owner: true,
       offerings: true,
       events: true,
