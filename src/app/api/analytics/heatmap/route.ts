@@ -18,7 +18,6 @@ export async function GET(req: Request) {
         createdAt: { gte: sinceDate },
         ...(city ? { city } : {}),
       },
-      orderBy: { _count: { _all: "desc" } },
       take: 50,
     });
 
