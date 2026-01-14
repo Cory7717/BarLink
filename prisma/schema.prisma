@@ -166,6 +166,8 @@ model Bar {
   barProducts        BarProduct[]
   inventoryScanSessions InventoryScanSession[]
   inventoryCounts    InventoryCount[]
+  patronSearchEvents PatronSearchEvent[] @relation("BarToPatronSearchEvents")
+  barActions         BarAction[] @relation("BarToBarActions")
 
   @@index([cityNormalized])
   @@index([neighborhoodNormalized])
@@ -569,7 +571,7 @@ model PatronSearchEvent {
   city      String?
   createdAt DateTime @default(now())
 
-  bar Bar? @relation(fields: [barId], references: [id], onDelete: Cascade)
+  bar Bar? @relation("BarToPatronSearchEvents", fields: [barId], references: [id], onDelete: Cascade)
 
   @@index([createdAt])
   @@index([city])
@@ -581,7 +583,7 @@ model BarAction {
   action    String
   createdAt DateTime @default(now())
 
-  bar Bar @relation(fields: [barId], references: [id], onDelete: Cascade)
+  bar Bar @relation("BarToBarActions", fields: [barId], references: [id], onDelete: Cascade)
 
   @@index([barId])
   @@index([action])
