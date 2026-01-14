@@ -41,6 +41,7 @@ type BarResult = {
   hasNew?: boolean;
   hasSpecial?: boolean;
   barType?: string | null;
+  checkInReward?: string | null;
 };
 
 type EventCategory = {
@@ -412,6 +413,11 @@ function ExploreContent() {
                         {o}
                       </span>
                     ))}
+                    {bar.checkInReward && (
+                      <span className="rounded-full border border-emerald-400/40 bg-emerald-500/10 px-3 py-1 text-emerald-100">
+                        Check-in perk: {bar.checkInReward}
+                      </span>
+                    )}
                   </div>
                   {bar.nextUp && <p className="mt-2 text-xs text-slate-300">Next: {bar.nextUp}</p>}
                 </div>

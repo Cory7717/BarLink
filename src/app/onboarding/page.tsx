@@ -31,6 +31,7 @@ function OnboardingContent() {
   const [website, setWebsite] = useState("");
   const [description, setDescription] = useState("");
   const [barType, setBarType] = useState("Unclassified");
+  const [checkInReward, setCheckInReward] = useState("");
 
   useEffect(() => {
     // If new user signup flow, need ownerId
@@ -80,6 +81,7 @@ function OnboardingContent() {
           website,
           description,
           barType,
+          checkInReward,
         }),
       });
 
@@ -184,6 +186,17 @@ function OnboardingContent() {
                   </option>
                 ))}
               </select>
+            </label>
+
+            <label className="block text-sm text-slate-200">
+              Check-in perk (optional)
+              <input
+                type="text"
+                value={checkInReward}
+                onChange={(e) => setCheckInReward(e.target.value)}
+                className="mt-2 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-white"
+                placeholder="e.g., 10% off when you check in via QR"
+              />
             </label>
 
             <label className="block text-sm text-slate-200">

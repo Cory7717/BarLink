@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import Navigation from "@/components/Navigation";
 import Link from "next/link";
+import CheckInRewardForm from "@/components/CheckInRewardForm";
 
 export default async function BarManagementPage({
   params,
@@ -161,6 +162,14 @@ export default async function BarManagementPage({
               </Link>
             </div>
           </div>
+        </div>
+
+        <div className="glass-panel rounded-3xl p-6 shadow-lg mt-6">
+          <h2 className="text-xl font-semibold text-white mb-3">Check-in perk</h2>
+          <p className="text-sm text-slate-300 mb-3">
+            Incentivize patrons to scan your QR code with a perk like “10% off when you check in.” This will show on the Explore page and after a successful check-in.
+          </p>
+          <CheckInRewardForm barId={bar.id} initialReward={bar.checkInReward ?? null} />
         </div>
       </main>
     </div>

@@ -379,6 +379,7 @@ export async function GET(req: Request) {
           longitude: bar.longitude,
           todayOfferings,
           barType: bar.barType,
+          checkInReward: bar.checkInReward,
           hasSpecial: bar.offerings.some((o) => o.isSpecial) || bar.events.some((e) => e.isSpecial),
           hasNew: bar.offerings.some((o) => o.isNew) || bar.events.some((e) => e.isNew),
           ...(distance_miles !== undefined && { distance: distance_miles }),

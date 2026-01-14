@@ -37,7 +37,7 @@ function normalizeCity(city: string): string {
 
 export async function POST(req: Request) {
   try {
-    const { ownerId, name, address, city, state, zipCode, phone, website, description, barType } = await req.json();
+    const { ownerId, name, address, city, state, zipCode, phone, website, description, barType, checkInReward } = await req.json();
 
     if (!ownerId || !name || !address || !city || !state || !zipCode) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
@@ -73,6 +73,7 @@ export async function POST(req: Request) {
         website: website || null,
         description: description || null,
         barType: barType || "Unclassified",
+        checkInReward: checkInReward || null,
       },
     });
 

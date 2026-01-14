@@ -10,6 +10,7 @@ function CheckInContent() {
   const [status, setStatus] = useState<"processing" | "success" | "error">("processing");
   const [message, setMessage] = useState("Processing check-in...");
   const [barName, setBarName] = useState("");
+  const [reward, setReward] = useState<string | null>(null);
 
   useEffect(() => {
     const processCheckIn = async () => {
@@ -40,6 +41,9 @@ function CheckInContent() {
           setStatus("success");
           setMessage(`Successfully checked in at ${result.visit.barName}!`);
           setBarName(result.visit.barName);
+          if (result.visit.checkInReward) {
+            setReward(result.visit.checkInReward);
+          }
 
           setTimeout(() => {
             router.push("/explore");
@@ -120,6 +124,12 @@ function CheckInContent() {
               discover their bar online and actually visit in person. This data helps them make better
               decisions about events, promotions, and offerings.
             </p>
+            {reward && (
+              <div className="mt-4 rounded-2xl border border-emerald-500/40 bg-emerald-500/10 p-4 text-left">
+                <div className="text-sm font-semibold text-emerald-100">Check-in perk</div>
+                <div className="text-sm text-emerald-50">{reward}</div>
+              </div>
+            )}
           </div>
         )}
       </main>

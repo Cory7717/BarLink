@@ -8,6 +8,7 @@ import BarQRCode from "@/components/BarQRCode";
 import { BadgeShowcase, BadgeGrid, BadgeProgress } from "@/components/BadgeDisplay";
 import { BadgeService } from "@/lib/badgeService";
 import Link from "next/link";
+import OwnerTips from "@/components/OwnerTips";
 
 export default async function DashboardPage() {
   const session = await auth();
@@ -50,6 +51,7 @@ export default async function DashboardPage() {
     <div className="min-h-screen app-shell text-white">
       <Navigation />
       <main className="mx-auto max-w-6xl px-4 pb-16 pt-8">
+        <OwnerTips />
         <header className="flex flex-wrap items-center justify-between gap-4">
           <div>
             <h1 className="text-3xl font-semibold text-gradient">Dashboard</h1>

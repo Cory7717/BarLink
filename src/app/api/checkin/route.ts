@@ -25,7 +25,7 @@ export async function POST(request: Request) {
     // Verify bar exists
     const bar = await prisma.bar.findUnique({
       where: { id: barId },
-      select: { id: true, name: true },
+      select: { id: true, name: true, checkInReward: true },
     });
 
     if (!bar) {
@@ -61,6 +61,7 @@ export async function POST(request: Request) {
       visit: {
         id: visit.id,
         barName: bar.name,
+        checkInReward: bar.checkInReward,
         visitedAt: visit.visitedAt,
       },
     });
