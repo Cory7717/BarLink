@@ -19,7 +19,17 @@ export async function POST(req: Request, { params }: { params: Promise<{ barId: 
       },
     });
 
-    let detections = [];
+    type DetectionRecord = {
+      id: string;
+      sessionId: string;
+      productGuessText: string;
+      productId: string | null;
+      bbox: unknown;
+      confidence: number;
+      remainingBucket: string | null;
+      sizeMlGuess: number | null;
+    };
+    let detections: DetectionRecord[] = [];
     if (imageUrl) {
       const ai = await analyzeInventoryPhoto(imageUrl);
       detections = await Promise.all(
