@@ -47,7 +47,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ barId: 
             sessionId,
             productGuessText: d.productGuessText || "Unknown",
             productId: d.productId || null,
-            bbox: d.bbox || null,
+            bbox: d.bbox ?? undefined,
             confidence: typeof d.confidence === "number" ? d.confidence : 0,
             remainingBucket: d.remainingBucket || null,
             sizeMlGuess: d.sizeMlGuess ? Number(d.sizeMlGuess) : null,
