@@ -98,10 +98,10 @@ export default function HelpPage() {
             return (
               <div
                 key={section.id}
-                className={`rounded-2xl border px-4 py-3 transition-all ${
+                className={`rounded-2xl border px-4 py-3 transition-all backdrop-blur ${
                   isOpen
-                    ? "border-cyan-300 bg-white/10 shadow-cyan-300/30 shadow-lg"
-                    : "border-white/10 bg-white/5 hover:border-cyan-200/50 hover:bg-white/10"
+                    ? "border-cyan-300 bg-white/15 shadow-cyan-300/30 shadow-lg"
+                    : "border-white/15 bg-white/8 hover:border-cyan-200/60 hover:bg-white/12"
                 }`}
               >
                 <button
@@ -115,7 +115,7 @@ export default function HelpPage() {
                     <span className="text-2xl">{section.icon}</span>
                     <div>
                       <div className="text-base font-semibold text-white">{section.title}</div>
-                      <div className="text-xs text-slate-300">{isOpen ? "Hide answers" : "Tap to view answers"}</div>
+                      <div className="text-xs text-slate-200">{isOpen ? "Hide answers" : "Tap to view answers"}</div>
                     </div>
                   </div>
                 </button>
@@ -125,19 +125,19 @@ export default function HelpPage() {
                       <button
                         type="button"
                         onClick={() => setModalId(section.id)}
-                        className="rounded-full border border-cyan-300/60 px-3 py-1 text-xs font-semibold text-cyan-100 hover:bg-cyan-300/10"
+                        className="rounded-full border border-cyan-300/60 px-3 py-1 text-xs font-semibold text-cyan-50 hover:bg-cyan-300/15"
                       >
                         Open detailed guide
                       </button>
                     </div>
                     {section.content.slice(0, 2).map((item) => (
-                      <div key={item.question} className="rounded-2xl border border-white/10 bg-white/5 p-3">
+                      <div key={item.question} className="rounded-2xl border border-white/12 bg-slate-900/50 p-3 text-slate-100">
                         <div className="font-semibold text-white">{item.question}</div>
                         <div className="text-slate-200 mt-1 leading-relaxed">{item.answer}</div>
                       </div>
                     ))}
                     {section.content.length > 2 && (
-                      <div className="text-xs text-slate-300">
+                      <div className="text-xs text-slate-100">
                         More answers available in the detailed guide.
                       </div>
                     )}
@@ -149,21 +149,21 @@ export default function HelpPage() {
         </div>
 
         {activeModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4 py-6">
-            <div className="max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-3xl border border-white/15 bg-slate-900/95 p-6 shadow-2xl">
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 px-4 py-6">
+            <div className="max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-3xl border border-white/20 bg-slate-900 p-6 shadow-2xl text-white">
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <div className="flex items-center gap-2 text-lg font-semibold text-white">
                     <span className="text-2xl">{activeModal.icon}</span>
                     <span>{activeModal.title}</span>
                   </div>
-                  <p className="text-slate-300 text-sm mt-1">
+                  <p className="text-slate-200 text-sm mt-1">
                     Detailed guidance for {activeModal.title}. Use this to get set up or troubleshoot quickly.
                   </p>
                 </div>
                 <button
                   onClick={() => setModalId(null)}
-                  className="rounded-full border border-white/20 px-3 py-1 text-sm text-slate-200 hover:bg-white/10"
+                  className="rounded-full border border-white/30 px-3 py-1 text-sm text-white hover:bg-white/10"
                   aria-label="Close help details"
                 >
                   Close
@@ -171,7 +171,7 @@ export default function HelpPage() {
               </div>
               <div className="mt-4 space-y-3">
                 {activeModal.content.map((item) => (
-                  <div key={item.question} className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <div key={item.question} className="rounded-2xl border border-white/15 bg-slate-800 p-4">
                     <div className="font-semibold text-white">{item.question}</div>
                     <div className="text-slate-200 mt-1 leading-relaxed">{item.answer}</div>
                   </div>
