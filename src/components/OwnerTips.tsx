@@ -15,22 +15,22 @@ const TIPS: Tip[] = [
   {
     title: "Add events",
     description: "Create one-time or recurring events so patrons see what's happening.",
-    href: "/dashboard/bar",
+    href: "/dashboard", // choose a bar then Events
   },
   {
     title: "Add offerings",
     description: "Publish weekly offerings like trivia, karaoke, or happy hour specials.",
-    href: "/dashboard/bar",
+    href: "/dashboard", // choose a bar then Offerings
   },
   {
     title: "Inventory",
-    description: "Track bottles, usage, and variance to keep costs in line.",
-    href: "/dashboard/bar/inventory",
+    description: "Track bottles and counts. Open your bar card, then Inventory.",
+    href: "/dashboard",
   },
   {
     title: "QR check-ins",
-    description: "Generate QR codes for easy patron check-ins and analytics.",
-    href: "/dashboard/bar/qrcode",
+    description: "Generate QR codes from your bar card to drive check-ins.",
+    href: "/dashboard",
   },
 ];
 
