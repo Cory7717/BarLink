@@ -15,6 +15,7 @@ model User {
   emailVerified DateTime?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
+  disabled      Boolean   @default(false)
 
   accounts           Account[]
   sessions           Session[]
@@ -24,6 +25,8 @@ model User {
   shiftUsages        ShiftUsage[]
   inventorySnapshots InventorySnapshot[]
   role               UserRole            @default(PATRON)
+  adminNotes         AdminNote[]
+  supportTickets     SupportTicket[]
 }
 
 enum UserRole {
@@ -114,19 +117,24 @@ enum SubscriptionStatus {
   PAST_DUE
   CANCELED
   PAUSED
+  TRIALING
 }
 
 model Bar {
-  id                     String    @id @default(cuid())
+  id                     String           @id @default(cuid())
   ownerId                String
   name                   String
-  slug                   String    @unique
-  description            String?   @db.Text
+  slug                   String           @unique
+  description            String?          @db.Text
   address                String
   city                   String
   cityNormalized         String
   state                  String
   zipCode                String
+  barType                String?          @default("Unclassified")
+  subscriptionTier       SubscriptionTier @default(FREE)
+  inventoryAddOnEnabled  Boolean          @default(false)
+  checkInReward          String?
   neighborhood           String?
   neighborhoodNormalized String?
   latitude               Float
@@ -134,40 +142,51 @@ model Bar {
   phone                  String?
   website                String?
   logo                   String?
-  photos                 String[]  @default([])
+  photos                 String[]         @default([])
   hours                  Json?
-  isActive               Boolean   @default(true)
-  isPublished            Boolean   @default(false)
+  isActive               Boolean          @default(true)
+  isPublished            Boolean          @default(false)
   publishedAt            DateTime?
-  createdAt              DateTime  @default(now())
-  updatedAt              DateTime  @updatedAt
-  profileViews           Int       @default(0)
-  searchAppearances      Int       @default(0)
+  createdAt              DateTime         @default(now())
+  updatedAt              DateTime         @updatedAt
+  profileViews           Int              @default(0)
+  searchAppearances      Int              @default(0)
 
-  owner              Owner               @relation(fields: [ownerId], references: [id], onDelete: Cascade)
-  offerings          Offering[]
-  events             Event[]
-  favorites          Favorite[]
-  analytics          BarAnalytics[]
-  clicks             BarClick[]
-  badges             BarBadge[]
-  barLicenses        BarLicense[]
-  shiftUsages        ShiftUsage[]
-  inventoryItems     InventoryItem[]
-  inventoryImports   InventoryImport[]
-  inventorySnapshots InventorySnapshot[]
-  visits             BarVisit[]
-  varianceAlerts     VarianceAlert[]
-  staticOfferings    StaticOffering[]
-  drinkSpecials      DrinkSpecial[]
-  foodOfferings      FoodOffering[]
-  categoryRequests   CategoryRequest[]
+  owner                 Owner                  @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  offerings             Offering[]
+  events                Event[]
+  favorites             Favorite[]
+  analytics             BarAnalytics[]
+  clicks                BarClick[]
+  badges                BarBadge[]
+  barLicenses           BarLicense[]
+  shiftUsages           ShiftUsage[]
+  inventoryItems        InventoryItem[]
+  inventoryImports      InventoryImport[]
+  inventorySnapshots    InventorySnapshot[]
+  visits                BarVisit[]
+  varianceAlerts        VarianceAlert[]
+  staticOfferings       StaticOffering[]
+  drinkSpecials         DrinkSpecial[]
+  foodOfferings         FoodOffering[]
+  categoryRequests      CategoryRequest[]
+  memberships           BarMembership[]
+  followers             BarFollower[]
+  boosts                Boost[]
+  barProducts           BarProduct[]
+  inventoryScanSessions InventoryScanSession[]
+  inventoryCounts       InventoryCount[]
+  patronSearchEvents    PatronSearchEvent[]    @relation("BarToPatronSearchEvents")
+  barActions            BarAction[]            @relation("BarToBarActions")
+  adminNotes            AdminNote[]
+  supportTickets        SupportTicket[]
 
   @@index([cityNormalized])
   @@index([neighborhoodNormalized])
   @@index([latitude, longitude])
   @@index([isActive])
   @@index([isPublished])
+  @@index([barType])
 }
 
 model Offering {
@@ -631,6 +650,236 @@ model BarVisit {
   @@index([userId])
   @@index([visitedAt])
   @@index([source])
+}
+
+enum SubscriptionTier {
+  FREE
+  PRO
+  PREMIUM
+}
+
+enum BarMemberRole {
+  OWNER
+  MANAGER
+  STAFF
+}
+
+model BarMembership {
+  id        String        @id @default(cuid())
+  barId     String
+  userId    String
+  role      BarMemberRole @default(MANAGER)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  bar Bar @relation(fields: [barId], references: [id], onDelete: Cascade)
+
+  @@index([barId])
+  @@index([userId])
+}
+
+model PatronSearchEvent {
+  id        String   @id @default(cuid())
+  barId     String?
+  query     String?
+  category  String?
+  city      String?
+  createdAt DateTime @default(now())
+
+  bar Bar? @relation("BarToPatronSearchEvents", fields: [barId], references: [id], onDelete: Cascade)
+
+  @@index([createdAt])
+  @@index([city])
+}
+
+model BarAction {
+  id        String   @id @default(cuid())
+  barId     String
+  action    String
+  createdAt DateTime @default(now())
+
+  bar Bar @relation("BarToBarActions", fields: [barId], references: [id], onDelete: Cascade)
+
+  @@index([barId])
+  @@index([action])
+}
+
+model BarFollower {
+  id          String   @id @default(cuid())
+  barId       String
+  patronEmail String
+  createdAt   DateTime @default(now())
+
+  bar Bar @relation(fields: [barId], references: [id], onDelete: Cascade)
+
+  @@unique([barId, patronEmail])
+}
+
+model Boost {
+  id          String   @id @default(cuid())
+  barId       String
+  eventId     String?
+  startAt     DateTime
+  endAt       DateTime
+  budgetCents Int
+  status      String   @default("ACTIVE")
+  createdAt   DateTime @default(now())
+
+  bar     Bar           @relation(fields: [barId], references: [id], onDelete: Cascade)
+  metrics BoostMetric[]
+
+  @@index([barId])
+}
+
+model BoostMetric {
+  id          String   @id @default(cuid())
+  boostId     String
+  date        DateTime
+  impressions Int      @default(0)
+  clicks      Int      @default(0)
+
+  boost Boost @relation(fields: [boostId], references: [id], onDelete: Cascade)
+
+  @@unique([boostId, date])
+  @@index([boostId])
+}
+
+model Product {
+  id       String  @id @default(cuid())
+  name     String
+  category String
+  unitType String
+  sizeMl   Int?
+  upc      String? @unique
+  isActive Boolean @default(true)
+
+  barProducts BarProduct[]
+}
+
+model BarProduct {
+  id               String  @id @default(cuid())
+  barId            String
+  productId        String?
+  customName       String?
+  parLevel         Int?
+  reorderThreshold Int?
+  preferredVendor  String?
+  isActive         Boolean @default(true)
+
+  bar        Bar                      @relation(fields: [barId], references: [id], onDelete: Cascade)
+  product    Product?                 @relation(fields: [productId], references: [id], onDelete: SetNull)
+  counts     InventoryCount[]
+  detections InventoryScanDetection[]
+
+  @@index([barId])
+  @@index([productId])
+}
+
+model InventoryScanSession {
+  id              String   @id @default(cuid())
+  barId           String
+  createdByUserId String?
+  imageUrl        String?
+  createdAt       DateTime @default(now())
+
+  bar        Bar                      @relation(fields: [barId], references: [id], onDelete: Cascade)
+  detections InventoryScanDetection[]
+
+  @@index([barId])
+}
+
+model InventoryScanDetection {
+  id               String  @id @default(cuid())
+  sessionId        String
+  productGuessText String
+  productId        String?
+  bbox             Json?
+  confidence       Float   @default(0)
+  remainingBucket  String?
+  sizeMlGuess      Int?
+
+  session InventoryScanSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  product BarProduct?          @relation(fields: [productId], references: [id], onDelete: SetNull)
+
+  @@index([sessionId])
+}
+
+model InventoryCount {
+  id               String   @id @default(cuid())
+  barId            String
+  productId        String
+  countedAt        DateTime @default(now())
+  quantity         Decimal  @db.Decimal(10, 2)
+  unit             String
+  remainingPercent Int?
+  remainingBucket  String?
+  method           String
+  confidence       Float?
+  notes            String?
+
+  bar     Bar        @relation(fields: [barId], references: [id], onDelete: Cascade)
+  product BarProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([barId])
+  @@index([productId])
+  @@index([countedAt])
+}
+
+model AdminAudit {
+  id         String   @id @default(cuid())
+  adminEmail String
+  action     String
+  entityType String?
+  entityId   String?
+  before     Json?
+  after      Json?
+  createdAt  DateTime @default(now())
+
+  @@index([adminEmail])
+  @@index([entityType])
+  @@index([entityId])
+  @@index([createdAt])
+}
+
+model AdminNote {
+  id         String   @id @default(cuid())
+  adminEmail String
+  barId      String?
+  userId     String?
+  content    String   @db.Text
+  createdAt  DateTime @default(now())
+
+  bar  Bar?  @relation(fields: [barId], references: [id], onDelete: Cascade)
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([barId])
+  @@index([userId])
+  @@index([adminEmail])
+  @@index([createdAt])
+}
+
+model SupportTicket {
+  id         String   @id @default(cuid())
+  barId      String?
+  userEmail  String
+  userId     String?
+  subject    String
+  status     String   @default("OPEN")
+  priority   String   @default("NORMAL")
+  message    String   @db.Text
+  resolution String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  bar  Bar?  @relation(fields: [barId], references: [id], onDelete: Cascade)
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([barId])
+  @@index([userEmail])
+  @@index([userId])
+  @@index([status])
+  @@index([priority])
+  @@index([createdAt])
 }
 
 // Static offerings - always available (up to 3)

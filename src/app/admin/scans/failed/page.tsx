@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 
 async function getFailedScans() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || ""}/api/admin/scans/failed`, { cache: "no-store" });
+  const res = await fetch("/api/admin/scans/failed", { cache: "no-store" });
   if (!res.ok) return [];
   const data = await res.json();
   return data.scans || [];
@@ -37,7 +37,9 @@ export default async function AdminFailedScansPage() {
             {scans.map((s: any) => (
               <tr key={s.id} className="border-t border-white/5 text-slate-200">
                 <td className="px-2 py-2">{s.id}</td>
-                <td className="px-2 py-2">{s.bar?.name || s.barId} {s.bar?.city ? `(${s.bar.city})` : ""}</td>
+                <td className="px-2 py-2">
+                  {s.bar?.name || s.barId} {s.bar?.city ? `(${s.bar.city})` : ""}
+                </td>
                 <td className="px-2 py-2 text-xs text-slate-400">{new Date(s.createdAt).toLocaleString()}</td>
                 <td className="px-2 py-2">
                   {s.imageUrl ? (

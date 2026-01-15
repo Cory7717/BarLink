@@ -128,6 +128,7 @@ exports.Prisma.UserScalarFieldEnum = {
   emailVerified: 'emailVerified',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
+  disabled: 'disabled',
   role: 'role'
 };
 
@@ -194,6 +195,10 @@ exports.Prisma.BarScalarFieldEnum = {
   cityNormalized: 'cityNormalized',
   state: 'state',
   zipCode: 'zipCode',
+  barType: 'barType',
+  subscriptionTier: 'subscriptionTier',
+  inventoryAddOnEnabled: 'inventoryAddOnEnabled',
+  checkInReward: 'checkInReward',
   neighborhood: 'neighborhood',
   neighborhoodNormalized: 'neighborhoodNormalized',
   latitude: 'latitude',
@@ -503,6 +508,145 @@ exports.Prisma.BarVisitScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.BarMembershipScalarFieldEnum = {
+  id: 'id',
+  barId: 'barId',
+  userId: 'userId',
+  role: 'role',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PatronSearchEventScalarFieldEnum = {
+  id: 'id',
+  barId: 'barId',
+  query: 'query',
+  category: 'category',
+  city: 'city',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.BarActionScalarFieldEnum = {
+  id: 'id',
+  barId: 'barId',
+  action: 'action',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.BarFollowerScalarFieldEnum = {
+  id: 'id',
+  barId: 'barId',
+  patronEmail: 'patronEmail',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.BoostScalarFieldEnum = {
+  id: 'id',
+  barId: 'barId',
+  eventId: 'eventId',
+  startAt: 'startAt',
+  endAt: 'endAt',
+  budgetCents: 'budgetCents',
+  status: 'status',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.BoostMetricScalarFieldEnum = {
+  id: 'id',
+  boostId: 'boostId',
+  date: 'date',
+  impressions: 'impressions',
+  clicks: 'clicks'
+};
+
+exports.Prisma.ProductScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  category: 'category',
+  unitType: 'unitType',
+  sizeMl: 'sizeMl',
+  upc: 'upc',
+  isActive: 'isActive'
+};
+
+exports.Prisma.BarProductScalarFieldEnum = {
+  id: 'id',
+  barId: 'barId',
+  productId: 'productId',
+  customName: 'customName',
+  parLevel: 'parLevel',
+  reorderThreshold: 'reorderThreshold',
+  preferredVendor: 'preferredVendor',
+  isActive: 'isActive'
+};
+
+exports.Prisma.InventoryScanSessionScalarFieldEnum = {
+  id: 'id',
+  barId: 'barId',
+  createdByUserId: 'createdByUserId',
+  imageUrl: 'imageUrl',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.InventoryScanDetectionScalarFieldEnum = {
+  id: 'id',
+  sessionId: 'sessionId',
+  productGuessText: 'productGuessText',
+  productId: 'productId',
+  bbox: 'bbox',
+  confidence: 'confidence',
+  remainingBucket: 'remainingBucket',
+  sizeMlGuess: 'sizeMlGuess'
+};
+
+exports.Prisma.InventoryCountScalarFieldEnum = {
+  id: 'id',
+  barId: 'barId',
+  productId: 'productId',
+  countedAt: 'countedAt',
+  quantity: 'quantity',
+  unit: 'unit',
+  remainingPercent: 'remainingPercent',
+  remainingBucket: 'remainingBucket',
+  method: 'method',
+  confidence: 'confidence',
+  notes: 'notes'
+};
+
+exports.Prisma.AdminAuditScalarFieldEnum = {
+  id: 'id',
+  adminEmail: 'adminEmail',
+  action: 'action',
+  entityType: 'entityType',
+  entityId: 'entityId',
+  before: 'before',
+  after: 'after',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.AdminNoteScalarFieldEnum = {
+  id: 'id',
+  adminEmail: 'adminEmail',
+  barId: 'barId',
+  userId: 'userId',
+  content: 'content',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.SupportTicketScalarFieldEnum = {
+  id: 'id',
+  barId: 'barId',
+  userEmail: 'userEmail',
+  userId: 'userId',
+  subject: 'subject',
+  status: 'status',
+  priority: 'priority',
+  message: 'message',
+  resolution: 'resolution',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.StaticOfferingScalarFieldEnum = {
   id: 'id',
   barId: 'barId',
@@ -585,7 +729,14 @@ exports.SubscriptionStatus = exports.$Enums.SubscriptionStatus = {
   INCOMPLETE: 'INCOMPLETE',
   PAST_DUE: 'PAST_DUE',
   CANCELED: 'CANCELED',
-  PAUSED: 'PAUSED'
+  PAUSED: 'PAUSED',
+  TRIALING: 'TRIALING'
+};
+
+exports.SubscriptionTier = exports.$Enums.SubscriptionTier = {
+  FREE: 'FREE',
+  PRO: 'PRO',
+  PREMIUM: 'PREMIUM'
 };
 
 exports.Recurrence = exports.$Enums.Recurrence = {
@@ -615,6 +766,12 @@ exports.BadgeCategory = exports.$Enums.BadgeCategory = {
   ACHIEVEMENT: 'ACHIEVEMENT',
   COMMUNITY: 'COMMUNITY',
   SEASONAL: 'SEASONAL'
+};
+
+exports.BarMemberRole = exports.$Enums.BarMemberRole = {
+  OWNER: 'OWNER',
+  MANAGER: 'MANAGER',
+  STAFF: 'STAFF'
 };
 
 exports.Prisma.ModelName = {
@@ -648,6 +805,20 @@ exports.Prisma.ModelName = {
   VarianceAlert: 'VarianceAlert',
   BarLicense: 'BarLicense',
   BarVisit: 'BarVisit',
+  BarMembership: 'BarMembership',
+  PatronSearchEvent: 'PatronSearchEvent',
+  BarAction: 'BarAction',
+  BarFollower: 'BarFollower',
+  Boost: 'Boost',
+  BoostMetric: 'BoostMetric',
+  Product: 'Product',
+  BarProduct: 'BarProduct',
+  InventoryScanSession: 'InventoryScanSession',
+  InventoryScanDetection: 'InventoryScanDetection',
+  InventoryCount: 'InventoryCount',
+  AdminAudit: 'AdminAudit',
+  AdminNote: 'AdminNote',
+  SupportTicket: 'SupportTicket',
   StaticOffering: 'StaticOffering',
   DrinkSpecial: 'DrinkSpecial',
   FoodOffering: 'FoodOffering'

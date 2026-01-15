@@ -4,9 +4,8 @@ import { redirect } from "next/navigation";
 import TicketStatusControls from "./ticket-controls";
 
 async function getTickets(status?: string) {
-  const url = new URL(`${process.env.NEXT_PUBLIC_BASE_URL || ""}/api/admin/support`);
-  if (status) url.searchParams.set("status", status);
-  const res = await fetch(url.toString(), { cache: "no-store" });
+  const params = status ? `?status=${encodeURIComponent(status)}` : "";
+  const res = await fetch(`/api/admin/support${params}`, { cache: "no-store" });
   if (!res.ok) return [];
   const data = await res.json();
   return data.tickets || [];
