@@ -38,8 +38,8 @@ export default async function Home({ searchParams }: HomeProps) {
     where: {
       status: "ACTIVE",
       AND: [
-        { OR: [{ startAt: null }, { startAt: { lte: now } }] },
-        { OR: [{ endAt: null }, { endAt: { gte: now } }] },
+        { OR: [{ startAt: { equals: null } }, { startAt: { lte: now } }] },
+        { OR: [{ endAt: { equals: null } }, { endAt: { gte: now } }] },
       ],
       ...(cityFilter
         ? {
