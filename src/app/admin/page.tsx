@@ -43,6 +43,40 @@ export default async function AdminOverviewPage() {
       },
     }),
   ]);
+
+  // Inventory scans and failures (last 7d)
+  const scansLast7d = await prisma.inventoryScanSession.findMany({
+    where: { createdAt: { gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000) } },
+    select: { barId: true, bar: { select: { name: true, city: true } }, detections: { select: { id: true } } },
+  });
+  const scansByBar: Record<string, { count: number; name: string }> = {};
+  let failedScans = 0;
+  for (const scan of scansLast7d) {
+    const key = scan.barId || "unknown";
+    scansByBar[key] = scansByBar[key] || { count: 0, name: scan.bar?.name || "Unknown bar" };
+    scansByBar[key].count += 1;
+    if (!scan.detections || scan.detections.length === 0) {
+      failedScans += 1;
+    }
+  }
+  const topScanBar = Object.entries(scansByBar)
+    .map(([_, v]) => v)
+    .sort((a, b) => b.count - a.count)[0];
+
+  // Demand/search signals (last 30d)
+  const searchEvents30d = await prisma.patronSearchEvent.findMany({
+    where: { createdAt: { gte: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000) } },
+    select: { city: true, category: true },
+  });
+  const cityCounts: Record<string, number> = {};
+  const categoryCounts: Record<string, number> = {};
+  for (const e of searchEvents30d) {
+    if (e.city) cityCounts[e.city] = (cityCounts[e.city] || 0) + 1;
+    if (e.category) categoryCounts[e.category] = (categoryCounts[e.category] || 0) + 1;
+  }
+  const topCity = Object.entries(cityCounts).sort((a, b) => b[1] - a[1])[0];
+  const topCategory = Object.entries(categoryCounts).sort((a, b) => b[1] - a[1])[0];
+
   let pendingApprovals = 0;
   try {
     const exists = await prisma.$queryRaw<{ name: string | null }[]>`
@@ -64,10 +98,7 @@ export default async function AdminOverviewPage() {
   if (idleBars > 0) alerts.push({ label: "Bars with no events/offerings", value: idleBars, href: "/admin/bars?status=ACTIVE" });
   if (failedPayments > 0) alerts.push({ label: "Failed payments (incomplete)", value: failedPayments, href: "/admin/subscriptions" });
   if (zeroActivityBars > 0) alerts.push({ label: "Bars idle 14d (no content)", value: zeroActivityBars, href: "/admin/bars" });
-  const recentScanFailures = await prisma.inventoryScanSession.count({
-    where: { createdAt: { gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000) }, detections: { none: {} } },
-  });
-  if (recentScanFailures > 0) alerts.push({ label: "Inventory scan failures (7d)", value: recentScanFailures, href: "/admin/scans/failed" });
+  if (failedScans > 0) alerts.push({ label: "Inventory scan failures (7d)", value: failedScans, href: "/admin/scans/failed" });
 
   return (
     <section className="space-y-4">
@@ -112,6 +143,27 @@ export default async function AdminOverviewPage() {
           <div className="text-slate-300 text-sm">Inventory add-on adoption</div>
           <div className="text-3xl font-semibold">{addOnAdoptionPct}%</div>
           <div className="text-xs text-cyan-200 mt-2">Enabled bars: {addOnCount}</div>
+        </div>
+        <div className="glass-panel rounded-2xl p-5">
+          <div className="text-slate-300 text-sm">Inventory scans (7d)</div>
+          <div className="text-3xl font-semibold">{scansLast7d.length}</div>
+          <div className="text-xs text-cyan-200 mt-2">
+            Top bar: {topScanBar ? `${topScanBar.name} (${topScanBar.count})` : "None"}
+          </div>
+        </div>
+        <div className="glass-panel rounded-2xl p-5">
+          <div className="text-slate-300 text-sm">Top search city (30d)</div>
+          <div className="text-3xl font-semibold">{topCity ? topCity[0] : "-"}</div>
+          <div className="text-xs text-cyan-200 mt-2">
+            {topCity ? `${topCity[1]} searches` : "No data"}
+          </div>
+        </div>
+        <div className="glass-panel rounded-2xl p-5">
+          <div className="text-slate-300 text-sm">Top search category (30d)</div>
+          <div className="text-3xl font-semibold">{topCategory ? topCategory[0] : "-"}</div>
+          <div className="text-xs text-cyan-200 mt-2">
+            {topCategory ? `${topCategory[1]} searches` : "No data"}
+          </div>
         </div>
       </div>
 

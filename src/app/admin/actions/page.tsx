@@ -1,8 +1,9 @@
 import { auth } from "@/lib/auth";
+import { getBaseUrl } from "@/lib/getBaseUrl";
 import { redirect } from "next/navigation";
 
 async function getLogs() {
-  const base = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const base = getBaseUrl();
   const res = await fetch(`${base}/api/admin/actions/log`, { cache: "no-store" });
   if (!res.ok) return [];
   const data = await res.json();

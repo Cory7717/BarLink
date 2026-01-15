@@ -1,6 +1,20 @@
 import { auth } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
+import { getBaseUrl } from "@/lib/getBaseUrl";
 import { redirect } from "next/navigation";
+
+async function getSummary() {
+  const base = getBaseUrl();
+  try {
+    const res = await fetch(`${base}/api/admin/revenue/summary`, { cache: "no-store" });
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      throw new Error(data.error || "Failed to load revenue");
+    }
+    return res.json();
+  } catch (err) {
+    return { error: err instanceof Error ? err.message : "Failed to load revenue" };
+  }
+}
 
 export default async function AdminRevenuePage() {
   const session = await auth();
@@ -8,46 +22,43 @@ export default async function AdminRevenuePage() {
     redirect("/admin");
   }
 
-  const [activeSubs, proCount, premiumCount, addOnCount] = await Promise.all([
-    prisma.subscription.count({ where: { status: "ACTIVE" } }),
-    prisma.bar.count({ where: { subscriptionTier: "PRO" } }),
-    prisma.bar.count({ where: { subscriptionTier: "PREMIUM" } }),
-    prisma.bar.count({ where: { inventoryAddOnEnabled: true } }),
-  ]);
-
-  const mrrEstimate = proCount * 30 + premiumCount * 60 + addOnCount * 20;
-  const arrEstimate = mrrEstimate * 12;
+  const summary = await getSummary();
 
   return (
     <div className="space-y-4">
       <h1 className="text-3xl font-semibold text-gradient">Revenue Snapshot</h1>
-      <p className="text-sm text-slate-300">Estimates based on tier counts (placeholder pricing).</p>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <div className="glass-panel rounded-2xl p-4">
-          <div className="text-slate-300 text-sm">Active subscriptions</div>
-          <div className="text-3xl font-semibold text-white">{activeSubs}</div>
+      <p className="text-sm text-slate-300">
+        Live snapshot with estimates. Connect PayPal for actual MRR/ARR when ready.
+      </p>
+
+      {"error" in summary ? (
+        <div className="rounded-2xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-100">
+          {summary.error}
         </div>
-        <div className="glass-panel rounded-2xl p-4">
-          <div className="text-slate-300 text-sm">MRR (est)</div>
-          <div className="text-3xl font-semibold text-white">${mrrEstimate.toFixed(0)}</div>
+      ) : (
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <Metric label="Active subscriptions" value={summary.activeSubs} />
+          <Metric label="Trialing" value={summary.trialingSubs} />
+          <Metric label="Canceled" value={summary.canceledSubs} />
+          <Metric label="MRR (est)" value={`$${summary.mrrEstimate.toFixed(0)}`} />
+          <Metric label="ARR (est)" value={`$${summary.arrEstimate.toFixed(0)}`} />
+          <Metric label="ARPU (est)" value={`$${summary.arpuEstimate.toFixed(2)}`} />
+          <Metric label="Pro bars" value={summary.proBars} />
+          <Metric label="Premium bars" value={summary.premiumBars} />
+          <Metric label="Inventory add-on" value={summary.addOnBars} />
+          <Metric label="Boosts active" value={summary.boostsActive} />
+          <Metric label="Boosts pending" value={summary.boostsPending} />
         </div>
-        <div className="glass-panel rounded-2xl p-4">
-          <div className="text-slate-300 text-sm">ARR (est)</div>
-          <div className="text-3xl font-semibold text-white">${arrEstimate.toFixed(0)}</div>
-        </div>
-        <div className="glass-panel rounded-2xl p-4">
-          <div className="text-slate-300 text-sm">Pro bars</div>
-          <div className="text-3xl font-semibold text-white">{proCount}</div>
-        </div>
-        <div className="glass-panel rounded-2xl p-4">
-          <div className="text-slate-300 text-sm">Premium bars</div>
-          <div className="text-3xl font-semibold text-white">{premiumCount}</div>
-        </div>
-        <div className="glass-panel rounded-2xl p-4">
-          <div className="text-slate-300 text-sm">Inventory add-on</div>
-          <div className="text-3xl font-semibold text-white">{addOnCount}</div>
-        </div>
-      </div>
+      )}
+    </div>
+  );
+}
+
+function Metric({ label, value }: { label: string; value: number | string }) {
+  return (
+    <div className="glass-panel rounded-2xl p-4">
+      <div className="text-slate-300 text-sm">{label}</div>
+      <div className="text-3xl font-semibold text-white">{value}</div>
     </div>
   );
 }

@@ -1,9 +1,10 @@
 import { auth } from "@/lib/auth";
+import { getBaseUrl } from "@/lib/getBaseUrl";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 
 async function getFailedScans() {
-  const base = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const base = getBaseUrl();
   const res = await fetch(`${base}/api/admin/scans/failed`, { cache: "no-store" });
   if (!res.ok) return [];
   const data = await res.json();

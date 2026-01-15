@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { auth } from "@/lib/auth";
+import { getBaseUrl } from "@/lib/getBaseUrl";
 import { redirect } from "next/navigation";
 import UserActions from "./user-actions";
 
 async function getUsers(q?: string) {
-  const base = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const base = getBaseUrl();
   const url = new URL(`${base}/api/admin/users`);
   if (q) url.searchParams.set("q", q);
   url.searchParams.set("bars", "true");
