@@ -2,8 +2,8 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import AdminNotesClient from "../AdminNotesClient";
-import SupportTicketForm from "../SupportTicketForm";
+import AdminNotesClient from "../../AdminNotesClient";
+import SupportTicketForm from "../../../SupportTicketForm";
 
 export default async function AdminBarSupportPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
