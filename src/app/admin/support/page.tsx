@@ -4,8 +4,9 @@ import { redirect } from "next/navigation";
 import TicketStatusControls from "./ticket-controls";
 
 async function getTickets(status?: string) {
+  const base = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
   const params = status ? `?status=${encodeURIComponent(status)}` : "";
-  const res = await fetch(`/api/admin/support${params}`, { cache: "no-store" });
+  const res = await fetch(`${base}/api/admin/support${params}`, { cache: "no-store" });
   if (!res.ok) return [];
   const data = await res.json();
   return data.tickets || [];

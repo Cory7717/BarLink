@@ -41,6 +41,20 @@ export default function Home() {
       </div>
 
       <Navigation />
+      {/* Mobile quick actions so Explore is visible without the menu */}
+      <div className="relative z-10 mx-auto max-w-6xl px-4 pt-4 sm:hidden">
+        <div className="glass-panel rounded-2xl p-3 shadow-md border border-white/10">
+          <div className="flex flex-col gap-2">
+            <Link href="/explore" className="btn-primary w-full text-sm py-3">
+              Explore bars
+            </Link>
+            <Link href="/pricing" className="btn-secondary w-full text-sm py-3">
+              Pricing & plans
+            </Link>
+          </div>
+        </div>
+      </div>
+
       <main className="relative z-10 mx-auto max-w-6xl px-4 pb-24 pt-16">
         <section className="grid gap-10 lg:grid-cols-[1.1fr,0.9fr] items-center animate-fade-in">
           <div className="space-y-6">

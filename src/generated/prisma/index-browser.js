@@ -733,12 +733,6 @@ exports.SubscriptionStatus = exports.$Enums.SubscriptionStatus = {
   TRIALING: 'TRIALING'
 };
 
-exports.SubscriptionTier = exports.$Enums.SubscriptionTier = {
-  FREE: 'FREE',
-  PRO: 'PRO',
-  PREMIUM: 'PREMIUM'
-};
-
 exports.Recurrence = exports.$Enums.Recurrence = {
   ONE_TIME: 'ONE_TIME',
   WEEKLY: 'WEEKLY',

@@ -331,15 +331,6 @@ export const BadgeCategory: {
 export type BadgeCategory = (typeof BadgeCategory)[keyof typeof BadgeCategory]
 
 
-export const SubscriptionTier: {
-  FREE: 'FREE',
-  PRO: 'PRO',
-  PREMIUM: 'PREMIUM'
-};
-
-export type SubscriptionTier = (typeof SubscriptionTier)[keyof typeof SubscriptionTier]
-
-
 export const BarMemberRole: {
   OWNER: 'OWNER',
   MANAGER: 'MANAGER',
@@ -381,10 +372,6 @@ export const BadgeTier: typeof $Enums.BadgeTier
 export type BadgeCategory = $Enums.BadgeCategory
 
 export const BadgeCategory: typeof $Enums.BadgeCategory
-
-export type SubscriptionTier = $Enums.SubscriptionTier
-
-export const SubscriptionTier: typeof $Enums.SubscriptionTier
 
 export type BarMemberRole = $Enums.BarMemberRole
 
@@ -11995,7 +11982,7 @@ export namespace Prisma {
     state: string | null
     zipCode: string | null
     barType: string | null
-    subscriptionTier: $Enums.SubscriptionTier | null
+    subscriptionTier: string | null
     inventoryAddOnEnabled: boolean | null
     checkInReward: string | null
     neighborhood: string | null
@@ -12026,7 +12013,7 @@ export namespace Prisma {
     state: string | null
     zipCode: string | null
     barType: string | null
-    subscriptionTier: $Enums.SubscriptionTier | null
+    subscriptionTier: string | null
     inventoryAddOnEnabled: boolean | null
     checkInReward: string | null
     neighborhood: string | null
@@ -12288,7 +12275,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType: string | null
-    subscriptionTier: $Enums.SubscriptionTier
+    subscriptionTier: string
     inventoryAddOnEnabled: boolean
     checkInReward: string | null
     neighborhood: string | null
@@ -12574,7 +12561,7 @@ export namespace Prisma {
       state: string
       zipCode: string
       barType: string | null
-      subscriptionTier: $Enums.SubscriptionTier
+      subscriptionTier: string
       inventoryAddOnEnabled: boolean
       checkInReward: string | null
       neighborhood: string | null
@@ -13055,7 +13042,7 @@ export namespace Prisma {
     readonly state: FieldRef<"Bar", 'String'>
     readonly zipCode: FieldRef<"Bar", 'String'>
     readonly barType: FieldRef<"Bar", 'String'>
-    readonly subscriptionTier: FieldRef<"Bar", 'SubscriptionTier'>
+    readonly subscriptionTier: FieldRef<"Bar", 'String'>
     readonly inventoryAddOnEnabled: FieldRef<"Bar", 'Boolean'>
     readonly checkInReward: FieldRef<"Bar", 'String'>
     readonly neighborhood: FieldRef<"Bar", 'String'>
@@ -61595,20 +61582,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'SubscriptionTier'
-   */
-  export type EnumSubscriptionTierFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SubscriptionTier'>
-    
-
-
-  /**
-   * Reference to a field of type 'SubscriptionTier[]'
-   */
-  export type ListEnumSubscriptionTierFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SubscriptionTier[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -62175,7 +62148,7 @@ export namespace Prisma {
     state?: StringFilter<"Bar"> | string
     zipCode?: StringFilter<"Bar"> | string
     barType?: StringNullableFilter<"Bar"> | string | null
-    subscriptionTier?: EnumSubscriptionTierFilter<"Bar"> | $Enums.SubscriptionTier
+    subscriptionTier?: StringFilter<"Bar"> | string
     inventoryAddOnEnabled?: BoolFilter<"Bar"> | boolean
     checkInReward?: StringNullableFilter<"Bar"> | string | null
     neighborhood?: StringNullableFilter<"Bar"> | string | null
@@ -62300,7 +62273,7 @@ export namespace Prisma {
     state?: StringFilter<"Bar"> | string
     zipCode?: StringFilter<"Bar"> | string
     barType?: StringNullableFilter<"Bar"> | string | null
-    subscriptionTier?: EnumSubscriptionTierFilter<"Bar"> | $Enums.SubscriptionTier
+    subscriptionTier?: StringFilter<"Bar"> | string
     inventoryAddOnEnabled?: BoolFilter<"Bar"> | boolean
     checkInReward?: StringNullableFilter<"Bar"> | string | null
     neighborhood?: StringNullableFilter<"Bar"> | string | null
@@ -62402,7 +62375,7 @@ export namespace Prisma {
     state?: StringWithAggregatesFilter<"Bar"> | string
     zipCode?: StringWithAggregatesFilter<"Bar"> | string
     barType?: StringNullableWithAggregatesFilter<"Bar"> | string | null
-    subscriptionTier?: EnumSubscriptionTierWithAggregatesFilter<"Bar"> | $Enums.SubscriptionTier
+    subscriptionTier?: StringWithAggregatesFilter<"Bar"> | string
     inventoryAddOnEnabled?: BoolWithAggregatesFilter<"Bar"> | boolean
     checkInReward?: StringNullableWithAggregatesFilter<"Bar"> | string | null
     neighborhood?: StringNullableWithAggregatesFilter<"Bar"> | string | null
@@ -66017,7 +65990,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -66078,7 +66051,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -66137,7 +66110,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -66198,7 +66171,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -66258,7 +66231,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -66290,7 +66263,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -66323,7 +66296,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -70199,13 +70172,6 @@ export namespace Prisma {
     _max?: NestedEnumSubscriptionStatusFilter<$PrismaModel>
   }
 
-  export type EnumSubscriptionTierFilter<$PrismaModel = never> = {
-    equals?: $Enums.SubscriptionTier | EnumSubscriptionTierFieldRefInput<$PrismaModel>
-    in?: $Enums.SubscriptionTier[] | ListEnumSubscriptionTierFieldRefInput<$PrismaModel>
-    notIn?: $Enums.SubscriptionTier[] | ListEnumSubscriptionTierFieldRefInput<$PrismaModel>
-    not?: NestedEnumSubscriptionTierFilter<$PrismaModel> | $Enums.SubscriptionTier
-  }
-
   export type FloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -70546,16 +70512,6 @@ export namespace Prisma {
     longitude?: SortOrder
     profileViews?: SortOrder
     searchAppearances?: SortOrder
-  }
-
-  export type EnumSubscriptionTierWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.SubscriptionTier | EnumSubscriptionTierFieldRefInput<$PrismaModel>
-    in?: $Enums.SubscriptionTier[] | ListEnumSubscriptionTierFieldRefInput<$PrismaModel>
-    notIn?: $Enums.SubscriptionTier[] | ListEnumSubscriptionTierFieldRefInput<$PrismaModel>
-    not?: NestedEnumSubscriptionTierWithAggregatesFilter<$PrismaModel> | $Enums.SubscriptionTier
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumSubscriptionTierFilter<$PrismaModel>
-    _max?: NestedEnumSubscriptionTierFilter<$PrismaModel>
   }
 
   export type FloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -73712,10 +73668,6 @@ export namespace Prisma {
     connect?: SupportTicketWhereUniqueInput | SupportTicketWhereUniqueInput[]
   }
 
-  export type EnumSubscriptionTierFieldUpdateOperationsInput = {
-    set?: $Enums.SubscriptionTier
-  }
-
   export type FloatFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -76159,13 +76111,6 @@ export namespace Prisma {
     _max?: NestedEnumSubscriptionStatusFilter<$PrismaModel>
   }
 
-  export type NestedEnumSubscriptionTierFilter<$PrismaModel = never> = {
-    equals?: $Enums.SubscriptionTier | EnumSubscriptionTierFieldRefInput<$PrismaModel>
-    in?: $Enums.SubscriptionTier[] | ListEnumSubscriptionTierFieldRefInput<$PrismaModel>
-    notIn?: $Enums.SubscriptionTier[] | ListEnumSubscriptionTierFieldRefInput<$PrismaModel>
-    not?: NestedEnumSubscriptionTierFilter<$PrismaModel> | $Enums.SubscriptionTier
-  }
-
   export type NestedFloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -76175,16 +76120,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
-  export type NestedEnumSubscriptionTierWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.SubscriptionTier | EnumSubscriptionTierFieldRefInput<$PrismaModel>
-    in?: $Enums.SubscriptionTier[] | ListEnumSubscriptionTierFieldRefInput<$PrismaModel>
-    notIn?: $Enums.SubscriptionTier[] | ListEnumSubscriptionTierFieldRefInput<$PrismaModel>
-    not?: NestedEnumSubscriptionTierWithAggregatesFilter<$PrismaModel> | $Enums.SubscriptionTier
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumSubscriptionTierFilter<$PrismaModel>
-    _max?: NestedEnumSubscriptionTierFilter<$PrismaModel>
   }
 
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -77160,7 +77095,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -77219,7 +77154,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -77461,7 +77396,7 @@ export namespace Prisma {
     state?: StringFilter<"Bar"> | string
     zipCode?: StringFilter<"Bar"> | string
     barType?: StringNullableFilter<"Bar"> | string | null
-    subscriptionTier?: EnumSubscriptionTierFilter<"Bar"> | $Enums.SubscriptionTier
+    subscriptionTier?: StringFilter<"Bar"> | string
     inventoryAddOnEnabled?: BoolFilter<"Bar"> | boolean
     checkInReward?: StringNullableFilter<"Bar"> | string | null
     neighborhood?: StringNullableFilter<"Bar"> | string | null
@@ -79421,7 +79356,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -79481,7 +79416,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -79555,7 +79490,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -79615,7 +79550,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -79673,7 +79608,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -79733,7 +79668,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -79807,7 +79742,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -79867,7 +79802,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -79970,7 +79905,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -80030,7 +79965,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -80155,7 +80090,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -80215,7 +80150,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -80273,7 +80208,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -80333,7 +80268,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -80448,7 +80383,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -80508,7 +80443,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -80899,7 +80834,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -80959,7 +80894,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -81033,7 +80968,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -81093,7 +81028,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -81151,7 +81086,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -81211,7 +81146,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -81285,7 +81220,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -81345,7 +81280,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -81445,7 +81380,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -81505,7 +81440,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -81616,7 +81551,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -81676,7 +81611,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -81777,7 +81712,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -81837,7 +81772,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -82029,7 +81964,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -82089,7 +82024,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -82247,7 +82182,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -82307,7 +82242,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -82426,7 +82361,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -82486,7 +82421,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -82595,7 +82530,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -82655,7 +82590,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -82798,7 +82733,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -82858,7 +82793,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -83115,7 +83050,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -83175,7 +83110,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -83320,7 +83255,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -83380,7 +83315,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -83817,7 +83752,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -83877,7 +83812,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -83988,7 +83923,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -84048,7 +83983,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -84149,7 +84084,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -84209,7 +84144,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -84324,7 +84259,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -84384,7 +84319,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -84489,7 +84424,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -84549,7 +84484,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -84668,7 +84603,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -84728,7 +84663,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -84837,7 +84772,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -84897,7 +84832,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -84971,7 +84906,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -85031,7 +84966,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -85089,7 +85024,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -85149,7 +85084,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -85223,7 +85158,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -85283,7 +85218,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -85341,7 +85276,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -85401,7 +85336,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -85475,7 +85410,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -85535,7 +85470,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -85593,7 +85528,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -85653,7 +85588,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -85727,7 +85662,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -85787,7 +85722,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -85845,7 +85780,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -85905,7 +85840,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -86003,7 +85938,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -86063,7 +85998,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -86258,7 +86193,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -86318,7 +86253,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -86483,7 +86418,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -86543,7 +86478,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -86678,7 +86613,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -86738,7 +86673,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -86842,7 +86777,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -86902,7 +86837,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -87088,7 +87023,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -87148,7 +87083,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -87251,7 +87186,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -87311,7 +87246,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -87404,7 +87339,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -87464,7 +87399,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -87583,7 +87518,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -87643,7 +87578,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -87752,7 +87687,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -87812,7 +87747,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -87931,7 +87866,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -87991,7 +87926,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -88100,7 +88035,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -88160,7 +88095,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -88234,7 +88169,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -88294,7 +88229,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -88352,7 +88287,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -88412,7 +88347,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -88486,7 +88421,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -88546,7 +88481,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -88604,7 +88539,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -88664,7 +88599,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -88738,7 +88673,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -88798,7 +88733,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -89196,7 +89131,7 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
-    subscriptionTier?: $Enums.SubscriptionTier
+    subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
     checkInReward?: string | null
     neighborhood?: string | null
@@ -89266,7 +89201,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -89325,7 +89260,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
@@ -89384,7 +89319,7 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
-    subscriptionTier?: EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+    subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null

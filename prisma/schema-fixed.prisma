@@ -8,25 +8,24 @@ datasource db {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  email         String    @unique
-  name          String?
-  image         String?
-  emailVerified DateTime?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-  disabled      Boolean   @default(false)
-
-  accounts           Account[]
-  sessions           Session[]
-  favorites          Favorite[]
-  visits             BarVisit[]
+  id              String    @id @default(cuid())
+  email           String    @unique
+  name            String?
+  image           String?
+  emailVerified   DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  disabled        Boolean   @default(false)
+  accounts        Account[]
+  sessions        Session[]
+  favorites       Favorite[]
+  visits          BarVisit[]
   inventoryImports   InventoryImport[]
   shiftUsages        ShiftUsage[]
   inventorySnapshots InventorySnapshot[]
-  role               UserRole            @default(PATRON)
-  adminNotes         AdminNote[]
-  supportTickets     SupportTicket[]
+  role            UserRole  @default(PATRON)
+  adminNotes      AdminNote[]
+  supportTickets  SupportTicket[]
 }
 
 enum UserRole {
@@ -47,8 +46,7 @@ model Account {
   scope             String?
   id_token          String? @db.Text
   session_state     String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
@@ -62,23 +60,22 @@ model Session {
 }
 
 model Owner {
-  id                String    @id @default(cuid())
-  email             String    @unique
+  id                String         @id @default(cuid())
+  email             String         @unique
   name              String
   password          String
   phone             String?
   emailVerified     DateTime?
-  createdAt         DateTime  @default(now())
-  updatedAt         DateTime  @updatedAt
-  allowFreeListings Boolean   @default(false)
-
-  bars             Bar[]
-  subscription     Subscription?
-  barLicenses      BarLicense[]
-  promoRedemptions PromoRedemption[]
-  role             OwnerRole            @default(OWNER)
-  categoryRequests CategoryRequest[]
-  passwordResets   OwnerPasswordReset[]
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+  allowFreeListings Boolean        @default(false)
+  bars              Bar[]
+  subscription      Subscription?
+  barLicenses       BarLicense[]
+  promoRedemptions  PromoRedemption[]
+  role              OwnerRole      @default(OWNER)
+  categoryRequests  CategoryRequest[]
+  passwordResets    OwnerPasswordReset[]
 }
 
 enum OwnerRole {
@@ -101,8 +98,7 @@ model Subscription {
   canceledAt           DateTime?
   createdAt            DateTime           @default(now())
   updatedAt            DateTime           @updatedAt
-
-  owner Owner @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  owner                Owner              @relation(fields: [ownerId], references: [id], onDelete: Cascade)
 }
 
 enum SubscriptionPlan {
@@ -121,19 +117,19 @@ enum SubscriptionStatus {
 }
 
 model Bar {
-  id                     String           @id @default(cuid())
+  id                     String   @id @default(cuid())
   ownerId                String
   name                   String
-  slug                   String           @unique
-  description            String?          @db.Text
+  slug                   String   @unique
+  description            String?  @db.Text
   address                String
   city                   String
   cityNormalized         String
   state                  String
   zipCode                String
-  barType                String?          @default("Unclassified")
-  subscriptionTier       SubscriptionTier @default(FREE)
-  inventoryAddOnEnabled  Boolean          @default(false)
+  barType                String?  @default("Unclassified")
+  subscriptionTier       String   @default("FREE")
+  inventoryAddOnEnabled  Boolean  @default(false)
   checkInReward          String?
   neighborhood           String?
   neighborhoodNormalized String?
@@ -142,44 +138,43 @@ model Bar {
   phone                  String?
   website                String?
   logo                   String?
-  photos                 String[]         @default([])
+  photos                 String[] @default([])
   hours                  Json?
-  isActive               Boolean          @default(true)
-  isPublished            Boolean          @default(false)
+  isActive               Boolean  @default(true)
+  isPublished            Boolean  @default(false)
   publishedAt            DateTime?
-  createdAt              DateTime         @default(now())
-  updatedAt              DateTime         @updatedAt
-  profileViews           Int              @default(0)
-  searchAppearances      Int              @default(0)
-
-  owner                 Owner                  @relation(fields: [ownerId], references: [id], onDelete: Cascade)
-  offerings             Offering[]
-  events                Event[]
-  favorites             Favorite[]
-  analytics             BarAnalytics[]
-  clicks                BarClick[]
-  badges                BarBadge[]
-  barLicenses           BarLicense[]
-  shiftUsages           ShiftUsage[]
-  inventoryItems        InventoryItem[]
-  inventoryImports      InventoryImport[]
-  inventorySnapshots    InventorySnapshot[]
-  visits                BarVisit[]
-  varianceAlerts        VarianceAlert[]
-  staticOfferings       StaticOffering[]
-  drinkSpecials         DrinkSpecial[]
-  foodOfferings         FoodOffering[]
-  categoryRequests      CategoryRequest[]
-  memberships           BarMembership[]
-  followers             BarFollower[]
-  boosts                Boost[]
-  barProducts           BarProduct[]
-  inventoryScanSessions InventoryScanSession[]
-  inventoryCounts       InventoryCount[]
-  patronSearchEvents    PatronSearchEvent[]    @relation("BarToPatronSearchEvents")
-  barActions            BarAction[]            @relation("BarToBarActions")
-  adminNotes            AdminNote[]
-  supportTickets        SupportTicket[]
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+  profileViews           Int      @default(0)
+  searchAppearances      Int      @default(0)
+  owner                  Owner    @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  offerings              Offering[]
+  events                 Event[]
+  favorites              Favorite[]
+  analytics              BarAnalytics[]
+  clicks                 BarClick[]
+  badges                 BarBadge[]
+  barLicenses            BarLicense[]
+  shiftUsages            ShiftUsage[]
+  inventoryItems         InventoryItem[]
+  inventoryImports       InventoryImport[]
+  inventorySnapshots     InventorySnapshot[]
+  visits                 BarVisit[]
+  varianceAlerts         VarianceAlert[]
+  staticOfferings        StaticOffering[]
+  drinkSpecials          DrinkSpecial[]
+  foodOfferings          FoodOffering[]
+  categoryRequests       CategoryRequest[]
+  memberships            BarMembership[]
+  followers              BarFollower[]
+  boosts                 Boost[]
+  barProducts            BarProduct[]
+  inventoryScanSessions  InventoryScanSession[]
+  inventoryCounts        InventoryCount[]
+  patronSearchEvents     PatronSearchEvent[] @relation("BarToPatronSearchEvents")
+  barActions             BarAction[]         @relation("BarToBarActions")
+  adminNotes             AdminNote[]
+  supportTickets         SupportTicket[]
 
   @@index([cityNormalized])
   @@index([neighborhoodNormalized])
@@ -214,8 +209,7 @@ model Offering {
   clickCount       Int        @default(0)
   createdAt        DateTime   @default(now())
   updatedAt        DateTime   @updatedAt
-
-  bar Bar @relation(fields: [barId], references: [id], onDelete: Cascade)
+  bar              Bar        @relation(fields: [barId], references: [id], onDelete: Cascade)
 
   @@index([barId])
   @@index([dayOfWeek])
@@ -257,8 +251,7 @@ model Event {
   clickCount       Int         @default(0)
   createdAt        DateTime    @default(now())
   updatedAt        DateTime    @updatedAt
-
-  bar Bar @relation(fields: [barId], references: [id], onDelete: Cascade)
+  bar              Bar         @relation(fields: [barId], references: [id], onDelete: Cascade)
 
   @@index([barId])
   @@index([startDate])
@@ -272,9 +265,8 @@ model Favorite {
   userId    String
   barId     String
   createdAt DateTime @default(now())
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  bar  Bar  @relation(fields: [barId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bar       Bar      @relation(fields: [barId], references: [id], onDelete: Cascade)
 
   @@unique([userId, barId])
 }
@@ -306,9 +298,8 @@ model CategoryRequest {
   reviewedAt       DateTime?
   reviewedByEmail  String?
   createdAt        DateTime              @default(now())
-
-  bar   Bar   @relation(fields: [barId], references: [id], onDelete: Cascade)
-  owner Owner @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  bar              Bar                   @relation(fields: [barId], references: [id], onDelete: Cascade)
+  owner            Owner                 @relation(fields: [ownerId], references: [id], onDelete: Cascade)
 
   @@index([status])
   @@index([barId])
@@ -316,14 +307,13 @@ model CategoryRequest {
 }
 
 model OwnerPasswordReset {
-  id        String    @id @default(cuid())
+  id        String   @id @default(cuid())
   ownerId   String
-  tokenHash String    @unique
+  tokenHash String   @unique
   expiresAt DateTime
   usedAt    DateTime?
-  createdAt DateTime  @default(now())
-
-  owner Owner @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  owner     Owner    @relation(fields: [ownerId], references: [id], onDelete: Cascade)
 
   @@index([ownerId])
   @@index([expiresAt])
@@ -341,8 +331,7 @@ model PromoCode {
   grantMonths    Int?
   createdAt      DateTime          @default(now())
   updatedAt      DateTime          @updatedAt
-
-  redemptions PromoRedemption[]
+  redemptions    PromoRedemption[]
 }
 
 model PromoRedemption {
@@ -350,9 +339,8 @@ model PromoRedemption {
   promoCodeId String
   ownerId     String
   redeemedAt  DateTime @default(now())
-
-  promoCode PromoCode @relation(fields: [promoCodeId], references: [id], onDelete: Cascade)
-  owner     Owner     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  promoCode   PromoCode @relation(fields: [promoCodeId], references: [id], onDelete: Cascade)
+  owner       Owner     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
 
   @@unique([promoCodeId, ownerId])
 }
@@ -361,14 +349,13 @@ model BarAnalytics {
   id            String   @id @default(cuid())
   barId         String
   date          DateTime
-  dayOfWeek     Int // 0 = Sunday, 6 = Saturday
+  dayOfWeek     Int
   profileViews  Int      @default(0)
   profileClicks Int      @default(0)
   searchAppears Int      @default(0)
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
-
-  bar Bar @relation(fields: [barId], references: [id], onDelete: Cascade)
+  bar           Bar      @relation(fields: [barId], references: [id], onDelete: Cascade)
 
   @@unique([barId, date])
   @@index([barId])
@@ -381,7 +368,7 @@ model SearchQuery {
   query     String   @db.Text
   location  String?
   category  String?
-  dayOfWeek Int // 0 = Sunday, 6 = Saturday
+  dayOfWeek Int
   count     Int      @default(1)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -395,12 +382,11 @@ model SearchQuery {
 model BarClick {
   id        String   @id @default(cuid())
   barId     String
-  source    String // 'search', 'map', 'favorites', 'direct'
-  query     String? // search query if from search
-  dayOfWeek Int // 0 = Sunday, 6 = Saturday
+  source    String
+  query     String?
+  dayOfWeek Int
   createdAt DateTime @default(now())
-
-  bar Bar @relation(fields: [barId], references: [id], onDelete: Cascade)
+  bar       Bar      @relation(fields: [barId], references: [id], onDelete: Cascade)
 
   @@index([barId])
   @@index([source])
@@ -410,20 +396,19 @@ model BarClick {
 
 model Badge {
   id          String        @id @default(cuid())
-  key         String        @unique // e.g., 'founding_member', 'rising_star'
-  name        String // Display name
+  key         String        @unique
+  name        String
   description String        @db.Text
-  icon        String // Emoji or icon identifier
+  icon        String
   tier        BadgeTier     @default(BRONZE)
   category    BadgeCategory
-  requirement String        @db.Text // JSON string describing requirements
-  color       String // Tailwind color class like 'blue', 'emerald', 'purple'
+  requirement String        @db.Text
+  color       String
   isActive    Boolean       @default(true)
   sortOrder   Int           @default(0)
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
-
-  barBadges BarBadge[]
+  barBadges   BarBadge[]
 }
 
 enum BadgeTier {
@@ -448,11 +433,10 @@ model BarBadge {
   barId     String
   badgeKey  String
   awardedAt DateTime @default(now())
-  progress  Json? // Track progress towards next tier
-  metadata  Json? // Additional data like which month/week earned
-
-  bar   Bar   @relation(fields: [barId], references: [id], onDelete: Cascade)
-  badge Badge @relation(fields: [badgeKey], references: [key], onDelete: Cascade)
+  progress  Json?
+  metadata  Json?
+  bar       Bar      @relation(fields: [barId], references: [id], onDelete: Cascade)
+  badge     Badge    @relation(fields: [badgeKey], references: [key], onDelete: Cascade)
 
   @@unique([barId, badgeKey])
   @@index([barId])
@@ -471,12 +455,11 @@ model InventoryItem {
   isActive           Boolean  @default(true)
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
-
-  bar             Bar                     @relation(fields: [barId], references: [id], onDelete: Cascade)
-  snapshotItems   InventorySnapshotItem[]
-  shiftUsageItems ShiftUsageItem[]
-  costingProfiles CostingProfile[]
-  varianceAlerts  VarianceAlert[]
+  bar                Bar      @relation(fields: [barId], references: [id], onDelete: Cascade)
+  snapshotItems      InventorySnapshotItem[]
+  shiftUsageItems    ShiftUsageItem[]
+  costingProfiles    CostingProfile[]
+  varianceAlerts     VarianceAlert[]
 
   @@index([barId])
   @@index([category])
@@ -491,9 +474,8 @@ model InventoryImport {
   mapping      Json?
   createdById  String?
   createdAt    DateTime @default(now())
-
-  bar       Bar   @relation(fields: [barId], references: [id], onDelete: Cascade)
-  createdBy User? @relation(fields: [createdById], references: [id], onDelete: SetNull)
+  bar          Bar      @relation(fields: [barId], references: [id], onDelete: Cascade)
+  createdBy    User?    @relation(fields: [createdById], references: [id], onDelete: SetNull)
 
   @@index([barId])
   @@index([createdById])
@@ -506,10 +488,9 @@ model ShiftUsage {
   shiftTime DateTime @default(now())
   notes     String?  @db.Text
   createdAt DateTime @default(now())
-
-  bar   Bar              @relation(fields: [barId], references: [id], onDelete: Cascade)
-  user  User?            @relation(fields: [userId], references: [id], onDelete: SetNull)
-  items ShiftUsageItem[]
+  bar       Bar      @relation(fields: [barId], references: [id], onDelete: Cascade)
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  items     ShiftUsageItem[]
 
   @@index([barId])
   @@index([userId])
@@ -520,11 +501,10 @@ model ShiftUsageItem {
   id              String  @id @default(cuid())
   shiftUsageId    String
   inventoryItemId String
-  quantityUsed    Decimal @db.Decimal(5, 2) // bottles used (0, 0.5, 1, 2+)
+  quantityUsed    Decimal @db.Decimal(5, 2)
   notes           String? @db.Text
-
-  shiftUsage    ShiftUsage    @relation(fields: [shiftUsageId], references: [id], onDelete: Cascade)
-  inventoryItem InventoryItem @relation(fields: [inventoryItemId], references: [id], onDelete: Cascade)
+  shiftUsage      ShiftUsage    @relation(fields: [shiftUsageId], references: [id], onDelete: Cascade)
+  inventoryItem   InventoryItem @relation(fields: [inventoryItemId], references: [id], onDelete: Cascade)
 
   @@index([shiftUsageId])
   @@index([inventoryItemId])
@@ -537,10 +517,9 @@ model InventorySnapshot {
   snapshotDate DateTime @default(now())
   notes        String?  @db.Text
   createdAt    DateTime @default(now())
-
-  bar   Bar                     @relation(fields: [barId], references: [id], onDelete: Cascade)
-  user  User?                   @relation(fields: [userId], references: [id], onDelete: SetNull)
-  items InventorySnapshotItem[]
+  bar          Bar      @relation(fields: [barId], references: [id], onDelete: Cascade)
+  user         User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  items        InventorySnapshotItem[]
 
   @@index([barId])
   @@index([userId])
@@ -553,10 +532,9 @@ model InventorySnapshotItem {
   inventoryItemId String
   quantityOnHand  Decimal @db.Decimal(7, 2)
   notes           String? @db.Text
-
-  snapshot      InventorySnapshot @relation(fields: [snapshotId], references: [id], onDelete: Cascade)
-  inventoryItem InventoryItem     @relation(fields: [inventoryItemId], references: [id], onDelete: Cascade)
-  bottlePhoto   BottlePhoto?
+  snapshot        InventorySnapshot @relation(fields: [snapshotId], references: [id], onDelete: Cascade)
+  inventoryItem   InventoryItem     @relation(fields: [inventoryItemId], references: [id], onDelete: Cascade)
+  bottlePhoto     BottlePhoto?
 
   @@index([snapshotId])
   @@index([inventoryItemId])
@@ -570,8 +548,7 @@ model BottlePhoto {
   estimatedMl    Decimal? @db.Decimal(7, 2)
   modelVersion   String?
   createdAt      DateTime @default(now())
-
-  snapshotItem InventorySnapshotItem @relation(fields: [snapshotItemId], references: [id], onDelete: Cascade)
+  snapshotItem   InventorySnapshotItem @relation(fields: [snapshotItemId], references: [id], onDelete: Cascade)
 }
 
 model CostingProfile {
@@ -583,8 +560,7 @@ model CostingProfile {
   marginPct       Decimal  @db.Decimal(5, 2)
   profitPerBottle Decimal  @db.Decimal(10, 2)
   createdAt       DateTime @default(now())
-
-  inventoryItem InventoryItem @relation(fields: [inventoryItemId], references: [id], onDelete: Cascade)
+  inventoryItem   InventoryItem @relation(fields: [inventoryItemId], references: [id], onDelete: Cascade)
 
   @@index([inventoryItemId])
 }
@@ -602,30 +578,27 @@ model VarianceAlert {
   severity        String
   reasonHint      String?
   createdAt       DateTime @default(now())
-
-  bar           Bar           @relation(fields: [barId], references: [id], onDelete: Cascade)
-  inventoryItem InventoryItem @relation(fields: [inventoryItemId], references: [id], onDelete: Cascade)
+  bar             Bar      @relation(fields: [barId], references: [id], onDelete: Cascade)
+  inventoryItem   InventoryItem @relation(fields: [inventoryItemId], references: [id], onDelete: Cascade)
 
   @@index([barId])
   @@index([inventoryItemId])
   @@index([periodStart, periodEnd])
 }
 
-// Per-location billing addon
 model BarLicense {
   id           String   @id @default(cuid())
   barId        String   @unique
   ownerId      String
-  status       String   @default("ACTIVE") // ACTIVE, PAST_DUE, CANCELED
+  status       String   @default("ACTIVE")
   priceCents   Int      @default(2900)
   currency     String   @default("USD")
   billingCycle String   @default("MONTHLY")
-  externalId   String? // PayPal/processor subscription id
+  externalId   String?
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
-
-  bar   Bar   @relation(fields: [barId], references: [id], onDelete: Cascade)
-  owner Owner @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  bar          Bar      @relation(fields: [barId], references: [id], onDelete: Cascade)
+  owner        Owner    @relation(fields: [ownerId], references: [id], onDelete: Cascade)
 
   @@index([ownerId])
   @@index([status])
@@ -634,28 +607,21 @@ model BarLicense {
 model BarVisit {
   id                 String   @id @default(cuid())
   barId              String
-  userId             String? // Can be null for anonymous check-ins
-  source             String // 'qr_code', 'promo_code', 'manual', 'location'
-  verificationMethod String // 'qr_scan', 'promo_redemption', 'self_reported', 'geo_fence'
-  clickId            String? // Link to the BarClick that led to this visit
-  promoCodeId        String? // If they used a promo code
-  metadata           Json? // Additional data: receipt info, amount spent, etc.
+  userId             String?
+  source             String
+  verificationMethod String
+  clickId            String?
+  promoCodeId        String?
+  metadata           Json?
   visitedAt          DateTime @default(now())
   createdAt          DateTime @default(now())
-
-  bar  Bar   @relation(fields: [barId], references: [id], onDelete: Cascade)
-  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+  bar                Bar      @relation(fields: [barId], references: [id], onDelete: Cascade)
+  user               User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
 
   @@index([barId])
   @@index([userId])
   @@index([visitedAt])
   @@index([source])
-}
-
-enum SubscriptionTier {
-  FREE
-  PRO
-  PREMIUM
 }
 
 enum BarMemberRole {
@@ -671,8 +637,7 @@ model BarMembership {
   role      BarMemberRole @default(MANAGER)
   createdAt DateTime      @default(now())
   updatedAt DateTime      @updatedAt
-
-  bar Bar @relation(fields: [barId], references: [id], onDelete: Cascade)
+  bar       Bar           @relation(fields: [barId], references: [id], onDelete: Cascade)
 
   @@index([barId])
   @@index([userId])
@@ -685,8 +650,7 @@ model PatronSearchEvent {
   category  String?
   city      String?
   createdAt DateTime @default(now())
-
-  bar Bar? @relation("BarToPatronSearchEvents", fields: [barId], references: [id], onDelete: Cascade)
+  bar       Bar?     @relation("BarToPatronSearchEvents", fields: [barId], references: [id], onDelete: Cascade)
 
   @@index([createdAt])
   @@index([city])
@@ -697,8 +661,7 @@ model BarAction {
   barId     String
   action    String
   createdAt DateTime @default(now())
-
-  bar Bar @relation("BarToBarActions", fields: [barId], references: [id], onDelete: Cascade)
+  bar       Bar      @relation("BarToBarActions", fields: [barId], references: [id], onDelete: Cascade)
 
   @@index([barId])
   @@index([action])
@@ -709,8 +672,7 @@ model BarFollower {
   barId       String
   patronEmail String
   createdAt   DateTime @default(now())
-
-  bar Bar @relation(fields: [barId], references: [id], onDelete: Cascade)
+  bar         Bar      @relation(fields: [barId], references: [id], onDelete: Cascade)
 
   @@unique([barId, patronEmail])
 }
@@ -724,9 +686,8 @@ model Boost {
   budgetCents Int
   status      String   @default("ACTIVE")
   createdAt   DateTime @default(now())
-
-  bar     Bar           @relation(fields: [barId], references: [id], onDelete: Cascade)
-  metrics BoostMetric[]
+  bar         Bar      @relation(fields: [barId], references: [id], onDelete: Cascade)
+  metrics     BoostMetric[]
 
   @@index([barId])
 }
@@ -737,22 +698,20 @@ model BoostMetric {
   date        DateTime
   impressions Int      @default(0)
   clicks      Int      @default(0)
-
-  boost Boost @relation(fields: [boostId], references: [id], onDelete: Cascade)
+  boost       Boost    @relation(fields: [boostId], references: [id], onDelete: Cascade)
 
   @@unique([boostId, date])
   @@index([boostId])
 }
 
 model Product {
-  id       String  @id @default(cuid())
-  name     String
-  category String
-  unitType String
-  sizeMl   Int?
-  upc      String? @unique
-  isActive Boolean @default(true)
-
+  id        String  @id @default(cuid())
+  name      String
+  category  String
+  unitType  String
+  sizeMl    Int?
+  upc       String? @unique
+  isActive  Boolean @default(true)
   barProducts BarProduct[]
 }
 
@@ -765,11 +724,10 @@ model BarProduct {
   reorderThreshold Int?
   preferredVendor  String?
   isActive         Boolean @default(true)
-
-  bar        Bar                      @relation(fields: [barId], references: [id], onDelete: Cascade)
-  product    Product?                 @relation(fields: [productId], references: [id], onDelete: SetNull)
-  counts     InventoryCount[]
-  detections InventoryScanDetection[]
+  bar              Bar      @relation(fields: [barId], references: [id], onDelete: Cascade)
+  product          Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+  counts           InventoryCount[]
+  detections       InventoryScanDetection[]
 
   @@index([barId])
   @@index([productId])
@@ -781,9 +739,8 @@ model InventoryScanSession {
   createdByUserId String?
   imageUrl        String?
   createdAt       DateTime @default(now())
-
-  bar        Bar                      @relation(fields: [barId], references: [id], onDelete: Cascade)
-  detections InventoryScanDetection[]
+  bar             Bar      @relation(fields: [barId], references: [id], onDelete: Cascade)
+  detections      InventoryScanDetection[]
 
   @@index([barId])
 }
@@ -797,9 +754,8 @@ model InventoryScanDetection {
   confidence       Float   @default(0)
   remainingBucket  String?
   sizeMlGuess      Int?
-
-  session InventoryScanSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
-  product BarProduct?          @relation(fields: [productId], references: [id], onDelete: SetNull)
+  session          InventoryScanSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  product          BarProduct?          @relation(fields: [productId], references: [id], onDelete: SetNull)
 
   @@index([sessionId])
 }
@@ -816,9 +772,8 @@ model InventoryCount {
   method           String
   confidence       Float?
   notes            String?
-
-  bar     Bar        @relation(fields: [barId], references: [id], onDelete: Cascade)
-  product BarProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
+  bar              Bar        @relation(fields: [barId], references: [id], onDelete: Cascade)
+  product          BarProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
 
   @@index([barId])
   @@index([productId])
@@ -826,14 +781,14 @@ model InventoryCount {
 }
 
 model AdminAudit {
-  id          String   @id @default(cuid())
-  adminEmail  String
-  action      String
-  entityType  String?
-  entityId    String?
-  before      Json?
-  after       Json?
-  createdAt   DateTime @default(now())
+  id         String   @id @default(cuid())
+  adminEmail String
+  action     String
+  entityType String?
+  entityId   String?
+  before     Json?
+  after      Json?
+  createdAt  DateTime @default(now())
 
   @@index([adminEmail])
   @@index([entityType])
@@ -842,15 +797,14 @@ model AdminAudit {
 }
 
 model AdminNote {
-  id          String   @id @default(cuid())
-  adminEmail  String
-  barId       String?
-  userId      String?
-  content     String   @db.Text
-  createdAt   DateTime @default(now())
-
-  bar  Bar?  @relation(fields: [barId], references: [id], onDelete: Cascade)
-  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id         String   @id @default(cuid())
+  adminEmail String
+  barId      String?
+  userId     String?
+  content    String   @db.Text
+  createdAt  DateTime @default(now())
+  bar        Bar?     @relation(fields: [barId], references: [id], onDelete: Cascade)
+  user       User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([barId])
   @@index([userId])
@@ -859,20 +813,19 @@ model AdminNote {
 }
 
 model SupportTicket {
-  id          String   @id @default(cuid())
-  barId       String?
-  userEmail   String
-  userId      String?
-  subject     String
-  status      String   @default("OPEN")
-  priority    String   @default("NORMAL")
-  message     String   @db.Text
-  resolution  String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  bar Bar? @relation(fields: [barId], references: [id], onDelete: Cascade)
-  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id         String   @id @default(cuid())
+  barId      String?
+  userEmail  String
+  userId     String?
+  subject    String
+  status     String   @default("OPEN")
+  priority   String   @default("NORMAL")
+  message    String   @db.Text
+  resolution String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  bar        Bar?     @relation(fields: [barId], references: [id], onDelete: Cascade)
+  user       User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([barId])
   @@index([userEmail])
@@ -882,54 +835,48 @@ model SupportTicket {
   @@index([createdAt])
 }
 
-// Static offerings - always available (up to 3)
 model StaticOffering {
   id          String   @id @default(cuid())
   barId       String
-  name        String // e.g., "Sweepstakes Games", "Pool Tables", "Darts"
-  icon        String // emoji or icon name
+  name        String
+  icon        String
   description String?  @db.Text
-  position    Int      @default(0) // 0, 1, or 2 for ordering (max 3)
+  position    Int      @default(0)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-
-  bar Bar @relation(fields: [barId], references: [id], onDelete: Cascade)
+  bar         Bar      @relation(fields: [barId], references: [id], onDelete: Cascade)
 
   @@unique([barId, position])
   @@index([barId])
 }
 
-// Drink specials - with time windows
 model DrinkSpecial {
   id          String   @id @default(cuid())
   barId       String
-  name        String // e.g., "$2 Wells", "Half-price appetizers"
+  name        String
   description String?  @db.Text
-  startTime   String // HH:MM format (24-hour)
-  endTime     String // HH:MM format (24-hour)
-  daysOfWeek  Int[] // 0=Sunday, 1=Monday, ..., 6=Saturday. Empty = daily
+  startTime   String
+  endTime     String
+  daysOfWeek  Int[]
   active      Boolean  @default(true)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-
-  bar Bar @relation(fields: [barId], references: [id], onDelete: Cascade)
+  bar         Bar      @relation(fields: [barId], references: [id], onDelete: Cascade)
 
   @@index([barId])
 }
 
-// Food offerings - with optional daily specials
 model FoodOffering {
   id          String   @id @default(cuid())
   barId       String
-  name        String // e.g., "Wings", "Nachos", "Sliders"
+  name        String
   description String?  @db.Text
-  specialDays Int[] // Days this is a special (0-6). Empty = always available
-  isSpecial   Boolean  @default(false) // True if it's a special/limited
+  specialDays Int[]
+  isSpecial   Boolean  @default(false)
   active      Boolean  @default(true)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-
-  bar Bar @relation(fields: [barId], references: [id], onDelete: Cascade)
+  bar         Bar      @relation(fields: [barId], references: [id], onDelete: Cascade)
 
   @@index([barId])
 }

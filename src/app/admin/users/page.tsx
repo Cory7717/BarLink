@@ -4,7 +4,8 @@ import { redirect } from "next/navigation";
 import UserActions from "./user-actions";
 
 async function getUsers(q?: string) {
-  const url = new URL(`${process.env.NEXT_PUBLIC_BASE_URL || ""}/api/admin/users`);
+  const base = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const url = new URL(`${base}/api/admin/users`);
   if (q) url.searchParams.set("q", q);
   url.searchParams.set("bars", "true");
   const res = await fetch(url.toString(), { cache: "no-store" });
