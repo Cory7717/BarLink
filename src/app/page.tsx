@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import BetaModalWrapper from "@/components/BetaModalWrapper";
+import { prisma } from "@/lib/prisma";
 
 const steps = [
   {
@@ -26,9 +27,45 @@ const features = [
   "Patron favorites",
 ];
 
-const featuredBars = ["Karaoke - Capitol Hill", "Trivia - Belltown", "Happy Hour - Ballard"];
+type HomeProps = {
+  searchParams?: { city?: string };
+};
 
-export default function Home() {
+export default async function Home({ searchParams }: HomeProps) {
+  const cityFilter = searchParams?.city?.trim();
+  const now = new Date();
+  const featuredBoosts = await prisma.boost.findMany({
+    where: {
+      status: "ACTIVE",
+      AND: [
+        { OR: [{ startAt: null }, { startAt: { lte: now } }] },
+        { OR: [{ endAt: null }, { endAt: { gte: now } }] },
+      ],
+      ...(cityFilter
+        ? {
+            bar: {
+              city: { contains: cityFilter, mode: "insensitive" },
+            },
+          }
+        : {}),
+    },
+    include: {
+      bar: {
+        select: {
+          id: true,
+          name: true,
+          slug: true,
+          city: true,
+          state: true,
+          barType: true,
+        },
+      },
+    },
+    orderBy: [{ startAt: "desc" }],
+    take: 6,
+  });
+  const hasFeatured = featuredBoosts.length > 0;
+
   return (
     <div className="min-h-screen app-shell text-white overflow-hidden">
       <BetaModalWrapper />
@@ -114,29 +151,50 @@ export default function Home() {
           <div className="glass-panel rounded-3xl p-6 shadow-2xl transition-all hover:shadow-cyan-500/30">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-slate-100">Tonight - Seattle</p>
+                <p className="text-sm text-slate-100">
+                  Featured {cityFilter ? `near ${cityFilter}` : "near you"}
+                </p>
                 <h2 className="text-2xl font-semibold text-gradient drop-shadow-lg">Featured bars</h2>
               </div>
               <span className="pill px-3 py-1 text-xs">Live map</span>
             </div>
             <div className="mt-6 space-y-3">
-              {featuredBars.map((item) => (
-                <div
-                  key={item}
-                  className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 py-3 transition-all group hover:border-cyan-500/40 hover:bg-white/10"
-                >
-                  <div className="text-white group-hover:text-cyan-100 transition-colors font-medium">
-                    {item}
-                  </div>
-                  <span className="inline-flex px-2 py-1 rounded-full text-xs font-semibold bg-cyan-500/20 border border-cyan-500/30 text-cyan-100">
-                    NEW
-                  </span>
+              {hasFeatured ? (
+                featuredBoosts.map((boost) => (
+                  <Link
+                    key={boost.id}
+                    href={boost.bar.slug ? `/bars/${boost.bar.slug}` : "/explore"}
+                    className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 py-3 transition-all group hover:border-cyan-500/40 hover:bg-white/10"
+                  >
+                    <div className="text-white group-hover:text-cyan-100 transition-colors font-medium">
+                      {boost.bar.name}
+                      <span className="text-xs text-slate-300 ml-2">
+                        {boost.bar.city}, {boost.bar.state}
+                        {boost.bar.barType ? ` • ${boost.bar.barType}` : ""}
+                      </span>
+                    </div>
+                    <span className="inline-flex px-2 py-1 rounded-full text-xs font-semibold bg-amber-500/20 border border-amber-500/30 text-amber-100">
+                      Sponsored
+                    </span>
+                  </Link>
+                ))
+              ) : (
+                <div className="rounded-xl border border-dashed border-white/20 bg-white/5 px-4 py-3 text-sm text-slate-200">
+                  No featured bars yet. Owners can boost to appear here.
                 </div>
-              ))}
+              )}
             </div>
             <p className="mt-6 text-sm text-slate-100">
-              Patrons see both list and map, with clear badges for what is new or special.
+              Sponsored placements rotate and are localized. Owners can use Boost credits to appear in Featured and map highlights.
             </p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              <Link href="/explore" className="btn-secondary px-4 py-2 text-sm">
+                View map
+              </Link>
+              <Link href="/pricing" className="btn-primary px-4 py-2 text-sm">
+                Boost your bar
+              </Link>
+            </div>
           </div>
         </section>
 
