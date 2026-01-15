@@ -36,6 +36,7 @@ export default async function BarManagementPage({
       inventoryAddOnEnabled: true,
       checkInReward: true,
       owner: true,
+      memberships: { select: { userId: true, role: true } },
       offerings: true,
       events: true,
       inventoryItems: true,
@@ -46,7 +47,13 @@ export default async function BarManagementPage({
     redirect("/dashboard");
   }
 
-  if (bar.owner.email !== session.user.email) {
+  const userEmail = session.user.email?.toLowerCase();
+  const isOwner = bar.owner.email?.toLowerCase() === userEmail;
+  const hasMembership = bar.memberships.some(
+    (m) => m.userId?.toLowerCase() === userEmail || m.role === "OWNER" || m.role === "MANAGER" || m.role === "STAFF"
+  );
+
+  if (!isOwner && !hasMembership) {
     redirect("/dashboard");
   }
 
