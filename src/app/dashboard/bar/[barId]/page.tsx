@@ -6,6 +6,7 @@ import Link from "next/link";
 import CheckInRewardForm from "@/components/CheckInRewardForm";
 import BarDetailsForm from "@/components/BarDetailsForm";
 import { BAR_TYPES } from "@/lib/constants";
+import { isAdminEmail } from "@/lib/admin";
 
 export default async function BarManagementPage({
   params,
@@ -52,8 +53,9 @@ export default async function BarManagementPage({
   const hasMembership = bar.memberships.some(
     (m) => m.userId?.toLowerCase() === userEmail || m.role === "OWNER" || m.role === "MANAGER" || m.role === "STAFF"
   );
+  const isSuperAdmin = isAdminEmail(userEmail);
 
-  if (!isOwner && !hasMembership) {
+  if (!isOwner && !hasMembership && !isSuperAdmin) {
     redirect("/dashboard");
   }
 
