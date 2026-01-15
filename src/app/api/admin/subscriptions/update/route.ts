@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { requireAdmin } from "@/lib/admin";
 import { SubscriptionStatus } from "@/generated/prisma";
+import { logAdminAction } from "@/lib/adminAudit";
 
 export async function POST(req: Request) {
   try {
@@ -37,6 +38,14 @@ export async function POST(req: Request) {
     await prisma.bar.updateMany({
       where: { ownerId: updated.ownerId },
       data: { isPublished: status === "ACTIVE" },
+    });
+
+    await logAdminAction({
+      action: "admin.subscriptionStatusUpdate",
+      entityType: "subscription",
+      entityId: subscriptionId,
+      before: { status: updated.status },
+      after: { status },
     });
 
     return NextResponse.redirect(new URL("/admin/subscriptions", req.url));

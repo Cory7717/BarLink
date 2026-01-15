@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { isAdminEmail } from "@/lib/admin";
 import { auth } from "@/lib/auth";
+import { logAdminAction } from "@/lib/adminAudit";
 
 const PLAN_PRICE: Record<string, number> = {
   MONTHLY: 30,
@@ -112,6 +113,12 @@ export async function GET(req: Request) {
 
   const lines = [...header, ...cityLines, ...canceledHeader, ...canceledRows].map((cols) => cols.join(","));
   const csv = lines.join("\n");
+
+  await logAdminAction({
+    action: "admin.exportCsvReport",
+    entityType: "report",
+    after: { start: start.toISOString(), end: end.toISOString() },
+  });
 
   return new NextResponse(csv, {
     status: 200,

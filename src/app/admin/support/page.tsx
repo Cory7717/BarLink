@@ -1,174 +1,84 @@
-"use client";
+import Link from "next/link";
+import { auth } from "@/lib/auth";
+import { redirect } from "next/navigation";
+import TicketStatusControls from "./ticket-controls";
 
-import { useEffect, useState } from "react";
+async function getTickets(status?: string) {
+  const url = new URL(`${process.env.NEXT_PUBLIC_BASE_URL || ""}/api/admin/support`);
+  if (status) url.searchParams.set("status", status);
+  const res = await fetch(url.toString(), { cache: "no-store" });
+  if (!res.ok) return [];
+  const data = await res.json();
+  return data.tickets || [];
+}
 
-type OwnerResult = {
-  id: string;
-  name: string;
-  email: string;
-  allowFreeListings: boolean;
-  bars: { id: string; name: string; city: string; state: string }[];
-  subscription?: { status: string; plan: string } | null;
-};
+export default async function AdminSupportPage({ searchParams }: { searchParams: { status?: string } }) {
+  const session = await auth();
+  if (!session?.user?.email || session.user.email.toLowerCase() !== "coryarmer@gmail.com") {
+    redirect("/admin");
+  }
 
-type UserResult = {
-  id: string;
-  name?: string | null;
-  email: string;
-};
-
-export default function AdminSupportPage() {
-  const [query, setQuery] = useState("");
-  const [owners, setOwners] = useState<OwnerResult[]>([]);
-  const [users, setUsers] = useState<UserResult[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [resetStatus, setResetStatus] = useState<Record<string, string>>({});
-  const [resettingId, setResettingId] = useState<string | null>(null);
-
-  useEffect(() => {
-    const handler = setTimeout(async () => {
-      if (!query.trim()) {
-        setOwners([]);
-        setUsers([]);
-        return;
-      }
-      setLoading(true);
-      try {
-        const res = await fetch(`/api/admin/user-search?query=${encodeURIComponent(query.trim())}`);
-        const data = await res.json();
-        if (res.ok) {
-          setOwners(data.owners || []);
-          setUsers(data.users || []);
-        }
-      } finally {
-        setLoading(false);
-      }
-    }, 300);
-
-    return () => clearTimeout(handler);
-  }, [query]);
-
-  const sendResetLink = async (ownerId: string) => {
-    setResettingId(ownerId);
-    setResetStatus((prev) => ({ ...prev, [ownerId]: "" }));
-    try {
-      const res = await fetch("/api/admin/password-reset", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ownerId }),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.error || "Failed to send reset link");
-      }
-      setResetStatus((prev) => ({ ...prev, [ownerId]: "Reset link sent." }));
-    } catch (err) {
-      setResetStatus((prev) => ({
-        ...prev,
-        [ownerId]: err instanceof Error ? err.message : "Failed to send reset link",
-      }));
-    } finally {
-      setResettingId(null);
-    }
-  };
+  const status = searchParams.status;
+  const tickets = await getTickets(status);
 
   return (
-    <section className="space-y-6">
-      <div className="glass-panel rounded-3xl p-4">
-        <h2 className="mb-2 text-xl font-semibold text-gradient">Support search</h2>
-        <p className="text-sm text-slate-300 mb-4">
-          Search by owner name, bar name, or registered email.
-        </p>
-        <input
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search owners, bars, or users..."
-          className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder:text-slate-400"
-        />
-        {loading && <p className="mt-2 text-xs text-slate-400">Searching...</p>}
-      </div>
-
-      <div className="grid gap-4 lg:grid-cols-2">
-        <div className="glass-panel rounded-3xl p-4">
-          <h3 className="text-lg font-semibold text-white mb-3">Owners</h3>
-          {owners.length === 0 ? (
-            <p className="text-sm text-slate-300">No owner matches.</p>
-          ) : (
-            <div className="space-y-3">
-              {owners.map((owner) => (
-                <div key={owner.id} className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-sm font-semibold text-white">{owner.name}</p>
-                      <p className="text-xs text-slate-300">{owner.email}</p>
-                    </div>
-                    <span className="text-xs text-slate-300">
-                      {owner.subscription?.status || "NO SUB"}
-                    </span>
-                  </div>
-                  <div className="mt-3 text-xs text-slate-300">
-                    <p>Owner ID: {owner.id}</p>
-                    <p>Free listings: {owner.allowFreeListings ? "Yes" : "No"}</p>
-                  </div>
-                  {owner.bars.length > 0 && (
-                    <div className="mt-3 space-y-1 text-xs text-slate-300">
-                      {owner.bars.map((bar) => (
-                        <div key={bar.id}>
-                          {bar.name} — {bar.city}, {bar.state} (ID: {bar.id})
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    <a className="btn-primary px-3 py-1.5 text-xs" href={`/admin/support/owner/${owner.id}`}>
-                      Open profile
-                    </a>
-                    <button
-                      type="button"
-                      className="btn-secondary px-3 py-1.5 text-xs"
-                      onClick={() => sendResetLink(owner.id)}
-                      disabled={resettingId === owner.id}
-                    >
-                      {resettingId === owner.id ? "Sending..." : "Send reset link"}
-                    </button>
-                    <a className="btn-secondary px-3 py-1.5 text-xs" href={`mailto:${owner.email}`}>
-                      Email owner
-                    </a>
-                  </div>
-                  {resetStatus[owner.id] && (
-                    <p className="mt-2 text-xs text-slate-300">{resetStatus[owner.id]}</p>
-                  )}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-
-        <div className="glass-panel rounded-3xl p-4">
-          <h3 className="text-lg font-semibold text-white mb-3">Users</h3>
-          {users.length === 0 ? (
-            <p className="text-sm text-slate-300">No user matches.</p>
-          ) : (
-            <div className="space-y-3">
-              {users.map((user) => (
-                <div key={user.id} className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                  <p className="text-sm font-semibold text-white">{user.name || "Unnamed user"}</p>
-                  <p className="text-xs text-slate-300">{user.email}</p>
-                  <p className="text-xs text-slate-400 mt-2">User ID: {user.id}</p>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    <a className="btn-primary px-3 py-1.5 text-xs" href={`/admin/support/user/${user.id}`}>
-                      Open profile
-                    </a>
-                    <a className="btn-secondary px-3 py-1.5 text-xs" href={`mailto:${user.email}`}>
-                      Email user
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <h1 className="text-3xl font-semibold text-gradient">Support tickets</h1>
+        <div className="flex gap-2 text-sm">
+          <Link href="/admin/support" className="btn-secondary px-3 py-1.5">
+            All
+          </Link>
+          <Link href="/admin/support?status=OPEN" className="btn-secondary px-3 py-1.5">
+            Open
+          </Link>
+          <Link href="/admin/support?status=CLOSED" className="btn-secondary px-3 py-1.5">
+            Closed
+          </Link>
         </div>
       </div>
-    </section>
+
+      <div className="glass-panel rounded-3xl p-4 overflow-x-auto">
+        <table className="min-w-full text-sm">
+          <thead className="text-left text-slate-300">
+            <tr>
+              <th className="px-2 py-1">Created</th>
+              <th className="px-2 py-1">User</th>
+              <th className="px-2 py-1">Subject</th>
+              <th className="px-2 py-1">Status</th>
+              <th className="px-2 py-1">Priority</th>
+              <th className="px-2 py-1">Bar</th>
+              <th className="px-2 py-1">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tickets.map((t: any) => (
+              <tr key={t.id} className="border-t border-white/5 text-slate-200">
+                <td className="px-2 py-2 text-xs text-slate-400">{new Date(t.createdAt).toLocaleString()}</td>
+                <td className="px-2 py-2">{t.userEmail}</td>
+                <td className="px-2 py-2">
+                  <Link href={`/admin/support/${t.id}`} className="text-cyan-200 hover:text-cyan-100">
+                    {t.subject}
+                  </Link>
+                </td>
+                <td className="px-2 py-2">{t.status}</td>
+                <td className="px-2 py-2">{t.priority}</td>
+                <td className="px-2 py-2">{t.barId || "—"}</td>
+                <td className="px-2 py-2">
+                  <TicketStatusControls ticketId={t.id} currentStatus={t.status} currentPriority={t.priority} />
+                </td>
+              </tr>
+            ))}
+            {(!tickets || tickets.length === 0) && (
+              <tr>
+                <td className="px-2 py-2 text-slate-400" colSpan={7}>
+                  No tickets.
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 }

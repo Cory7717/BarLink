@@ -4,6 +4,7 @@ import { isAdminEmail } from "@/lib/admin";
 import { auth } from "@/lib/auth";
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
+import { logAdminAction } from "@/lib/adminAudit";
 
 const PLAN_PRICE: Record<string, number> = {
   MONTHLY: 30,
@@ -146,6 +147,12 @@ export async function GET(req: Request) {
   });
 
   const pdf = doc.output("arraybuffer");
+
+  await logAdminAction({
+    action: "admin.exportPdfReport",
+    entityType: "report",
+    after: { start: start.toISOString(), end: end.toISOString() },
+  });
 
   return new NextResponse(Buffer.from(pdf), {
     status: 200,

@@ -27,7 +27,12 @@ export default async function AdminLayout({ children }: { children: ReactNode })
             <a className="btn-secondary px-3 py-1.5" href="/admin/support">Support</a>
             <a className="btn-secondary px-3 py-1.5" href="/admin/revenue">Revenue</a>
             <a className="btn-secondary px-3 py-1.5" href="/admin/bars">Bars</a>
+            <a className="btn-secondary px-3 py-1.5" href="/admin/users">Users</a>
             <a className="btn-secondary px-3 py-1.5" href="/admin/reports">Reports</a>
+            <a className="btn-secondary px-3 py-1.5" href="/admin/actions">Audit Log</a>
+            <a className="btn-secondary px-3 py-1.5" href="/admin/bars/overview">Bar Overview</a>
+            <a className="btn-secondary px-3 py-1.5" href="/admin/subscriptions/failed">Failed Subs</a>
+            <a className="btn-secondary px-3 py-1.5" href="/admin/scans/failed">Failed Scans</a>
           </nav>
         </header>
         {children}
