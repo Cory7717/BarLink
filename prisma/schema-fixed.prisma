@@ -862,6 +862,7 @@ model SupportTicket {
   id          String   @id @default(cuid())
   barId       String?
   userEmail   String
+  userId      String?
   subject     String
   status      String   @default("OPEN")
   priority    String   @default("NORMAL")
@@ -871,9 +872,11 @@ model SupportTicket {
   updatedAt   DateTime @updatedAt
 
   bar Bar? @relation(fields: [barId], references: [id], onDelete: Cascade)
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([barId])
   @@index([userEmail])
+  @@index([userId])
   @@index([status])
   @@index([priority])
   @@index([createdAt])
