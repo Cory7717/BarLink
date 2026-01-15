@@ -14,11 +14,14 @@ export default async function AdminBarDetailPage({ params }: { params: Promise<{
 
   const bar = await prisma.bar.findUnique({
     where: { id },
-    include: {
-      owner: { select: { email: true, name: true, subscription: { select: { status: true, plan: true, trialEndsAt: true, currentPeriodEnd: true } } } },
-      events: { select: { id: true, title: true, startDate: true, isActive: true }, take: 5, orderBy: { startDate: "asc" } },
-      offerings: { select: { id: true, category: true, isActive: true }, take: 5 },
-      boosts: { select: { id: true, status: true, startAt: true, endAt: true }, take: 5, orderBy: { startAt: "desc" } },
+    select: {
+      id: true,
+      name: true,
+      address: true,
+      city: true,
+      state: true,
+      phone: true,
+      website: true,
       basePlan: true,
       addonPro: true,
       addonPremium: true,
@@ -28,6 +31,10 @@ export default async function AdminBarDetailPage({ params }: { params: Promise<{
       lastCalculatedTaxRate: true,
       subscriptionTier: true,
       inventoryAddOnEnabled: true,
+      owner: { select: { email: true, name: true, subscription: { select: { status: true, plan: true, trialEndsAt: true, currentPeriodEnd: true } } } },
+      events: { select: { id: true, title: true, startDate: true, isActive: true }, take: 5, orderBy: { startDate: "asc" } },
+      offerings: { select: { id: true, category: true, isActive: true }, take: 5 },
+      boosts: { select: { id: true, status: true, startAt: true, endAt: true }, take: 5, orderBy: { startAt: "desc" } },
     },
   });
 
