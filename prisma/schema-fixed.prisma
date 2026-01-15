@@ -15,6 +15,7 @@ model User {
   emailVerified DateTime?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
+  disabled      Boolean   @default(false)
 
   accounts           Account[]
   sessions           Session[]
@@ -114,6 +115,7 @@ enum SubscriptionStatus {
   PAST_DUE
   CANCELED
   PAUSED
+  TRIALING
 }
 
 model Bar {
@@ -817,6 +819,60 @@ model InventoryCount {
   @@index([barId])
   @@index([productId])
   @@index([countedAt])
+}
+
+model AdminAudit {
+  id          String   @id @default(cuid())
+  adminEmail  String
+  action      String
+  entityType  String?
+  entityId    String?
+  before      Json?
+  after       Json?
+  createdAt   DateTime @default(now())
+
+  @@index([adminEmail])
+  @@index([entityType])
+  @@index([entityId])
+  @@index([createdAt])
+}
+
+model AdminNote {
+  id          String   @id @default(cuid())
+  adminEmail  String
+  barId       String?
+  userId      String?
+  content     String   @db.Text
+  createdAt   DateTime @default(now())
+
+  bar  Bar?  @relation(fields: [barId], references: [id], onDelete: Cascade)
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([barId])
+  @@index([userId])
+  @@index([adminEmail])
+  @@index([createdAt])
+}
+
+model SupportTicket {
+  id          String   @id @default(cuid())
+  barId       String?
+  userEmail   String
+  subject     String
+  status      String   @default("OPEN")
+  priority    String   @default("NORMAL")
+  message     String   @db.Text
+  resolution  String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  bar Bar? @relation(fields: [barId], references: [id], onDelete: Cascade)
+
+  @@index([barId])
+  @@index([userEmail])
+  @@index([status])
+  @@index([priority])
+  @@index([createdAt])
 }
 
 // Static offerings - always available (up to 3)
