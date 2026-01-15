@@ -25,6 +25,8 @@ model User {
   shiftUsages        ShiftUsage[]
   inventorySnapshots InventorySnapshot[]
   role               UserRole            @default(PATRON)
+  adminNotes         AdminNote[]
+  supportTickets     SupportTicket[]
 }
 
 enum UserRole {
@@ -176,6 +178,8 @@ model Bar {
   inventoryCounts       InventoryCount[]
   patronSearchEvents    PatronSearchEvent[]    @relation("BarToPatronSearchEvents")
   barActions            BarAction[]            @relation("BarToBarActions")
+  adminNotes            AdminNote[]
+  supportTickets        SupportTicket[]
 
   @@index([cityNormalized])
   @@index([neighborhoodNormalized])
