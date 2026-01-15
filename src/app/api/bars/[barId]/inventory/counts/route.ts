@@ -1,12 +1,13 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { requireBarAccess, requireInventoryAddOn } from "@/lib/access";
+import { requireBarMembership, requireAddOn, requireBasic } from "@/lib/requireEntitlements";
 
 export async function GET(req: Request, { params }: { params: Promise<{ barId: string }> }) {
   try {
     const { barId } = await params;
-    const bar = await requireBarAccess(barId);
-    requireInventoryAddOn(bar);
+    const bar = await requireBarMembership(barId);
+    requireBasic(bar);
+    requireAddOn(bar, "INVENTORY");
 
     const { searchParams } = new URL(req.url);
     const limit = Number(searchParams.get("limit") || 50);
@@ -29,8 +30,9 @@ export async function GET(req: Request, { params }: { params: Promise<{ barId: s
 export async function POST(req: Request, { params }: { params: Promise<{ barId: string }> }) {
   try {
     const { barId } = await params;
-    const bar = await requireBarAccess(barId);
-    requireInventoryAddOn(bar);
+    const bar = await requireBarMembership(barId);
+    requireBasic(bar);
+    requireAddOn(bar, "INVENTORY");
 
     const body = await req.json();
     const { barProductId, quantity, unit, notes } = body;

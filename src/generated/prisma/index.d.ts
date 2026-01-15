@@ -11957,6 +11957,8 @@ export namespace Prisma {
   }
 
   export type BarAvgAggregateOutputType = {
+    boostCreditsBalance: number | null
+    lastCalculatedTaxRate: Decimal | null
     latitude: number | null
     longitude: number | null
     profileViews: number | null
@@ -11964,6 +11966,8 @@ export namespace Prisma {
   }
 
   export type BarSumAggregateOutputType = {
+    boostCreditsBalance: number | null
+    lastCalculatedTaxRate: Decimal | null
     latitude: number | null
     longitude: number | null
     profileViews: number | null
@@ -11982,8 +11986,15 @@ export namespace Prisma {
     state: string | null
     zipCode: string | null
     barType: string | null
+    basePlan: string | null
+    addonPro: boolean | null
+    addonPremium: boolean | null
+    addonInventory: boolean | null
     subscriptionTier: string | null
     inventoryAddOnEnabled: boolean | null
+    planInterval: string | null
+    boostCreditsBalance: number | null
+    lastCalculatedTaxRate: Decimal | null
     checkInReward: string | null
     neighborhood: string | null
     neighborhoodNormalized: string | null
@@ -12013,8 +12024,15 @@ export namespace Prisma {
     state: string | null
     zipCode: string | null
     barType: string | null
+    basePlan: string | null
+    addonPro: boolean | null
+    addonPremium: boolean | null
+    addonInventory: boolean | null
     subscriptionTier: string | null
     inventoryAddOnEnabled: boolean | null
+    planInterval: string | null
+    boostCreditsBalance: number | null
+    lastCalculatedTaxRate: Decimal | null
     checkInReward: string | null
     neighborhood: string | null
     neighborhoodNormalized: string | null
@@ -12044,8 +12062,15 @@ export namespace Prisma {
     state: number
     zipCode: number
     barType: number
+    basePlan: number
+    addonPro: number
+    addonPremium: number
+    addonInventory: number
     subscriptionTier: number
     inventoryAddOnEnabled: number
+    planInterval: number
+    boostCreditsBalance: number
+    lastCalculatedTaxRate: number
     checkInReward: number
     neighborhood: number
     neighborhoodNormalized: number
@@ -12068,6 +12093,8 @@ export namespace Prisma {
 
 
   export type BarAvgAggregateInputType = {
+    boostCreditsBalance?: true
+    lastCalculatedTaxRate?: true
     latitude?: true
     longitude?: true
     profileViews?: true
@@ -12075,6 +12102,8 @@ export namespace Prisma {
   }
 
   export type BarSumAggregateInputType = {
+    boostCreditsBalance?: true
+    lastCalculatedTaxRate?: true
     latitude?: true
     longitude?: true
     profileViews?: true
@@ -12093,8 +12122,15 @@ export namespace Prisma {
     state?: true
     zipCode?: true
     barType?: true
+    basePlan?: true
+    addonPro?: true
+    addonPremium?: true
+    addonInventory?: true
     subscriptionTier?: true
     inventoryAddOnEnabled?: true
+    planInterval?: true
+    boostCreditsBalance?: true
+    lastCalculatedTaxRate?: true
     checkInReward?: true
     neighborhood?: true
     neighborhoodNormalized?: true
@@ -12124,8 +12160,15 @@ export namespace Prisma {
     state?: true
     zipCode?: true
     barType?: true
+    basePlan?: true
+    addonPro?: true
+    addonPremium?: true
+    addonInventory?: true
     subscriptionTier?: true
     inventoryAddOnEnabled?: true
+    planInterval?: true
+    boostCreditsBalance?: true
+    lastCalculatedTaxRate?: true
     checkInReward?: true
     neighborhood?: true
     neighborhoodNormalized?: true
@@ -12155,8 +12198,15 @@ export namespace Prisma {
     state?: true
     zipCode?: true
     barType?: true
+    basePlan?: true
+    addonPro?: true
+    addonPremium?: true
+    addonInventory?: true
     subscriptionTier?: true
     inventoryAddOnEnabled?: true
+    planInterval?: true
+    boostCreditsBalance?: true
+    lastCalculatedTaxRate?: true
     checkInReward?: true
     neighborhood?: true
     neighborhoodNormalized?: true
@@ -12275,8 +12325,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType: string | null
+    basePlan: string
+    addonPro: boolean
+    addonPremium: boolean
+    addonInventory: boolean
     subscriptionTier: string
     inventoryAddOnEnabled: boolean
+    planInterval: string
+    boostCreditsBalance: number
+    lastCalculatedTaxRate: Decimal | null
     checkInReward: string | null
     neighborhood: string | null
     neighborhoodNormalized: string | null
@@ -12327,8 +12384,15 @@ export namespace Prisma {
     state?: boolean
     zipCode?: boolean
     barType?: boolean
+    basePlan?: boolean
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: boolean
     inventoryAddOnEnabled?: boolean
+    planInterval?: boolean
+    boostCreditsBalance?: boolean
+    lastCalculatedTaxRate?: boolean
     checkInReward?: boolean
     neighborhood?: boolean
     neighborhoodNormalized?: boolean
@@ -12389,8 +12453,15 @@ export namespace Prisma {
     state?: boolean
     zipCode?: boolean
     barType?: boolean
+    basePlan?: boolean
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: boolean
     inventoryAddOnEnabled?: boolean
+    planInterval?: boolean
+    boostCreditsBalance?: boolean
+    lastCalculatedTaxRate?: boolean
     checkInReward?: boolean
     neighborhood?: boolean
     neighborhoodNormalized?: boolean
@@ -12423,8 +12494,15 @@ export namespace Prisma {
     state?: boolean
     zipCode?: boolean
     barType?: boolean
+    basePlan?: boolean
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: boolean
     inventoryAddOnEnabled?: boolean
+    planInterval?: boolean
+    boostCreditsBalance?: boolean
+    lastCalculatedTaxRate?: boolean
     checkInReward?: boolean
     neighborhood?: boolean
     neighborhoodNormalized?: boolean
@@ -12457,8 +12535,15 @@ export namespace Prisma {
     state?: boolean
     zipCode?: boolean
     barType?: boolean
+    basePlan?: boolean
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: boolean
     inventoryAddOnEnabled?: boolean
+    planInterval?: boolean
+    boostCreditsBalance?: boolean
+    lastCalculatedTaxRate?: boolean
     checkInReward?: boolean
     neighborhood?: boolean
     neighborhoodNormalized?: boolean
@@ -12478,7 +12563,7 @@ export namespace Prisma {
     searchAppearances?: boolean
   }
 
-  export type BarOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ownerId" | "name" | "slug" | "description" | "address" | "city" | "cityNormalized" | "state" | "zipCode" | "barType" | "subscriptionTier" | "inventoryAddOnEnabled" | "checkInReward" | "neighborhood" | "neighborhoodNormalized" | "latitude" | "longitude" | "phone" | "website" | "logo" | "photos" | "hours" | "isActive" | "isPublished" | "publishedAt" | "createdAt" | "updatedAt" | "profileViews" | "searchAppearances", ExtArgs["result"]["bar"]>
+  export type BarOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ownerId" | "name" | "slug" | "description" | "address" | "city" | "cityNormalized" | "state" | "zipCode" | "barType" | "basePlan" | "addonPro" | "addonPremium" | "addonInventory" | "subscriptionTier" | "inventoryAddOnEnabled" | "planInterval" | "boostCreditsBalance" | "lastCalculatedTaxRate" | "checkInReward" | "neighborhood" | "neighborhoodNormalized" | "latitude" | "longitude" | "phone" | "website" | "logo" | "photos" | "hours" | "isActive" | "isPublished" | "publishedAt" | "createdAt" | "updatedAt" | "profileViews" | "searchAppearances", ExtArgs["result"]["bar"]>
   export type BarInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     owner?: boolean | OwnerDefaultArgs<ExtArgs>
     offerings?: boolean | Bar$offeringsArgs<ExtArgs>
@@ -12561,8 +12646,15 @@ export namespace Prisma {
       state: string
       zipCode: string
       barType: string | null
+      basePlan: string
+      addonPro: boolean
+      addonPremium: boolean
+      addonInventory: boolean
       subscriptionTier: string
       inventoryAddOnEnabled: boolean
+      planInterval: string
+      boostCreditsBalance: number
+      lastCalculatedTaxRate: Prisma.Decimal | null
       checkInReward: string | null
       neighborhood: string | null
       neighborhoodNormalized: string | null
@@ -13042,8 +13134,15 @@ export namespace Prisma {
     readonly state: FieldRef<"Bar", 'String'>
     readonly zipCode: FieldRef<"Bar", 'String'>
     readonly barType: FieldRef<"Bar", 'String'>
+    readonly basePlan: FieldRef<"Bar", 'String'>
+    readonly addonPro: FieldRef<"Bar", 'Boolean'>
+    readonly addonPremium: FieldRef<"Bar", 'Boolean'>
+    readonly addonInventory: FieldRef<"Bar", 'Boolean'>
     readonly subscriptionTier: FieldRef<"Bar", 'String'>
     readonly inventoryAddOnEnabled: FieldRef<"Bar", 'Boolean'>
+    readonly planInterval: FieldRef<"Bar", 'String'>
+    readonly boostCreditsBalance: FieldRef<"Bar", 'Int'>
+    readonly lastCalculatedTaxRate: FieldRef<"Bar", 'Decimal'>
     readonly checkInReward: FieldRef<"Bar", 'String'>
     readonly neighborhood: FieldRef<"Bar", 'String'>
     readonly neighborhoodNormalized: FieldRef<"Bar", 'String'>
@@ -60817,8 +60916,15 @@ export namespace Prisma {
     state: 'state',
     zipCode: 'zipCode',
     barType: 'barType',
+    basePlan: 'basePlan',
+    addonPro: 'addonPro',
+    addonPremium: 'addonPremium',
+    addonInventory: 'addonInventory',
     subscriptionTier: 'subscriptionTier',
     inventoryAddOnEnabled: 'inventoryAddOnEnabled',
+    planInterval: 'planInterval',
+    boostCreditsBalance: 'boostCreditsBalance',
+    lastCalculatedTaxRate: 'lastCalculatedTaxRate',
     checkInReward: 'checkInReward',
     neighborhood: 'neighborhood',
     neighborhoodNormalized: 'neighborhoodNormalized',
@@ -61582,6 +61688,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Decimal'
+   */
+  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
+    
+
+
+  /**
+   * Reference to a field of type 'Decimal[]'
+   */
+  export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -61620,20 +61740,6 @@ export namespace Prisma {
    * Reference to a field of type 'Recurrence[]'
    */
   export type ListEnumRecurrenceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Recurrence[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Decimal'
-   */
-  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
-    
-
-
-  /**
-   * Reference to a field of type 'Decimal[]'
-   */
-  export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
     
 
 
@@ -62148,8 +62254,15 @@ export namespace Prisma {
     state?: StringFilter<"Bar"> | string
     zipCode?: StringFilter<"Bar"> | string
     barType?: StringNullableFilter<"Bar"> | string | null
+    basePlan?: StringFilter<"Bar"> | string
+    addonPro?: BoolFilter<"Bar"> | boolean
+    addonPremium?: BoolFilter<"Bar"> | boolean
+    addonInventory?: BoolFilter<"Bar"> | boolean
     subscriptionTier?: StringFilter<"Bar"> | string
     inventoryAddOnEnabled?: BoolFilter<"Bar"> | boolean
+    planInterval?: StringFilter<"Bar"> | string
+    boostCreditsBalance?: IntFilter<"Bar"> | number
+    lastCalculatedTaxRate?: DecimalNullableFilter<"Bar"> | Decimal | DecimalJsLike | number | string | null
     checkInReward?: StringNullableFilter<"Bar"> | string | null
     neighborhood?: StringNullableFilter<"Bar"> | string | null
     neighborhoodNormalized?: StringNullableFilter<"Bar"> | string | null
@@ -62209,8 +62322,15 @@ export namespace Prisma {
     state?: SortOrder
     zipCode?: SortOrder
     barType?: SortOrderInput | SortOrder
+    basePlan?: SortOrder
+    addonPro?: SortOrder
+    addonPremium?: SortOrder
+    addonInventory?: SortOrder
     subscriptionTier?: SortOrder
     inventoryAddOnEnabled?: SortOrder
+    planInterval?: SortOrder
+    boostCreditsBalance?: SortOrder
+    lastCalculatedTaxRate?: SortOrderInput | SortOrder
     checkInReward?: SortOrderInput | SortOrder
     neighborhood?: SortOrderInput | SortOrder
     neighborhoodNormalized?: SortOrderInput | SortOrder
@@ -62273,8 +62393,15 @@ export namespace Prisma {
     state?: StringFilter<"Bar"> | string
     zipCode?: StringFilter<"Bar"> | string
     barType?: StringNullableFilter<"Bar"> | string | null
+    basePlan?: StringFilter<"Bar"> | string
+    addonPro?: BoolFilter<"Bar"> | boolean
+    addonPremium?: BoolFilter<"Bar"> | boolean
+    addonInventory?: BoolFilter<"Bar"> | boolean
     subscriptionTier?: StringFilter<"Bar"> | string
     inventoryAddOnEnabled?: BoolFilter<"Bar"> | boolean
+    planInterval?: StringFilter<"Bar"> | string
+    boostCreditsBalance?: IntFilter<"Bar"> | number
+    lastCalculatedTaxRate?: DecimalNullableFilter<"Bar"> | Decimal | DecimalJsLike | number | string | null
     checkInReward?: StringNullableFilter<"Bar"> | string | null
     neighborhood?: StringNullableFilter<"Bar"> | string | null
     neighborhoodNormalized?: StringNullableFilter<"Bar"> | string | null
@@ -62334,8 +62461,15 @@ export namespace Prisma {
     state?: SortOrder
     zipCode?: SortOrder
     barType?: SortOrderInput | SortOrder
+    basePlan?: SortOrder
+    addonPro?: SortOrder
+    addonPremium?: SortOrder
+    addonInventory?: SortOrder
     subscriptionTier?: SortOrder
     inventoryAddOnEnabled?: SortOrder
+    planInterval?: SortOrder
+    boostCreditsBalance?: SortOrder
+    lastCalculatedTaxRate?: SortOrderInput | SortOrder
     checkInReward?: SortOrderInput | SortOrder
     neighborhood?: SortOrderInput | SortOrder
     neighborhoodNormalized?: SortOrderInput | SortOrder
@@ -62375,8 +62509,15 @@ export namespace Prisma {
     state?: StringWithAggregatesFilter<"Bar"> | string
     zipCode?: StringWithAggregatesFilter<"Bar"> | string
     barType?: StringNullableWithAggregatesFilter<"Bar"> | string | null
+    basePlan?: StringWithAggregatesFilter<"Bar"> | string
+    addonPro?: BoolWithAggregatesFilter<"Bar"> | boolean
+    addonPremium?: BoolWithAggregatesFilter<"Bar"> | boolean
+    addonInventory?: BoolWithAggregatesFilter<"Bar"> | boolean
     subscriptionTier?: StringWithAggregatesFilter<"Bar"> | string
     inventoryAddOnEnabled?: BoolWithAggregatesFilter<"Bar"> | boolean
+    planInterval?: StringWithAggregatesFilter<"Bar"> | string
+    boostCreditsBalance?: IntWithAggregatesFilter<"Bar"> | number
+    lastCalculatedTaxRate?: DecimalNullableWithAggregatesFilter<"Bar"> | Decimal | DecimalJsLike | number | string | null
     checkInReward?: StringNullableWithAggregatesFilter<"Bar"> | string | null
     neighborhood?: StringNullableWithAggregatesFilter<"Bar"> | string | null
     neighborhoodNormalized?: StringNullableWithAggregatesFilter<"Bar"> | string | null
@@ -65990,8 +66131,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -66051,8 +66199,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -66110,8 +66265,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -66171,8 +66333,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -66231,8 +66400,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -66263,8 +66439,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -66296,8 +66479,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -70172,6 +70362,28 @@ export namespace Prisma {
     _max?: NestedEnumSubscriptionStatusFilter<$PrismaModel>
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type DecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+  }
+
   export type FloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -70212,17 +70424,6 @@ export namespace Prisma {
     gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
-
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type OfferingListRelationFilter = {
@@ -70417,8 +70618,15 @@ export namespace Prisma {
     state?: SortOrder
     zipCode?: SortOrder
     barType?: SortOrder
+    basePlan?: SortOrder
+    addonPro?: SortOrder
+    addonPremium?: SortOrder
+    addonInventory?: SortOrder
     subscriptionTier?: SortOrder
     inventoryAddOnEnabled?: SortOrder
+    planInterval?: SortOrder
+    boostCreditsBalance?: SortOrder
+    lastCalculatedTaxRate?: SortOrder
     checkInReward?: SortOrder
     neighborhood?: SortOrder
     neighborhoodNormalized?: SortOrder
@@ -70439,6 +70647,8 @@ export namespace Prisma {
   }
 
   export type BarAvgOrderByAggregateInput = {
+    boostCreditsBalance?: SortOrder
+    lastCalculatedTaxRate?: SortOrder
     latitude?: SortOrder
     longitude?: SortOrder
     profileViews?: SortOrder
@@ -70457,8 +70667,15 @@ export namespace Prisma {
     state?: SortOrder
     zipCode?: SortOrder
     barType?: SortOrder
+    basePlan?: SortOrder
+    addonPro?: SortOrder
+    addonPremium?: SortOrder
+    addonInventory?: SortOrder
     subscriptionTier?: SortOrder
     inventoryAddOnEnabled?: SortOrder
+    planInterval?: SortOrder
+    boostCreditsBalance?: SortOrder
+    lastCalculatedTaxRate?: SortOrder
     checkInReward?: SortOrder
     neighborhood?: SortOrder
     neighborhoodNormalized?: SortOrder
@@ -70488,8 +70705,15 @@ export namespace Prisma {
     state?: SortOrder
     zipCode?: SortOrder
     barType?: SortOrder
+    basePlan?: SortOrder
+    addonPro?: SortOrder
+    addonPremium?: SortOrder
+    addonInventory?: SortOrder
     subscriptionTier?: SortOrder
     inventoryAddOnEnabled?: SortOrder
+    planInterval?: SortOrder
+    boostCreditsBalance?: SortOrder
+    lastCalculatedTaxRate?: SortOrder
     checkInReward?: SortOrder
     neighborhood?: SortOrder
     neighborhoodNormalized?: SortOrder
@@ -70508,10 +70732,44 @@ export namespace Prisma {
   }
 
   export type BarSumOrderByAggregateInput = {
+    boostCreditsBalance?: SortOrder
+    lastCalculatedTaxRate?: SortOrder
     latitude?: SortOrder
     longitude?: SortOrder
     profileViews?: SortOrder
     searchAppearances?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type DecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedDecimalNullableFilter<$PrismaModel>
+    _sum?: NestedDecimalNullableFilter<$PrismaModel>
+    _min?: NestedDecimalNullableFilter<$PrismaModel>
+    _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
   export type FloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -70556,38 +70814,11 @@ export namespace Prisma {
     _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
   export type EnumRecurrenceFilter<$PrismaModel = never> = {
     equals?: $Enums.Recurrence | EnumRecurrenceFieldRefInput<$PrismaModel>
     in?: $Enums.Recurrence[] | ListEnumRecurrenceFieldRefInput<$PrismaModel>
     notIn?: $Enums.Recurrence[] | ListEnumRecurrenceFieldRefInput<$PrismaModel>
     not?: NestedEnumRecurrenceFilter<$PrismaModel> | $Enums.Recurrence
-  }
-
-  export type DecimalNullableFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
   }
 
   export type BarScalarRelationFilter = {
@@ -70696,22 +70927,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumRecurrenceFilter<$PrismaModel>
     _max?: NestedEnumRecurrenceFilter<$PrismaModel>
-  }
-
-  export type DecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedDecimalNullableFilter<$PrismaModel>
-    _sum?: NestedDecimalNullableFilter<$PrismaModel>
-    _min?: NestedDecimalNullableFilter<$PrismaModel>
-    _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
   export type EnumRecurrenceNullableFilter<$PrismaModel = never> = {
@@ -73668,6 +73883,22 @@ export namespace Prisma {
     connect?: SupportTicketWhereUniqueInput | SupportTicketWhereUniqueInput[]
   }
 
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type NullableDecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string | null
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
+  }
+
   export type FloatFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -73679,14 +73910,6 @@ export namespace Prisma {
   export type BarUpdatephotosInput = {
     set?: string[]
     push?: string | string[]
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type OwnerUpdateOneRequiredWithoutBarsNestedInput = {
@@ -74470,14 +74693,6 @@ export namespace Prisma {
   export type OfferingUpdatetagsInput = {
     set?: string[]
     push?: string | string[]
-  }
-
-  export type NullableDecimalFieldUpdateOperationsInput = {
-    set?: Decimal | DecimalJsLike | number | string | null
-    increment?: Decimal | DecimalJsLike | number | string
-    decrement?: Decimal | DecimalJsLike | number | string
-    multiply?: Decimal | DecimalJsLike | number | string
-    divide?: Decimal | DecimalJsLike | number | string
   }
 
   export type BarUpdateOneRequiredWithoutOfferingsNestedInput = {
@@ -76111,6 +76326,17 @@ export namespace Prisma {
     _max?: NestedEnumSubscriptionStatusFilter<$PrismaModel>
   }
 
+  export type NestedDecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+  }
+
   export type NestedFloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -76120,6 +76346,38 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedDecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedDecimalNullableFilter<$PrismaModel>
+    _sum?: NestedDecimalNullableFilter<$PrismaModel>
+    _min?: NestedDecimalNullableFilter<$PrismaModel>
+    _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -76161,38 +76419,11 @@ export namespace Prisma {
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
   export type NestedEnumRecurrenceFilter<$PrismaModel = never> = {
     equals?: $Enums.Recurrence | EnumRecurrenceFieldRefInput<$PrismaModel>
     in?: $Enums.Recurrence[] | ListEnumRecurrenceFieldRefInput<$PrismaModel>
     notIn?: $Enums.Recurrence[] | ListEnumRecurrenceFieldRefInput<$PrismaModel>
     not?: NestedEnumRecurrenceFilter<$PrismaModel> | $Enums.Recurrence
-  }
-
-  export type NestedDecimalNullableFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
   }
 
   export type NestedEnumRecurrenceWithAggregatesFilter<$PrismaModel = never> = {
@@ -76203,22 +76434,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumRecurrenceFilter<$PrismaModel>
     _max?: NestedEnumRecurrenceFilter<$PrismaModel>
-  }
-
-  export type NestedDecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedDecimalNullableFilter<$PrismaModel>
-    _sum?: NestedDecimalNullableFilter<$PrismaModel>
-    _min?: NestedDecimalNullableFilter<$PrismaModel>
-    _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumRecurrenceNullableFilter<$PrismaModel = never> = {
@@ -77095,8 +77310,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -77154,8 +77376,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -77396,8 +77625,15 @@ export namespace Prisma {
     state?: StringFilter<"Bar"> | string
     zipCode?: StringFilter<"Bar"> | string
     barType?: StringNullableFilter<"Bar"> | string | null
+    basePlan?: StringFilter<"Bar"> | string
+    addonPro?: BoolFilter<"Bar"> | boolean
+    addonPremium?: BoolFilter<"Bar"> | boolean
+    addonInventory?: BoolFilter<"Bar"> | boolean
     subscriptionTier?: StringFilter<"Bar"> | string
     inventoryAddOnEnabled?: BoolFilter<"Bar"> | boolean
+    planInterval?: StringFilter<"Bar"> | string
+    boostCreditsBalance?: IntFilter<"Bar"> | number
+    lastCalculatedTaxRate?: DecimalNullableFilter<"Bar"> | Decimal | DecimalJsLike | number | string | null
     checkInReward?: StringNullableFilter<"Bar"> | string | null
     neighborhood?: StringNullableFilter<"Bar"> | string | null
     neighborhoodNormalized?: StringNullableFilter<"Bar"> | string | null
@@ -79356,8 +79592,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -79416,8 +79659,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -79490,8 +79740,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -79550,8 +79807,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -79608,8 +79872,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -79668,8 +79939,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -79742,8 +80020,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -79802,8 +80087,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -79905,8 +80197,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -79965,8 +80264,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -80090,8 +80396,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -80150,8 +80463,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -80208,8 +80528,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -80268,8 +80595,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -80383,8 +80717,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -80443,8 +80784,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -80834,8 +81182,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -80894,8 +81249,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -80968,8 +81330,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -81028,8 +81397,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -81086,8 +81462,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -81146,8 +81529,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -81220,8 +81610,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -81280,8 +81677,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -81380,8 +81784,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -81440,8 +81851,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -81551,8 +81969,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -81611,8 +82036,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -81712,8 +82144,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -81772,8 +82211,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -81964,8 +82410,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -82024,8 +82477,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -82182,8 +82642,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -82242,8 +82709,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -82361,8 +82835,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -82421,8 +82902,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -82530,8 +83018,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -82590,8 +83085,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -82733,8 +83235,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -82793,8 +83302,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -83050,8 +83566,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -83110,8 +83633,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -83255,8 +83785,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -83315,8 +83852,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -83752,8 +84296,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -83812,8 +84363,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -83923,8 +84481,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -83983,8 +84548,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -84084,8 +84656,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -84144,8 +84723,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -84259,8 +84845,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -84319,8 +84912,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -84424,8 +85024,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -84484,8 +85091,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -84603,8 +85217,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -84663,8 +85284,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -84772,8 +85400,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -84832,8 +85467,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -84906,8 +85548,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -84966,8 +85615,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -85024,8 +85680,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -85084,8 +85747,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -85158,8 +85828,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -85218,8 +85895,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -85276,8 +85960,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -85336,8 +86027,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -85410,8 +86108,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -85470,8 +86175,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -85528,8 +86240,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -85588,8 +86307,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -85662,8 +86388,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -85722,8 +86455,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -85780,8 +86520,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -85840,8 +86587,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -85938,8 +86692,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -85998,8 +86759,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -86193,8 +86961,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -86253,8 +87028,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -86418,8 +87200,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -86478,8 +87267,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -86613,8 +87409,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -86673,8 +87476,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -86777,8 +87587,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -86837,8 +87654,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -87023,8 +87847,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -87083,8 +87914,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -87186,8 +88024,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -87246,8 +88091,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -87339,8 +88191,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -87399,8 +88258,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -87518,8 +88384,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -87578,8 +88451,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -87687,8 +88567,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -87747,8 +88634,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -87866,8 +88760,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -87926,8 +88827,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -88035,8 +88943,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -88095,8 +89010,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -88169,8 +89091,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -88229,8 +89158,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -88287,8 +89223,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -88347,8 +89290,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -88421,8 +89371,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -88481,8 +89438,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -88539,8 +89503,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -88599,8 +89570,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -88673,8 +89651,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -88733,8 +89718,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -89131,8 +90123,15 @@ export namespace Prisma {
     state: string
     zipCode: string
     barType?: string | null
+    basePlan?: string
+    addonPro?: boolean
+    addonPremium?: boolean
+    addonInventory?: boolean
     subscriptionTier?: string
     inventoryAddOnEnabled?: boolean
+    planInterval?: string
+    boostCreditsBalance?: number
+    lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -89201,8 +90200,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -89260,8 +90266,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -89319,8 +90332,15 @@ export namespace Prisma {
     state?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
     barType?: NullableStringFieldUpdateOperationsInput | string | null
+    basePlan?: StringFieldUpdateOperationsInput | string
+    addonPro?: BoolFieldUpdateOperationsInput | boolean
+    addonPremium?: BoolFieldUpdateOperationsInput | boolean
+    addonInventory?: BoolFieldUpdateOperationsInput | boolean
     subscriptionTier?: StringFieldUpdateOperationsInput | string
     inventoryAddOnEnabled?: BoolFieldUpdateOperationsInput | boolean
+    planInterval?: StringFieldUpdateOperationsInput | string
+    boostCreditsBalance?: IntFieldUpdateOperationsInput | number
+    lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null

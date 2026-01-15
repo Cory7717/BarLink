@@ -157,7 +157,7 @@ export default function AdminBarsPage() {
                 </td>
                 <td className="px-2 py-2">{bar.ownerEmail}</td>
                 <td className="px-2 py-2">{bar.tier || "FREE"}</td>
-                <td className="px-2 py-2">{bar.subscriptionStatus || "—"}</td>
+                <td className="px-2 py-2">{bar.subscriptionStatus || "-"}</td>
                 <td className="px-2 py-2">{bar.addOn ? "Inventory" : "None"}</td>
                 <td className="px-2 py-2">{bar.events ?? 0}</td>
                 <td className="px-2 py-2">{bar.offerings ?? 0}</td>

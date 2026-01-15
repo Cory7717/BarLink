@@ -1,12 +1,13 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { requireBarAccess, requireInventoryAddOn } from "@/lib/access";
+import { requireBarMembership, requireAddOn, requireBasic } from "@/lib/requireEntitlements";
 
 export async function GET(_: Request, { params }: { params: Promise<{ barId: string }> }) {
   try {
     const { barId } = await params;
-    const bar = await requireBarAccess(barId);
-    requireInventoryAddOn(bar);
+    const bar = await requireBarMembership(barId);
+    requireBasic(bar);
+    requireAddOn(bar, "INVENTORY");
 
     const items = await prisma.barProduct.findMany({
       where: { barId, isActive: true },
@@ -24,8 +25,9 @@ export async function GET(_: Request, { params }: { params: Promise<{ barId: str
 export async function POST(req: Request, { params }: { params: Promise<{ barId: string }> }) {
   try {
     const { barId } = await params;
-    const bar = await requireBarAccess(barId);
-    requireInventoryAddOn(bar);
+    const bar = await requireBarMembership(barId);
+    requireBasic(bar);
+    requireAddOn(bar, "INVENTORY");
 
     const { name, category, unitType, sizeMl, parLevel, reorderThreshold } = await req.json();
     if (!name || !category || !unitType) {

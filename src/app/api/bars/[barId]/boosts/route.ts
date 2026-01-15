@@ -1,12 +1,13 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { requireBarAccess, requireTier } from "@/lib/access";
+import { requireBarMembership, requireAddOn, requireBasic } from "@/lib/requireEntitlements";
 
 export async function POST(req: Request, { params }: { params: Promise<{ barId: string }> }) {
   try {
     const { barId } = await params;
-    const bar = await requireBarAccess(barId);
-    requireTier(bar, "PREMIUM");
+    const bar = await requireBarMembership(barId);
+    requireBasic(bar);
+    requireAddOn(bar, "PREMIUM");
 
     const body = await req.json();
     const { eventId, startAt, endAt, budgetCents } = body;

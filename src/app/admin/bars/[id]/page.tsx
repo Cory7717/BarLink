@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import AdminNotesClient from "../AdminNotesClient";
+import { calculateSubtotalCents, calculateTaxCents, calculateTotalWithTaxCents } from "@/lib/pricing";
 
 export default async function AdminBarDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -18,6 +19,15 @@ export default async function AdminBarDetailPage({ params }: { params: Promise<{
       events: { select: { id: true, title: true, startDate: true, isActive: true }, take: 5, orderBy: { startDate: "asc" } },
       offerings: { select: { id: true, category: true, isActive: true }, take: 5 },
       boosts: { select: { id: true, status: true, startAt: true, endAt: true }, take: 5, orderBy: { startAt: "desc" } },
+      basePlan: true,
+      addonPro: true,
+      addonPremium: true,
+      addonInventory: true,
+      planInterval: true,
+      boostCreditsBalance: true,
+      lastCalculatedTaxRate: true,
+      subscriptionTier: true,
+      inventoryAddOnEnabled: true,
     },
   });
 
@@ -36,6 +46,15 @@ export default async function AdminBarDetailPage({ params }: { params: Promise<{
   const trialEndsAt = bar.owner.subscription?.trialEndsAt;
   const currentPeriodEnd = bar.owner.subscription?.currentPeriodEnd;
   const trialEndingSoon = trialEndsAt ? trialEndsAt.getTime() < Date.now() + 7 * 24 * 60 * 60 * 1000 : false;
+  const entitlements = {
+    planInterval: (bar.planInterval || "MONTHLY").toUpperCase() as any,
+    addonPro: bar.addonPro || bar.subscriptionTier === "PRO" || bar.subscriptionTier === "PREMIUM",
+    addonPremium: bar.addonPremium || bar.subscriptionTier === "PREMIUM",
+    addonInventory: bar.addonInventory || bar.inventoryAddOnEnabled,
+  };
+  const subtotalCents = calculateSubtotalCents(entitlements);
+  const taxCents = calculateTaxCents(subtotalCents);
+  const totalCents = calculateTotalWithTaxCents(entitlements);
 
   return (
     <div className="space-y-4">
@@ -50,9 +69,12 @@ export default async function AdminBarDetailPage({ params }: { params: Promise<{
           </p>
         </div>
         <div className="text-right text-sm text-slate-300">
-          <div>Tier: {tier}</div>
+          <div>Base: BASIC</div>
           <div>Status: {subStatus}</div>
-          <div>Add-on: {bar.inventoryAddOnEnabled ? "Inventory enabled" : "None"}</div>
+          <div>
+            Add-ons: {entitlements.addonPremium ? "Premium" : entitlements.addonPro ? "Pro" : "None"}
+            {entitlements.addonInventory ? " • Inventory" : ""}
+          </div>
         </div>
       </div>
 
@@ -68,7 +90,9 @@ export default async function AdminBarDetailPage({ params }: { params: Promise<{
             <li>Trial ends: {trialEndsAt ? new Date(trialEndsAt).toLocaleDateString() : "—"}</li>
             <li>Current period end: {currentPeriodEnd ? new Date(currentPeriodEnd).toLocaleDateString() : "—"}</li>
             <li>Trial ending in 7d: {trialEndingSoon ? "Yes" : "No"}</li>
-            <li>Inventory add-on: {bar.inventoryAddOnEnabled ? "Enabled" : "Disabled"}</li>
+            <li>Inventory add-on: {entitlements.addonInventory ? "Enabled" : "Disabled"}</li>
+            <li>Plan interval: {entitlements.planInterval}</li>
+            <li>Boost credits: {bar.boostCreditsBalance}</li>
           </ul>
         </div>
 
@@ -110,8 +134,12 @@ export default async function AdminBarDetailPage({ params }: { params: Promise<{
           <div className="space-y-1 text-sm text-slate-200">
             <div>Plan: {subPlan}</div>
             <div>Status: {subStatus}</div>
+            <div>Interval: {entitlements.planInterval}</div>
             <div>Trial ends: {trialEndsAt ? new Date(trialEndsAt).toLocaleDateString() : "—"}</div>
             <div>Current period end: {currentPeriodEnd ? new Date(currentPeriodEnd).toLocaleDateString() : "—"}</div>
+            <div>Subtotal (pre-tax): ${(subtotalCents / 100).toFixed(2)}</div>
+            <div>Tax (8.25%): ${(taxCents / 100).toFixed(2)}</div>
+            <div>Total w/ tax: ${(totalCents / 100).toFixed(2)}</div>
           </div>
           <div className="flex gap-2 mt-3 flex-wrap">
             <Link href="/admin/subscriptions" className="btn-secondary px-3 py-2 text-sm">

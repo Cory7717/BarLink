@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { getPlanIdFromKey } from '@/lib/paypal';
+import { SALES_TAX_RATE } from '@/lib/pricing';
 
 function planKeyToEnum(planKey: string) {
   switch (planKey) {
@@ -35,7 +36,7 @@ export async function POST(req: Request) {
     }
     const returnUrl = `${baseUrl}/dashboard/subscription/success`;
     const cancelUrl = `${baseUrl}/pricing`;
-    const taxes = { percentage: '8.25', inclusive: false };
+    const taxes = { percentage: (SALES_TAX_RATE * 100).toFixed(2), inclusive: false };
     const paypalBase =
       process.env.PAYPAL_ENV === 'live'
         ? 'https://api-m.paypal.com'

@@ -1,12 +1,13 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { requireBarAccess, requireInventoryAddOn } from "@/lib/access";
+import { requireBarMembership, requireAddOn, requireBasic } from "@/lib/requireEntitlements";
 
 export async function GET(_: Request, { params }: { params: Promise<{ barId: string }> }) {
   try {
     const { barId } = await params;
-    const bar = await requireBarAccess(barId);
-    requireInventoryAddOn(bar);
+    const bar = await requireBarMembership(barId);
+    requireBasic(bar);
+    requireAddOn(bar, "INVENTORY");
 
     // Get latest counts per product
     const counts = await prisma.inventoryCount.findMany({

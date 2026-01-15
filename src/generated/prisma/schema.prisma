@@ -128,8 +128,15 @@ model Bar {
   state                  String
   zipCode                String
   barType                String?                @default("Unclassified")
+  basePlan               String                 @default("BASIC")
+  addonPro               Boolean                @default(false)
+  addonPremium           Boolean                @default(false)
+  addonInventory         Boolean                @default(false)
   subscriptionTier       String                 @default("FREE")
   inventoryAddOnEnabled  Boolean                @default(false)
+  planInterval           String                 @default("MONTHLY")
+  boostCreditsBalance    Int                    @default(0)
+  lastCalculatedTaxRate  Decimal?               @default(0.0825) @db.Decimal(5, 4)
   checkInReward          String?
   neighborhood           String?
   neighborhoodNormalized String?

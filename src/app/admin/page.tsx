@@ -62,6 +62,7 @@ export default async function AdminOverviewPage() {
   const topScanBar = Object.entries(scansByBar)
     .map(([_, v]) => v)
     .sort((a, b) => b.count - a.count)[0];
+  const scanFailureRate = scansLast7d.length ? Number((failedScans / scansLast7d.length).toFixed(2)) : 0;
 
   // Demand/search signals (last 30d)
   const searchEvents30d = await prisma.patronSearchEvent.findMany({
@@ -99,6 +100,9 @@ export default async function AdminOverviewPage() {
   if (failedPayments > 0) alerts.push({ label: "Failed payments (incomplete)", value: failedPayments, href: "/admin/subscriptions" });
   if (zeroActivityBars > 0) alerts.push({ label: "Bars idle 14d (no content)", value: zeroActivityBars, href: "/admin/bars" });
   if (failedScans > 0) alerts.push({ label: "Inventory scan failures (7d)", value: failedScans, href: "/admin/scans/failed" });
+  if (scanFailureRate > 0.2 && scansLast7d.length >= 5) {
+    alerts.push({ label: "High scan failure rate", value: `${Math.round(scanFailureRate * 100)}%`, href: "/admin/scans/failed" });
+  }
 
   return (
     <section className="space-y-4">
@@ -149,6 +153,15 @@ export default async function AdminOverviewPage() {
           <div className="text-3xl font-semibold">{scansLast7d.length}</div>
           <div className="text-xs text-cyan-200 mt-2">
             Top bar: {topScanBar ? `${topScanBar.name} (${topScanBar.count})` : "None"}
+          </div>
+        </div>
+        <div className="glass-panel rounded-2xl p-5">
+          <div className="text-slate-300 text-sm">Scan failure rate (7d)</div>
+          <div className="text-3xl font-semibold">
+            {scansLast7d.length ? `${Math.round(scanFailureRate * 100)}%` : "—"}
+          </div>
+          <div className="text-xs text-cyan-200 mt-2">
+            Failed scans: {failedScans} / {scansLast7d.length || 0}
           </div>
         </div>
         <div className="glass-panel rounded-2xl p-5">

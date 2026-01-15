@@ -35,11 +35,17 @@ export async function GET(req: Request) {
               },
             }
           : {}),
-        ...(addOn ? { inventoryAddOnEnabled: true } : {}),
-        ...(tier
+        ...(addOn
           ? {
-              subscriptionTier: tier.toUpperCase() as any,
+              OR: [{ addonInventory: true }, { inventoryAddOnEnabled: true }],
             }
+          : {}),
+        ...(tier
+          ? tier.toUpperCase() === "PREMIUM"
+            ? { OR: [{ addonPremium: true }, { subscriptionTier: "PREMIUM" }] }
+            : tier.toUpperCase() === "PRO"
+            ? { OR: [{ addonPro: true }, { addonPremium: true }, { subscriptionTier: "PRO" }, { subscriptionTier: "PREMIUM" }] }
+            : { subscriptionTier: tier.toUpperCase() as any }
           : {}),
         ...(status
           ? {
@@ -54,8 +60,14 @@ export async function GET(req: Request) {
         name: true,
         city: true,
         state: true,
+        basePlan: true,
+        addonPro: true,
+        addonPremium: true,
+        addonInventory: true,
         subscriptionTier: true,
         inventoryAddOnEnabled: true,
+        planInterval: true,
+        boostCreditsBalance: true,
         createdAt: true,
         _count: { select: { events: true, offerings: true } },
         owner: {
@@ -75,8 +87,14 @@ export async function GET(req: Request) {
         city: b.city,
         state: b.state,
         ownerEmail: b.owner.email ?? "",
-        tier: b.subscriptionTier,
-        addOn: b.inventoryAddOnEnabled,
+        tier: b.subscriptionTier || "FREE",
+        addOn: b.addonInventory || b.inventoryAddOnEnabled,
+        addonPro: b.addonPro || b.subscriptionTier === "PRO" || b.subscriptionTier === "PREMIUM",
+        addonPremium: b.addonPremium || b.subscriptionTier === "PREMIUM",
+        addonInventory: b.addonInventory || b.inventoryAddOnEnabled,
+        basePlan: b.basePlan || "BASIC",
+        planInterval: b.planInterval || "MONTHLY",
+        boostCreditsBalance: b.boostCreditsBalance ?? 0,
         createdAt: b.createdAt,
         events: b._count.events,
         offerings: b._count.offerings,

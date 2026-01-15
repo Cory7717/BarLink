@@ -1,13 +1,14 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { requireBarAccess, requireInventoryAddOn } from "@/lib/access";
+import { requireBarMembership, requireAddOn, requireBasic } from "@/lib/requireEntitlements";
 import { analyzeInventoryPhoto } from "@/lib/visionInventory";
 
 export async function POST(req: Request, { params }: { params: Promise<{ barId: string }> }) {
   try {
     const { barId } = await params;
-    const bar = await requireBarAccess(barId);
-    requireInventoryAddOn(bar);
+    const bar = await requireBarMembership(barId);
+    requireBasic(bar);
+    requireAddOn(bar, "INVENTORY");
 
     const body = await req.json();
     const imageUrl = body.imageUrl || null;

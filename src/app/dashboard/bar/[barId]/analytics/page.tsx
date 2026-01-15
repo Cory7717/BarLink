@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import Navigation from "@/components/Navigation";
 import Link from "next/link";
+import { hasPro, hasPremium } from "@/lib/entitlements";
 
 export default async function AnalyticsPage({ params }: { params: Promise<{ barId: string }> }) {
   const { barId } = await params;
@@ -17,13 +18,15 @@ export default async function AnalyticsPage({ params }: { params: Promise<{ barI
       owner: { select: { email: true } },
       subscriptionTier: true,
       inventoryAddOnEnabled: true,
+      addonPro: true,
+      addonPremium: true,
     },
   });
 
   if (!bar) redirect("/dashboard");
   if (bar.owner.email !== session.user.email) redirect("/dashboard");
 
-  const isProOrPremium = bar.subscriptionTier === "PRO" || bar.subscriptionTier === "PREMIUM";
+  const isProOrPremium = hasPro(bar) || hasPremium(bar);
 
   return (
     <div className="min-h-screen app-shell text-white">

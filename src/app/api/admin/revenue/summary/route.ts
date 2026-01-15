@@ -19,15 +19,27 @@ export async function GET() {
         prisma.subscription.count({ where: { status: "ACTIVE" } }),
         prisma.subscription.count({ where: { status: "TRIALING" } }),
         prisma.subscription.count({ where: { status: "CANCELED" } }),
-        prisma.bar.count({ where: { subscriptionTier: "PRO" } }),
-        prisma.bar.count({ where: { subscriptionTier: "PREMIUM" } }),
-        prisma.bar.count({ where: { inventoryAddOnEnabled: true } }),
+        prisma.bar.count({
+          where: {
+            OR: [{ addonPro: true }, { subscriptionTier: "PRO" }],
+          },
+        }),
+        prisma.bar.count({
+          where: {
+            OR: [{ addonPremium: true }, { subscriptionTier: "PREMIUM" }],
+          },
+        }),
+        prisma.bar.count({
+          where: {
+            OR: [{ addonInventory: true }, { inventoryAddOnEnabled: true }],
+          },
+        }),
         prisma.boost.count({ where: { status: "ACTIVE" } }),
         prisma.boost.count({ where: { status: "PENDING" } }),
       ]);
 
     // Simple estimates; can be replaced by PayPal actuals.
-    const mrrEstimate = proBars * 30 + premiumBars * 60 + addOnBars * 20;
+    const mrrEstimate = proBars * 49 + premiumBars * 79 + addOnBars * 29 + activeSubs * 30;
     const arrEstimate = mrrEstimate * 12;
     const arpuEstimate = activeSubs > 0 ? mrrEstimate / activeSubs : 0;
 
