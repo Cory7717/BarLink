@@ -37,10 +37,8 @@ export default async function Home({ searchParams }: HomeProps) {
   const featuredBoosts = await prisma.boost.findMany({
     where: {
       status: "ACTIVE",
-      AND: [
-        { OR: [{ startAt: { equals: null } }, { startAt: { lte: now } }] },
-        { OR: [{ endAt: { equals: null } }, { endAt: { gte: now } }] },
-      ],
+      startAt: { lte: now },
+      endAt: { gte: now },
       ...(cityFilter
         ? {
             bar: {
