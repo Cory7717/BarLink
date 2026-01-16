@@ -1,7 +1,22 @@
 import { Suspense } from "react";
 import Navigation from "@/components/Navigation";
+import { auth } from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
 
-function SuccessContent() {
+async function SuccessContent() {
+  const session = await auth();
+  const userEmail = session?.user?.email?.toLowerCase();
+  if (userEmail) {
+    // Mark trial started for all bars owned by this email
+    const owner = await prisma.owner.findUnique({ where: { email: userEmail }, select: { id: true } });
+    if (owner?.id) {
+      await prisma.bar.updateMany({
+        where: { ownerId: owner.id, trialStartedAt: null },
+        data: { trialStartedAt: new Date(), onboardingComplete: false, onboardingReminderStep: 0 },
+      });
+    }
+  }
+
   return (
     <div className="min-h-screen app-shell text-white">
       <Navigation />
@@ -14,12 +29,18 @@ function SuccessContent() {
           </div>
           <h1 className="text-3xl font-semibold text-white">Subscription activated!</h1>
           <p className="mt-3 text-slate-200">
-            Your bar is now live on BarLink360. Head to your dashboard to add offerings and events.
+            Your bar is live on BarLink360. Finish setup to maximize visibility.
           </p>
-          <a
-            href="/dashboard"
-            className="mt-6 inline-flex btn-primary px-6 py-3 text-sm"
-          >
+          <div className="mt-6 text-left space-y-2 text-sm text-slate-200">
+            <p className="font-semibold text-white">Next steps:</p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>Add at least one offering or drink special.</li>
+              <li>Add your first event or promotion.</li>
+              <li>Upload a logo/photo and set a check-in perk.</li>
+              <li>Generate your QR for patrons.</li>
+            </ul>
+          </div>
+          <a href="/dashboard" className="mt-6 inline-flex btn-primary px-6 py-3 text-sm">
             Go to dashboard
           </a>
         </div>
@@ -31,6 +52,7 @@ function SuccessContent() {
 export default function SubscriptionSuccessPage() {
   return (
     <Suspense fallback={<div className="min-h-screen app-shell"></div>}>
+      {/* @ts-expect-error Async Server Component */}
       <SuccessContent />
     </Suspense>
   );

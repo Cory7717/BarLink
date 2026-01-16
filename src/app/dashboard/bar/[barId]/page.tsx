@@ -7,6 +7,7 @@ import CheckInRewardForm from "@/components/CheckInRewardForm";
 import BarDetailsForm from "@/components/BarDetailsForm";
 import { BAR_TYPES } from "@/lib/constants";
 import { isAdminEmail } from "@/lib/admin";
+import PushOptIn from "@/components/PushOptIn";
 
 export default async function BarManagementPage({
   params,
@@ -36,6 +37,9 @@ export default async function BarManagementPage({
       subscriptionTier: true,
       inventoryAddOnEnabled: true,
       checkInReward: true,
+      logo: true,
+      photos: true,
+      onboardingComplete: true,
       owner: true,
       memberships: { select: { userId: true, role: true } },
       offerings: true,
@@ -64,6 +68,14 @@ export default async function BarManagementPage({
     events: bar.events.length,
     items: bar.inventoryItems.length,
   };
+  const needsOfferingEvent = (bar.offerings.length + bar.events.length) === 0;
+  const needsLogo = !(bar.logo || (bar.photos && bar.photos.length > 0));
+  const needsPerk = !bar.checkInReward;
+  const onboardingDone = !needsOfferingEvent && !needsLogo && !needsPerk;
+
+  if (onboardingDone && !bar.onboardingComplete) {
+    await prisma.bar.update({ where: { id: bar.id }, data: { onboardingComplete: true } });
+  }
 
   return (
     <div className="min-h-screen app-shell text-white">
@@ -82,6 +94,25 @@ export default async function BarManagementPage({
         </div>
 
         <div className="grid gap-4 sm:grid-cols-3 mb-6">
+          {!onboardingDone && (
+            <div className="sm:col-span-3 rounded-2xl border border-amber-400/40 bg-amber-500/10 p-4">
+              <h3 className="text-lg font-semibold text-white mb-2">Finish setup to get the most from your trial</h3>
+              <ul className="list-disc pl-5 text-sm text-amber-100 space-y-1">
+                <li className={needsOfferingEvent ? "" : "line-through opacity-60"}>Add at least one offering or event</li>
+                <li className={needsLogo ? "" : "line-through opacity-60"}>Upload a logo/photo for your bar</li>
+                <li className={needsPerk ? "" : "line-through opacity-60"}>Set a check-in perk (QR reward)</li>
+              </ul>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <Link href={`/dashboard/bar/${bar.id}/offerings`} className="btn-primary px-4 py-2 text-sm">
+                  Add offerings/events
+                </Link>
+                <Link href={`/dashboard/bar/${bar.id}/qrcode`} className="btn-secondary px-4 py-2 text-sm">
+                  Set check-in perk
+                </Link>
+              </div>
+            </div>
+          )}
+
           <div className="glass-panel rounded-2xl p-4">
             <h3 className="text-sm text-cyan-200">Offerings</h3>
             <p className="text-3xl font-semibold text-white mt-1">{stats.offerings}</p>
@@ -223,6 +254,14 @@ export default async function BarManagementPage({
             Incentivize patrons to scan your QR code with a perk like “10% off when you check in.” This will show on the Explore page and after a successful check-in.
           </p>
           <CheckInRewardForm barId={bar.id} initialReward={bar.checkInReward ?? null} />
+        </div>
+
+        <div className="glass-panel rounded-3xl p-6 shadow-lg mt-6">
+          <h2 className="text-xl font-semibold text-white mb-3">Notifications</h2>
+          <p className="text-sm text-slate-300 mb-3">
+            Opt in to reminders to finish setup and keep your listings fresh. We’ll send push notifications to your device when important.
+          </p>
+          <PushOptIn userEmail={userEmail} />
         </div>
       </main>
     </div>

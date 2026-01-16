@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
+import { sendEmail } from "@/lib/email";
 
 export async function POST(req: Request) {
   try {
@@ -56,52 +57,7 @@ Request ID: ${request.id}
       </div>
     `.trim();
 
-    const SMTP_HOST = process.env.SMTP_HOST || "smtp.gmail.com";
-    const SMTP_PORT = process.env.SMTP_PORT || "587";
-    const SMTP_USER = process.env.SMTP_USER;
-    const SMTP_PASS = process.env.SMTP_PASS || process.env.SMTP_PASSWORD;
-    const FROM_EMAIL = process.env.SMTP_FROM || SMTP_USER || "noreply@BarLink360.com";
-
-    const smtpConfigured = Boolean(SMTP_USER && SMTP_PASS);
-    if (!smtpConfigured && process.env.NODE_ENV === "production") {
-      return NextResponse.json(
-        { error: "Email delivery is temporarily unavailable. Please email us directly." },
-        { status: 503 }
-      );
-    }
-
-    if (smtpConfigured) {
-      const nodemailer = await import("nodemailer");
-      const portNum = parseInt(SMTP_PORT, 10);
-      const transporter = nodemailer.default.createTransport({
-        host: SMTP_HOST,
-        port: portNum,
-        secure: portNum === 465,
-        requireTLS: portNum !== 465,
-        connectionTimeout: 10000,
-        greetingTimeout: 10000,
-        socketTimeout: 15000,
-        auth: {
-          user: SMTP_USER,
-          pass: SMTP_PASS,
-        },
-      });
-
-      await transporter.sendMail({
-        from: `"BarLink360 Category Request" <${FROM_EMAIL}>`,
-        to: TO_EMAIL,
-        replyTo: bar.owner.email,
-        subject,
-        text,
-        html,
-      });
-    } else {
-      console.log("=== CATEGORY REQUEST ===");
-      console.log("To:", TO_EMAIL);
-      console.log("Subject:", subject);
-      console.log(text);
-      console.log("========================");
-    }
+    await sendEmail(TO_EMAIL, subject, text, html);
 
     return NextResponse.json({ success: true });
   } catch (error) {

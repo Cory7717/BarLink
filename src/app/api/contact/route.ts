@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { sendEmail } from "@/lib/email";
 
 export async function POST(req: NextRequest) {
   try {
@@ -40,64 +41,7 @@ Sent from BarLink360 Contact Form
       </div>
     `.trim();
 
-    const SMTP_HOST = process.env.SMTP_HOST || "smtp.gmail.com";
-    const SMTP_PORT = process.env.SMTP_PORT || "587";
-    const SMTP_USER = process.env.SMTP_USER;
-    const SMTP_PASS = process.env.SMTP_PASS || process.env.SMTP_PASSWORD;
-    const FROM_EMAIL = process.env.SMTP_FROM || SMTP_USER || "noreply@BarLink360.com";
-
-    const smtpConfigured = Boolean(SMTP_USER && SMTP_PASS);
-    const missingCreds = [!SMTP_USER ? "SMTP_USER" : null, !SMTP_PASS ? "SMTP_PASS/SMTP_PASSWORD" : null].filter(Boolean);
-
-    if (!smtpConfigured && process.env.NODE_ENV === "production") {
-      console.error("Contact email blocked: missing SMTP configuration", { missing: missingCreds, host: SMTP_HOST, port: SMTP_PORT });
-      return NextResponse.json(
-        { error: "Email delivery is temporarily unavailable. Please email us directly at coryarmer@gmail.com." },
-        { status: 503 }
-      );
-    }
-
-    if (smtpConfigured) {
-      try {
-        const nodemailer = await import("nodemailer");
-        const portNum = parseInt(SMTP_PORT);
-
-        const transporter = nodemailer.default.createTransport({
-          host: SMTP_HOST,
-          port: portNum,
-          secure: portNum === 465,
-          requireTLS: portNum === 587,
-          connectionTimeout: 15000,
-          greetingTimeout: 15000,
-          socketTimeout: 20000,
-          auth: { user: SMTP_USER, pass: SMTP_PASS },
-        });
-
-        const mailResult = await transporter.sendMail({
-          from: `"BarLink360 Contact Form" <${FROM_EMAIL}>`,
-          to: TO_EMAIL,
-          replyTo: email,
-          subject: emailSubject,
-          text: emailText,
-          html: emailHtml,
-        });
-
-        console.log("Email sent successfully via SMTP to:", TO_EMAIL, "Message ID:", mailResult?.messageId || "N/A");
-      } catch (smtpError) {
-        console.error("SMTP send error:", smtpError);
-        throw new Error("Failed to send email via SMTP");
-      }
-    } else {
-      console.log("=== CONTACT FORM SUBMISSION ===");
-      console.log("To:", TO_EMAIL);
-      console.log("From:", email);
-      console.log("Subject:", emailSubject);
-      console.log("Content:", emailText);
-      console.log("==============================");
-      console.warn("SMTP not configured. Email logged to console only.");
-      console.warn("Missing:", missingCreds.join(", ") || "none");
-      console.warn("Environment check:", { SMTP_HOST, SMTP_PORT });
-    }
+    await sendEmail(TO_EMAIL, emailSubject, emailText, emailHtml);
 
     return NextResponse.json(
       {

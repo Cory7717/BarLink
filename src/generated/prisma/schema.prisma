@@ -137,6 +137,9 @@ model Bar {
   planInterval           String                 @default("MONTHLY")
   boostCreditsBalance    Int                    @default(0)
   lastCalculatedTaxRate  Decimal?               @default(0.0825) @db.Decimal(5, 4)
+  trialStartedAt         DateTime?
+  onboardingComplete     Boolean                @default(false)
+  onboardingReminderStep Int                    @default(0)
   checkInReward          String?
   neighborhood           String?
   neighborhoodNormalized String?

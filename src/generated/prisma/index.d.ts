@@ -11959,6 +11959,7 @@ export namespace Prisma {
   export type BarAvgAggregateOutputType = {
     boostCreditsBalance: number | null
     lastCalculatedTaxRate: Decimal | null
+    onboardingReminderStep: number | null
     latitude: number | null
     longitude: number | null
     profileViews: number | null
@@ -11968,6 +11969,7 @@ export namespace Prisma {
   export type BarSumAggregateOutputType = {
     boostCreditsBalance: number | null
     lastCalculatedTaxRate: Decimal | null
+    onboardingReminderStep: number | null
     latitude: number | null
     longitude: number | null
     profileViews: number | null
@@ -11995,6 +11997,9 @@ export namespace Prisma {
     planInterval: string | null
     boostCreditsBalance: number | null
     lastCalculatedTaxRate: Decimal | null
+    trialStartedAt: Date | null
+    onboardingComplete: boolean | null
+    onboardingReminderStep: number | null
     checkInReward: string | null
     neighborhood: string | null
     neighborhoodNormalized: string | null
@@ -12033,6 +12038,9 @@ export namespace Prisma {
     planInterval: string | null
     boostCreditsBalance: number | null
     lastCalculatedTaxRate: Decimal | null
+    trialStartedAt: Date | null
+    onboardingComplete: boolean | null
+    onboardingReminderStep: number | null
     checkInReward: string | null
     neighborhood: string | null
     neighborhoodNormalized: string | null
@@ -12071,6 +12079,9 @@ export namespace Prisma {
     planInterval: number
     boostCreditsBalance: number
     lastCalculatedTaxRate: number
+    trialStartedAt: number
+    onboardingComplete: number
+    onboardingReminderStep: number
     checkInReward: number
     neighborhood: number
     neighborhoodNormalized: number
@@ -12095,6 +12106,7 @@ export namespace Prisma {
   export type BarAvgAggregateInputType = {
     boostCreditsBalance?: true
     lastCalculatedTaxRate?: true
+    onboardingReminderStep?: true
     latitude?: true
     longitude?: true
     profileViews?: true
@@ -12104,6 +12116,7 @@ export namespace Prisma {
   export type BarSumAggregateInputType = {
     boostCreditsBalance?: true
     lastCalculatedTaxRate?: true
+    onboardingReminderStep?: true
     latitude?: true
     longitude?: true
     profileViews?: true
@@ -12131,6 +12144,9 @@ export namespace Prisma {
     planInterval?: true
     boostCreditsBalance?: true
     lastCalculatedTaxRate?: true
+    trialStartedAt?: true
+    onboardingComplete?: true
+    onboardingReminderStep?: true
     checkInReward?: true
     neighborhood?: true
     neighborhoodNormalized?: true
@@ -12169,6 +12185,9 @@ export namespace Prisma {
     planInterval?: true
     boostCreditsBalance?: true
     lastCalculatedTaxRate?: true
+    trialStartedAt?: true
+    onboardingComplete?: true
+    onboardingReminderStep?: true
     checkInReward?: true
     neighborhood?: true
     neighborhoodNormalized?: true
@@ -12207,6 +12226,9 @@ export namespace Prisma {
     planInterval?: true
     boostCreditsBalance?: true
     lastCalculatedTaxRate?: true
+    trialStartedAt?: true
+    onboardingComplete?: true
+    onboardingReminderStep?: true
     checkInReward?: true
     neighborhood?: true
     neighborhoodNormalized?: true
@@ -12334,6 +12356,9 @@ export namespace Prisma {
     planInterval: string
     boostCreditsBalance: number
     lastCalculatedTaxRate: Decimal | null
+    trialStartedAt: Date | null
+    onboardingComplete: boolean
+    onboardingReminderStep: number
     checkInReward: string | null
     neighborhood: string | null
     neighborhoodNormalized: string | null
@@ -12393,6 +12418,9 @@ export namespace Prisma {
     planInterval?: boolean
     boostCreditsBalance?: boolean
     lastCalculatedTaxRate?: boolean
+    trialStartedAt?: boolean
+    onboardingComplete?: boolean
+    onboardingReminderStep?: boolean
     checkInReward?: boolean
     neighborhood?: boolean
     neighborhoodNormalized?: boolean
@@ -12462,6 +12490,9 @@ export namespace Prisma {
     planInterval?: boolean
     boostCreditsBalance?: boolean
     lastCalculatedTaxRate?: boolean
+    trialStartedAt?: boolean
+    onboardingComplete?: boolean
+    onboardingReminderStep?: boolean
     checkInReward?: boolean
     neighborhood?: boolean
     neighborhoodNormalized?: boolean
@@ -12503,6 +12534,9 @@ export namespace Prisma {
     planInterval?: boolean
     boostCreditsBalance?: boolean
     lastCalculatedTaxRate?: boolean
+    trialStartedAt?: boolean
+    onboardingComplete?: boolean
+    onboardingReminderStep?: boolean
     checkInReward?: boolean
     neighborhood?: boolean
     neighborhoodNormalized?: boolean
@@ -12544,6 +12578,9 @@ export namespace Prisma {
     planInterval?: boolean
     boostCreditsBalance?: boolean
     lastCalculatedTaxRate?: boolean
+    trialStartedAt?: boolean
+    onboardingComplete?: boolean
+    onboardingReminderStep?: boolean
     checkInReward?: boolean
     neighborhood?: boolean
     neighborhoodNormalized?: boolean
@@ -12563,7 +12600,7 @@ export namespace Prisma {
     searchAppearances?: boolean
   }
 
-  export type BarOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ownerId" | "name" | "slug" | "description" | "address" | "city" | "cityNormalized" | "state" | "zipCode" | "barType" | "basePlan" | "addonPro" | "addonPremium" | "addonInventory" | "subscriptionTier" | "inventoryAddOnEnabled" | "planInterval" | "boostCreditsBalance" | "lastCalculatedTaxRate" | "checkInReward" | "neighborhood" | "neighborhoodNormalized" | "latitude" | "longitude" | "phone" | "website" | "logo" | "photos" | "hours" | "isActive" | "isPublished" | "publishedAt" | "createdAt" | "updatedAt" | "profileViews" | "searchAppearances", ExtArgs["result"]["bar"]>
+  export type BarOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ownerId" | "name" | "slug" | "description" | "address" | "city" | "cityNormalized" | "state" | "zipCode" | "barType" | "basePlan" | "addonPro" | "addonPremium" | "addonInventory" | "subscriptionTier" | "inventoryAddOnEnabled" | "planInterval" | "boostCreditsBalance" | "lastCalculatedTaxRate" | "trialStartedAt" | "onboardingComplete" | "onboardingReminderStep" | "checkInReward" | "neighborhood" | "neighborhoodNormalized" | "latitude" | "longitude" | "phone" | "website" | "logo" | "photos" | "hours" | "isActive" | "isPublished" | "publishedAt" | "createdAt" | "updatedAt" | "profileViews" | "searchAppearances", ExtArgs["result"]["bar"]>
   export type BarInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     owner?: boolean | OwnerDefaultArgs<ExtArgs>
     offerings?: boolean | Bar$offeringsArgs<ExtArgs>
@@ -12655,6 +12692,9 @@ export namespace Prisma {
       planInterval: string
       boostCreditsBalance: number
       lastCalculatedTaxRate: Prisma.Decimal | null
+      trialStartedAt: Date | null
+      onboardingComplete: boolean
+      onboardingReminderStep: number
       checkInReward: string | null
       neighborhood: string | null
       neighborhoodNormalized: string | null
@@ -13143,6 +13183,9 @@ export namespace Prisma {
     readonly planInterval: FieldRef<"Bar", 'String'>
     readonly boostCreditsBalance: FieldRef<"Bar", 'Int'>
     readonly lastCalculatedTaxRate: FieldRef<"Bar", 'Decimal'>
+    readonly trialStartedAt: FieldRef<"Bar", 'DateTime'>
+    readonly onboardingComplete: FieldRef<"Bar", 'Boolean'>
+    readonly onboardingReminderStep: FieldRef<"Bar", 'Int'>
     readonly checkInReward: FieldRef<"Bar", 'String'>
     readonly neighborhood: FieldRef<"Bar", 'String'>
     readonly neighborhoodNormalized: FieldRef<"Bar", 'String'>
@@ -60925,6 +60968,9 @@ export namespace Prisma {
     planInterval: 'planInterval',
     boostCreditsBalance: 'boostCreditsBalance',
     lastCalculatedTaxRate: 'lastCalculatedTaxRate',
+    trialStartedAt: 'trialStartedAt',
+    onboardingComplete: 'onboardingComplete',
+    onboardingReminderStep: 'onboardingReminderStep',
     checkInReward: 'checkInReward',
     neighborhood: 'neighborhood',
     neighborhoodNormalized: 'neighborhoodNormalized',
@@ -62263,6 +62309,9 @@ export namespace Prisma {
     planInterval?: StringFilter<"Bar"> | string
     boostCreditsBalance?: IntFilter<"Bar"> | number
     lastCalculatedTaxRate?: DecimalNullableFilter<"Bar"> | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: DateTimeNullableFilter<"Bar"> | Date | string | null
+    onboardingComplete?: BoolFilter<"Bar"> | boolean
+    onboardingReminderStep?: IntFilter<"Bar"> | number
     checkInReward?: StringNullableFilter<"Bar"> | string | null
     neighborhood?: StringNullableFilter<"Bar"> | string | null
     neighborhoodNormalized?: StringNullableFilter<"Bar"> | string | null
@@ -62331,6 +62380,9 @@ export namespace Prisma {
     planInterval?: SortOrder
     boostCreditsBalance?: SortOrder
     lastCalculatedTaxRate?: SortOrderInput | SortOrder
+    trialStartedAt?: SortOrderInput | SortOrder
+    onboardingComplete?: SortOrder
+    onboardingReminderStep?: SortOrder
     checkInReward?: SortOrderInput | SortOrder
     neighborhood?: SortOrderInput | SortOrder
     neighborhoodNormalized?: SortOrderInput | SortOrder
@@ -62402,6 +62454,9 @@ export namespace Prisma {
     planInterval?: StringFilter<"Bar"> | string
     boostCreditsBalance?: IntFilter<"Bar"> | number
     lastCalculatedTaxRate?: DecimalNullableFilter<"Bar"> | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: DateTimeNullableFilter<"Bar"> | Date | string | null
+    onboardingComplete?: BoolFilter<"Bar"> | boolean
+    onboardingReminderStep?: IntFilter<"Bar"> | number
     checkInReward?: StringNullableFilter<"Bar"> | string | null
     neighborhood?: StringNullableFilter<"Bar"> | string | null
     neighborhoodNormalized?: StringNullableFilter<"Bar"> | string | null
@@ -62470,6 +62525,9 @@ export namespace Prisma {
     planInterval?: SortOrder
     boostCreditsBalance?: SortOrder
     lastCalculatedTaxRate?: SortOrderInput | SortOrder
+    trialStartedAt?: SortOrderInput | SortOrder
+    onboardingComplete?: SortOrder
+    onboardingReminderStep?: SortOrder
     checkInReward?: SortOrderInput | SortOrder
     neighborhood?: SortOrderInput | SortOrder
     neighborhoodNormalized?: SortOrderInput | SortOrder
@@ -62518,6 +62576,9 @@ export namespace Prisma {
     planInterval?: StringWithAggregatesFilter<"Bar"> | string
     boostCreditsBalance?: IntWithAggregatesFilter<"Bar"> | number
     lastCalculatedTaxRate?: DecimalNullableWithAggregatesFilter<"Bar"> | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: DateTimeNullableWithAggregatesFilter<"Bar"> | Date | string | null
+    onboardingComplete?: BoolWithAggregatesFilter<"Bar"> | boolean
+    onboardingReminderStep?: IntWithAggregatesFilter<"Bar"> | number
     checkInReward?: StringNullableWithAggregatesFilter<"Bar"> | string | null
     neighborhood?: StringNullableWithAggregatesFilter<"Bar"> | string | null
     neighborhoodNormalized?: StringNullableWithAggregatesFilter<"Bar"> | string | null
@@ -66140,6 +66201,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -66208,6 +66272,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -66274,6 +66341,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -66342,6 +66412,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -66409,6 +66482,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -66448,6 +66524,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -66488,6 +66567,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -70627,6 +70709,9 @@ export namespace Prisma {
     planInterval?: SortOrder
     boostCreditsBalance?: SortOrder
     lastCalculatedTaxRate?: SortOrder
+    trialStartedAt?: SortOrder
+    onboardingComplete?: SortOrder
+    onboardingReminderStep?: SortOrder
     checkInReward?: SortOrder
     neighborhood?: SortOrder
     neighborhoodNormalized?: SortOrder
@@ -70649,6 +70734,7 @@ export namespace Prisma {
   export type BarAvgOrderByAggregateInput = {
     boostCreditsBalance?: SortOrder
     lastCalculatedTaxRate?: SortOrder
+    onboardingReminderStep?: SortOrder
     latitude?: SortOrder
     longitude?: SortOrder
     profileViews?: SortOrder
@@ -70676,6 +70762,9 @@ export namespace Prisma {
     planInterval?: SortOrder
     boostCreditsBalance?: SortOrder
     lastCalculatedTaxRate?: SortOrder
+    trialStartedAt?: SortOrder
+    onboardingComplete?: SortOrder
+    onboardingReminderStep?: SortOrder
     checkInReward?: SortOrder
     neighborhood?: SortOrder
     neighborhoodNormalized?: SortOrder
@@ -70714,6 +70803,9 @@ export namespace Prisma {
     planInterval?: SortOrder
     boostCreditsBalance?: SortOrder
     lastCalculatedTaxRate?: SortOrder
+    trialStartedAt?: SortOrder
+    onboardingComplete?: SortOrder
+    onboardingReminderStep?: SortOrder
     checkInReward?: SortOrder
     neighborhood?: SortOrder
     neighborhoodNormalized?: SortOrder
@@ -70734,6 +70826,7 @@ export namespace Prisma {
   export type BarSumOrderByAggregateInput = {
     boostCreditsBalance?: SortOrder
     lastCalculatedTaxRate?: SortOrder
+    onboardingReminderStep?: SortOrder
     latitude?: SortOrder
     longitude?: SortOrder
     profileViews?: SortOrder
@@ -77319,6 +77412,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -77385,6 +77481,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -77634,6 +77733,9 @@ export namespace Prisma {
     planInterval?: StringFilter<"Bar"> | string
     boostCreditsBalance?: IntFilter<"Bar"> | number
     lastCalculatedTaxRate?: DecimalNullableFilter<"Bar"> | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: DateTimeNullableFilter<"Bar"> | Date | string | null
+    onboardingComplete?: BoolFilter<"Bar"> | boolean
+    onboardingReminderStep?: IntFilter<"Bar"> | number
     checkInReward?: StringNullableFilter<"Bar"> | string | null
     neighborhood?: StringNullableFilter<"Bar"> | string | null
     neighborhoodNormalized?: StringNullableFilter<"Bar"> | string | null
@@ -79601,6 +79703,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -79668,6 +79773,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -79749,6 +79857,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -79816,6 +79927,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -79881,6 +79995,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -79948,6 +80065,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -80029,6 +80149,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -80096,6 +80219,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -80206,6 +80332,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -80273,6 +80402,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -80405,6 +80537,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -80472,6 +80607,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -80537,6 +80675,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -80604,6 +80745,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -80726,6 +80870,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -80793,6 +80940,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -81191,6 +81341,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -81258,6 +81411,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -81339,6 +81495,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -81406,6 +81565,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -81471,6 +81633,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -81538,6 +81703,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -81619,6 +81787,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -81686,6 +81857,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -81793,6 +81967,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -81860,6 +82037,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -81978,6 +82158,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -82045,6 +82228,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -82153,6 +82339,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -82220,6 +82409,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -82419,6 +82611,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -82486,6 +82681,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -82651,6 +82849,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -82718,6 +82919,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -82844,6 +83048,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -82911,6 +83118,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -83027,6 +83237,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -83094,6 +83307,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -83244,6 +83460,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -83311,6 +83530,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -83575,6 +83797,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -83642,6 +83867,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -83794,6 +84022,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -83861,6 +84092,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -84305,6 +84539,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -84372,6 +84609,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -84490,6 +84730,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -84557,6 +84800,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -84665,6 +84911,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -84732,6 +84981,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -84854,6 +85106,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -84921,6 +85176,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -85033,6 +85291,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -85100,6 +85361,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -85226,6 +85490,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -85293,6 +85560,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -85409,6 +85679,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -85476,6 +85749,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -85557,6 +85833,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -85624,6 +85903,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -85689,6 +85971,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -85756,6 +86041,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -85837,6 +86125,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -85904,6 +86195,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -85969,6 +86263,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -86036,6 +86333,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -86117,6 +86417,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -86184,6 +86487,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -86249,6 +86555,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -86316,6 +86625,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -86397,6 +86709,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -86464,6 +86779,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -86529,6 +86847,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -86596,6 +86917,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -86701,6 +87025,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -86768,6 +87095,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -86970,6 +87300,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -87037,6 +87370,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -87209,6 +87545,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -87276,6 +87615,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -87418,6 +87760,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -87485,6 +87830,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -87596,6 +87944,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -87663,6 +88014,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -87856,6 +88210,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -87923,6 +88280,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -88033,6 +88393,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -88100,6 +88463,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -88200,6 +88566,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -88267,6 +88636,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -88393,6 +88765,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -88460,6 +88835,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -88576,6 +88954,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -88643,6 +89024,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -88769,6 +89153,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -88836,6 +89223,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -88952,6 +89342,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -89019,6 +89412,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -89100,6 +89496,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -89167,6 +89566,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -89232,6 +89634,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -89299,6 +89704,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -89380,6 +89788,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -89447,6 +89858,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -89512,6 +89926,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -89579,6 +89996,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -89660,6 +90080,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -89727,6 +90150,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -90132,6 +90558,9 @@ export namespace Prisma {
     planInterval?: string
     boostCreditsBalance?: number
     lastCalculatedTaxRate?: Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: Date | string | null
+    onboardingComplete?: boolean
+    onboardingReminderStep?: number
     checkInReward?: string | null
     neighborhood?: string | null
     neighborhoodNormalized?: string | null
@@ -90209,6 +90638,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -90275,6 +90707,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null
@@ -90341,6 +90776,9 @@ export namespace Prisma {
     planInterval?: StringFieldUpdateOperationsInput | string
     boostCreditsBalance?: IntFieldUpdateOperationsInput | number
     lastCalculatedTaxRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    onboardingComplete?: BoolFieldUpdateOperationsInput | boolean
+    onboardingReminderStep?: IntFieldUpdateOperationsInput | number
     checkInReward?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhood?: NullableStringFieldUpdateOperationsInput | string | null
     neighborhoodNormalized?: NullableStringFieldUpdateOperationsInput | string | null

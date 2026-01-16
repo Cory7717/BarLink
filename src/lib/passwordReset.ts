@@ -1,27 +1,6 @@
 import crypto from "crypto";
 import { prisma } from "@/lib/prisma";
-
-type ResetEmailConfig = {
-  smtpHost: string;
-  smtpPort: number;
-  smtpUser: string;
-  smtpPass: string;
-  fromEmail: string;
-};
-
-function getEmailConfig(): ResetEmailConfig | null {
-  const smtpHost = process.env.SMTP_HOST || "smtp.gmail.com";
-  const smtpPort = parseInt(process.env.SMTP_PORT || "587", 10);
-  const smtpUser = process.env.SMTP_USER || "";
-  const smtpPass = process.env.SMTP_PASS || process.env.SMTP_PASSWORD || "";
-  const fromEmail = process.env.SMTP_FROM || smtpUser || "noreply@BarLink360.com";
-
-  if (!smtpUser || !smtpPass) {
-    return null;
-  }
-
-  return { smtpHost, smtpPort, smtpUser, smtpPass, fromEmail };
-}
+import { sendEmail } from "./email";
 
 function getBaseUrl(): string {
   return process.env.NEXTAUTH_URL || process.env.RENDER_EXTERNAL_URL || "";
@@ -35,11 +14,6 @@ export async function createOwnerPasswordReset(ownerId: string, email: string) {
   const baseUrl = getBaseUrl();
   if (!baseUrl) {
     throw new Error("Missing base URL configuration");
-  }
-
-  const emailConfig = getEmailConfig();
-  if (!emailConfig) {
-    throw new Error("Email delivery is not configured");
   }
 
   const rawToken = crypto.randomBytes(32).toString("hex");
@@ -63,25 +37,7 @@ export async function createOwnerPasswordReset(ownerId: string, email: string) {
     <p><a href="${resetUrl}">Reset your password</a></p>
     <p>If you did not request this, you can ignore this email.</p>
   `;
-
-  const nodemailer = await import("nodemailer");
-  const transporter = nodemailer.default.createTransport({
-    host: emailConfig.smtpHost,
-    port: emailConfig.smtpPort,
-    secure: emailConfig.smtpPort === 465,
-    auth: {
-      user: emailConfig.smtpUser,
-      pass: emailConfig.smtpPass,
-    },
-  });
-
-  await transporter.sendMail({
-    from: emailConfig.fromEmail,
-    to: email,
-    subject,
-    text,
-    html,
-  });
+  await sendEmail(email, subject, text, html);
 }
 
 export async function resetOwnerPassword(token: string, newPasswordHash: string) {
