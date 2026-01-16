@@ -52,7 +52,6 @@ async function SuccessContent() {
 export default function SubscriptionSuccessPage() {
   return (
     <Suspense fallback={<div className="min-h-screen app-shell"></div>}>
-      {/* @ts-expect-error Async Server Component */}
       <SuccessContent />
     </Suspense>
   );
