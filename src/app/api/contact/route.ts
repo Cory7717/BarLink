@@ -41,7 +41,7 @@ Sent from BarLink360 Contact Form
       </div>
     `.trim();
 
-    await sendEmail(TO_EMAIL, emailSubject, emailText, emailHtml);
+    await sendEmail(TO_EMAIL, emailSubject, emailText, emailHtml, email);
 
     return NextResponse.json(
       {
