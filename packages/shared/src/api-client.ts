@@ -29,7 +29,7 @@ function assertBaseUrl(url: string) {
   }
 }
 
-export class BarlinkApiClient {
+export class BarLink360ApiClient {
   private baseUrl: string;
   private getToken?: ApiClientConfig["getToken"];
 
@@ -135,5 +135,5 @@ export class BarlinkApiClient {
 }
 
 export function createApiClient(config: ApiClientConfig) {
-  return new BarlinkApiClient(config);
+  return new BarLink360ApiClient(config);
 }

@@ -34,7 +34,7 @@ export default function PDFExport({ barId, barSlug }: PDFExportProps) {
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `BarLink_InventoryReport_${barSlug}_${startDate}_to_${endDate}.pdf`;
+      a.download = `BarLink360_InventoryReport_${barSlug}_${startDate}_to_${endDate}.pdf`;
       document.body.appendChild(a);
       a.click();
       window.URL.revokeObjectURL(url);

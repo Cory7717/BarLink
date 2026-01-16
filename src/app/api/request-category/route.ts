@@ -36,7 +36,7 @@ export async function POST(req: Request) {
     });
 
     const TO_EMAIL = "coryarmer@gmail.com";
-    const subject = `BarLink Category Request: ${category}`;
+    const subject = `BarLink360 Category Request: ${category}`;
     const text = `
 Requested by: ${bar.owner.name} (${bar.owner.email})
 Bar: ${bar.name} (${bar.city}, ${bar.state})
@@ -60,7 +60,7 @@ Request ID: ${request.id}
     const SMTP_PORT = process.env.SMTP_PORT || "587";
     const SMTP_USER = process.env.SMTP_USER;
     const SMTP_PASS = process.env.SMTP_PASS || process.env.SMTP_PASSWORD;
-    const FROM_EMAIL = process.env.SMTP_FROM || SMTP_USER || "noreply@barlink.com";
+    const FROM_EMAIL = process.env.SMTP_FROM || SMTP_USER || "noreply@BarLink360.com";
 
     const smtpConfigured = Boolean(SMTP_USER && SMTP_PASS);
     if (!smtpConfigured && process.env.NODE_ENV === "production") {
@@ -88,7 +88,7 @@ Request ID: ${request.id}
       });
 
       await transporter.sendMail({
-        from: `"BarLink Category Request" <${FROM_EMAIL}>`,
+        from: `"BarLink360 Category Request" <${FROM_EMAIL}>`,
         to: TO_EMAIL,
         replyTo: bar.owner.email,
         subject,

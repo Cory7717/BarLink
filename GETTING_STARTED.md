@@ -1,4 +1,4 @@
-# BarLink Design System - Getting Started Card
+# BarLink360 Design System - Getting Started Card
 
 ## 🎯 One-Page Quick Reference
 

@@ -92,7 +92,7 @@ export async function GET(req: Request) {
   const rangeLabel = `${start.toISOString().slice(0, 10)} to ${end.toISOString().slice(0, 10)}`;
 
   doc.setFontSize(14);
-  doc.text("BarLink Admin Report", 14, 16);
+  doc.text("BarLink360 Admin Report", 14, 16);
   doc.setFontSize(10);
   doc.text(`Range: ${rangeLabel}`, 14, 22);
 

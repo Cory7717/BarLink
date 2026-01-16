@@ -1,5 +1,5 @@
 import Constants from "expo-constants";
-import { createApiClient } from "@barlink/shared";
+import { createApiClient } from "@BarLink360/shared";
 
 let accessToken: string | null = null;
 

@@ -1,10 +1,10 @@
-﻿# BarLink - Bar Discovery Platform
+# BarLink360 - Bar Discovery Platform
 
 A modern web and mobile application connecting bar owners with patrons looking for specific activities on specific days.
 
 ## Project Status
 
-✅ **Completed:**
+? **Completed:**
 - Next.js 16.1.1 project initialized
 - TypeScript + Tailwind CSS configured
 - Database schema (Prisma) created
@@ -12,7 +12,7 @@ A modern web and mobile application connecting bar owners with patrons looking f
 - Navigation component created
 - Directory structure established
 
-⏳ **In Progress:**
+? **In Progress:**
 Creating remaining pages and components...
 
 ## Tech Stack
@@ -68,23 +68,23 @@ Set `EXPO_PUBLIC_API_URL` in your `.env` to point at the running Next.js server 
 
 ```
 src/
-├── app/                    # Next.js app router pages
-│   ├── page.tsx           # Home page
-│   ├── explore/           # Bar search & map
-│   ├── pricing/           # Subscription plans
-│   ├── about/             # About page
-│   ├── contact/           # Contact form
-│   ├── dashboard/         # Owner dashboard
-│   ├── auth/              # Authentication pages
-│   └── api/               # API routes
-├── components/            # React components
-│   ├── Navigation.tsx     # Main navigation
-│   └── ui/                # Reusable UI components
-└── lib/                   # Utilities
-    ├── prisma.ts          # Database client
-    ├── auth.ts            # NextAuth config
-    ├── utils.ts           # Helper functions
-    └── constants.ts       # App constants
++-- app/                    # Next.js app router pages
+�   +-- page.tsx           # Home page
+�   +-- explore/           # Bar search & map
+�   +-- pricing/           # Subscription plans
+�   +-- about/             # About page
+�   +-- contact/           # Contact form
+�   +-- dashboard/         # Owner dashboard
+�   +-- auth/              # Authentication pages
+�   +-- api/               # API routes
++-- components/            # React components
+�   +-- Navigation.tsx     # Main navigation
+�   +-- ui/                # Reusable UI components
++-- lib/                   # Utilities
+    +-- prisma.ts          # Database client
+    +-- auth.ts            # NextAuth config
+    +-- utils.ts           # Helper functions
+    +-- constants.ts       # App constants
 ```
 
 ## Features

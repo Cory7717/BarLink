@@ -48,7 +48,7 @@ export default function SignInPage() {
       <main className="mx-auto max-w-md px-4 pb-16 pt-12">
         <header className="space-y-2 text-center">
           <h1 className="text-3xl font-semibold text-gradient">Owner sign in</h1>
-          <p className="text-sm text-slate-200">Access your BarLink dashboard</p>
+          <p className="text-sm text-slate-200">Access your BarLink360 dashboard</p>
         </header>
 
         <form onSubmit={handleSubmit} className="mt-8 space-y-4 glass-panel rounded-3xl p-6 shadow-lg">

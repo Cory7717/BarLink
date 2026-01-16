@@ -120,7 +120,7 @@ function CheckInContent() {
           <div className="mt-8 glass-panel rounded-3xl p-6">
             <h2 className="text-lg font-semibold text-cyan-200 mb-3">Did you know?</h2>
             <p className="text-slate-200 text-sm">
-              Your check-in helps bar owners see the real value of BarLink. They can track how many people
+              Your check-in helps bar owners see the real value of BarLink360. They can track how many people
               discover their bar online and actually visit in person. This data helps them make better
               decisions about events, promotions, and offerings.
             </p>

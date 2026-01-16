@@ -60,7 +60,7 @@ function SignUpForm() {
       <main className="mx-auto max-w-md px-4 pb-16 pt-12">
         <header className="space-y-2 text-center">
           <h1 className="text-3xl font-semibold text-gradient">Create owner account</h1>
-          <p className="text-sm text-slate-200">Get started with BarLink</p>
+          <p className="text-sm text-slate-200">Get started with BarLink360</p>
         </header>
 
         <form onSubmit={handleSubmit} className="mt-8 space-y-4 glass-panel rounded-3xl p-6 shadow-lg">

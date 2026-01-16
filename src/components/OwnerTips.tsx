@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 
-const STORAGE_KEY = "barlink_owner_tips_hidden";
+const STORAGE_KEY = "BarLink360_owner_tips_hidden";
 
 type Tip = {
   title: string;

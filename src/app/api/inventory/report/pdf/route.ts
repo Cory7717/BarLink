@@ -258,7 +258,7 @@ export async function GET(req: Request) {
     const pdfData = generateInventoryPDF(reportData);
 
     // Generate filename
-    const filename = `BarLink_InventoryReport_${bar.slug}_${format(startDate, 'yyyy-MM-dd')}_to_${format(endDate, 'yyyy-MM-dd')}.pdf`;
+    const filename = `BarLink360_InventoryReport_${bar.slug}_${format(startDate, 'yyyy-MM-dd')}_to_${format(endDate, 'yyyy-MM-dd')}.pdf`;
 
     // Return PDF
     return new NextResponse(pdfData as BodyInit, {

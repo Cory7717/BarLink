@@ -5,7 +5,7 @@ const SUPER_ADMIN = "coryarmer@gmail.com";
 export function isAdminEmail(email?: string | null): boolean {
   if (!email) return false;
   const lower = email.toLowerCase();
-  return lower === SUPER_ADMIN || lower.endsWith("@barlink.com");
+  return lower === SUPER_ADMIN || lower.endsWith("@BarLink360.com");
 }
 
 export async function requireAdmin(): Promise<{ email: string }> {

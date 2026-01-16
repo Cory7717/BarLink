@@ -138,7 +138,7 @@ function OnboardingContent() {
       <Navigation />
       <main className="mx-auto max-w-3xl px-4 pb-16 pt-12">
         <header className="space-y-2 text-center">
-          <h1 className="text-3xl font-semibold text-gradient">Welcome to BarLink</h1>
+          <h1 className="text-3xl font-semibold text-gradient">Welcome to BarLink360</h1>
           <p className="text-sm text-slate-300">Complete setup in 2 steps</p>
         </header>
 

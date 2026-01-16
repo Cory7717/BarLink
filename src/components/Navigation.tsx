@@ -27,7 +27,7 @@ export default function Navigation() {
           {/* Logo + main links */}
           <div className="flex items-center gap-3">
             <Link href="/" className="text-2xl font-semibold tracking-tight text-gradient">
-              BarLink
+              BarLink360
             </Link>
 
             <div className="hidden md:flex items-center gap-1 rounded-full border border-white/10 bg-white/5 px-2 py-1">

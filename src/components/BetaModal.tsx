@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import styles from './percent.module.css';
 
-const STORAGE_KEY = 'barlink-beta-modal-dismissed';
+const STORAGE_KEY = 'BarLink360-beta-modal-dismissed';
 
 export default function BetaModal() {
   const [open, setOpen] = useState(false);
@@ -68,7 +68,7 @@ export default function BetaModal() {
           <span className="inline-flex items-center gap-2 rounded-full bg-emerald-500/15 px-3 py-1 text-xs font-semibold text-emerald-100 ring-1 ring-emerald-400/50">
             🚀 Beta Launch
           </span>
-          <h2 className="text-2xl font-bold text-white">Welcome to BarLink</h2>
+          <h2 className="text-2xl font-bold text-white">Welcome to BarLink360</h2>
           <p className="text-sm text-slate-200 leading-relaxed">
             We&apos;re launching with early access. The first <span className="font-semibold text-emerald-100">50 bar owners</span> who select the monthly plan get a full <span className="font-semibold text-emerald-100">30-day free trial</span>—no charge to start.
           </p>

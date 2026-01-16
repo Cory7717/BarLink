@@ -15,7 +15,7 @@ config.resolver.nodeModulesPaths = [
 config.resolver.disableHierarchicalLookup = true;
 config.resolver.extraNodeModules = {
   ...config.resolver.extraNodeModules,
-  "@barlink/shared": path.resolve(workspaceRoot, "packages/shared"),
+  "@BarLink360/shared": path.resolve(workspaceRoot, "packages/shared"),
 };
 
 module.exports = config;

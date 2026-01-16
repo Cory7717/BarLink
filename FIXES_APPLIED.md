@@ -1,4 +1,4 @@
-# BarLink - Fixes Applied (January 9, 2026)
+# BarLink360 - Fixes Applied (January 9, 2026)
 
 ## Summary
 All requested features and fixes have been successfully implemented and deployed. The application has been rebuilt with all changes.
@@ -167,8 +167,8 @@ SMTP_USER=coryarmer@gmail.com
 SMTP_PASSWORD=#Pilot2025
 SMTP_FROM=coryarmer@gmail.com
 DATABASE_URL=<neon-postgresql-url>
-AWS_S3_BUCKET=barlink-assets
-AWS_S3_PUBLIC_BASE_URL=https://barlink-assets.s3us-east-2.amazonaws.com
+AWS_S3_BUCKET=BarLink360-assets
+AWS_S3_PUBLIC_BASE_URL=https://BarLink360-assets.s3us-east-2.amazonaws.com
 NEXT_PUBLIC_MAPBOX_TOKEN=<mapbox-token>
 ```
 

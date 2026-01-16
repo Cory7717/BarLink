@@ -14,7 +14,7 @@ function getEmailConfig(): ResetEmailConfig | null {
   const smtpPort = parseInt(process.env.SMTP_PORT || "587", 10);
   const smtpUser = process.env.SMTP_USER || "";
   const smtpPass = process.env.SMTP_PASS || process.env.SMTP_PASSWORD || "";
-  const fromEmail = process.env.SMTP_FROM || smtpUser || "noreply@barlink.com";
+  const fromEmail = process.env.SMTP_FROM || smtpUser || "noreply@BarLink360.com";
 
   if (!smtpUser || !smtpPass) {
     return null;
@@ -56,10 +56,10 @@ export async function createOwnerPasswordReset(ownerId: string, email: string) {
   });
 
   const resetUrl = `${baseUrl}/auth/reset?token=${rawToken}`;
-  const subject = "Reset your BarLink password";
-  const text = `We received a request to reset your BarLink password.\n\nReset link: ${resetUrl}\n\nIf you did not request this, you can ignore this email.`;
+  const subject = "Reset your BarLink360 password";
+  const text = `We received a request to reset your BarLink360 password.\n\nReset link: ${resetUrl}\n\nIf you did not request this, you can ignore this email.`;
   const html = `
-    <p>We received a request to reset your BarLink password.</p>
+    <p>We received a request to reset your BarLink360 password.</p>
     <p><a href="${resetUrl}">Reset your password</a></p>
     <p>If you did not request this, you can ignore this email.</p>
   `;

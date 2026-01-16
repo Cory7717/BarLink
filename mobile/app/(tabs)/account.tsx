@@ -3,7 +3,7 @@ import { View, Text, TextInput, Pressable, StyleSheet, FlatList } from "react-na
 import { useQuery } from "@tanstack/react-query";
 import { useAuth } from "../../lib/auth";
 import { api } from "../../lib/api";
-import type { BarSummary } from "@barlink/shared";
+import type { BarSummary } from "@BarLink360/shared";
 
 export default function AccountScreen() {
   const { owner, login, logout, loading } = useAuth();

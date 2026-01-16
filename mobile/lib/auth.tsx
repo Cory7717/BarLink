@@ -1,10 +1,10 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import * as SecureStore from "expo-secure-store";
 import { api, setAccessToken } from "./api";
-import type { MobileAuthResponse, MobileAuthToken, OwnerProfile } from "@barlink/shared";
+import type { MobileAuthResponse, MobileAuthToken, OwnerProfile } from "@BarLink360/shared";
 import { queryClient } from "./queryClient";
 
-const TOKEN_KEY = "barlink_mobile_token";
+const TOKEN_KEY = "BarLink360_mobile_token";
 
 type AuthContextValue = {
   owner: OwnerProfile | null;

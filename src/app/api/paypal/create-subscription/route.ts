@@ -53,7 +53,7 @@ export async function POST(req: Request) {
         plan_id: planId,
         plan: { taxes }, // Override plan to apply TX sales tax on each billing cycle
         application_context: {
-          brand_name: 'BarLink',
+          brand_name: 'BarLink360',
           return_url: returnUrl,
           cancel_url: cancelUrl,
           user_action: 'SUBSCRIBE_NOW',

@@ -14,7 +14,7 @@ function SuccessContent() {
           </div>
           <h1 className="text-3xl font-semibold text-white">Subscription activated!</h1>
           <p className="mt-3 text-slate-200">
-            Your bar is now live on BarLink. Head to your dashboard to add offerings and events.
+            Your bar is now live on BarLink360. Head to your dashboard to add offerings and events.
           </p>
           <a
             href="/dashboard"

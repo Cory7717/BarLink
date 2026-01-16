@@ -1,4 +1,4 @@
-# BarLink Design System - Visual Diagrams
+# BarLink360 Design System - Visual Diagrams
 
 ## Design Hierarchy
 
@@ -355,7 +355,7 @@ RESULT: Smooth animations across all devices
 ## File Organization
 
 ```
-barlink/
+BarLink360/
 ├── src/
 │   ├── app/
 │   │   ├── globals.css          (Animation classes)

@@ -7,7 +7,7 @@ export default function AboutPage() {
       <main className="mx-auto max-w-4xl px-4 pb-16 pt-10 space-y-8">
         <header className="space-y-2">
           <p className="text-sm text-cyan-200">About</p>
-          <h1 className="text-4xl font-semibold text-gradient">BarLink</h1>
+          <h1 className="text-4xl font-semibold text-gradient">BarLink360</h1>
           <p className="text-slate-200">
             Real-time bar discovery that keeps patrons in the know and owners in control.
           </p>
@@ -16,7 +16,7 @@ export default function AboutPage() {
         <section className="glass-panel rounded-3xl p-6 shadow-lg space-y-3">
           <h2 className="text-2xl font-semibold text-white">Our mission</h2>
           <p className="text-slate-100">
-            BarLink was built so nightlife is not a guessing game. Owners can publish what is
+            BarLink360 was built so nightlife is not a guessing game. Owners can publish what is
             happening each night, trivia, karaoke, specials, and live music, while patrons find
             the right vibe instantly on a map.
           </p>

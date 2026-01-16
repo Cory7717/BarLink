@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
     }
 
     const TO_EMAIL = "coryarmer@gmail.com";
-    const emailSubject = `BarLink Contact Form: ${topic || "General Inquiry"}`;
+    const emailSubject = `BarLink360 Contact Form: ${topic || "General Inquiry"}`;
     const emailText = `
 Name: ${name}
 Email: ${email}
@@ -20,7 +20,7 @@ Message:
 ${message}
 
 ---
-Sent from BarLink Contact Form
+Sent from BarLink360 Contact Form
     `.trim();
 
     const emailHtml = `
@@ -36,7 +36,7 @@ Sent from BarLink Contact Form
           <p style="white-space: pre-wrap; line-height: 1.6;">${message}</p>
         </div>
         <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 30px 0;">
-        <p style="color: #64748b; font-size: 12px;">Sent from BarLink Contact Form</p>
+        <p style="color: #64748b; font-size: 12px;">Sent from BarLink360 Contact Form</p>
       </div>
     `.trim();
 
@@ -44,7 +44,7 @@ Sent from BarLink Contact Form
     const SMTP_PORT = process.env.SMTP_PORT || "587";
     const SMTP_USER = process.env.SMTP_USER;
     const SMTP_PASS = process.env.SMTP_PASS || process.env.SMTP_PASSWORD;
-    const FROM_EMAIL = process.env.SMTP_FROM || SMTP_USER || "noreply@barlink.com";
+    const FROM_EMAIL = process.env.SMTP_FROM || SMTP_USER || "noreply@BarLink360.com";
 
     const smtpConfigured = Boolean(SMTP_USER && SMTP_PASS);
     const missingCreds = [!SMTP_USER ? "SMTP_USER" : null, !SMTP_PASS ? "SMTP_PASS/SMTP_PASSWORD" : null].filter(Boolean);
@@ -74,7 +74,7 @@ Sent from BarLink Contact Form
         });
 
         const mailResult = await transporter.sendMail({
-          from: `"BarLink Contact Form" <${FROM_EMAIL}>`,
+          from: `"BarLink360 Contact Form" <${FROM_EMAIL}>`,
           to: TO_EMAIL,
           replyTo: email,
           subject: emailSubject,

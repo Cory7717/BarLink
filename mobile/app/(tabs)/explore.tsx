@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react";
 import { View, Text, TextInput, FlatList, Pressable, ActivityIndicator, StyleSheet } from "react-native";
 import { useQuery } from "@tanstack/react-query";
 import { api } from "../../lib/api";
-import type { BarSearchResult } from "@barlink/shared";
+import type { BarSearchResult } from "@BarLink360/shared";
 
 const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 

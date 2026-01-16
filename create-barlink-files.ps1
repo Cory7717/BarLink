@@ -1,7 +1,7 @@
-﻿# BarLink Project - Complete File Generation Script
-# This script creates all necessary files for the BarLink application
+# BarLink360 Project - Complete File Generation Script
+# This script creates all necessary files for the BarLink360 application
 
-Write-Host "Creating BarLink application files..." -ForegroundColor Green
+Write-Host "Creating BarLink360 application files..." -ForegroundColor Green
 
 # Create Home Page
 'use client';
@@ -18,10 +18,10 @@ export default function HomePage() {
       <section className=\"bg-linear-to-br from-purple-900 via-indigo-900 to-blue-900 text-white py-20\">
         <div className=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center\">
           <h1 className=\"text-5xl md:text-6xl font-bold mb-6 leading-tight\">
-            Find what's happening at bars—<br />by day, by vibe, by activity.
+            Find what's happening at bars�<br />by day, by vibe, by activity.
           </h1>
           <p className=\"text-xl md:text-2xl mb-8 text-purple-200 max-w-3xl mx-auto\">
-            BarLink helps patrons discover darts, trivia, karaoke, live music, drink specials, and more—instantly on a map.
+            BarLink360 helps patrons discover darts, trivia, karaoke, live music, drink specials, and more�instantly on a map.
           </p>
           <div className=\"flex flex-col sm:flex-row gap-4 justify-center\">
             <Link
@@ -46,24 +46,24 @@ export default function HomePage() {
           <h2 className=\"text-4xl font-bold text-center mb-12 text-gray-900\">How It Works</h2>
           <div className=\"grid md:grid-cols-3 gap-8\">
             <div className=\"text-center p-6\">
-              <div className=\"text-5xl mb-4\">📍</div>
+              <div className=\"text-5xl mb-4\">??</div>
               <h3 className=\"text-xl font-bold mb-3 text-gray-900\">Owners Add Offerings</h3>
               <p className=\"text-gray-600\">
                 Bar owners create their profile and add daily activities, specials, and events
               </p>
             </div>
             <div className=\"text-center p-6\">
-              <div className=\"text-5xl mb-4\">🔍</div>
+              <div className=\"text-5xl mb-4\">??</div>
               <h3 className=\"text-xl font-bold mb-3 text-gray-900\">Patrons Search</h3>
               <p className=\"text-gray-600\">
                 Users search by day of the week and activity type to find the perfect spot
               </p>
             </div>
             <div className=\"text-center p-6\">
-              <div className=\"text-5xl mb-4\">🗺️</div>
+              <div className=\"text-5xl mb-4\">???</div>
               <h3 className=\"text-xl font-bold mb-3 text-gray-900\">See Results on Map</h3>
               <p className=\"text-gray-600\">
-                BarLink shows matching bars instantly on an interactive map
+                BarLink360 shows matching bars instantly on an interactive map
               </p>
             </div>
           </div>
@@ -76,19 +76,19 @@ export default function HomePage() {
           <h2 className=\"text-4xl font-bold text-center mb-12 text-gray-900\">Perfect For</h2>
           <div className=\"grid md:grid-cols-3 gap-8\">
             <div className=\"bg-white p-6 rounded-lg shadow-md\">
-              <h3 className=\"text-xl font-bold mb-3 text-purple-900\">🧳 Tourists & Travelers</h3>
+              <h3 className=\"text-xl font-bold mb-3 text-purple-900\">?? Tourists & Travelers</h3>
               <p className=\"text-gray-600\">
                 Find the best local nightlife without asking around or endless scrolling
               </p>
             </div>
             <div className=\"bg-white p-6 rounded-lg shadow-md\">
-              <h3 className=\"text-xl font-bold mb-3 text-purple-900\">💼 Business Travelers</h3>
+              <h3 className=\"text-xl font-bold mb-3 text-purple-900\">?? Business Travelers</h3>
               <p className=\"text-gray-600\">
                 Discover nearby bars with specific activities during your weeknight stay
               </p>
             </div>
             <div className=\"bg-white p-6 rounded-lg shadow-md\">
-              <h3 className=\"text-xl font-bold mb-3 text-purple-900\">🏠 Locals Planning Ahead</h3>
+              <h3 className=\"text-xl font-bold mb-3 text-purple-900\">?? Locals Planning Ahead</h3>
               <p className=\"text-gray-600\">
                 See what's happening tomorrow, this weekend, or any day you want to go out
               </p>
@@ -103,42 +103,42 @@ export default function HomePage() {
           <h2 className=\"text-4xl font-bold text-center mb-12 text-gray-900\">Key Features</h2>
           <div className=\"grid md:grid-cols-2 lg:grid-cols-3 gap-6\">
             <div className=\"flex items-start space-x-3 p-4 bg-white rounded-lg shadow\">
-              <span className=\"text-2xl\">🗺️</span>
+              <span className=\"text-2xl\">???</span>
               <div>
                 <h4 className=\"font-bold text-gray-900\">Map-Based Search</h4>
                 <p className=\"text-gray-600 text-sm\">See bars on an interactive map</p>
               </div>
             </div>
             <div className=\"flex items-start space-x-3 p-4 bg-white rounded-lg shadow\">
-              <span className=\"text-2xl\">📅</span>
+              <span className=\"text-2xl\">??</span>
               <div>
                 <h4 className=\"font-bold text-gray-900\">Day-of-Week Filtering</h4>
                 <p className=\"text-gray-600 text-sm\">Find what's happening any day</p>
               </div>
             </div>
             <div className=\"flex items-start space-x-3 p-4 bg-white rounded-lg shadow\">
-              <span className=\"text-2xl\">🎯</span>
+              <span className=\"text-2xl\">??</span>
               <div>
                 <h4 className=\"font-bold text-gray-900\">Activity Search</h4>
                 <p className=\"text-gray-600 text-sm\">Filter by trivia, karaoke, and more</p>
               </div>
             </div>
             <div className=\"flex items-start space-x-3 p-4 bg-white rounded-lg shadow\">
-              <span className=\"text-2xl\">⭐</span>
+              <span className=\"text-2xl\">?</span>
               <div>
                 <h4 className=\"font-bold text-gray-900\">Special Event Flags</h4>
                 <p className=\"text-gray-600 text-sm\">Never miss limited-time events</p>
               </div>
             </div>
             <div className=\"flex items-start space-x-3 p-4 bg-white rounded-lg shadow\">
-              <span className=\"text-2xl\">🔄</span>
+              <span className=\"text-2xl\">??</span>
               <div>
                 <h4 className=\"font-bold text-gray-900\">Recurring Events</h4>
                 <p className=\"text-gray-600 text-sm\">Weekly activities always listed</p>
               </div>
             </div>
             <div className=\"flex items-start space-x-3 p-4 bg-white rounded-lg shadow\">
-              <span className=\"text-2xl\">⚡</span>
+              <span className=\"text-2xl\">?</span>
               <div>
                 <h4 className=\"font-bold text-gray-900\">Quick Updates</h4>
                 <p className=\"text-gray-600 text-sm\">Owners can update anytime</p>
@@ -153,7 +153,7 @@ export default function HomePage() {
         <div className=\"max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center\">
           <h2 className=\"text-4xl font-bold mb-6\">Ready to Get Your Bar Discovered?</h2>
           <p className=\"text-xl mb-8 text-purple-200\">
-            Join BarLink today and reach patrons searching for what you offer
+            Join BarLink360 today and reach patrons searching for what you offer
           </p>
           <Link
             href=\"/pricing\"
@@ -169,7 +169,7 @@ export default function HomePage() {
         <div className=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8\">
           <div className=\"grid md:grid-cols-4 gap-8\">
             <div>
-              <h3 className=\"text-white font-bold text-lg mb-4\">BarLink</h3>
+              <h3 className=\"text-white font-bold text-lg mb-4\">BarLink360</h3>
               <p className=\"text-sm\">
                 Find bars by activity and day. Never miss what's happening in your area.
               </p>
@@ -199,7 +199,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className=\"border-t border-gray-800 mt-8 pt-8 text-center text-sm\">
-            <p>&copy; {new Date().getFullYear()} BarLink. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} BarLink360. All rights reserved.</p>
           </div>
         </div>
       </footer>
@@ -208,4 +208,4 @@ export default function HomePage() {
 }
 ' | Out-File -FilePath ".\src\app\page.tsx" -Encoding UTF8
 
-Write-Host "✓ Created HomePage" -ForegroundColor Cyan
+Write-Host "? Created HomePage" -ForegroundColor Cyan

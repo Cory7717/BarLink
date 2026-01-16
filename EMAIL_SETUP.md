@@ -1,4 +1,4 @@
-# Email Setup Instructions for BarLink
+# Email Setup Instructions for BarLink360
 
 ## Current Status
 The contact form is **logging to console only** until you configure an email service.
@@ -23,7 +23,7 @@ The contact form is **logging to console only** until you configure an email ser
    - Create/edit `.env.local` in project root:
      ```bash
      RESEND_API_KEY="re_your_actual_api_key_here"
-     CONTACT_FROM_EMAIL="BarLink Contact <contact@yourdomain.com>"
+     CONTACT_FROM_EMAIL="BarLink360 Contact <contact@yourdomain.com>"
      ```
 
 3. **Verify Domain** (optional for production)

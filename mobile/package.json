@@ -1,5 +1,5 @@
 {
-  "name": "barlink-mobile",
+  "name": "BarLink360-mobile",
   "version": "0.1.0",
   "private": true,
   "main": "expo-router/entry",
@@ -10,7 +10,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@barlink/shared": "file:../packages/shared",
+    "@BarLink360/shared": "file:../packages/shared",
     "@expo/vector-icons": "^14.0.0",
     "@tanstack/react-query": "^5.55.0",
     "expo": "^51.0.0",

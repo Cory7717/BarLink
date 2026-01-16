@@ -9,7 +9,7 @@ export async function GET() {
   }
 
   const email = session.user.email.toLowerCase();
-  if (email !== "coryarmer@gmail.com" && !email.endsWith("@barlink.com")) {
+  if (email !== "coryarmer@gmail.com" && !email.endsWith("@BarLink360.com")) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
 

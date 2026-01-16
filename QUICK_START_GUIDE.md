@@ -1,4 +1,4 @@
-# Quick Start Guide - BarLink Design System
+# Quick Start Guide - BarLink360 Design System
 
 ## 🎨 For Developers Adding New Components
 

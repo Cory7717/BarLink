@@ -1,8 +1,8 @@
-# BarLink Features Breakdown & Sales Guide
+# BarLink360 Features Breakdown & Sales Guide
 
 ## Executive Summary
 
-**BarLink** is a comprehensive bar discovery and management platform that connects bar owners with customers actively seeking bars and their offerings. By combining real-time search, advanced analytics, and operational tools, BarLink helps bars increase foot traffic, optimize operations, and maximize revenue.
+**BarLink360** is a comprehensive bar discovery and management platform that connects bar owners with customers actively seeking bars and their offerings. By combining real-time search, advanced analytics, and operational tools, BarLink360 helps bars increase foot traffic, optimize operations, and maximize revenue.
 
 ---
 
@@ -53,7 +53,7 @@
 **Customer Benefits:**
 - Quick, easy check-in process
 - Help bar owners improve their data
-- Part of BarLink's community engagement
+- Part of BarLink360's community engagement
 
 **Sales Angle:**
 *"Verified visits mean accurate customer traffic data for your analytics — no guessing."*
@@ -112,7 +112,7 @@
 - No hidden offerings — everything is searchable
 
 **Sales Angle:**
-*"Your offerings are your storefront. BarLink makes sure every customer searching for what you offer finds you."*
+*"Your offerings are your storefront. BarLink360 makes sure every customer searching for what you offer finds you."*
 
 ---
 
@@ -217,7 +217,7 @@
 - Engagement optimization tips
 
 **Sales Angle:**
-*"Let your data tell you what customers want. BarLink automatically suggests how to attract more traffic based on your unique patterns."*
+*"Let your data tell you what customers want. BarLink360 automatically suggests how to attract more traffic based on your unique patterns."*
 
 ---
 
@@ -276,7 +276,7 @@
 - Trending analysis
 
 **Sales Angle:**
-*"Physical counts don't lie. BarLink tells you exactly where your inventory is going and flags unexpected variance."*
+*"Physical counts don't lie. BarLink360 tells you exactly where your inventory is going and flags unexpected variance."*
 
 ---
 
@@ -302,7 +302,7 @@
 - Incorrect pour size (standard issue)
 
 **Sales Angle:**
-*"A 5% variance on 50 bottles is manageable. A 5% variance daily adds up to thousands per year. BarLink catches and prevents it."*
+*"A 5% variance on 50 bottles is manageable. A 5% variance daily adds up to thousands per year. BarLink360 catches and prevents it."*
 
 ---
 
@@ -321,7 +321,7 @@
 - Revenue maximization
 
 **Sales Angle:**
-*"You know your top-selling offering. Now know its true margin. BarLink shows which offerings make the most money, not just sell the most volume."*
+*"You know your top-selling offering. Now know its true margin. BarLink360 shows which offerings make the most money, not just sell the most volume."*
 
 ---
 
@@ -433,7 +433,7 @@
 - Print anywhere (tables, receipts, windows)
 
 **Sales Angle:**
-*"QR codes on tables, receipts, and windows drive repeat traffic. Every point of contact can lead back to your BarLink profile."*
+*"QR codes on tables, receipts, and windows drive repeat traffic. Every point of contact can lead back to your BarLink360 profile."*
 
 ---
 
@@ -459,7 +459,7 @@
 - Subscription cost: $29 = 2.3% of incremental revenue
 
 **Sales Angle:**
-*"Prove your ROI. If BarLink brings 30 extra customers per month at $25 average spend, the subscription pays for itself 25x over."*
+*"Prove your ROI. If BarLink360 brings 30 extra customers per month at $25 average spend, the subscription pays for itself 25x over."*
 
 ---
 
@@ -493,7 +493,7 @@
 - Hard to attract new customers
 - No data on what customers want
 
-**BarLink Solution:**
+**BarLink360 Solution:**
 - Free plan to start
 - Organic discovery through search
 - Analytics to guide offerings
@@ -514,7 +514,7 @@
 - Hard to track which locations perform best
 - Inconsistent analytics
 
-**BarLink Solution:**
+**BarLink360 Solution:**
 - Single dashboard for all bars
 - Independent analytics per location
 - Centralized offering management
@@ -535,7 +535,7 @@
 - Hard to plan events strategically
 - Limited promotion channels
 
-**BarLink Solution:**
+**BarLink360 Solution:**
 - Easy event scheduling
 - High visibility in search results
 - Data on which events drive traffic
@@ -556,7 +556,7 @@
 - No visibility into bottle-specific profitability
 - Can't identify theft or waste
 
-**BarLink Solution:**
+**BarLink360 Solution:**
 - Inventory tracking
 - Usage recording
 - Variance alerts
@@ -577,7 +577,7 @@
 
 **Conservative Estimate (Small Bar):**
 - Current foot traffic: 200 customers/month
-- BarLink increases discovery: +25% = 50 new customers
+- BarLink360 increases discovery: +25% = 50 new customers
 - Average spend per customer: $25
 - New revenue: 50 × $25 = **$1,250/month**
 - Subscription cost: $29/month
@@ -597,7 +597,7 @@
 - 5% variance = $100/month loss
 - 12 months = $1,200/year
 
-**BarLink Impact:**
+**BarLink360 Impact:**
 - Reduces variance by 50% = $600/year saved
 - First year subscription cost: $348 ($29 × 12)
 - **Inventory savings alone cover subscription 1.7x**
@@ -610,11 +610,11 @@
 
 ---
 
-## 🏆 Part 8: Why BarLink vs. Alternatives
+## 🏆 Part 8: Why BarLink360 vs. Alternatives
 
 ### 8.1 vs. Generic Review Sites (Yelp, Google)
 
-| Feature | BarLink | Yelp/Google |
+| Feature | BarLink360 | Yelp/Google |
 |---------|----------|-------------|
 | Real-time offerings | ✅ | ❌ |
 | Search by specific offering | ✅ | ❌ |
@@ -625,14 +625,14 @@
 | Multi-location management | ✅ | ⚠️ Limited |
 | Owner-centric tools | ✅ | ❌ |
 
-**BarLink Advantage:**
+**BarLink360 Advantage:**
 *"Customers find you through offerings, not reviews. You control the narrative and the data."*
 
 ---
 
 ### 8.2 vs. Social Media (Instagram, Facebook)
 
-| Feature | BarLink | Social Media |
+| Feature | BarLink360 | Social Media |
 |---------|----------|-------------|
 | Searchable discovery | ✅ | ❌ |
 | Real-time analytics | ✅ | ⚠️ Limited |
@@ -642,14 +642,14 @@
 | Follower-dependent | ❌ | ✅ |
 | Algorithm-dependent | ❌ | ✅ |
 
-**BarLink Advantage:**
-*"Social media is optional. BarLink is essential. Customers searching for happy hours on Tuesday find you whether or not they follow you."*
+**BarLink360 Advantage:**
+*"Social media is optional. BarLink360 is essential. Customers searching for happy hours on Tuesday find you whether or not they follow you."*
 
 ---
 
 ### 8.3 vs. POS/Inventory-Only Solutions
 
-| Feature | BarLink | POS/Inventory |
+| Feature | BarLink360 | POS/Inventory |
 |---------|----------|---------------|
 | Customer discovery platform | ✅ | ❌ |
 | Real-time analytics | ✅ | ⚠️ |
@@ -659,8 +659,8 @@
 | All-in-one solution | ✅ | ⚠️ |
 | Affordable pricing | ✅ | ❌ |
 
-**BarLink Advantage:**
-*"Other tools help you manage existing business. BarLink helps you acquire customers AND optimize operations."*
+**BarLink360 Advantage:**
+*"Other tools help you manage existing business. BarLink360 helps you acquire customers AND optimize operations."*
 
 ---
 
@@ -680,7 +680,7 @@
 
 ### 9.3 Support
 - Built-in Help Center with 50+ FAQs
-- Email support: support@BarLink.com
+- Email support: support@BarLink360.com
 - Response time: 24 hours
 - Onboarding guidance available
 
@@ -717,7 +717,7 @@
 ## 🎁 Part 11: Promotional Angles & Messaging
 
 ### For Bar Owners
-> **"Stop guessing what customers want. Start knowing. BarLink shows you exactly what drives traffic to your bar — and helps you optimize everything from offerings to operations."**
+> **"Stop guessing what customers want. Start knowing. BarLink360 shows you exactly what drives traffic to your bar — and helps you optimize everything from offerings to operations."**
 
 ### For Multi-Unit Operators
 > **"Manage all your bars from one dashboard. Track which locations are winning, what offerings drive traffic, and where you're losing money. One platform, unlimited locations."**
@@ -726,10 +726,10 @@
 > **"Your events are your competitive advantage. Make sure customers know about them before they go somewhere else. Schedule smarter, track attendance, optimize based on data."**
 
 ### For Margin-Focused Bars
-> **"Every percentage point of waste costs thousands per year. BarLink finds the waste and stops it. Inventory tracking that pays for itself."**
+> **"Every percentage point of waste costs thousands per year. BarLink360 finds the waste and stops it. Inventory tracking that pays for itself."**
 
 ### For Growing Businesses
-> **"Start with one location. Scale to ten. BarLink scales with you. Pay only for what you run. No lock-in. Transparent pricing."**
+> **"Start with one location. Scale to ten. BarLink360 scales with you. Pay only for what you run. No lock-in. Transparent pricing."**
 
 ---
 
@@ -740,7 +740,7 @@
 1. **Discovery Problem:** "Are customers finding all your offerings right now?"
    - Most answer: No
 
-2. **The Solution:** "BarLink makes your offerings searchable by exactly what customers are looking for — right now."
+2. **The Solution:** "BarLink360 makes your offerings searchable by exactly what customers are looking for — right now."
 
 3. **The Data:** "You get real-time analytics showing what drives traffic and what doesn't."
 
@@ -751,10 +751,10 @@
 ### Common Objections & Responses
 
 **"We already use Yelp/Google"**
-> "Those are reviews. BarLink is discovery by offering. A customer searching for 'trivia on Tuesday' finds you through BarLink, not through reviews."
+> "Those are reviews. BarLink360 is discovery by offering. A customer searching for 'trivia on Tuesday' finds you through BarLink360, not through reviews."
 
 **"We promote on social media"**
-> "Social media reaches followers. BarLink reaches customers actively searching for what you offer — even if they don't follow you."
+> "Social media reaches followers. BarLink360 reaches customers actively searching for what you offer — even if they don't follow you."
 
 **"This looks complicated"**
 > "Set up takes 10 minutes. We have a help center with video tutorials. Support responds within 24 hours."
@@ -769,14 +769,14 @@
 
 ## 🎯 Final Sales Summary
 
-### What BarLink Solves
+### What BarLink360 Solves
 1. **Discovery**: Customers find your offerings
 2. **Data**: Real-time analytics on what works
 3. **Operations**: Inventory tracking and cost reduction
 4. **Scale**: Multi-location management
 5. **ROI**: Measurable customer acquisition
 
-### Why Bars Choose BarLink
+### Why Bars Choose BarLink360
 - **Affordability**: $29/month per location
 - **Simplicity**: 10-minute setup
 - **Transparency**: Clear pricing, no lock-in
@@ -788,6 +788,6 @@
 
 ---
 
-**BarLink: The Discovery Platform Built for Bar Success**
+**BarLink360: The Discovery Platform Built for Bar Success**
 
 *Helping bars attract more customers, optimize operations, and maximize revenue.*

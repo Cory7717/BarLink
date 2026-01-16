@@ -89,7 +89,7 @@ export default function HelpPage() {
     <div className="min-h-screen app-shell text-white">
       <Navigation />
       <main className="mx-auto max-w-6xl px-4 pb-16 pt-10">
-        <h1 className="text-3xl font-semibold mb-2">Everything you need to know about using BarLink to grow your bar business.</h1>
+        <h1 className="text-3xl font-semibold mb-2">Everything you need to know about using BarLink360 to grow your bar business.</h1>
         <p className="text-slate-300 mb-6 text-sm">Tap a card to expand. Answers stay open for quick reference.</p>
 
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">

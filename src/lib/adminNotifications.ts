@@ -13,7 +13,7 @@ function getEmailConfig(): EmailConfig | null {
   const smtpPort = parseInt(process.env.SMTP_PORT || "587", 10);
   const smtpUser = process.env.SMTP_USER || "";
   const smtpPass = process.env.SMTP_PASS || process.env.SMTP_PASSWORD || "";
-  const fromEmail = process.env.SMTP_FROM || smtpUser || "noreply@barlink.com";
+  const fromEmail = process.env.SMTP_FROM || smtpUser || "noreply@BarLink360.com";
 
   if (!smtpUser || !smtpPass) return null;
   return { smtpHost, smtpPort, smtpUser, smtpPass, fromEmail };
@@ -41,8 +41,8 @@ export async function notifyOwnerEmail(ownerId: string, subject: string, body: s
   });
 
   const greeting = owner.name ? `Hi ${owner.name},` : "Hi there,";
-  const text = `${greeting}\n\n${body}\n\n- BarLink Team`;
-  const html = `<p>${greeting}</p><p>${body.replace(/\n/g, "<br/>")}</p><p>- BarLink Team</p>`;
+  const text = `${greeting}\n\n${body}\n\n- BarLink360 Team`;
+  const html = `<p>${greeting}</p><p>${body.replace(/\n/g, "<br/>")}</p><p>- BarLink360 Team</p>`;
 
   await transporter.sendMail({
     from: emailConfig.fromEmail,
@@ -71,7 +71,7 @@ export async function notifyAdminSignup(payload: { name: string; email: string }
           text: `New owner signup: ${payload.name} (${payload.email})`,
           email: payload.email,
           name: payload.name,
-          source: "barlink",
+          source: "BarLink360",
         }),
       });
     } catch (err) {
@@ -95,7 +95,7 @@ export async function notifyAdminSignup(payload: { name: string; email: string }
     await transporter.sendMail({
       from: emailConfig.fromEmail,
       to: adminEmail,
-      subject: "New BarLink owner signup",
+      subject: "New BarLink360 owner signup",
       text: `New owner signup:\nName: ${payload.name}\nEmail: ${payload.email}\n`,
     });
   }

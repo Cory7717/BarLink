@@ -3,9 +3,9 @@ const easProjectId = process.env.EXPO_EAS_PROJECT_ID || "replace-with-eas-projec
 
 const config = ({ config }) => ({
   ...config,
-  name: "BarLink",
-  slug: "barlink",
-  scheme: "barlink",
+  name: "BarLink360",
+  slug: "BarLink360",
+  scheme: "BarLink360",
   version: "0.1.0",
   orientation: "portrait",
   icon: "./assets/icon.png",
@@ -18,7 +18,7 @@ const config = ({ config }) => ({
     typedRoutes: true,
   },
   android: {
-    package: "com.barlink.app",
+    package: "com.BarLink360.app",
     adaptiveIcon: {
       foregroundImage: "./assets/adaptive-icon.png",
       backgroundColor: "#0b1221",
@@ -26,7 +26,7 @@ const config = ({ config }) => ({
   },
   ios: {
     supportsTablet: true,
-    bundleIdentifier: "com.barlink.app",
+    bundleIdentifier: "com.BarLink360.app",
   },
   extra: {
     eas: {

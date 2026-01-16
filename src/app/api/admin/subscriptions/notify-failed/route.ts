@@ -8,7 +8,7 @@ async function sendEmail(to: string, subject: string, text: string, html?: strin
   const SMTP_PORT = process.env.SMTP_PORT || "587";
   const SMTP_USER = process.env.SMTP_USER;
   const SMTP_PASS = process.env.SMTP_PASS || process.env.SMTP_PASSWORD;
-  const FROM_EMAIL = process.env.SMTP_FROM || SMTP_USER || "noreply@barlink.com";
+  const FROM_EMAIL = process.env.SMTP_FROM || SMTP_USER || "noreply@BarLink360.com";
   const smtpConfigured = Boolean(SMTP_USER && SMTP_PASS);
 
   if (!smtpConfigured) {
@@ -45,11 +45,11 @@ export async function POST(req: NextRequest) {
 
     const bodyText =
       message ||
-      `Hi ${subscription.owner.name || ""}, we could not process your BarLink subscription. Please update payment to stay active.`;
+      `Hi ${subscription.owner.name || ""}, we could not process your BarLink360 subscription. Please update payment to stay active.`;
 
     const emailResult = await sendEmail(
       subscription.owner.email,
-      "Action needed: BarLink subscription payment issue",
+      "Action needed: BarLink360 subscription payment issue",
       bodyText
     );
 

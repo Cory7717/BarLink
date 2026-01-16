@@ -13,9 +13,9 @@ export async function POST(req: Request) {
     await prisma.owner.update({ where: { id: ownerId }, data: { allowFreeListings: allow } });
 
     // Notify owner
-    const subject = allow ? "BarLink free month activated" : "BarLink free listing removed";
+    const subject = allow ? "BarLink360 free month activated" : "BarLink360 free listing removed";
     const body = allow
-      ? "We’ve granted you a free month of BarLink publishing. Your bar will remain visible during this period."
+      ? "We’ve granted you a free month of BarLink360 publishing. Your bar will remain visible during this period."
       : "Your free listing access has been removed. Bars will require an active subscription to stay visible.";
     notifyOwnerEmail(ownerId, subject, body).catch((err) => console.warn("Email notify failed:", err));
 

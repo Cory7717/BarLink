@@ -29,7 +29,7 @@ export default async function CreateInventoryPage({ params }: { params: Promise<
             </Link>
             <h1 className="text-3xl font-semibold text-gradient">{bar.name} - Create Inventory</h1>
             <p className="text-sm text-slate-300 mt-1">
-              Build your inventory from a friendly template or upload a CSV. We will save items directly to BarLink.
+              Build your inventory from a friendly template or upload a CSV. We will save items directly to BarLink360.
             </p>
           </div>
         </div>
